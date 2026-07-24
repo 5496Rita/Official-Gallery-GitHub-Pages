@@ -593,8 +593,8 @@ function renderModal(index) {
   fields.number.textContent = String(currentIndex + 1).padStart(2, "0");
   fields.coverTitle.textContent = album.title;
   fields.position.textContent = String(currentIndex + 1).padStart(2, "0") + " / " + String(albums.length).padStart(2, "0");
-  fields.accession.textContent = `ARCHIVE NO. ${String(currentIndex + 1).padStart(3, "0")}`;
-  fields.category.textContent = album.albumNumber ? "ALBUM COLLECTION" : "SPECIAL ARCHIVE";
+  if (fields.accession) fields.accession.textContent = `ARCHIVE NO. ${String(currentIndex + 1).padStart(3, "0")}`;
+  if (fields.category) fields.category.textContent = album.albumNumber ? "ALBUM COLLECTION" : "SPECIAL ARCHIVE";
   fields.story.replaceChildren(...album.story.map(line => { const p = document.createElement("p"); p.textContent = line; return p; }));
   fields.tracks.replaceChildren(...album.tracks.map((track, i) => { const li = document.createElement("li"); li.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span><b></b>`; li.querySelector("b").textContent = track; return li; }));
   fields.links.replaceChildren();
@@ -613,11 +613,13 @@ function renderModal(index) {
 function openModal(id) {
   const index = albums.findIndex(album => album.id === id); if (index < 0) return;
   lastFocus = document.activeElement; renderModal(index); modal.hidden = false;
+  history.replaceState(null, "", `#archive-${albums[index].id}`);
   requestAnimationFrame(() => { modal.classList.add("open"); panel.scrollTop = 0; modal.querySelector(".modal-close").focus(); });
   document.body.classList.add("modal-open");
 }
 function closeModal() {
   modal.classList.remove("open"); document.body.classList.remove("modal-open");
+  if (location.hash.startsWith("#archive-")) history.replaceState(null, "", location.pathname + location.search + "#gallery");
   setTimeout(() => { modal.hidden = true; if (lastFocus) lastFocus.focus(); }, 350);
 }
 
@@ -699,3 +701,8 @@ renderModal=function(index){originalRenderModal(index);renderXfd(albums[currentI
 
 const latestXfd=document.getElementById('latest-xfd');
 if(latestXfd) latestXfd.addEventListener('click',()=>openModal(latest.id));
+
+
+// Open a directly linked archive item after the page has rendered.
+const archiveHash = location.hash.match(/^#archive-(.+)$/);
+if (archiveHash) requestAnimationFrame(() => openModal(decodeURIComponent(archiveHash[1])));

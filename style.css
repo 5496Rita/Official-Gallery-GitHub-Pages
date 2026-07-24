@@ -148,3 +148,16 @@ main{position:relative;z-index:2}
 .modal-nav{position:sticky;bottom:0;background:rgba(10,7,11,.95);backdrop-filter:blur(12px)}
 @media(max-width:850px){.exhibition-panel{min-height:760px}.exhibition-track{height:710px}.exhibition-space{height:690px;transform:scale(.78);transform-origin:left top}.modal-panel{width:100vw}.modal-body{grid-template-columns:1fr;padding:34px 24px 60px}.modal-art-wrap{position:relative;top:auto;max-width:430px}.archive-record{margin-top:10px}}
 @media(max-width:620px){.exhibition-panel{min-height:670px}.exhibition-track{height:620px}.exhibition-space{transform:scale(.67);height:850px}.modal-topline{padding:0 20px}.modal-content>h2{font-size:38px}.modal-nav button b{display:none}}
+
+
+/* ===== Official Gallery 4.0 : archive drawer reliability + depth ===== */
+.exhibition-track{scroll-behavior:smooth}
+.orbit-card:after{content:"";position:absolute;inset:-12%;z-index:-2;background:radial-gradient(circle,rgba(137,72,153,.12),transparent 62%);opacity:0;transition:opacity .45s}
+.orbit-card:hover:after,.orbit-card:focus-within:after{opacity:1}
+.orbit-cover:focus-visible{outline:1px solid rgba(213,174,222,.9);outline-offset:8px}
+.archive-record{position:relative}
+.archive-record:after{content:"COLLECTION RECORD";position:absolute;right:0;bottom:-18px;color:#4e454e;font:7px Arial,sans-serif;letter-spacing:.2em}
+.modal-content .artist{margin-top:34px}
+.modal.open .modal-content{animation:archiveContentIn .65s .14s both}
+@keyframes archiveContentIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media(max-width:620px){.archive-record{align-items:flex-start;flex-direction:column;gap:8px}.archive-record:after{display:none}.modal-content .artist{margin-top:26px}}
