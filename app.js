@@ -8,7 +8,6 @@
   const welcome = $('#welcome');
   const site = $('#site');
   const exhibitionStage = $('#exhibition-stage');
-  const archiveResults = $('#archive-results');
   const archiveRitaResults = $('#archive-rita-results');
   const archiveCroveilResults = $('#archive-croveil-results');
   const archiveRitaSection = $('#archive-rita-section');
