@@ -1065,3 +1065,328 @@
     animation: none;
   }
 }
+/* =========================================================
+   FANTASY GALLERY POLISH
+   ========================================================= */
+
+/* ---------- 詳細ページ：ジャケットがゆっくり浮く ---------- */
+
+.detail-page .work-hero__cover {
+  animation:
+    detailCoverReveal 0.9s cubic-bezier(.2, .75, .25, 1) both,
+    detailCoverFloat 5.5s ease-in-out 1.1s infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes detailCoverReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.97);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes detailCoverFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.3deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(0.3deg);
+  }
+}
+
+
+/* ---------- スクロールに合わせてフェード ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(4px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(.2, .75, .25, 1),
+    filter 0.9s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+
+/* ---------- LISTEN NOW：ボタンが静かに光る ---------- */
+
+.listen-now .button,
+.listen-now a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: rgba(223, 190, 229, 0.28);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.32),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.listen-now .button::before,
+.listen-now a::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  z-index: -1;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(20deg);
+  animation: listenButtonShine 5.5s ease-in-out infinite;
+}
+
+.listen-now .button:hover,
+.listen-now a:hover,
+.listen-now .button:focus-visible,
+.listen-now a:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(226, 194, 233, 0.65);
+  background: rgba(91, 35, 100, 0.28);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(129, 53, 145, 0.35),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@keyframes listenButtonShine {
+  0%,
+  62% {
+    left: -80%;
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  88%,
+  100% {
+    left: 145%;
+    opacity: 0;
+  }
+}
+
+
+/* ---------- GALLERY：幻想世界の展示室 ---------- */
+
+.exhibition-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(114, 46, 139, 0.23),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 12% 75%,
+      rgba(119, 23, 57, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 22%,
+      rgba(56, 48, 132, 0.15),
+      transparent 28%
+    ),
+    linear-gradient(
+      150deg,
+      rgba(17, 8, 22, 0.99),
+      rgba(4, 3, 7, 1)
+    );
+}
+
+/* 奥行きのある薄い格子 */
+
+.exhibition-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.38;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  mask-image: radial-gradient(
+    circle at center,
+    #000 15%,
+    transparent 83%
+  );
+}
+
+/* ゆっくり落ちる装飾 */
+
+.exhibition-panel::after {
+  content: "❦　✦　❧　✦　❦";
+  position: absolute;
+  top: -4rem;
+  left: 7%;
+  z-index: -1;
+  width: 86%;
+  color: rgba(180, 81, 149, 0.13);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  letter-spacing: 14vw;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: galleryFall 23s linear infinite;
+}
+
+@keyframes galleryFall {
+  from {
+    transform: translate3d(4vw, -10vh, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(-8vw, 112vh, 0) rotate(280deg);
+  }
+}
+
+
+/* ---------- GALLERY：ジャケットに奥行き ---------- */
+
+.exhibition-item,
+.orbit-card {
+  transition:
+    opacity 0.45s ease,
+    filter 0.45s ease,
+    transform 0.55s cubic-bezier(.2, .8, .2, 1);
+  will-change: transform;
+}
+
+.exhibition-item img,
+.orbit-cover img {
+  transition:
+    transform 0.55s cubic-bezier(.2, .8, .2, 1),
+    filter 0.45s ease,
+    box-shadow 0.55s ease;
+}
+
+.exhibition-item:hover,
+.exhibition-item:focus-visible,
+.orbit-card:hover,
+.orbit-card:focus-within {
+  z-index: 30;
+  filter: brightness(1.08) saturate(1.07);
+}
+
+
+
+/* ---------- DISCOGRAPHY：カードホバー ---------- */
+
+.archive-card,
+.archive-panel .album-card {
+  transition:
+    transform 0.45s cubic-bezier(.2, .8, .2, 1),
+    filter 0.4s ease;
+}
+
+.archive-card:hover,
+.archive-card:focus-visible,
+.archive-panel .album-card:hover,
+.archive-panel .album-card:focus-within {
+  z-index: 5;
+  transform: translateY(-9px);
+  filter: brightness(1.07);
+}
+
+.archive-card img,
+.archive-panel .album-card img {
+  transition:
+    transform 0.5s cubic-bezier(.2, .8, .2, 1),
+    box-shadow 0.45s ease;
+}
+
+.archive-card:hover img,
+.archive-card:focus-visible img,
+.archive-panel .album-card:hover img,
+.archive-panel .album-card:focus-within img {
+  transform: scale(1.025);
+  box-shadow:
+    0 28px 58px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(108, 43, 123, 0.22);
+}
+
+
+/* ---------- スマホ ---------- */
+
+@media (max-width: 760px) {
+  .exhibition-panel::after {
+    letter-spacing: 21vw;
+  }
+
+  .exhibition-item:hover {
+    transform: translateY(-7px) scale(1.035);
+  }
+
+  .detail-page .work-hero__cover {
+    animation:
+      detailCoverReveal 0.8s ease both,
+      detailCoverFloatMobile 5.5s ease-in-out 1s infinite;
+  }
+
+  @keyframes detailCoverFloatMobile {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+}
+
+
+/* 動きを減らす設定の人には止める */
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-page .work-hero__cover,
+  .exhibition-panel::after,
+  .listen-now .button::before,
+  .listen-now a::before {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
