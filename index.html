@@ -4,101 +4,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="越黒リタとCROVEILの音楽作品を展示する公式ギャラリー。">
-  <meta name="theme-color" content="#080708">
+  <meta name="theme-color" content="#08070a">
   <title>越黒リタ Official Gallery</title>
-  <link rel="icon" href="icons/favicon.ico?v=2" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=2">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="style.css?v=73">
-  <script src="app.js?v=73" defer></script>
+  <link rel="icon" href="icons/favicon.ico?v=8" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=8">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=8">
+  <link rel="stylesheet" href="style.css?v=8">
+  <script src="albums.js?v=8" defer></script>
+  <script src="app.js?v=8" defer></script>
 </head>
 <body>
   <div class="world-background" aria-hidden="true">
-    <div class="sky-layer" data-parallax="0.05"></div>
-    <div class="moon-layer" data-parallax="0.12"><i class="moon"></i></div>
-    <div class="cathedral-layer" data-parallax="0.2"></div>
-    <div class="candle-aura"></div>
-    <div class="petal-field" id="petal-field"></div>
-    <div class="feather-field" id="feather-field"></div>
+    <div class="sky-layer"></div><div class="moon"></div><div class="petal-field" id="petal-field"></div>
   </div>
-<main>
   <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="越黒リタ Official Gallery ホーム"><span>越黒リタ</span><small>OFFICIAL GALLERY</small></a>
-    <nav aria-label="メインナビゲーション"><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#videos">Videos</a></nav>
+    <a class="wordmark" href="#home"><span>越黒リタ</span><small>OFFICIAL GALLERY</small></a>
+    <nav><a href="#gallery">Gallery</a><a href="#about">About</a></nav>
   </header>
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-image" src="images/rita-hero.jpg" alt="">
+      <div class="hero-copy"><p class="eyebrow">OFFICIAL ARCHIVE · EST. 2026</p><h1>Official<br>Gallery</h1><p>音楽が纏う夜を、<br>一枚ずつ蒐集する。</p></div>
+    </section>
 
-  <section class="hero" id="home">
-    <figure class="hero-portrait" aria-hidden="true"><img src="images/rita-hero.jpg" alt=""></figure>
-    <p class="eyebrow">OFFICIAL ARCHIVE · EST. 2026</p>
-    <div class="hero-title-wrap"><h1><span>Official</span><span>Gallery</span></h1><p>音楽が纏う夜を、<br>一枚ずつ蒐集する。</p></div>
-    <div class="scroll-mark" aria-hidden="true"><i></i><span>SCROLL TO EXPLORE</span></div>
-  </section>
-
-  <section class="latest section-shell" aria-labelledby="latest-title">
-    <div class="section-heading"><p class="index">01</p><div><p class="eyebrow">LATEST RELEASE</p><h2 id="latest-title">Latest Release</h2></div></div>
-    <article class="latest-display" id="latest-display"></article>
-  </section>
-
-  <section class="gallery section-shell" id="gallery" aria-labelledby="gallery-title">
-    <div class="section-heading gallery-heading"><p class="index">02</p><div><p class="eyebrow">THE COLLECTION</p><h2 id="gallery-title">Gallery</h2></div><p class="collection-count" id="collection-count"></p></div>
-    <div class="gallery-mode-heading">
-      <div><p>CURATED VIEW</p><h3>Exhibition</h3></div>
-      <span>CHOOSE YOUR ARTWORK</span>
-    </div>
-    <div class="exhibition-panel" id="exhibition-panel">
-      <div class="orbit-glow" aria-hidden="true"></div>
-      <button class="orbit-arrow prev" type="button" aria-label="前の作品">←</button>
-      <div class="exhibition-track" id="exhibition-track" tabindex="0" aria-label="横に動かして、浮遊する作品から選ぶ">
-        <div class="exhibition-space" id="exhibition-space"></div>
-      </div>
-      <button class="orbit-arrow next" type="button" aria-label="次の作品">→</button>
-      <div class="orbit-footer"><p id="orbit-position">27 WORKS</p><span>DRAG · SWIPE · SELECT</span></div>
-    </div>
-    <div class="archive-heading">
-      <div><p>COMPLETE COLLECTION</p><h3>Archive</h3></div>
-      <span>ALL WORKS · NEWEST FIRST</span>
-    </div>
-    <div class="archive-panel" id="archive-panel">
+    <section class="section-shell" id="gallery">
+      <header class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2>Exhibition</h2></div><p id="collection-count"></p></header>
       <div class="filter-row" role="tablist" aria-label="アーティストで絞り込む">
-        <button class="filter active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter" data-filter="越黒リタ" role="tab" aria-selected="false">越黒リタ</button>
-        <button class="filter" data-filter="CROVEIL" role="tab" aria-selected="false">CROVEIL</button>
+        <button class="filter active" data-filter="all" aria-selected="true">All</button>
+        <button class="filter" data-filter="越黒リタ" aria-selected="false">越黒リタ</button>
+        <button class="filter" data-filter="CROVEIL" aria-selected="false">CROVEIL</button>
       </div>
-      <div class="hall-status" id="hall-status" aria-live="polite"></div>
-      <div class="gallery-rooms" id="album-grid"></div>
-    </div>
-  </section>
+      <p class="gallery-help">JACKETを選択すると作品詳細が開きます</p>
+      <div class="cover-gallery" id="cover-gallery" aria-live="polite"></div>
+    </section>
 
-  <section class="about section-shell" id="about">
-    <div class="section-heading"><p class="index">03</p><div><p class="eyebrow">ABOUT</p><h2>Music as Art.</h2></div></div>
-    <p class="about-copy">越黒リタの音楽作品を、ジャケットと物語で辿る公式アーカイブ。<br>ここは情報を並べる場所ではなく、ひとつひとつの夜を展示するための静かな美術館です。</p>
-  </section>
-
-  <section class="videos section-shell" id="videos">
-    <div class="section-heading"><p class="index">04</p><div><p class="eyebrow">MOVING ARCHIVE</p><h2>Videos</h2></div></div>
-    <button class="video-placeholder" id="latest-xfd" type="button"><span>▶</span><p>Latest Crossfade</p><b>Open the latest work</b></button>
-  </section>
+    <section class="about section-shell" id="about">
+      <p class="eyebrow">ABOUT</p><h2>Music as Art.</h2>
+      <p>越黒リタの音楽作品を、ジャケットと物語で辿る公式アーカイブ。<br>ひとつひとつの夜を展示する、静かな美術館です。</p>
+    </section>
+  </main>
 
   <div class="modal" id="album-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
     <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-panel">
-      <div class="modal-topline"><p>ARCHIVE DETAIL</p><button class="modal-close" type="button" data-close-modal aria-label="作品詳細を閉じる">× <span>Close</span></button></div>
-      <div class="modal-body">
-        <div class="modal-art-wrap"><div class="cover-art" id="modal-art"><i id="modal-number"></i><b id="modal-cover-title"></b></div></div>
-        <div class="modal-content">
-          <div class="archive-record" aria-label="収蔵情報"><span id="modal-accession">ARCHIVE NO. 000</span><span id="modal-category">ALBUM COLLECTION</span></div>
-          <p class="artist" id="modal-artist"></p><h2 id="modal-title"></h2><p class="release" id="modal-release"></p>
-          <section class="modal-section tracklist-section"><h3>Track List</h3><ol id="modal-tracks"></ol></section>
-          <section class="modal-section"><h3>Story</h3><div id="modal-story"></div></section>
-          <section class="modal-section xfd-section"><h3>Crossfade</h3><div class="xfd-player" id="modal-xfd"></div></section>
-          <section class="modal-section"><h3>Listen</h3><div class="listen-links" id="modal-links"></div></section>
+    <article class="modal-panel">
+      <header class="modal-topline"><p>ARCHIVE DETAIL</p><button class="modal-close" data-close-modal aria-label="閉じる">× <span>Close</span></button></header>
+      <div class="modal-scroll">
+        <div class="modal-layout">
+          <div class="modal-art-wrap"><img id="modal-art" alt=""></div>
+          <div class="modal-content">
+            <p class="archive-number" id="modal-accession"></p>
+            <p class="artist" id="modal-artist"></p>
+            <h2 id="modal-title"></h2>
+            <p class="release" id="modal-release"></p>
+            <section><h3>Track List</h3><ol id="modal-tracks"></ol></section>
+            <section><h3>Story</h3><div id="modal-story"></div></section>
+            <section><h3>Crossfade</h3><div id="modal-xfd"></div></section>
+            <section><h3>Listen</h3><div class="listen-links" id="modal-links"></div></section>
+          </div>
         </div>
       </div>
-      <div class="modal-nav"><button type="button" id="modal-prev">← <span>Previous</span><b></b></button><p id="modal-position"></p><button type="button" id="modal-next"><span>Next</span> →<b></b></button></div>
-    </div>
+      <footer class="modal-nav"><button id="modal-prev">← <span>Previous</span><b></b></button><p id="modal-position"></p><button id="modal-next"><span>Next</span> →<b></b></button></footer>
+    </article>
   </div>
 
-  <footer><p>越黒リタ Official Gallery</p><span>© 2026 YAMIKIHIME-P</span><a href="#home">BACK TO TOP ↑</a></footer>
-</main>
+  <footer class="site-footer"><p>越黒リタ Official Gallery</p><span>© 2026 YAMIKIHIME-P</span></footer>
 </body>
 </html>
