@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08030d" />
+  <meta name="description" content="越黒リタ Official Gallery — Work Detail" />
+  <title>Work Detail — 越黒リタ Official Gallery</title>
+  <link rel="icon" href="icons/favicon.ico" />
+  <link rel="stylesheet" href="style.css?v=301" />
+</head>
+<body class="detail-page">
+  <header class="site-header detail-header">
+    <a href="index.html#home" class="brand" aria-label="Home">
+      <img src="icons/brand-mark.png" alt="" />
+      <span>越黒リタ<br><small>OFFICIAL GALLERY</small></span>
+    </a>
+    <nav class="site-nav detail-nav-main" aria-label="Primary">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#exhibition">EXHIBITION</a>
+      <a href="index.html#archive">ARCHIVE</a>
+    </nav>
+  </header>
+
+  <main id="detail-main" class="work-detail" hidden>
+    <a class="detail-back" href="index.html#archive">← BACK TO ARCHIVE</a>
+
+    <section class="work-hero">
+      <div class="work-hero__cover reveal is-visible"><img id="work-cover" alt="" /></div>
+      <div class="work-hero__copy reveal is-visible">
+        <p id="work-kicker" class="eyebrow"></p>
+        <h1 id="work-title"></h1>
+        <p id="work-release" class="work-release"></p>
+
+        <div class="listen-now" aria-labelledby="listen-now-title">
+          <p id="listen-now-title" class="listen-now__title">LISTEN NOW</p>
+          <div id="work-links" class="listen-now__links"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-content">
+      <div class="work-section work-tracks">
+        <div class="work-section__heading"><span>01</span><h2>TRACK LIST</h2></div>
+        <ol id="work-tracks" class="detail-track-list"></ol>
+      </div>
+
+      <div class="work-section work-xfd">
+        <div class="work-section__heading"><span>02</span><h2>XFD</h2></div>
+        <div id="work-xfd" class="xfd-frame"></div>
+      </div>
+    </section>
+
+    <nav class="work-pagination" aria-label="Work navigation">
+      <a id="work-prev" href="#"><small>PREVIOUS</small><span></span></a>
+      <a id="work-next" href="#"><small>NEXT</small><span></span></a>
+    </nav>
+  </main>
+
+  <main id="detail-not-found" class="detail-not-found" hidden>
+    <p class="eyebrow">NOT FOUND</p>
+    <h1>作品が見つかりません。</h1>
+    <a class="button" href="index.html#archive">BACK TO ARCHIVE</a>
+  </main>
+
+  <footer class="site-footer detail-footer">
+    <p>Thank you for visiting my world.</p>
+    <a href="index.html#home">HOME</a>
+  </footer>
+
+  <script src="albums.js?v=301"></script>
+  <script src="detail.js?v=301"></script>
+</body>
+</html>
