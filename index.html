@@ -7,11 +7,18 @@
   <meta name="description" content="越黒リタ Official Gallery — Exhibition and Archive" />
   <title>越黒リタ Official Gallery</title>
   <link rel="icon" href="icons/favicon.ico" />
-  <link rel="stylesheet" href="style.css?v=202" />
+  <link rel="stylesheet" href="style.css?v=203" />
 </head>
 <body>
   <div id="welcome" class="welcome" aria-hidden="true">
-    <div class="welcome__veil"></div>
+    <div class="welcome__moon"></div>
+    <div class="welcome__mist welcome__mist--one"></div>
+    <div class="welcome__mist welcome__mist--two"></div>
+    <div class="welcome__ornament welcome__ornament--top"></div>
+    <div class="welcome__ornament welcome__ornament--bottom"></div>
+    <div class="welcome__petals" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
     <div class="welcome__content">
       <p class="eyebrow">KOSHIGURO RITA · OFFICIAL GALLERY</p>
       <h1>私の世界へようこそ</h1>
@@ -88,7 +95,16 @@
           </div>
           <p id="archive-count" class="archive-count"></p>
         </div>
-        <div id="archive-results" class="archive-results archive-results--grid"></div>
+        <div id="archive-results" class="archive-collections">
+          <section id="archive-rita-section" class="archive-artist-section">
+            <div class="archive-artist-heading"><h3>越黒リタ</h3><p id="archive-rita-count"></p></div>
+            <div id="archive-rita-results" class="archive-results archive-results--grid"></div>
+          </section>
+          <section id="archive-croveil-section" class="archive-artist-section">
+            <div class="archive-artist-heading"><h3>CROVEIL</h3><p id="archive-croveil-count"></p></div>
+            <div id="archive-croveil-results" class="archive-results archive-results--grid"></div>
+          </section>
+        </div>
       </section>
 
       <section id="profile" class="section profile-section">
@@ -138,7 +154,7 @@
     </div>
   </dialog>
 
-  <script src="albums.js?v=202"></script>
-  <script src="app.js?v=202"></script>
+  <script src="albums.js?v=203"></script>
+  <script src="app.js?v=203"></script>
 </body>
 </html>

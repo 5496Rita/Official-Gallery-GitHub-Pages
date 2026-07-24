@@ -9,6 +9,12 @@
   const site = $('#site');
   const exhibitionStage = $('#exhibition-stage');
   const archiveResults = $('#archive-results');
+  const archiveRitaResults = $('#archive-rita-results');
+  const archiveCroveilResults = $('#archive-croveil-results');
+  const archiveRitaSection = $('#archive-rita-section');
+  const archiveCroveilSection = $('#archive-croveil-section');
+  const archiveRitaCount = $('#archive-rita-count');
+  const archiveCroveilCount = $('#archive-croveil-count');
   const archiveSearch = $('#archive-search');
   const archiveSort = $('#archive-sort');
   const archiveCount = $('#archive-count');
@@ -45,7 +51,7 @@
   }
 
   // A brief title card: show the welcome message, then reveal the gallery automatically.
-  window.setTimeout(enterSite, 1000);
+  window.setTimeout(enterSite, 3000);
 
   const menuButton = $('#menu-button');
   const siteNav = $('#site-nav');
@@ -120,28 +126,41 @@
     return items.sort(sorters[state.sort] || sorters.added);
   }
 
+  function createArchiveCard(album) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'archive-card';
+    button.innerHTML = `
+      <span class="archive-card__image"><img src="${album.art}" alt="" loading="lazy"></span>
+      <span class="archive-card__meta">
+        <h3>${escapeHtml(album.title)}</h3>
+        <p>${workLabel(album)} · ${escapeHtml(releaseLabel(album))} · ${(album.tracks || []).length} TRACKS</p>
+      </span>`;
+    button.addEventListener('click', () => openDetail(album._index));
+    return button;
+  }
+
+  function renderArtistArchive(container, section, countElement, artist, items) {
+    const artistItems = items.filter(album => album.artist === artist);
+    section.hidden = artistItems.length === 0;
+    countElement.textContent = `${artistItems.length} WORKS`;
+    container.className = `archive-results archive-results--${state.view}`;
+    container.innerHTML = '';
+    artistItems.forEach(album => container.appendChild(createArchiveCard(album)));
+  }
+
   function renderArchive() {
     const items = getFilteredAlbums();
-    archiveResults.className = `archive-results archive-results--${state.view}`;
-    archiveResults.innerHTML = '';
     archiveCount.textContent = `${items.length} WORKS`;
+    renderArtistArchive(archiveRitaResults, archiveRitaSection, archiveRitaCount, '越黒リタ', items);
+    renderArtistArchive(archiveCroveilResults, archiveCroveilSection, archiveCroveilCount, 'CROVEIL', items);
     if (!items.length) {
-      archiveResults.innerHTML = '<p>該当する作品がありません。</p>';
-      return;
+      archiveRitaSection.hidden = false;
+      archiveRitaResults.className = 'archive-results archive-results--grid';
+      archiveRitaResults.innerHTML = '<p class="archive-empty">該当する作品がありません。</p>';
+      archiveRitaCount.textContent = '';
+      archiveCroveilSection.hidden = true;
     }
-    items.forEach(album => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'archive-card';
-      button.innerHTML = `
-        <span class="archive-card__image"><img src="${album.art}" alt="" loading="lazy"></span>
-        <span class="archive-card__meta">
-          <h3>${escapeHtml(album.title)}</h3>
-          <p>${escapeHtml(album.artist)} · ${workLabel(album)} · ${escapeHtml(releaseLabel(album))} · ${(album.tracks || []).length} TRACKS</p>
-        </span>`;
-      button.addEventListener('click', () => openDetail(album._index));
-      archiveResults.appendChild(button);
-    });
   }
 
   archiveSearch.addEventListener('input', event => { state.query = event.target.value; renderArchive(); });
