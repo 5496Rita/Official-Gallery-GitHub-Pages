@@ -7,17 +7,15 @@
   <meta name="description" content="越黒リタ Official Gallery — Exhibition and Archive" />
   <title>越黒リタ Official Gallery</title>
   <link rel="icon" href="icons/favicon.ico" />
-  <link rel="stylesheet" href="style.css?v=200" />
+  <link rel="stylesheet" href="style.css?v=202" />
 </head>
 <body>
-  <div id="welcome" class="welcome" aria-modal="true" role="dialog" aria-labelledby="welcome-title">
+  <div id="welcome" class="welcome" aria-hidden="true">
     <div class="welcome__veil"></div>
     <div class="welcome__content">
       <p class="eyebrow">KOSHIGURO RITA · OFFICIAL GALLERY</p>
-      <h1 id="welcome-title">私の世界へようこそ</h1>
+      <h1>私の世界へようこそ</h1>
       <p class="welcome__sub">Welcome to my world.</p>
-      <button id="enter-button" class="enter-button" type="button">ENTER</button>
-      <p class="welcome__hint">音楽と記憶の展示室へ</p>
     </div>
   </div>
 
@@ -77,10 +75,11 @@
           <label>
             <span class="sr-only">Sort</span>
             <select id="archive-sort">
-              <option value="newest">新しい順</option>
-              <option value="oldest">古い順</option>
+              <option value="added">追加した順</option>
+              <option value="addedNewest">追加した新しい順</option>
+              <option value="newest">発売日の新しい順</option>
+              <option value="oldest">発売日の古い順</option>
               <option value="title">タイトル順</option>
-              <option value="number">作品番号順</option>
             </select>
           </label>
           <div class="view-toggle" role="group" aria-label="View mode">
@@ -139,7 +138,7 @@
     </div>
   </dialog>
 
-  <script src="albums.js?v=200"></script>
-  <script src="app.js?v=200"></script>
+  <script src="albums.js?v=202"></script>
+  <script src="app.js?v=202"></script>
 </body>
 </html>

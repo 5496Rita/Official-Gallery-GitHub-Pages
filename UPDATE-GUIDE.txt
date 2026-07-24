@@ -1,9 +1,15 @@
-1. Open this folder.
-2. Copy every item inside it.
-3. Paste into the folder opened by GitHub Desktop > Repository > Show in Explorer.
-4. Replace existing files.
-5. Commit to main.
-6. Push origin.
-7. Wait for GitHub Actions to show Success, then press Ctrl+F5 on the public page.
+Official Gallery Update Guide
 
-7.1: Exhibition cards now show cover artwork only, without archive frames or labels.
+1. ZIPを展開します。
+2. 中にあるファイルとフォルダを、GitHub Desktopで管理しているリポジトリ直下へすべて上書きします。
+3. GitHub Desktopで変更内容を確認します。
+4. Commit to main を押します。
+5. Push origin を押します。
+6. 公開ページを再読み込みします。古い表示が残る場合は、ブラウザのキャッシュを無視して再読み込みしてください。
+
+今回の更新
+- Welcomeは写真なし・ENTERなし・約1秒で自動移行
+- ARCHIVE NO.表記を削除
+- 越黒リタ／CROVEILとも、追加した順に1st Album、2nd Album...を自動表示
+- ARCHIVEの初期表示を「追加した順」に変更
+- 発売日未定作品はRELEASE TBAと表示

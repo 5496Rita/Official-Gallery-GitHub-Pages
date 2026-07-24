@@ -3,11 +3,10 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const state = { currentIndex: 0, view: 'grid', query: '', sort: 'newest' };
+  const state = { currentIndex: 0, view: 'grid', query: '', sort: 'added' };
 
   const welcome = $('#welcome');
   const site = $('#site');
-  const enterButton = $('#enter-button');
   const exhibitionStage = $('#exhibition-stage');
   const archiveResults = $('#archive-results');
   const archiveSearch = $('#archive-search');
@@ -15,21 +14,38 @@
   const archiveCount = $('#archive-count');
   const dialog = $('#detail-dialog');
 
-  const normalizedAlbums = albums.map((album, index) => ({ ...album, _index: index }));
+  const artistCounts = new Map();
+  const normalizedAlbums = albums.map((album, index) => {
+    const artistWorkNumber = (artistCounts.get(album.artist) || 0) + 1;
+    artistCounts.set(album.artist, artistWorkNumber);
+    return { ...album, _index: index, _addedIndex: index, artistWorkNumber };
+  });
+
+  function ordinal(value) {
+    const mod100 = value % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${value}th`;
+    return `${value}${({ 1: 'st', 2: 'nd', 3: 'rd' })[value % 10] || 'th'}`;
+  }
+
+  function workLabel(album) {
+    return `${ordinal(album.artistWorkNumber)} Album`;
+  }
+
+  function releaseLabel(album) {
+    return album.release ? album.release : 'RELEASE TBA';
+  }
 
   function enterSite() {
     site.hidden = false;
     requestAnimationFrame(() => {
       welcome.classList.add('is-leaving');
-      setTimeout(() => welcome.remove(), 1050);
+      setTimeout(() => welcome.remove(), 360);
       observeReveals();
     });
   }
 
-  enterButton.addEventListener('click', enterSite);
-  enterButton.addEventListener('keyup', event => {
-    if (event.key === 'Enter' || event.key === ' ') enterSite();
-  });
+  // A brief title card: show the welcome message, then reveal the gallery automatically.
+  window.setTimeout(enterSite, 1000);
 
   const menuButton = $('#menu-button');
   const siteNav = $('#site-nav');
@@ -85,12 +101,23 @@
       return haystack.includes(q);
     });
     const sorters = {
-      newest: (a, b) => b.release.localeCompare(a.release) || b.albumNumber - a.albumNumber,
-      oldest: (a, b) => a.release.localeCompare(b.release) || a.albumNumber - b.albumNumber,
-      title: (a, b) => a.title.localeCompare(b.title, 'ja'),
-      number: (a, b) => a.albumNumber - b.albumNumber
+      added: (a, b) => a._addedIndex - b._addedIndex,
+      addedNewest: (a, b) => b._addedIndex - a._addedIndex,
+      newest: (a, b) => {
+        if (!a.release && !b.release) return a._addedIndex - b._addedIndex;
+        if (!a.release) return 1;
+        if (!b.release) return -1;
+        return b.release.localeCompare(a.release) || a._addedIndex - b._addedIndex;
+      },
+      oldest: (a, b) => {
+        if (!a.release && !b.release) return a._addedIndex - b._addedIndex;
+        if (!a.release) return 1;
+        if (!b.release) return -1;
+        return a.release.localeCompare(b.release) || a._addedIndex - b._addedIndex;
+      },
+      title: (a, b) => a.title.localeCompare(b.title, 'ja')
     };
-    return items.sort(sorters[state.sort]);
+    return items.sort(sorters[state.sort] || sorters.added);
   }
 
   function renderArchive() {
@@ -110,7 +137,7 @@
         <span class="archive-card__image"><img src="${album.art}" alt="" loading="lazy"></span>
         <span class="archive-card__meta">
           <h3>${escapeHtml(album.title)}</h3>
-          <p>NO.${String(album.albumNumber).padStart(2, '0')} · ${escapeHtml(album.release)} · ${(album.tracks || []).length} TRACKS</p>
+          <p>${escapeHtml(album.artist)} · ${workLabel(album)} · ${escapeHtml(releaseLabel(album))} · ${(album.tracks || []).length} TRACKS</p>
         </span>`;
       button.addEventListener('click', () => openDetail(album._index));
       archiveResults.appendChild(button);
@@ -130,9 +157,9 @@
     const album = normalizedAlbums[index];
     $('#detail-cover').src = album.art;
     $('#detail-cover').alt = `${album.title} cover`;
-    $('#detail-number').textContent = `ARCHIVE NO.${String(album.albumNumber).padStart(2, '0')}`;
+    $('#detail-number').textContent = `${album.artist} · ${workLabel(album)}`;
     $('#detail-title').textContent = album.title;
-    $('#detail-release').textContent = `${album.artist} · RELEASE ${album.release}`;
+    $('#detail-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
     $('#detail-story').innerHTML = (album.story || []).map(p => `<p>${escapeHtml(p)}</p>`).join('');
     $('#detail-tracks').innerHTML = (album.tracks || []).map(track => `<li>${escapeHtml(track)}</li>`).join('');
     const linkLabels = { spotify: 'SPOTIFY', apple: 'APPLE MUSIC', amazon: 'AMAZON MUSIC', youtube: 'YOUTUBE' };

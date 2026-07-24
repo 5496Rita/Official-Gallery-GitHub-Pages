@@ -466,12 +466,6 @@ const albums = [
   }
 ];
 
-// 発売日未定作品を先頭に、その後は発売日の新しい順で表示します。
-albums.sort((a, b) => {
-  if (!a.release && !b.release) return (b.order || b.albumNumber || 0) - (a.order || a.albumNumber || 0);
-  if (!a.release) return -1;
-  if (!b.release) return 1;
-  return b.release.localeCompare(a.release) || (b.order || b.albumNumber || 0) - (a.order || a.albumNumber || 0);
-});
-
+// 配列に追加した順番をそのまま作品順として使用します。
+// アーティストごとの「1st Album / 2nd Album ...」も、この追加順から自動計算されます。
 window.GALLERY_ALBUMS = albums;
