@@ -511,35 +511,64 @@ const exhibitionTrack = document.getElementById("exhibition-track");
 const exhibitionSpace = document.getElementById("exhibition-space");
 const orbitPosition = document.getElementById("orbit-position");
 
+function seededRandom(seed) {
+  let value = seed >>> 0;
+  return () => {
+    value += 0x6D2B79F5;
+    let t = value;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function buildExhibitionLayout(count) {
+  const random = seededRandom(5496);
+  const layout = [];
+  const canvasWidth = Math.max(4300, count * 155);
+  const lanes = [54, 158, 292, 430, 575, 704];
+
+  for (let index = 0; index < count; index += 1) {
+    const progress = index / Math.max(1, count - 1);
+    const wave = Math.sin(index * 1.73) * 86 + Math.cos(index * .61) * 42;
+    const x = 95 + progress * (canvasWidth - 430) + (random() - .5) * 230;
+    const lane = lanes[(index * 5 + Math.floor(random() * lanes.length)) % lanes.length];
+    const y = Math.max(26, Math.min(720, lane + wave + (random() - .5) * 74));
+    const featured = index % 9 === 2 || index % 13 === 7;
+    const depth = featured ? 6 : 1 + Math.floor(random() * 5);
+    const width = featured ? 228 + Math.round(random() * 34) : 126 + depth * 13 + Math.round(random() * 24);
+    const rotate = -8 + random() * 16;
+    const drift = 5.8 + random() * 3.6;
+    const delay = -(random() * 7.5);
+    const parallax = .72 + depth * .075;
+    layout.push({ x, y, width, rotate, depth, drift, delay, parallax, featured });
+  }
+  return { layout, canvasWidth };
+}
+
 function renderExhibition() {
-  const rows = [20, 244, 458, 86, 352, 548, 168, 418, 34, 278, 505, 116];
-  const palettes = ["violet","wine","teal","gold","rose","indigo"];
+  const palettes = ["violet", "wine", "teal", "gold", "rose", "indigo"];
+  const { layout, canvasWidth } = buildExhibitionLayout(albums.length);
+
   exhibitionSpace.innerHTML = albums.map((album, index) => {
-    const cluster = Math.floor(index / 7);
-    const slot = index % 7;
-    const baseX = 42 + cluster * 860;
-    const xOffsets = [0,205,432,662,112,340,570];
-    const x = baseX + xOffsets[slot] + ((index * 37) % 38) - 18;
-    const y = rows[index % rows.length] + ((cluster * 29 + index * 17) % 42) - 18;
-    const featured = index % 10 === 4 || index % 13 === 8;
-    const width = featured ? 220 + ((index * 11) % 26) : 132 + ((index * 23) % 54);
-    const rotate = ((index * 13) % 7) - 3;
-    const depth = 1 + ((index * 5) % 6);
-    const delay = -((index * 0.29) % 5).toFixed(2);
-    const palette = palettes[index % palettes.length];
-    return `<article class="orbit-card memory-card${featured ? ' orbit-hero' : ''}" style="--x:${x}px;--y:${y}px;--size:${width}px;--rotate:${rotate}deg;--depth:${depth};--delay:${delay}s" data-orbit-index="${index}" data-artist="${album.artist}" data-palette="${palette}">
+    const item = layout[index];
+    const palette = palettes[(index * 7 + item.depth) % palettes.length];
+    return `<article class="orbit-card memory-card depth-${item.depth}${item.featured ? " orbit-hero" : ""}"
+      style="--x:${item.x.toFixed(1)}px;--y:${item.y.toFixed(1)}px;--size:${item.width}px;--rotate:${item.rotate.toFixed(2)}deg;--depth:${item.depth};--float-duration:${item.drift.toFixed(2)}s;--delay:${item.delay.toFixed(2)}s;--parallax:${item.parallax.toFixed(3)}"
+      data-orbit-index="${index}" data-artist="${album.artist}" data-palette="${palette}">
       <button class="orbit-cover memory-card-button" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
-        <span class="memory-card-head"><small>ARCHIVE ${String(index + 1).padStart(3,'0')}</small><b>${album.artist}</b></span>
+        <span class="memory-card-head"><small>ARCHIVE ${String(index + 1).padStart(3,"0")}</small><b>${album.artist}</b></span>
         <span class="memory-card-art"><img src="${album.art}" alt="${album.title} ジャケット" draggable="false"></span>
-        <span class="memory-card-info"><strong>${album.title}</strong><em>${cardMeta(album)}</em><time>${album.release || 'DATE TBA'}</time></span>
+        <span class="memory-card-info"><strong>${album.title}</strong><em>${cardMeta(album)}</em><time>${album.release || "DATE TBA"}</time></span>
       </button>
-      <div class="orbit-caption"><p>ARCHIVE ${String(index + 1).padStart(3,'0')} · ${album.artist}</p><h3>${album.title}</h3><div><b>${cardMeta(album)}</b><time>${album.release || 'DATE TBA'}</time></div><em>OPEN ARCHIVE →</em></div>
+      <div class="orbit-caption"><p>ARCHIVE ${String(index + 1).padStart(3,"0")} · ${album.artist}</p><h3>${album.title}</h3><div><b>${cardMeta(album)}</b><time>${album.release || "DATE TBA"}</time></div><em>OPEN ARCHIVE →</em></div>
     </article>`;
   }).join("");
-  const clusters = Math.ceil(albums.length / 7);
-  exhibitionSpace.style.width = `${Math.max(3000,180 + clusters * 860)}px`;
-  orbitPosition.textContent = `${String(albums.length).padStart(2,'0')} MEMORY FRAGMENTS`;
+
+  exhibitionSpace.style.width = `${canvasWidth}px`;
+  orbitPosition.textContent = `${String(albums.length).padStart(2, "0")} MEMORY FRAGMENTS`;
 }
+
 renderExhibition();
 
 document.querySelector(".orbit-arrow.prev").addEventListener("click", () => exhibitionTrack.scrollBy({left:-exhibitionTrack.clientWidth * .72, behavior:"smooth"}));

@@ -1,15 +1,7 @@
-Official Gallery v5
-
-変更内容:
-- ジャケットクリック時の詳細画面を、参考画像と同じ全画面アーカイブ表示へ変更
-- 上部に ARCHIVE DETAIL / PRIVATE COLLECTION と Close
-- 左側に大きなジャケット、右側に収蔵番号・タイトル・Story・Track List
-- 下部に Previous / Next を固定表示
-- 詳細部分だけを画面内スクロール
-- スマートフォンでは縦一列に最適化
-
-更新方法:
-1. このフォルダの中身をGitHub Desktopが管理しているフォルダへ上書き
-2. GitHub DesktopでCommit
-3. Push origin
-4. GitHub ActionsがSuccessになったら、公開ページをCtrl+F5で再読み込み
+1. Open this folder.
+2. Copy every item inside it.
+3. Paste into the folder opened by GitHub Desktop > Repository > Show in Explorer.
+4. Replace existing files.
+5. Commit to main.
+6. Push origin.
+7. Wait for GitHub Actions to show Success, then press Ctrl+F5 on the public page.
