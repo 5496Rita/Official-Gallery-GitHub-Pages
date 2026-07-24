@@ -312,3 +312,21 @@ main{position:relative;z-index:2}
   .modal-nav button{font-size:12px}
   .modal-nav p{display:none}
 }
+
+/* ===== Official Gallery 6.0 : floating memory cards ===== */
+.exhibition-panel{min-height:900px;background:radial-gradient(circle at 18% 20%,rgba(65,104,164,.22),transparent 27%),radial-gradient(circle at 78% 48%,rgba(102,55,146,.19),transparent 32%),linear-gradient(180deg,#07101d 0%,#09111d 48%,#06090f 100%)}
+.exhibition-panel:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.34;background-image:radial-gradient(circle,rgba(255,255,255,.75) 0 1px,transparent 1.3px),radial-gradient(circle,rgba(151,183,226,.6) 0 1px,transparent 1.2px);background-size:96px 96px,151px 151px;background-position:14px 8px,57px 63px}
+.orbit-glow{display:none}.exhibition-track{height:900px;background:none;perspective:1600px}.exhibition-space{height:870px}
+.orbit-card.memory-card{width:var(--size);filter:brightness(calc(.62 + var(--depth)*.055)) saturate(.88);opacity:calc(.58 + var(--depth)*.07);transform:rotate(var(--rotate)) translateZ(calc(var(--depth)*12px))}
+.orbit-card.memory-card:hover,.orbit-card.memory-card:focus-within{filter:brightness(1.06) saturate(1.03);opacity:1;z-index:40}
+.memory-card-button{display:block;width:100%;padding:8px 8px 10px;border:1px solid rgba(255,255,255,.28);border-radius:7px;background:linear-gradient(145deg,rgba(45,52,72,.96),rgba(17,22,34,.98));box-shadow:0 22px 45px rgba(0,0,0,.58),inset 0 0 0 2px rgba(255,255,255,.035),0 0 32px rgba(71,104,161,.12);animation:memoryFloat calc(5.8s + var(--depth)*.35s) ease-in-out var(--delay) infinite;transform-origin:center}
+.memory-card-button:before,.memory-card-button:after{display:none!important}
+.memory-card[data-palette="violet"] .memory-card-button{background:linear-gradient(145deg,#56406d,#20172c)}.memory-card[data-palette="wine"] .memory-card-button{background:linear-gradient(145deg,#643b45,#24131a)}.memory-card[data-palette="teal"] .memory-card-button{background:linear-gradient(145deg,#2f655f,#102825)}.memory-card[data-palette="gold"] .memory-card-button{background:linear-gradient(145deg,#75623c,#2e2412)}.memory-card[data-palette="rose"] .memory-card-button{background:linear-gradient(145deg,#74465d,#2b1722)}.memory-card[data-palette="indigo"] .memory-card-button{background:linear-gradient(145deg,#3c4f78,#161e34)}
+.memory-card-head{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:0 2px 6px;color:#eee9ef;font-family:Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}.memory-card-head small{font-size:6px;opacity:.62}.memory-card-head b{font-size:7px;font-weight:500;white-space:nowrap}
+.memory-card-art{display:block;position:relative;overflow:hidden;border:2px solid rgba(255,255,255,.18);background:#090b12;box-shadow:inset 0 0 22px rgba(0,0,0,.4)}.memory-card-art:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.1),transparent 30%,transparent 70%,rgba(255,255,255,.04));pointer-events:none}.memory-card-art img{display:block;width:100%;aspect-ratio:1;object-fit:cover;box-shadow:none}
+.memory-card-info{display:grid;grid-template-columns:1fr auto;gap:4px 8px;padding:9px 3px 1px;text-align:left;color:#f5eff4}.memory-card-info strong{grid-column:1/-1;font-family:Georgia,serif;font-size:12px;line-height:1.08;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.memory-card-info em,.memory-card-info time{font:6px Arial,sans-serif;letter-spacing:.1em;font-style:normal;opacity:.62;text-transform:uppercase;white-space:nowrap}
+.orbit-card.memory-card:hover .memory-card-button,.orbit-card.memory-card:focus-within .memory-card-button{animation-play-state:paused;transform:translateY(-18px) scale(1.1) rotate(calc(var(--rotate) * -1));box-shadow:0 35px 75px rgba(0,0,0,.72),0 0 38px rgba(137,166,221,.22)}
+.orbit-card.memory-card .orbit-caption{display:none}
+@keyframes memoryFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(calc((var(--depth) - 3)*1.6px),-14px,0)}}
+@media(max-width:850px){.exhibition-panel{min-height:760px}.exhibition-track{height:710px}.exhibition-space{height:860px;transform:scale(.78);transform-origin:left top}}
+@media(max-width:620px){.exhibition-panel{min-height:680px}.exhibition-track{height:630px}.exhibition-space{height:900px;transform:scale(.66)}}

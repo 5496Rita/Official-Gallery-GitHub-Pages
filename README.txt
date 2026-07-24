@@ -19,3 +19,5 @@
 6. 数分後に表示される公開URLを開きます。
 
 試験版には Velvet Dominion のみ収録しています。
+
+Version 6.0 - floating memory-card exhibition inspired by a drifting card archive.

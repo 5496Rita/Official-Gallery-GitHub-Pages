@@ -512,34 +512,33 @@ const exhibitionSpace = document.getElementById("exhibition-space");
 const orbitPosition = document.getElementById("orbit-position");
 
 function renderExhibition() {
-  const lanes = [38, 278, 92, 430, 184, 520, 24, 350, 128, 468, 238, 64];
+  const rows = [20, 244, 458, 86, 352, 548, 168, 418, 34, 278, 505, 116];
+  const palettes = ["violet","wine","teal","gold","rose","indigo"];
   exhibitionSpace.innerHTML = albums.map((album, index) => {
-    const cluster = Math.floor(index / 6);
-    const slot = index % 6;
-    const baseX = 72 + cluster * 760;
-    const xOffsets = [0, 238, 472, 112, 390, 620];
-    const x = baseX + xOffsets[slot] + ((index * 47) % 72) - 30;
-    const y = lanes[index % lanes.length] + ((cluster * 41 + index * 23) % 64) - 28;
-    const hero = index % 9 === 3 || index % 11 === 7;
-    const size = hero ? 250 + ((index * 13) % 38) : 126 + ((index * 31) % 96);
-    const rotate = ((index * 17) % 11) - 5;
-    const depth = 1 + ((index * 7) % 5);
-    const delay = -((index * 0.37) % 5).toFixed(2);
-    return `
-    <article class="orbit-card${hero ? ' orbit-hero' : ''}" style="--x:${x}px;--y:${y}px;--size:${size}px;--rotate:${rotate}deg;--depth:${depth};--delay:${delay}s" data-orbit-index="${index}" data-artist="${album.artist}">
-      <button class="orbit-cover" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
-        <img src="${album.art}" alt="${album.title} ジャケット" draggable="false">
+    const cluster = Math.floor(index / 7);
+    const slot = index % 7;
+    const baseX = 42 + cluster * 860;
+    const xOffsets = [0,205,432,662,112,340,570];
+    const x = baseX + xOffsets[slot] + ((index * 37) % 38) - 18;
+    const y = rows[index % rows.length] + ((cluster * 29 + index * 17) % 42) - 18;
+    const featured = index % 10 === 4 || index % 13 === 8;
+    const width = featured ? 220 + ((index * 11) % 26) : 132 + ((index * 23) % 54);
+    const rotate = ((index * 13) % 7) - 3;
+    const depth = 1 + ((index * 5) % 6);
+    const delay = -((index * 0.29) % 5).toFixed(2);
+    const palette = palettes[index % palettes.length];
+    return `<article class="orbit-card memory-card${featured ? ' orbit-hero' : ''}" style="--x:${x}px;--y:${y}px;--size:${width}px;--rotate:${rotate}deg;--depth:${depth};--delay:${delay}s" data-orbit-index="${index}" data-artist="${album.artist}" data-palette="${palette}">
+      <button class="orbit-cover memory-card-button" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
+        <span class="memory-card-head"><small>ARCHIVE ${String(index + 1).padStart(3,'0')}</small><b>${album.artist}</b></span>
+        <span class="memory-card-art"><img src="${album.art}" alt="${album.title} ジャケット" draggable="false"></span>
+        <span class="memory-card-info"><strong>${album.title}</strong><em>${cardMeta(album)}</em><time>${album.release || 'DATE TBA'}</time></span>
       </button>
-      <div class="orbit-caption">
-        <p>ARCHIVE ${String(index + 1).padStart(3, '0')} · ${album.artist}</p><h3>${album.title}</h3>
-        <div><b>${cardMeta(album)}</b><time>${album.release || "DATE TBA"}</time></div>
-        <em>OPEN ARCHIVE →</em>
-      </div>
+      <div class="orbit-caption"><p>ARCHIVE ${String(index + 1).padStart(3,'0')} · ${album.artist}</p><h3>${album.title}</h3><div><b>${cardMeta(album)}</b><time>${album.release || 'DATE TBA'}</time></div><em>OPEN ARCHIVE →</em></div>
     </article>`;
   }).join("");
-  const clusters = Math.ceil(albums.length / 6);
-  exhibitionSpace.style.width = `${Math.max(2860, 220 + clusters * 760)}px`;
-  orbitPosition.textContent = `${String(albums.length).padStart(2, "0")} WORKS`;
+  const clusters = Math.ceil(albums.length / 7);
+  exhibitionSpace.style.width = `${Math.max(3000,180 + clusters * 860)}px`;
+  orbitPosition.textContent = `${String(albums.length).padStart(2,'0')} MEMORY FRAGMENTS`;
 }
 renderExhibition();
 
