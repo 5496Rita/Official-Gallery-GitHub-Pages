@@ -114,3 +114,37 @@ main{position:relative;z-index:2}
 @keyframes galleryDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(max-width:700px){.moon{width:52vw}.moon-layer{padding:17vh 1vw}.cathedral-layer{height:35vh}.petal:nth-child(n+7),.feather:nth-child(n+3){display:none}.reveal-ready{transform:translateY(20px)}}
 @media(prefers-reduced-motion:reduce){.sky-layer,.candle-aura,.petal,.feather,.album-card,.orbit-cover{animation:none!important}.reveal-ready{opacity:1;transform:none;transition:none}.sky-layer,.moon-layer,.cathedral-layer{transform:none!important}}
+
+/* ===== Official Gallery 3.0 : irregular exhibition + archive drawer ===== */
+.exhibition-panel{min-height:900px}
+.exhibition-track{height:850px;background:
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/380px 100%,
+  radial-gradient(circle at 48% 45%,rgba(113,49,132,.13),transparent 42%)}
+.exhibition-space{height:820px}
+.orbit-card{z-index:var(--depth);transform:rotate(var(--rotate));filter:brightness(calc(.56 + var(--depth)*.055)) saturate(.82);opacity:calc(.58 + var(--depth)*.075)}
+.orbit-card:nth-child(3n){mix-blend-mode:normal}
+.orbit-card.orbit-hero{z-index:12;filter:brightness(.9) saturate(1);opacity:1}
+.orbit-card.orbit-hero .orbit-cover:after{content:"FEATURED COLLECTION";position:absolute;left:8px;bottom:8px;padding:6px 8px;background:rgba(7,6,8,.72);border:1px solid rgba(255,255,255,.16);font:7px Arial,sans-serif;letter-spacing:.18em;color:#d5c9d4;backdrop-filter:blur(8px)}
+.orbit-cover{transform-origin:50% 50%;animation:artworkFloatV3 calc(5.5s + var(--depth)*.35s) ease-in-out var(--delay) infinite}
+.orbit-card:hover .orbit-cover,.orbit-card:focus-within .orbit-cover{transform:translateY(-16px) scale(1.15) rotate(calc(var(--rotate) * -1));}
+.orbit-caption em{display:block;margin-top:12px;color:#b979c7;font:8px Arial,sans-serif;letter-spacing:.18em;font-style:normal}
+@keyframes artworkFloatV3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(calc((var(--depth) - 3)*1.5px),-13px,0)}}
+
+.modal{place-items:stretch end;justify-items:end}
+.modal-backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(8px)}
+.modal-panel{width:min(1040px,94vw);height:100vh;max-height:none;border-top:0;border-bottom:0;border-right:0;transform:translateX(100%);transition:transform .55s cubic-bezier(.22,.82,.24,1);box-shadow:-45px 0 120px rgba(0,0,0,.78);background:linear-gradient(150deg,#120d13,#080708 56%,#0d0910)}
+.modal.open .modal-panel{transform:translateX(0)}
+.modal-topline{height:76px;padding:0 38px;background:rgba(11,8,12,.94)}
+.modal-topline p:after{content:" / PRIVATE COLLECTION";color:#4f4650}
+.modal-body{padding:54px 56px 70px;grid-template-columns:minmax(300px,42%) 1fr;gap:58px}
+.modal-art-wrap{top:112px}
+.archive-record{display:flex;justify-content:space-between;gap:20px;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:26px}
+.archive-record span{font:8px Arial,sans-serif;letter-spacing:.22em;color:#8d818c}
+.archive-record span:first-child{color:#c18acb}
+.modal-content>h2{font-size:clamp(38px,4.8vw,68px)}
+.modal-section{position:relative}
+.modal-section:before{content:"";position:absolute;top:-1px;left:0;width:54px;height:1px;background:#a55db3;box-shadow:0 0 12px rgba(165,93,179,.45)}
+.modal-section li{grid-template-columns:46px 1fr;padding:12px 0}
+.modal-nav{position:sticky;bottom:0;background:rgba(10,7,11,.95);backdrop-filter:blur(12px)}
+@media(max-width:850px){.exhibition-panel{min-height:760px}.exhibition-track{height:710px}.exhibition-space{height:690px;transform:scale(.78);transform-origin:left top}.modal-panel{width:100vw}.modal-body{grid-template-columns:1fr;padding:34px 24px 60px}.modal-art-wrap{position:relative;top:auto;max-width:430px}.archive-record{margin-top:10px}}
+@media(max-width:620px){.exhibition-panel{min-height:670px}.exhibition-track{height:620px}.exhibition-space{transform:scale(.67);height:850px}.modal-topline{padding:0 20px}.modal-content>h2{font-size:38px}.modal-nav button b{display:none}}

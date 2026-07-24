@@ -512,24 +512,33 @@ const exhibitionSpace = document.getElementById("exhibition-space");
 const orbitPosition = document.getElementById("orbit-position");
 
 function renderExhibition() {
+  const lanes = [38, 278, 92, 430, 184, 520, 24, 350, 128, 468, 238, 64];
   exhibitionSpace.innerHTML = albums.map((album, index) => {
-    const column = Math.floor(index / 3);
-    const row = index % 3;
-    const x = 70 + column * 292 + ((index * 37) % 76);
-    const y = 24 + row * 195 + ((index * 53) % 54);
-    const size = 150 + ((index * 29) % 68);
+    const cluster = Math.floor(index / 6);
+    const slot = index % 6;
+    const baseX = 72 + cluster * 760;
+    const xOffsets = [0, 238, 472, 112, 390, 620];
+    const x = baseX + xOffsets[slot] + ((index * 47) % 72) - 30;
+    const y = lanes[index % lanes.length] + ((cluster * 41 + index * 23) % 64) - 28;
+    const hero = index % 9 === 3 || index % 11 === 7;
+    const size = hero ? 250 + ((index * 13) % 38) : 126 + ((index * 31) % 96);
+    const rotate = ((index * 17) % 11) - 5;
+    const depth = 1 + ((index * 7) % 5);
     const delay = -((index * 0.37) % 5).toFixed(2);
     return `
-    <article class="orbit-card" style="--x:${x}px;--y:${y}px;--size:${size}px;--delay:${delay}s" data-orbit-index="${index}" data-artist="${album.artist}">
-      <button class="orbit-cover" data-album-id="${album.id}" aria-label="${album.title} の詳細を見る">
+    <article class="orbit-card${hero ? ' orbit-hero' : ''}" style="--x:${x}px;--y:${y}px;--size:${size}px;--rotate:${rotate}deg;--depth:${depth};--delay:${delay}s" data-orbit-index="${index}" data-artist="${album.artist}">
+      <button class="orbit-cover" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
         <img src="${album.art}" alt="${album.title} ジャケット" draggable="false">
       </button>
       <div class="orbit-caption">
-        <p>${album.artist}</p><h3>${album.title}</h3>
+        <p>ARCHIVE ${String(index + 1).padStart(3, '0')} · ${album.artist}</p><h3>${album.title}</h3>
         <div><b>${cardMeta(album)}</b><time>${album.release || "DATE TBA"}</time></div>
+        <em>OPEN ARCHIVE →</em>
       </div>
     </article>`;
   }).join("");
+  const clusters = Math.ceil(albums.length / 6);
+  exhibitionSpace.style.width = `${Math.max(2860, 220 + clusters * 760)}px`;
   orbitPosition.textContent = `${String(albums.length).padStart(2, "0")} WORKS`;
 }
 renderExhibition();
@@ -570,7 +579,8 @@ const fields = {
   release: document.getElementById("modal-release"), story: document.getElementById("modal-story"),
   tracks: document.getElementById("modal-tracks"), links: document.getElementById("modal-links"),
   number: document.getElementById("modal-number"), coverTitle: document.getElementById("modal-cover-title"),
-  position: document.getElementById("modal-position")
+  position: document.getElementById("modal-position"),
+  accession: document.getElementById("modal-accession"), category: document.getElementById("modal-category")
 };
 
 function renderModal(index) {
@@ -583,6 +593,8 @@ function renderModal(index) {
   fields.number.textContent = String(currentIndex + 1).padStart(2, "0");
   fields.coverTitle.textContent = album.title;
   fields.position.textContent = String(currentIndex + 1).padStart(2, "0") + " / " + String(albums.length).padStart(2, "0");
+  fields.accession.textContent = `ARCHIVE NO. ${String(currentIndex + 1).padStart(3, "0")}`;
+  fields.category.textContent = album.albumNumber ? "ALBUM COLLECTION" : "SPECIAL ARCHIVE";
   fields.story.replaceChildren(...album.story.map(line => { const p = document.createElement("p"); p.textContent = line; return p; }));
   fields.tracks.replaceChildren(...album.tracks.map((track, i) => { const li = document.createElement("li"); li.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span><b></b>`; li.querySelector("b").textContent = track; return li; }));
   fields.links.replaceChildren();
