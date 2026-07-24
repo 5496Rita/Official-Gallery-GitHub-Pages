@@ -9,10 +9,18 @@
   <link rel="icon" href="icons/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=2">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="style.css?v=15">
-  <script src="app.js?v=15" defer></script>
+  <link rel="stylesheet" href="style.css?v=20">
+  <script src="app.js?v=20" defer></script>
 </head>
 <body>
+  <div class="world-background" aria-hidden="true">
+    <div class="sky-layer" data-parallax="0.05"></div>
+    <div class="moon-layer" data-parallax="0.12"><i class="moon"></i></div>
+    <div class="cathedral-layer" data-parallax="0.2"></div>
+    <div class="candle-aura"></div>
+    <div class="petal-field" id="petal-field"></div>
+    <div class="feather-field" id="feather-field"></div>
+  </div>
 <main>
   <header class="site-header">
     <a class="wordmark" href="#home" aria-label="越黒リタ Official Gallery ホーム"><span>越黒リタ</span><small>OFFICIAL GALLERY</small></a>
@@ -56,6 +64,7 @@
         <button class="filter" data-filter="越黒リタ" role="tab" aria-selected="false">越黒リタ</button>
         <button class="filter" data-filter="CROVEIL" role="tab" aria-selected="false">CROVEIL</button>
       </div>
+      <div class="hall-status" id="hall-status" aria-live="polite"></div>
       <div class="gallery-rooms" id="album-grid"></div>
     </div>
   </section>
@@ -67,7 +76,7 @@
 
   <section class="videos section-shell" id="videos">
     <div class="section-heading"><p class="index">04</p><div><p class="eyebrow">MOVING ARCHIVE</p><h2>Videos</h2></div></div>
-    <a class="video-placeholder" href="#gallery"><span>▶</span><p>Latest Crossfade</p><b>Watch XFD</b></a>
+    <button class="video-placeholder" id="latest-xfd" type="button"><span>▶</span><p>Latest Crossfade</p><b>Open the latest work</b></button>
   </section>
 
   <div class="modal" id="album-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
@@ -80,6 +89,7 @@
           <p class="artist" id="modal-artist"></p><h2 id="modal-title"></h2><p class="release" id="modal-release"></p>
           <section class="modal-section"><h3>Story</h3><div id="modal-story"></div></section>
           <section class="modal-section"><h3>Track List</h3><ol id="modal-tracks"></ol></section>
+          <section class="modal-section xfd-section"><h3>Crossfade</h3><div class="xfd-player" id="modal-xfd"></div></section>
           <section class="modal-section"><h3>Listen</h3><div class="listen-links" id="modal-links"></div></section>
         </div>
       </div>

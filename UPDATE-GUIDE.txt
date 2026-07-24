@@ -1,0 +1,29 @@
+越黒リタ Official Gallery v2.0
+
+追加した演出
+- スクロール連動の月・星空・聖堂パララックス
+- 薔薇の花びらと黒い羽根
+- 時間帯・季節による背景の自動変化
+- ロウソクのような微かな光の揺らぎ
+- スクロール時のフェード表示
+- 作品数に応じて展示室数が増える表示
+- モーダル内XFDプレーヤー（YouTubeまたは音声ファイル対応）
+
+公開方法
+1. このZIPを展開する
+2. 現在GitHub Desktopで管理しているフォルダへ、中身をすべて上書きコピーする
+3. GitHub Desktopで変更内容を確認する
+4. Summaryに「Official Gallery v2.0」などと入力
+5. Commit to main
+6. Push origin
+
+XFDの設定方法
+app.js内の対象アルバムに、次の1行を追加します。
+
+xfd: "YouTubeのURL",
+
+例:
+xfd: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
+
+MP3をサイト内に置く場合は、次のようにも設定できます。
+xfd: "audio/album-xfd.mp3",

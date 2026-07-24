@@ -623,3 +623,67 @@ document.querySelectorAll(".filter").forEach(button => button.addEventListener("
   document.querySelectorAll(".filter").forEach(item => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-selected", String(active)); });
   renderGallery(button.dataset.filter);
 }));
+
+
+// ===== Official Gallery 2.0 : living museum =====
+const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function setAtmosphere(){
+  const now = new Date();
+  const hour = now.getHours();
+  const month = now.getMonth()+1;
+  document.documentElement.dataset.time = hour >= 17 && hour < 20 ? 'dusk' : 'night';
+  document.documentElement.dataset.season = [12,1,2].includes(month) ? 'winter' : month >= 3 && month <= 5 ? 'spring' : month >= 6 && month <= 8 ? 'summer' : 'autumn';
+}
+setAtmosphere();
+
+function seedAtmosphere(){
+  const petalField = document.getElementById('petal-field');
+  const featherField = document.getElementById('feather-field');
+  if (!petalField || motionReduced) return;
+  petalField.innerHTML = Array.from({length:9},(_,i)=>`<i class="petal" style="left:${4+i*11+((i*7)%8)}%;--duration:${13+(i%5)*2.4}s;--delay:${-i*2.6}s;--sway:${i%2?120:-90}px;--sway-end:${i%2?-60:45}px"></i>`).join('');
+  featherField.innerHTML = Array.from({length:3},(_,i)=>`<i class="feather" style="left:${18+i*31}%;--duration:${23+i*4}s;--delay:${-8-i*7}s;--sway:${i%2?150:-130}px;--sway-end:${i%2?-60:52}px"></i>`).join('');
+}
+seedAtmosphere();
+
+if (!motionReduced){
+  const layers=[...document.querySelectorAll('[data-parallax]')];
+  let ticking=false;
+  const updateParallax=()=>{
+    const y=window.scrollY;
+    layers.forEach(layer=>{layer.style.transform=`translate3d(0,${y*Number(layer.dataset.parallax)}px,0)`});
+    ticking=false;
+  };
+  addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateParallax);ticking=true}},{passive:true});
+}
+
+const revealTargets=document.querySelectorAll('.section-heading,.latest-display,.gallery-mode-heading,.exhibition-panel,.archive-heading,.about-copy,.video-placeholder,.album-card');
+if('IntersectionObserver' in window && !motionReduced){
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -6%'});
+  revealTargets.forEach(el=>{el.classList.add('reveal-ready');revealObserver.observe(el)});
+}else revealTargets.forEach(el=>el.classList.add('is-visible'));
+
+const hallStatus=document.getElementById('hall-status');
+if(hallStatus){
+  const rooms=Math.max(1,Math.ceil(albums.length/8));
+  hallStatus.innerHTML=`THE MUSEUM HAS EXPANDED TO <b>${rooms} GALLERY ${rooms===1?'ROOM':'ROOMS'}</b> · ${String(albums.length).padStart(2,'0')} WORKS ON DISPLAY`;
+}
+document.querySelectorAll('.album-card').forEach((card,i)=>card.style.setProperty('--drift',(i%7)*.43));
+
+const xfdField=document.getElementById('modal-xfd');
+function renderXfd(album){
+  if(!xfdField)return;
+  const source=album.xfd || album.links?.xfd || '';
+  xfdField.replaceChildren();
+  if(source){
+    const youtubeMatch=source.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
+    if(youtubeMatch){const iframe=document.createElement('iframe');iframe.src=`https://www.youtube-nocookie.com/embed/${youtubeMatch[1]}`;iframe.title=`${album.title} Crossfade`;iframe.loading='lazy';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;xfdField.appendChild(iframe);return;}
+    const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=source;audio.style.width='calc(100% - 36px)';xfdField.appendChild(audio);return;
+  }
+  const p=document.createElement('p');p.className='xfd-pending';p.innerHTML='<b>XFD READY</b>YouTube URLをアルバム情報に追加すると、ここでそのまま再生できます。';xfdField.appendChild(p);
+}
+const originalRenderModal=renderModal;
+renderModal=function(index){originalRenderModal(index);renderXfd(albums[currentIndex]);};
+
+const latestXfd=document.getElementById('latest-xfd');
+if(latestXfd) latestXfd.addEventListener('click',()=>openModal(latest.id));
