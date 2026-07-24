@@ -557,9 +557,7 @@ function renderExhibition() {
       style="--x:${item.x.toFixed(1)}px;--y:${item.y.toFixed(1)}px;--size:${item.width}px;--rotate:${item.rotate.toFixed(2)}deg;--depth:${item.depth};--float-duration:${item.drift.toFixed(2)}s;--delay:${item.delay.toFixed(2)}s;--parallax:${item.parallax.toFixed(3)}"
       data-orbit-index="${index}" data-artist="${album.artist}" data-palette="${palette}">
       <button class="orbit-cover memory-card-button" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
-        <span class="memory-card-head"><small>ARCHIVE ${String(index + 1).padStart(3,"0")}</small><b>${album.artist}</b></span>
-        <span class="memory-card-art"><img src="${album.art}" alt="${album.title} ジャケット" draggable="false"></span>
-        <span class="memory-card-info"><strong>${album.title}</strong><em>${cardMeta(album)}</em><time>${album.release || "DATE TBA"}</time></span>
+        <img src="${album.art}" alt="${album.title} ジャケット" draggable="false">
       </button>
       <div class="orbit-caption"><p>ARCHIVE ${String(index + 1).padStart(3,"0")} · ${album.artist}</p><h3>${album.title}</h3><div><b>${cardMeta(album)}</b><time>${album.release || "DATE TBA"}</time></div><em>OPEN ARCHIVE →</em></div>
     </article>`;

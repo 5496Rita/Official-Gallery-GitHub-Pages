@@ -438,3 +438,31 @@ main{position:relative;z-index:2}
   .exhibition-space{height:980px;transform:scale(.66);transform-origin:left top}
   .orbit-arrow{display:none}
 }
+
+/* ===== Official Gallery 7.1 : cover art only ===== */
+.memory-card-button{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent!important;
+  box-shadow:none;
+  overflow:visible;
+}
+.memory-card-button>img{
+  display:block;
+  width:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+  border:0;
+  border-radius:0;
+  box-shadow:0 calc(15px + var(--depth)*4px) calc(30px + var(--depth)*7px) rgba(0,0,0,.68),0 0 calc(8px + var(--depth)*5px) rgba(91,132,197,.12);
+  -webkit-user-drag:none;
+}
+.orbit-card.memory-card.orbit-hero .memory-card-button{box-shadow:none}
+.orbit-card.memory-card:hover .memory-card-button,
+.orbit-card.memory-card:focus-within .memory-card-button{box-shadow:none}
+.orbit-card.memory-card:hover .memory-card-button>img,
+.orbit-card.memory-card:focus-within .memory-card-button>img{
+  box-shadow:0 42px 95px rgba(0,0,0,.8),0 0 52px rgba(132,170,232,.34);
+}
+.orbit-card.memory-card:before{inset:-28%}

@@ -5,3 +5,5 @@
 5. Commit to main.
 6. Push origin.
 7. Wait for GitHub Actions to show Success, then press Ctrl+F5 on the public page.
+
+7.1: Exhibition cards now show cover artwork only, without archive frames or labels.
