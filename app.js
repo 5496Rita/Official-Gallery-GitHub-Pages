@@ -556,15 +556,23 @@ function renderExhibition() {
     return `<article class="orbit-card memory-card depth-${item.depth}${item.featured ? " orbit-hero" : ""}"
       style="--x:${item.x.toFixed(1)}px;--y:${item.y.toFixed(1)}px;--size:${item.width}px;--rotate:${item.rotate.toFixed(2)}deg;--depth:${item.depth};--float-duration:${item.drift.toFixed(2)}s;--delay:${item.delay.toFixed(2)}s;--parallax:${item.parallax.toFixed(3)}"
       data-orbit-index="${index}" data-artist="${album.artist}" data-palette="${palette}">
-      <button class="orbit-cover memory-card-button" data-album-id="${album.id}" aria-label="${album.title} のアーカイブ詳細を見る">
+      <button class="orbit-cover memory-card-button" type="button" data-album-id="${album.id}" aria-label="${album.title} の作品詳細を見る">
         <img src="${album.art}" alt="${album.title} ジャケット" draggable="false">
       </button>
-      <div class="orbit-caption"><p>ARCHIVE ${String(index + 1).padStart(3,"0")} · ${album.artist}</p><h3>${album.title}</h3><div><b>${cardMeta(album)}</b><time>${album.release || "DATE TBA"}</time></div><em>OPEN ARCHIVE →</em></div>
     </article>`;
   }).join("");
 
   exhibitionSpace.style.width = `${canvasWidth}px`;
   orbitPosition.textContent = `${String(albums.length).padStart(2, "0")} MEMORY FRAGMENTS`;
+
+  exhibitionSpace.querySelectorAll("[data-album-id]").forEach(button => {
+    button.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const albumId = event.currentTarget.dataset.albumId;
+      if (albumId) openModal(albumId);
+    });
+  });
 }
 
 renderExhibition();
@@ -581,6 +589,7 @@ exhibitionTrack.addEventListener("wheel", event => {
 
 let dragStart = 0, scrollStart = 0, dragged = false, orbitSuppressUntil = 0;
 exhibitionTrack.addEventListener("pointerdown", event => {
+  if (event.target.closest("[data-album-id]")) return;
   dragStart = event.clientX; scrollStart = exhibitionTrack.scrollLeft; dragged = false;
   exhibitionTrack.classList.add("dragging"); exhibitionTrack.setPointerCapture(event.pointerId);
 });
@@ -621,8 +630,11 @@ function renderModal(index) {
   fields.position.textContent = String(currentIndex + 1).padStart(2, "0") + " / " + String(albums.length).padStart(2, "0");
   if (fields.accession) fields.accession.textContent = `ARCHIVE NO. ${String(currentIndex + 1).padStart(3, "0")}`;
   if (fields.category) fields.category.textContent = album.albumNumber ? "ALBUM COLLECTION" : "SPECIAL ARCHIVE";
-  fields.story.replaceChildren(...album.story.map(line => { const p = document.createElement("p"); p.textContent = line; return p; }));
-  fields.tracks.replaceChildren(...album.tracks.map((track, i) => { const li = document.createElement("li"); li.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span><b></b>`; li.querySelector("b").textContent = track; return li; }));
+  const storyLines = Array.isArray(album.story) ? album.story : [album.story || "Archive notes coming soon."];
+  const trackList = Array.isArray(album.tracks) ? album.tracks : [];
+  fields.story.replaceChildren(...storyLines.map(line => { const p = document.createElement("p"); p.textContent = line; return p; }));
+  fields.tracks.replaceChildren(...trackList.map((track, i) => { const li = document.createElement("li"); li.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span><b></b>`; li.querySelector("b").textContent = track; return li; }));
+  if (!trackList.length) { const li = document.createElement("li"); li.className = "track-pending"; li.textContent = "Track list coming soon."; fields.tracks.appendChild(li); }
   fields.links.replaceChildren();
   const labels = {spotify:"Spotify", apple:"Apple Music", youtube:"YouTube Music", amazon:"Amazon Music", xfd:"XFD"};
   Object.entries(labels).forEach(([key, label]) => {
@@ -637,19 +649,27 @@ function renderModal(index) {
 }
 
 function openModal(id) {
-  const index = albums.findIndex(album => album.id === id); if (index < 0) return;
-  lastFocus = document.activeElement; renderModal(index); modal.hidden = false;
-  history.replaceState(null, "", `#archive-${albums[index].id}`);
-  requestAnimationFrame(() => { modal.classList.add("open"); panel.scrollTop = 0; modal.querySelector(".modal-close").focus(); });
+  const index = albums.findIndex(album => album.id === id);
+  if (index < 0) return;
+  lastFocus = document.activeElement;
+  renderModal(index);
+  modal.hidden = false;
+  modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
+  panel.scrollTop = 0;
+  history.replaceState(null, "", `#archive-${albums[index].id}`);
+  requestAnimationFrame(() => {
+    modal.classList.add("open");
+    const closeButton = modal.querySelector(".modal-close");
+    if (closeButton) closeButton.focus({ preventScroll: true });
+  });
 }
 function closeModal() {
-  modal.classList.remove("open"); document.body.classList.remove("modal-open");
+  modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); document.body.classList.remove("modal-open");
   if (location.hash.startsWith("#archive-")) history.replaceState(null, "", location.pathname + location.search + "#gallery");
   setTimeout(() => { modal.hidden = true; if (lastFocus) lastFocus.focus(); }, 350);
 }
 
-document.addEventListener("click", event => { const button = event.target.closest("[data-album-id]"); if (button && Date.now() > orbitSuppressUntil) openModal(button.dataset.albumId); });
 document.querySelectorAll("[data-close-modal]").forEach(button => button.addEventListener("click", closeModal));
 document.getElementById("modal-prev").addEventListener("click", () => renderModal(currentIndex - 1));
 document.getElementById("modal-next").addEventListener("click", () => renderModal(currentIndex + 1));
