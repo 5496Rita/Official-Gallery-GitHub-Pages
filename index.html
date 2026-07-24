@@ -1,116 +1,145 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="越黒リタとCROVEILの音楽作品を展示する公式ギャラリー。">
-  <meta name="theme-color" content="#08070a">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08030d" />
+  <meta name="description" content="越黒リタ Official Gallery — Exhibition and Archive" />
   <title>越黒リタ Official Gallery</title>
-  <link rel="icon" href="icons/favicon.ico?v=9" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=9">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=9">
-  <link rel="stylesheet" href="style.css?v=9">
-  <script src="albums.js?v=9" defer></script>
-  <script src="app.js?v=9" defer></script>
+  <link rel="icon" href="icons/favicon.ico" />
+  <link rel="stylesheet" href="style.css?v=200" />
 </head>
-<body class="intro-open">
-  <section class="entrance" id="entrance" aria-labelledby="entrance-title">
-    <div class="entrance-image" aria-hidden="true"></div>
-    <div class="entrance-shade" aria-hidden="true"></div>
-    <div class="entrance-content">
-      <p class="entrance-kicker">KOSHIGURO RITA · OFFICIAL GALLERY</p>
-      <h1 id="entrance-title">私の世界へ<br>ようこそ</h1>
-      <p class="entrance-copy">音楽が纏う夜を、ひとつずつ辿って。</p>
-      <button class="entrance-button" id="enter-gallery" type="button">
-        <span>ENTER THE GALLERY</span><i aria-hidden="true">→</i>
-      </button>
+<body>
+  <div id="welcome" class="welcome" aria-modal="true" role="dialog" aria-labelledby="welcome-title">
+    <div class="welcome__veil"></div>
+    <div class="welcome__content">
+      <p class="eyebrow">KOSHIGURO RITA · OFFICIAL GALLERY</p>
+      <h1 id="welcome-title">私の世界へようこそ</h1>
+      <p class="welcome__sub">Welcome to my world.</p>
+      <button id="enter-button" class="enter-button" type="button">ENTER</button>
+      <p class="welcome__hint">音楽と記憶の展示室へ</p>
     </div>
-    <p class="entrance-note">HEADPHONES RECOMMENDED</p>
-  </section>
-
-  <div class="world-background" aria-hidden="true">
-    <div class="sky-layer"></div><div class="moon"></div><div class="petal-field" id="petal-field"></div>
   </div>
 
-  <header class="site-header">
-    <a class="wordmark" href="#home"><span>越黒リタ</span><small>OFFICIAL GALLERY</small></a>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
-    <nav id="site-nav">
-      <a href="#home">Home</a><a href="#exhibition">Exhibition</a><a href="#archive">Archive</a><a href="#about">About</a>
-    </nav>
-  </header>
+  <div id="site" class="site" hidden>
+    <header class="site-header">
+      <a href="#home" class="brand" aria-label="Home">
+        <img src="icons/brand-mark.png" alt="" />
+        <span>越黒リタ<br><small>OFFICIAL GALLERY</small></span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="#home">HOME</a>
+        <a href="#exhibition">EXHIBITION</a>
+        <a href="#archive">ARCHIVE</a>
+        <a href="#profile">PROFILE</a>
+      </nav>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <img class="hero-image" src="images/rita-hero.jpg" alt="">
-      <div class="hero-copy"><p class="eyebrow">OFFICIAL ARCHIVE · EST. 2026</p><h2>Official<br>Gallery</h2><p>音楽が纏う夜を、<br>一枚ずつ蒐集する。</p></div>
-      <a class="scroll-cue" href="#exhibition"><span>SCROLL TO EXPLORE</span><i>↓</i></a>
-    </section>
-
-    <section class="section-shell exhibition-section" id="exhibition">
-      <header class="section-heading">
-        <div><p class="eyebrow">THE IMMERSIVE COLLECTION</p><h2>Exhibition</h2></div>
-        <div class="section-note"><p>魅せる一覧</p><span>作品との偶然の出会いを楽しむ展示空間</span></div>
-      </header>
-      <div class="exhibition-filter" role="tablist" aria-label="展示アーティストで絞り込む">
-        <button class="filter active" data-exhibition-filter="all" aria-selected="true">All</button>
-        <button class="filter" data-exhibition-filter="越黒リタ" aria-selected="false">越黒リタ</button>
-        <button class="filter" data-exhibition-filter="CROVEIL" aria-selected="false">CROVEIL</button>
-      </div>
-      <p class="gallery-help">JACKETを選択すると作品詳細が開きます</p>
-      <div class="cover-gallery" id="cover-gallery" aria-live="polite"></div>
-      <a class="to-archive" href="#archive"><span>全作品を一覧から探す</span><b>VIEW ARCHIVE →</b></a>
-    </section>
-
-    <section class="archive-section" id="archive">
-      <div class="section-shell archive-shell">
-        <header class="section-heading archive-heading">
-          <div><p class="eyebrow">COMPLETE DISCOGRAPHY</p><h2>Archive</h2></div>
-          <div class="section-note"><p>機能的な一覧</p><span>検索・絞り込み・並び替えで作品を探す</span></div>
-        </header>
-
-        <div class="archive-toolbar">
-          <label class="search-box"><span>SEARCH</span><input id="archive-search" type="search" placeholder="タイトル・曲名を検索" autocomplete="off"></label>
-          <label><span>ARTIST</span><select id="archive-artist"><option value="all">All Artists</option><option value="越黒リタ">越黒リタ</option><option value="CROVEIL">CROVEIL</option></select></label>
-          <label><span>SORT</span><select id="archive-sort"><option value="newest">Newest</option><option value="oldest">Oldest</option><option value="title">Title A–Z</option><option value="number">Archive No.</option></select></label>
-          <div class="view-switch" aria-label="表示形式">
-            <button type="button" class="active" data-view="grid" aria-pressed="true">GRID</button>
-            <button type="button" data-view="list" aria-pressed="false">LIST</button>
+    <main>
+      <section id="home" class="hero section">
+        <div class="hero__image" aria-hidden="true"></div>
+        <div class="hero__shade"></div>
+        <div class="hero__content reveal">
+          <p class="eyebrow">KOSHIGURO RITA</p>
+          <h2>Where silence blooms<br>into a dark melody.</h2>
+          <p>音楽、物語、そして黒の記憶を収めた公式ギャラリー。</p>
+          <div class="hero__actions">
+            <a class="button button--solid" href="#exhibition">ENTER EXHIBITION</a>
+            <a class="button" href="#archive">VIEW ARCHIVE</a>
           </div>
         </div>
+        <a class="scroll-cue" href="#exhibition">SCROLL</a>
+      </section>
 
-        <div class="archive-status"><p id="archive-count"></p><button id="archive-reset" type="button">RESET FILTERS</button></div>
-        <div class="archive-results grid-view" id="archive-results" aria-live="polite"></div>
-        <p class="no-results" id="no-results" hidden>該当する作品が見つかりませんでした。</p>
-      </div>
-    </section>
+      <section id="exhibition" class="section exhibition-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">CURATED EXPERIENCE</p>
+          <h2>EXHIBITION</h2>
+          <p>探すためではなく、出会うための展示。ジャケットに触れると作品記録が開きます。</p>
+        </div>
+        <div class="exhibition-shell">
+          <div id="exhibition-stage" class="exhibition-stage" aria-label="Album exhibition"></div>
+        </div>
+      </section>
 
-    <section class="about section-shell" id="about">
-      <p class="eyebrow">ABOUT</p><h2>Music as Art.</h2>
-      <p>越黒リタの音楽作品を、ジャケットと物語で辿る公式アーカイブ。<br>ひとつひとつの夜を展示する、静かな美術館です。</p>
-    </section>
-  </main>
+      <section id="archive" class="section archive-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">COMPLETE COLLECTION</p>
+          <h2>ARCHIVE</h2>
+          <p>全作品を検索・並び替えできる機能的な一覧。</p>
+        </div>
+        <div class="archive-toolbar reveal">
+          <label class="search-field">
+            <span class="sr-only">Search</span>
+            <input id="archive-search" type="search" placeholder="作品名・曲名を検索" autocomplete="off" />
+          </label>
+          <label>
+            <span class="sr-only">Sort</span>
+            <select id="archive-sort">
+              <option value="newest">新しい順</option>
+              <option value="oldest">古い順</option>
+              <option value="title">タイトル順</option>
+              <option value="number">作品番号順</option>
+            </select>
+          </label>
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button type="button" data-view="grid" class="is-active">GRID</button>
+            <button type="button" data-view="list">LIST</button>
+          </div>
+          <p id="archive-count" class="archive-count"></p>
+        </div>
+        <div id="archive-results" class="archive-results archive-results--grid"></div>
+      </section>
 
-  <div class="modal" id="album-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-    <div class="modal-backdrop" data-close-modal></div>
-    <article class="modal-panel">
-      <header class="modal-topline"><p>ARCHIVE DETAIL</p><button class="modal-close" data-close-modal aria-label="閉じる">× <span>Close</span></button></header>
-      <div class="modal-scroll">
-        <div class="modal-layout">
-          <div class="modal-art-wrap"><img id="modal-art" alt=""></div>
-          <div class="modal-content">
-            <p class="archive-number" id="modal-accession"></p><p class="artist" id="modal-artist"></p><h2 id="modal-title"></h2><p class="release" id="modal-release"></p>
-            <section><h3>Track List</h3><ol id="modal-tracks"></ol></section>
-            <section><h3>Story</h3><div id="modal-story"></div></section>
-            <section><h3>Crossfade</h3><div id="modal-xfd"></div></section>
-            <section><h3>Listen</h3><div class="listen-links" id="modal-links"></div></section>
+      <section id="profile" class="section profile-section">
+        <div class="profile-card reveal">
+          <div class="profile-card__image"><img src="images/rita-profile.jpg" alt="越黒リタ portrait" /></div>
+          <div class="profile-card__copy">
+            <p class="eyebrow">ARTIST PROFILE</p>
+            <h2>越黒リタ</h2>
+            <p>退廃、耽美、夜の静寂を軸に、ゴシックロック／ダークエレクトロニックの世界を描く音楽プロジェクト。</p>
+            <p>この場所は、楽曲とジャケットに刻まれた物語を保存するための私設展示室です。</p>
           </div>
         </div>
-      </div>
-      <footer class="modal-nav"><button id="modal-prev">← <span>Previous</span><b></b></button><p id="modal-position"></p><button id="modal-next"><span>Next</span> →<b></b></button></footer>
-    </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© KOSHIGURO RITA · OFFICIAL GALLERY</p>
+      <a href="#home">BACK TO TOP</a>
+    </footer>
   </div>
 
-  <footer class="site-footer"><p>越黒リタ Official Gallery</p><span>© 2026 YAMIKIHIME-P</span></footer>
+  <dialog id="detail-dialog" class="detail-dialog">
+    <button id="detail-close" class="detail-close" type="button" aria-label="Close">×</button>
+    <div class="detail-layout">
+      <div class="detail-cover-wrap"><img id="detail-cover" class="detail-cover" alt="" /></div>
+      <article class="detail-copy">
+        <p id="detail-number" class="eyebrow"></p>
+        <h2 id="detail-title"></h2>
+        <p id="detail-release" class="detail-release"></p>
+        <section>
+          <h3>STORY</h3>
+          <div id="detail-story"></div>
+        </section>
+        <section>
+          <h3>TRACK LIST</h3>
+          <ol id="detail-tracks" class="track-list"></ol>
+        </section>
+        <section>
+          <h3>LISTEN</h3>
+          <div id="detail-links" class="listen-links"></div>
+        </section>
+      </article>
+    </div>
+    <div class="detail-nav">
+      <button id="detail-prev" type="button">← PREVIOUS</button>
+      <button id="detail-next" type="button">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script src="albums.js?v=200"></script>
+  <script src="app.js?v=200"></script>
 </body>
 </html>
