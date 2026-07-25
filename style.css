@@ -1390,3 +1390,65 @@
     transition: none;
   }
 }
+/* 検索で一致した曲名 */
+
+.archive-card__matched {
+  margin-top: 14px;
+}
+
+.archive-card__matched-title {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 6px;
+
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 10px rgba(220, 170, 255, 0.95),
+    0 0 22px rgba(170, 80, 255, 0.8),
+    0 0 40px rgba(120, 30, 220, 0.65);
+
+  animation: matchedGlow 2.2s ease-in-out infinite;
+}
+
+.archive-card__matched-label {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+}
+
+@keyframes matchedGlow {
+  0%,
+  100% {
+    opacity: .88;
+    text-shadow:
+      0 0 4px #ffffff,
+      0 0 10px rgba(220, 170, 255, 0.75),
+      0 0 22px rgba(170, 80, 255, 0.55),
+      0 0 40px rgba(120, 30, 220, 0.4);
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px #ffffff,
+      0 0 16px rgba(235, 200, 255, 1),
+      0 0 34px rgba(180, 100, 255, 0.9),
+      0 0 64px rgba(120, 30, 220, 0.75);
+  }
+}
+/* ホバー時だけ曲名が強く輝く */
+.archive-card:hover .archive-card__matched-title,
+.archive-card:focus-visible .archive-card__matched-title {
+  text-shadow:
+    0 0 8px #ffffff,
+    0 0 20px rgba(220, 170, 255, 0.9),
+    0 0 40px rgba(170, 80, 255, 0.8),
+    0 0 70px rgba(120, 30, 220, 0.7);
+}

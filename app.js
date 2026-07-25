@@ -107,17 +107,54 @@
   }
 
   function createArchiveCard(album) {
-    const link = document.createElement('a');
-    link.href = detailUrl(album);
-    link.className = 'archive-card';
-    link.innerHTML = `
-      <span class="archive-card__image"><img src="${album.art}" alt="" loading="lazy"></span>
-      <span class="archive-card__meta">
-        <h3>${escapeHtml(album.title)}</h3>
-        <p>${workLabel(album)} · ${escapeHtml(releaseLabel(album))} · ${(album.tracks || []).length} TRACKS</p>
-      </span>`;
-    return link;
-  }
+  const link = document.createElement('a');
+  link.href = detailUrl(album);
+  link.className = 'archive-card';
+
+  const q = state.query.trim().toLocaleLowerCase('ja');
+
+  const matchedTracks = q
+    ? (album.tracks || []).filter(track =>
+        String(track).toLocaleLowerCase('ja').includes(q)
+      )
+    : [];
+
+ const matchedTracksHtml = matchedTracks.length
+  ? `
+    <div class="archive-card__matched">
+      ${matchedTracks
+        .map(track => `
+          <div class="archive-card__matched-title">
+            ♪ ${escapeHtml(track)}
+          </div>
+        `)
+        .join('')}
+      <div class="archive-card__matched-label">
+        MATCHED TRACK
+      </div>
+    </div>
+  `
+  : '';
+
+  link.innerHTML = `
+    <span class="archive-card__image">
+      <img src="${album.art}" alt="" loading="lazy">
+    </span>
+
+    <span class="archive-card__meta">
+      <h3>${escapeHtml(album.title)}</h3>
+      <p>
+        ${workLabel(album)} ·
+        ${escapeHtml(releaseLabel(album))} ·
+        ${(album.tracks || []).length} TRACKS
+      </p>
+
+      ${matchedTracksHtml}
+    </span>
+  `;
+
+  return link;
+}
 
   function renderArtistArchive(container, section, countElement, artist, items) {
     const artistItems = items.filter(album => album.artist === artist);
