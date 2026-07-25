@@ -1569,3 +1569,173 @@
             rotate(360deg);
     }
 }
+/* ===== Gallery Background ===== */
+.exhibition-section{
+    background: url("images/gallery-bg.png") center center / cover no-repeat !important;
+}
+.exhibition-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(5,2,10,.18);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+}
+
+.exhibition-section > *{
+  position:relative;
+  z-index:1;
+}
+/* =========================================================
+   GALLERY FINAL POLISH
+   余白・奥行き・位置調整・月光・ステンドグラス光
+   ========================================================= */
+
+
+/* ① 左右に余白を作る */
+
+.exhibition-shell{
+  width: calc(100% - 8vw);
+  margin-inline: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
+/* ③ ジャケット群を少し上へ移動 */
+
+.exhibition-stage{
+  transform: translateY(-34px);
+  margin-bottom: -34px;
+}
+
+
+/* ② 大小の差をつけて奥行きを出す */
+
+.exhibition-item:nth-child(5n + 1){
+  width: clamp(138px, 12.2vw, 220px);
+  filter:
+    brightness(.78)
+    saturate(.86)
+    blur(.25px);
+}
+
+.exhibition-item:nth-child(5n + 2){
+  width: clamp(155px, 14vw, 255px);
+  filter:
+    brightness(.98)
+    saturate(1);
+}
+
+.exhibition-item:nth-child(5n + 3){
+  width: clamp(145px, 12.8vw, 230px);
+  filter:
+    brightness(.86)
+    saturate(.92);
+}
+
+.exhibition-item:nth-child(5n + 4){
+  width: clamp(165px, 14.8vw, 270px);
+  filter:
+    brightness(1.02)
+    saturate(1.04);
+}
+
+.exhibition-item:nth-child(5n){
+  width: clamp(142px, 12.5vw, 225px);
+  filter:
+    brightness(.82)
+    saturate(.88)
+    blur(.2px);
+}
+
+
+/* ホバーした作品は必ず手前へ */
+
+.exhibition-item:hover,
+.exhibition-item:focus-visible{
+  z-index: 50;
+  filter:
+    brightness(1.1)
+    saturate(1.08)
+    blur(0);
+}
+
+
+/* ④ ジャケットへ青白い月光を加える */
+
+.exhibition-item img{
+  box-shadow:
+    0 26px 58px rgba(0,0,0,.68),
+    0 0 22px rgba(154,170,255,.09),
+    -8px 0 24px rgba(117,69,153,.08);
+}
+
+.exhibition-item:hover img,
+.exhibition-item:focus-visible img{
+  box-shadow:
+    0 38px 82px rgba(0,0,0,.82),
+    0 0 30px rgba(193,205,255,.23),
+    0 0 58px rgba(123,74,176,.24);
+}
+
+
+/* 背景の上へ光を重ねるための準備 */
+
+.exhibition-section{
+  isolation: isolate;
+}
+
+.exhibition-section > *{
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ステンドグラス越しの月光 */
+
+.exhibition-section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      121deg,
+      transparent 45%,
+      rgba(102,112,190,.025) 52%,
+      rgba(173,186,255,.11) 61%,
+      rgba(115,72,177,.075) 67%,
+      transparent 76%
+    ),
+    linear-gradient(
+      113deg,
+      transparent 57%,
+      rgba(195,207,255,.07) 64%,
+      transparent 71%
+    );
+
+  mix-blend-mode: screen;
+  opacity:.92;
+}
+
+
+/* スマホでは余白と移動量を控えめにする */
+
+@media (max-width:760px){
+
+  .exhibition-shell{
+    width: calc(100% - 28px);
+  }
+
+  .exhibition-stage{
+    transform: translateY(-16px);
+    margin-bottom: -16px;
+  }
+
+  .exhibition-section::after{
+    opacity:.65;
+  }
+}
