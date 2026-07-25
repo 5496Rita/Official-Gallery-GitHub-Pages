@@ -64,7 +64,9 @@
   function renderExhibition() {
     exhibitionStage.innerHTML = '';
     const columns = Math.ceil(normalizedAlbums.length / 3);
-    normalizedAlbums.forEach((album, index) => {
+    const shuffledAlbums = [...normalizedAlbums]
+  .sort(() => Math.random() - 0.5);
+    shuffledAlbums.forEach((album, index) => {
       const column = Math.floor(index / 3);
       const row = index % 3;
       const jitterX = (seededValue(index + 2) - .5) * 6;
