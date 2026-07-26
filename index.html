@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="style.css?v=300" />
 </head>
 <body>
+  <div class="rose-petals" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <div id="welcome" class="welcome" aria-label="Welcome to My World">
     <div class="welcome__moon" aria-hidden="true"></div>
     <div class="welcome__mist welcome__mist--one" aria-hidden="true"></div>
@@ -32,9 +42,9 @@
       </a>
       <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="#home">HOME</a>
-        <a href="#exhibition">EXHIBITION</a>
-        <a href="#archive">ARCHIVE</a>
+        <a href="#home">ENTRANCE</a>
+        <a href="#exhibition">GALLERY</a>
+        <a href="#archive">DISCOGRAPHY</a>
               </nav>
     </header>
 
@@ -45,10 +55,10 @@
         <div class="hero__content reveal">
           <p class="eyebrow">KOSHIKURO RITA</p>
           <h2>Where silence blooms<br>into a dark melody.</h2>
-          <p>音楽、物語、そして黒の記憶を収めた公式ギャラリー。</p>
+          <p>美しく儚い闇を描く、<br>音楽と物語が織りなす世界への入口。</p>
           <div class="hero__actions">
-            <a class="button button--solid" href="#exhibition">ENTER EXHIBITION</a>
-            <a class="button" href="#archive">VIEW ARCHIVE</a>
+            <a class="button button--solid" href="#exhibition">ENTER GALLERY</a>
+            <a class="button" href="#archive">VIEW DISCOGRAPHY</a>
           </div>
         </div>
         <a class="scroll-cue" href="#exhibition">SCROLL</a>
@@ -56,9 +66,9 @@
 
       <section id="exhibition" class="section exhibition-section">
         <div class="section-heading reveal">
-          <p class="eyebrow">CURATED EXPERIENCE</p>
-          <h2>EXHIBITION</h2>
-          <p>探すためではなく、出会うための展示。ジャケットに触れると作品記録が開きます。</p>
+          <p class="eyebrow">A CURATED GALLERY</p>
+          <h2>GALLERY</h2>
+          <p>ひとつの作品と、静かに巡り合うための展示。ジャケットに触れると、その世界がひらきます。</p>
         </div>
         <div class="exhibition-shell">
           <div id="exhibition-stage" class="exhibition-stage" aria-label="Album exhibition"></div>
@@ -68,8 +78,8 @@
       <section id="archive" class="section archive-section">
         <div class="section-heading reveal">
           <p class="eyebrow">COMPLETE COLLECTION</p>
-          <h2>ARCHIVE</h2>
-          <p>全作品を検索・並び替えできる機能的な一覧。</p>
+          <h2>DISCOGRAPHY</h2>
+          <p>すべての作品を、一望するための一覧。検索や並び替えで、その軌跡を辿れます。</p>
         </div>
         <div class="archive-tabs reveal" role="tablist" aria-label="Artist filter">
           <button type="button" class="is-active" data-artist="all">ALL</button>
