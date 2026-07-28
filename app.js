@@ -142,10 +142,6 @@
         <span class="exhibition-item__spotlight" aria-hidden="true"></span>
         <span class="exhibition-item__frame">
           <img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="1200" height="1200">
-        </span>
-        <span class="exhibition-item__plaque">
-          <strong>${escapeHtml(album.title)}</strong>
-          <small>${escapeHtml(album.artist)} · ${escapeHtml(releaseLabel(album))}</small>
         </span>`;
       exhibitionStage.appendChild(link);
     });
