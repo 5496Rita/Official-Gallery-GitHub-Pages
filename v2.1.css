@@ -1,0 +1,250 @@
+/* 越黒リタ Official Gallery — Version 2.1
+   Quiet museum immersion layer. Loaded after v2.css. */
+
+:root {
+  --v21-pointer-x: 50%;
+  --v21-pointer-y: 42%;
+  --v21-room-shift: 0px;
+}
+
+/* A restrained cathedral-light layer that follows the visitor very slightly. */
+.site::before,
+.detail-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .34;
+  background:
+    radial-gradient(34rem 24rem at var(--v21-pointer-x) var(--v21-pointer-y), rgba(154, 101, 171, .075), transparent 70%),
+    linear-gradient(110deg, transparent 20%, rgba(225, 211, 234, .018) 46%, transparent 66%);
+  transition: opacity .5s ease;
+}
+.site > *,
+.detail-page > * { position: relative; z-index: 1; }
+
+/* Gallery: deepen the room without turning it into a theme-park effect. */
+.exhibition-shell {
+  isolation: isolate;
+  perspective: 1500px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.018), transparent 16%),
+    radial-gradient(ellipse at 50% 18%, rgba(126,75,142,.09), transparent 42%),
+    linear-gradient(180deg, rgba(5,3,7,.18), rgba(2,1,3,.72));
+}
+.exhibition-shell::before {
+  content: "";
+  position: absolute;
+  inset: auto 4% 0;
+  height: 31%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .48;
+  transform: perspective(650px) rotateX(65deg) translateY(34%);
+  transform-origin: center bottom;
+  background:
+    linear-gradient(90deg, transparent, rgba(210,195,216,.08), transparent),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 12%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 42px),
+    linear-gradient(180deg, rgba(55,44,59,.16), rgba(3,2,4,.5));
+  mask-image: linear-gradient(to bottom, transparent, #000 34%);
+}
+.exhibition-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  box-shadow: inset 0 0 120px 34px rgba(0,0,0,.68);
+}
+.exhibition-stage {
+  transform: translate3d(var(--v21-room-shift), 0, 0);
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+.exhibition-item {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: filter .55s ease, opacity .55s ease;
+}
+.exhibition-item__frame {
+  position: relative;
+  overflow: visible;
+}
+.exhibition-item__frame::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border: 1px solid rgba(224, 198, 163, .16);
+  background:
+    linear-gradient(135deg, rgba(183,148,105,.22), transparent 13% 87%, rgba(183,148,105,.18)),
+    #080609;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.48);
+  transition: border-color .5s ease, box-shadow .5s ease, background .5s ease;
+}
+.exhibition-item__frame::after {
+  content: "";
+  position: absolute;
+  inset: 5% 5% -12%;
+  z-index: -2;
+  opacity: .2;
+  filter: blur(13px);
+  transform: scaleY(-.18) translateY(-45%);
+  transform-origin: bottom;
+  background: var(--cover-reflection, rgba(149,89,164,.24));
+}
+.exhibition-item:hover .exhibition-item__frame::before,
+.exhibition-item:focus-visible .exhibition-item__frame::before {
+  border-color: rgba(235,215,183,.42);
+  background:
+    linear-gradient(135deg, rgba(210,174,126,.36), transparent 16% 84%, rgba(210,174,126,.3)),
+    #0b080d;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.5), 0 0 32px rgba(163,110,174,.13);
+}
+.exhibition-item__plaque::before {
+  content: "EXHIBIT";
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(190,169,191,.52);
+  font: 600 6px/1 Arial, sans-serif;
+  letter-spacing: .28em;
+}
+
+/* Discography: museum accession cards and a calmer hover hierarchy. */
+.archive-artist-section {
+  position: relative;
+  overflow: hidden;
+}
+.archive-artist-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .24;
+  background:
+    linear-gradient(115deg, transparent 14%, rgba(255,255,255,.026) 42%, transparent 64%),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(255,255,255,.012) 80px);
+}
+.archive-card {
+  position: relative;
+  isolation: isolate;
+}
+.archive-card::before {
+  content: "";
+  position: absolute;
+  inset: -12px -10px 94px;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 24%, rgba(190,145,197,.13), transparent 64%);
+  transition: opacity .5s ease;
+}
+.archive-card:hover::before,
+.archive-card:focus-visible::before { opacity: 1; }
+.archive-card__image img {
+  transform: translateZ(0);
+  transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .65s ease;
+}
+.archive-card:hover .archive-card__image img,
+.archive-card:focus-visible .archive-card__image img {
+  transform: scale(1.018);
+  filter: brightness(1.055) saturate(1.025);
+}
+.archive-card__meta::after {
+  content: "VIEW ARCHIVE";
+  display: block;
+  margin-top: 12px;
+  color: rgba(192,174,194,.46);
+  font: 600 6px/1 Arial, sans-serif;
+  letter-spacing: .24em;
+  transition: color .35s ease, letter-spacing .35s ease;
+}
+.archive-card:hover .archive-card__meta::after,
+.archive-card:focus-visible .archive-card__meta::after {
+  color: rgba(230,212,230,.76);
+  letter-spacing: .3em;
+}
+.archive-results--list .archive-card__meta::after { display: none; }
+
+/* Detail: the cover is unmistakably the principal exhibit. */
+.detail-page {
+  --detail-accent-rgb: 125, 76, 145;
+}
+.detail-page[data-detail-accent="red"] { --detail-accent-rgb: 150, 48, 70; }
+.detail-page[data-detail-accent="violet"] { --detail-accent-rgb: 116, 74, 154; }
+.detail-page[data-detail-accent="blue"] { --detail-accent-rgb: 64, 94, 150; }
+.detail-page[data-detail-accent="gold"] { --detail-accent-rgb: 151, 116, 68; }
+.detail-page[data-detail-accent="green"] { --detail-accent-rgb: 60, 116, 94; }
+.work-hero::after {
+  content: "";
+  position: absolute;
+  inset: -7% -4% 4%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .55;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(var(--detail-accent-rgb), .16), transparent 36%),
+    radial-gradient(ellipse at 25% 26%, rgba(232,222,235,.07), transparent 22%);
+  filter: blur(3px);
+}
+.work-cover-frame::after {
+  content: "";
+  position: absolute;
+  inset: 10% 8% -15%;
+  z-index: -2;
+  opacity: .42;
+  background: rgba(var(--detail-accent-rgb), .32);
+  filter: blur(34px);
+  transform: perspective(350px) rotateX(68deg) scale(.84);
+}
+.work-cover-frame:hover {
+  box-shadow: 0 48px 112px rgba(0,0,0,.82), 0 0 84px rgba(var(--detail-accent-rgb), .2), inset 0 0 0 3px rgba(219,184,141,.1);
+}
+.work-hero__copy::before {
+  content: "ARCHIVE EXHIBIT";
+  display: block;
+  margin-bottom: 22px;
+  color: rgba(190,171,193,.5);
+  font: 600 7px/1 Arial, sans-serif;
+  letter-spacing: .32em;
+}
+.detail-track-list li[tabindex="0"] { cursor: default; }
+.detail-track-list li.is-selected {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(var(--detail-accent-rgb), .17), transparent 74%);
+  box-shadow: inset 2px 0 rgba(var(--detail-accent-rgb), .72), 0 0 25px rgba(var(--detail-accent-rgb), .06);
+}
+
+/* Section transitions feel architectural rather than merely faded. */
+.reveal {
+  transform: translateY(22px) scale(.995);
+  filter: blur(2px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1), filter .9s ease;
+}
+.reveal.is-visible { filter: none; }
+
+@media (max-width: 760px) {
+  .site::before,
+  .detail-page::before { opacity: .18; }
+  .exhibition-shell::before { display: none; }
+  .exhibition-stage { transform: none !important; }
+  .exhibition-item__frame::after { display: none; }
+  .exhibition-item__plaque::before { font-size: 5px; }
+  .archive-card__meta::after { margin-top: 9px; }
+  .work-hero__copy::before { margin-bottom: 15px; }
+}
+
+@media (hover: none) {
+  .site::before,
+  .detail-page::before { background: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site::before,
+  .detail-page::before { display: none; }
+  .exhibition-stage,
+  .archive-card__image img,
+  .reveal { transition: none !important; }
+  .reveal { filter: none; }
+}
