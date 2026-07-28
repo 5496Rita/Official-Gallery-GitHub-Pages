@@ -11,6 +11,7 @@
 </head>
 
 <body class="detail-page">
+  <a class="skip-link" href="#detail-main">メインコンテンツへ移動</a>
 
   <div class="detail-atmosphere" aria-hidden="true">
     <div class="detail-moon"></div>
@@ -23,7 +24,7 @@
 
   <header class="site-header detail-header">
     <a href="index.html#home" class="brand" aria-label="Home">
-      <img src="icons/brand-mark.png" alt="" />
+      <img src="icons/brand-mark.png" alt="" width="64" height="64" />
       <span>
         越黒リタ<br>
         <small>OFFICIAL GALLERY</small>
@@ -37,7 +38,8 @@
 </nav>
   </header>
 
-  <main id="detail-main" class="work-detail" hidden>
+  <main>
+  <section id="detail-main" class="work-detail" hidden>
     <a class="detail-back" href="index.html#archive">
       ← BACK TO DISCOGRAPHY
     </a>
@@ -101,14 +103,15 @@
         <span></span>
       </a>
     </nav>
-  </main>
+  </section>
 
-  <main id="detail-not-found" class="detail-not-found" hidden>
+  <section id="detail-not-found" class="detail-not-found" hidden>
     <p class="eyebrow">NOT FOUND</p>
     <h1>作品が見つかりません。</h1>
     <a class="button" href="index.html#archive">
       BACK TO DISCOGRAPHY
     </a>
+  </section>
   </main>
 
   <footer class="site-footer detail-footer">

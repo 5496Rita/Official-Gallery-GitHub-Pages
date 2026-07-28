@@ -1,0 +1,27 @@
+Official Gallery 改善内容
+
+修正
+- index.html の二重 <main> を解消
+- GALLERY セクションの二重定義と重複 id="exhibition" を解消
+- detail.html を単一の <main> 構造へ整理
+- GitHub Pages 公開物に不要な .git フォルダを除外
+
+品質改善
+- ジャケット画像を表示用途に適した最大1200pxへ最適化
+- JPEGを高品質のプログレッシブJPEGとして再圧縮
+- 画像に decoding="async" を追加
+- 不均一な sort(() => Math.random() - 0.5) を Fisher-Yates シャッフルへ変更
+- 一部DOM取得失敗時にも全体が停止しにくいようガードを追加
+
+操作性・アクセシビリティ
+- Welcome画面をクリック、Enter、Spaceでスキップ可能に変更
+- 「動きを減らす」OS設定に対応
+- キーボード用スキップリンクを追加
+- フォーカス表示を追加
+- IntersectionObserver非対応環境向けフォールバックを追加
+
+検証
+- app.js / albums.js / detail.js の構文チェック済み
+- HTML内の重複IDなし
+- index.html / detail.html とも main要素は1つ
+- albums.jsに記載されたジャケット画像の欠損なし

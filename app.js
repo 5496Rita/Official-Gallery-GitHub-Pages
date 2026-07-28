@@ -35,24 +35,34 @@
   const detailUrl = album => `detail.html?id=${encodeURIComponent(album.id)}`;
 
   function enterSite() {
-    if (!site.hidden) return;
+    if (!site || !welcome || !site.hidden) return;
     site.hidden = false;
     requestAnimationFrame(() => {
       welcome.classList.add('is-leaving');
-      setTimeout(() => welcome.remove(), 360);
+      window.setTimeout(() => welcome.remove(), 360);
       observeReveals();
     });
   }
-  window.setTimeout(enterSite, 2300);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const welcomeDelay = prefersReducedMotion ? 0 : 2300;
+  window.setTimeout(enterSite, welcomeDelay);
+  welcome?.addEventListener('click', enterSite);
+  welcome?.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      enterSite();
+    }
+  });
 
   const menuButton = $('#menu-button');
   const siteNav = $('#site-nav');
-  menuButton.addEventListener('click', () => {
-    const open = siteNav.classList.toggle('is-open');
+  menuButton?.addEventListener('click', () => {
+    const open = siteNav?.classList.toggle('is-open') || false;
     menuButton.setAttribute('aria-expanded', String(open));
   });
   $$('#site-nav a').forEach(link => link.addEventListener('click', () => {
-    siteNav.classList.remove('is-open');
+    siteNav?.classList.remove('is-open');
     menuButton.setAttribute('aria-expanded', 'false');
   }));
 
@@ -61,11 +71,20 @@
     return x - Math.floor(x);
   }
 
+  function shuffle(items) {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+
   function renderExhibition() {
-    exhibitionStage.innerHTML = '';
-    const columns = Math.ceil(normalizedAlbums.length / 3);
-    const shuffledAlbums = [...normalizedAlbums]
-  .sort(() => Math.random() - 0.5);
+    if (!exhibitionStage) return;
+    exhibitionStage.replaceChildren();
+    const columns = Math.max(1, Math.ceil(normalizedAlbums.length / 3));
+    const shuffledAlbums = shuffle(normalizedAlbums);
     shuffledAlbums.forEach((album, index) => {
       const column = Math.floor(index / 3);
       const row = index % 3;
@@ -86,7 +105,7 @@
       link.style.setProperty('--bright', String(.78 + depth * .25));
       link.style.setProperty('--blur', `${depth < .16 ? .7 : 0}px`);
       link.setAttribute('aria-label', `${album.title} の展示室へ`);
-      link.innerHTML = `<img src="${album.art}" alt="${escapeHtml(album.title)}" loading="lazy">`;
+      link.innerHTML = `<img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)}" loading="lazy" decoding="async">`;
       exhibitionStage.appendChild(link);
     });
   }
@@ -140,7 +159,7 @@
 
   link.innerHTML = `
     <span class="archive-card__image">
-      <img src="${album.art}" alt="" loading="lazy">
+      <img src="${escapeHtml(album.art)}" alt="" loading="lazy" decoding="async">
     </span>
 
     <span class="archive-card__meta">
@@ -181,8 +200,8 @@
     }
   }
 
-  archiveSearch.addEventListener('input', event => { state.query = event.target.value; renderArchive(); });
-  archiveSort.addEventListener('change', event => { state.sort = event.target.value; renderArchive(); });
+  archiveSearch?.addEventListener('input', event => { state.query = event.target.value; renderArchive(); });
+  archiveSort?.addEventListener('change', event => { state.sort = event.target.value; renderArchive(); });
   $$('.view-toggle button').forEach(button => button.addEventListener('click', () => {
     state.view = button.dataset.view;
     $$('.view-toggle button').forEach(item => item.classList.toggle('is-active', item === button));
@@ -195,6 +214,10 @@
   }));
 
   function observeReveals() {
+    if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+      $$('.reveal').forEach(element => element.classList.add('is-visible'));
+      return;
+    }
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
     }), { threshold: .14 });

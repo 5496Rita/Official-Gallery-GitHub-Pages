@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css?v=300" />
 </head>
 <body>
+  <a class="skip-link" href="#home">メインコンテンツへ移動</a>
   <div class="rose-petals" aria-hidden="true">
   <span></span>
   <span></span>
@@ -20,7 +21,7 @@
   <span></span>
   <span></span>
 </div>
-  <div id="welcome" class="welcome" aria-label="Welcome to My World">
+  <div id="welcome" class="welcome" aria-label="Welcome to My World" role="button" tabindex="0" aria-describedby="welcome-hint">
     <div class="welcome__moon" aria-hidden="true"></div>
     <div class="welcome__mist welcome__mist--one" aria-hidden="true"></div>
     <div class="welcome__mist welcome__mist--two" aria-hidden="true"></div>
@@ -31,38 +32,109 @@
     </div>
     <div class="welcome__content">
       <h1>Welcome to My World</h1>
+      <p id="welcome-hint" class="welcome__hint">クリックまたはキー入力でスキップ</p>
     </div>
   </div>
 
   <div id="site" class="site" hidden>
     <header class="site-header">
       <a href="#home" class="brand" aria-label="Home">
-        <img src="icons/brand-mark.png" alt="" />
+        <img src="icons/brand-mark.png" alt="" width="64" height="64" />
         <span>越黒リタ<br><small>OFFICIAL GALLERY</small></span>
       </a>
       <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="#home">ENTRANCE</a>
-        <a href="#exhibition">GALLERY</a>
-        <a href="#archive">DISCOGRAPHY</a>
+       <a href="#home">ENTRANCE</a>
+<a href="#artist">ARTIST</a>
+<a href="#exhibition">GALLERY</a>
+<a href="#archive">DISCOGRAPHY</a>
               </nav>
     </header>
 
     <main>
-      <section id="home" class="hero section">
-        <div class="hero__image" aria-hidden="true"></div>
-        <div class="hero__shade"></div>
-        <div class="hero__content reveal">
-          <p class="eyebrow">KOSHIKURO RITA</p>
-          <h2>Where silence blooms<br>into a dark melody.</h2>
-          <p>美しく儚い闇を描く、<br>音楽と物語が織りなす世界への入口。</p>
-          <div class="hero__actions">
-            <a class="button button--solid" href="#exhibition">ENTER GALLERY</a>
-            <a class="button" href="#archive">VIEW DISCOGRAPHY</a>
-          </div>
+  <div class="entrance-world">
+
+    <section id="home" class="hero section">
+      <div class="hero__image" aria-hidden="true"></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__content reveal">
+        <p class="eyebrow">KOSHIKURO RITA</p>
+
+        <h2>
+          Where silence blooms<br>
+          into a dark melody.
+        </h2>
+
+        <p>
+          美しく儚い闇を描く、<br>
+          音楽と物語が織りなす世界への入口。
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--solid" href="#exhibition">
+            ENTER GALLERY
+          </a>
+
+          <a class="button" href="#archive">
+            VIEW DISCOGRAPHY
+          </a>
         </div>
-        <a class="scroll-cue" href="#exhibition">SCROLL</a>
-      </section>
+      </div>
+
+      <a class="scroll-cue" href="#artist">SCROLL</a>
+    </section>
+
+    <section id="artist" class="section artist-section">
+      <div class="artist-container reveal">
+
+        <p class="eyebrow">THE WORLD BEHIND</p>
+        <h2>ARTIST</h2>
+
+        <h3>越黒リタ</h3>
+
+        <p class="artist-description">
+          美しく儚い闇を描く、音楽と物語の創作者。<br>
+          一曲、一枚、一篇ごとに、<br>
+          静寂と黒の美学を紡ぎ続けている。
+        </p>
+
+        <div class="artist-divider" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <p class="artist-links-title">EXPLORE MORE</p>
+
+        <div class="artist-links">
+          <a
+            href="https://youtube.com/user/Rita021K"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
+
+          <a
+            href="https://x.com/rita_5496sk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@rita_koshikuro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
 
       <section id="exhibition" class="section exhibition-section">
         <div class="section-heading reveal">
