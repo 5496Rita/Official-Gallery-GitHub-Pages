@@ -4,12 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#08030d" />
-  <meta name="description" content="越黒リタ Official Gallery — Exhibition and Archive" />
+  <meta name="description" content="越黒リタの音楽と物語を巡る公式ギャラリー。美術館とゴシック大聖堂を思わせる展示空間で、作品とディスコグラフィーを紹介します。" />
+  <meta name="author" content="越黒リタ" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="越黒リタ Official Gallery" />
+  <meta property="og:title" content="越黒リタ Official Gallery" />
+  <meta property="og:description" content="美しく儚い闇を描く、音楽と物語の公式ギャラリー。" />
+  <meta property="og:image" content="images/entrance-bg.png" data-relative-url />
+  <meta property="og:url" content="__SITE_URL__/" data-site-url />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="越黒リタ Official Gallery" />
+  <meta name="twitter:description" content="美しく儚い闇を描く、音楽と物語の公式ギャラリー。" />
+  <meta name="twitter:image" content="images/entrance-bg.png" data-relative-url />
+  <link rel="canonical" href="__SITE_URL__/" data-site-url />
   <title>越黒リタ Official Gallery</title>
-  <link rel="icon" href="icons/favicon.ico" />
-  <link rel="stylesheet" href="style.css?v=300" />
+  <link rel="icon" href="icons/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="style.css?v=400" />
+  <link rel="stylesheet" href="v2.css?v=400" />
 </head>
-<body>
+<body class="page-enter">
+  <div class="page-transition" aria-hidden="true"></div>
   <a class="skip-link" href="#home">メインコンテンツへ移動</a>
   <div class="rose-petals" aria-hidden="true">
   <span></span>
@@ -61,10 +80,10 @@
       <div class="hero__content reveal">
         <p class="eyebrow">KOSHIKURO RITA</p>
 
-        <h2>
+        <h1>
           Where silence blooms<br>
           into a dark melody.
-        </h2>
+        </h1>
 
         <p>
           美しく儚い闇を描く、<br>
@@ -143,6 +162,8 @@
           <p>ひとつの作品と、静かに巡り合うための展示。ジャケットに触れると、その世界がひらきます。</p>
         </div>
         <div class="exhibition-shell">
+          <div class="gallery-vault" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="gallery-mist" aria-hidden="true"></div>
           <div id="exhibition-stage" class="exhibition-stage" aria-label="Album exhibition"></div>
         </div>
       </section>
@@ -207,7 +228,8 @@
   </div>
 
 
-  <script src="albums.js?v=300"></script>
-  <script src="app.js?v=300"></script>
+  <script src="site-config.js?v=400"></script>
+  <script src="albums.js?v=400"></script>
+  <script src="app.js?v=400"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "name": "越黒リタ Official Gallery",
+  "short_name": "越黒リタ Gallery",
+  "description": "越黒リタの音楽と物語を巡る公式ギャラリー",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050208",
+  "theme_color": "#08030d",
+  "icons": [
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

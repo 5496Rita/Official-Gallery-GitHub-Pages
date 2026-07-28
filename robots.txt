@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 公開URL確定後、次の行を実URLへ差し替えてください。
+# Sitemap: https://example.github.io/repository/sitemap.xml

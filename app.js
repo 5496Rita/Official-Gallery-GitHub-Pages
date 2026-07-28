@@ -33,6 +33,39 @@
   const workLabel = album => `${ordinal(album.artistWorkNumber)} Album`;
   const releaseLabel = album => album.release || 'RELEASE TBA';
   const detailUrl = album => `detail.html?id=${encodeURIComponent(album.id)}`;
+  const newestRelease = normalizedAlbums.reduce((latest, album) => {
+    if (!album.release) return latest;
+    return !latest || album.release > latest ? album.release : latest;
+  }, '');
+
+  function applySiteUrls() {
+    const configured = String(window.SITE_CONFIG?.siteUrl || '').replace(/\/$/, '');
+    const base = configured || `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`.replace(/\/$/, '');
+    $$('[data-site-url]').forEach(element => {
+      const raw = element.getAttribute('href') || element.getAttribute('content') || '';
+      const resolved = raw.replace('__SITE_URL__', base);
+      if (element.hasAttribute('href')) element.setAttribute('href', resolved);
+      if (element.hasAttribute('content')) element.setAttribute('content', resolved);
+    });
+    $$('[data-relative-url]').forEach(element => {
+      const raw = element.getAttribute('content');
+      if (raw && !/^https?:/i.test(raw)) element.setAttribute('content', new URL(raw, location.href).href);
+    });
+  }
+
+  function enablePageTransitions() {
+    requestAnimationFrame(() => document.body.classList.add('is-ready'));
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href]');
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.target === '_blank' || link.hasAttribute('download')) return;
+      const url = new URL(link.href, location.href);
+      if (url.origin !== location.origin || (url.pathname === location.pathname && url.search === location.search && url.hash)) return;
+      event.preventDefault();
+      document.body.classList.add('is-exiting');
+      window.setTimeout(() => { location.href = url.href; }, prefersReducedMotion ? 0 : 180);
+    });
+  }
 
   function enterSite() {
     if (!site || !welcome || !site.hidden) return;
@@ -105,7 +138,15 @@
       link.style.setProperty('--bright', String(.78 + depth * .25));
       link.style.setProperty('--blur', `${depth < .16 ? .7 : 0}px`);
       link.setAttribute('aria-label', `${album.title} の展示室へ`);
-      link.innerHTML = `<img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)}" loading="lazy" decoding="async">`;
+      link.innerHTML = `
+        <span class="exhibition-item__spotlight" aria-hidden="true"></span>
+        <span class="exhibition-item__frame">
+          <img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="1200" height="1200">
+        </span>
+        <span class="exhibition-item__plaque">
+          <strong>${escapeHtml(album.title)}</strong>
+          <small>${escapeHtml(album.artist)} · ${escapeHtml(releaseLabel(album))}</small>
+        </span>`;
       exhibitionStage.appendChild(link);
     });
   }
@@ -157,12 +198,16 @@
   `
   : '';
 
+  const isNewest = Boolean(album.release && album.release === newestRelease);
   link.innerHTML = `
     <span class="archive-card__image">
-      <img src="${escapeHtml(album.art)}" alt="" loading="lazy" decoding="async">
+      <img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="1200" height="1200">
+      <span class="archive-card__glint" aria-hidden="true"></span>
+      ${isNewest ? '<span class="archive-card__new">NEW EXHIBIT</span>' : ''}
     </span>
 
     <span class="archive-card__meta">
+      <span class="archive-card__catalog">COLLECTION No. ${String(album.artistWorkNumber).padStart(2, '0')}</span>
       <h3>${escapeHtml(album.title)}</h3>
       <p>
         ${workLabel(album)} ·
@@ -228,6 +273,8 @@
     return String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
   }
 
+  applySiteUrls();
+  enablePageTransitions();
   renderExhibition();
   renderArchive();
 })();
