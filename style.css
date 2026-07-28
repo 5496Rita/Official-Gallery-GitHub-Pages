@@ -1740,4 +1740,42 @@ url("images/welcome-bg.png") center/cover no-repeat;transition:opacity .72s ease
   .exhibition-section::after{
     opacity:.65;
   }
+}.artist-section{
+  text-align:center;
+}
+
+.artist-content{
+  max-width:720px;
+  margin:0 auto;
+}
+
+.artist-content h3{
+  font-size:3rem;
+  font-weight:300;
+  margin-bottom:24px;
+}
+
+.artist-content p{
+  line-height:2;
+  color:var(--text-soft);
+  margin-bottom:48px;
+}
+
+.artist-links{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  flex-wrap:wrap;
+}
+
+.artist-links a{
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:.08em;
+  transition:.3s ease;
+}
+
+.artist-links a:hover{
+  color:#fff;
+  text-shadow:0 0 12px rgba(255,255,255,.45);
 }

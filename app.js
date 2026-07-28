@@ -43,7 +43,7 @@
       observeReveals();
     });
   }
-  window.setTimeout(enterSite, 2000);
+  window.setTimeout(enterSite, 2300);
 
   const menuButton = $('#menu-button');
   const siteNav = $('#site-nav');
