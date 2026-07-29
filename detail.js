@@ -124,49 +124,90 @@
   $('#work-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
   $('#work-story').innerHTML = (album.story || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
 
-  $('#work-tracks').innerHTML = tracks.map((track, i) => {
-    const number = String(i + 1).padStart(2, '0');
+  const renderLyricsBody = track => {
     const lyrics = track.lyrics.trim();
-    const body = lyrics
+    return lyrics
       ? `<div class="track-lyrics" aria-label="${escapeHtml(track.title)} lyrics">${escapeHtml(lyrics)}</div>`
       : `<div class="lyrics-unarchived"><span>LYRICS</span><strong>NOT YET ARCHIVED</strong><p>This manuscript has not yet<br>been added to the archive.</p></div>`;
-    return `
-      <li class="track-accordion">
-        <button class="track-accordion__toggle" type="button" aria-expanded="false" aria-controls="track-panel-${i}" id="track-toggle-${i}">
-          <span class="track-number">${number}</span>
-          <span class="track-title">${escapeHtml(track.title)}</span>
-          <span class="track-toggle-mark" aria-hidden="true"></span>
-        </button>
-        <div class="track-accordion__panel" id="track-panel-${i}" role="region" aria-labelledby="track-toggle-${i}" hidden>
-          <div class="track-accordion__inner">${body}</div>
+  };
+
+  $('#work-tracks').innerHTML = `
+    <div class="lyrics-exhibit">
+      <div class="lyrics-exhibit__catalog" aria-label="Track list">
+        <ol class="lyrics-exhibit__list" role="tablist" aria-orientation="vertical">
+          ${tracks.map((track, i) => {
+            const number = String(i + 1).padStart(2, '0');
+            return `
+              <li>
+                <button class="lyrics-exhibit__track${i === 0 ? ' is-active' : ''}" type="button" role="tab"
+                  id="lyrics-tab-${i}" aria-selected="${i === 0}" aria-controls="lyrics-viewer" data-track-index="${i}">
+                  <span class="track-number">${number}</span>
+                  <span class="track-title">${escapeHtml(track.title)}</span>
+                  <span class="lyrics-exhibit__arrow" aria-hidden="true">→</span>
+                </button>
+              </li>`;
+          }).join('')}
+        </ol>
+      </div>
+
+      <section class="lyrics-exhibit__viewer" id="lyrics-viewer" role="tabpanel" aria-labelledby="lyrics-tab-0" tabindex="0">
+        <header class="lyrics-exhibit__header">
+          <p class="lyrics-exhibit__meta">${escapeHtml(album.title)} · TRACK 01</p>
+          <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[0]?.title || 'Untitled')}</h3>
+        </header>
+        <div class="lyrics-exhibit__scroll" id="lyrics-scroll">
+          ${tracks[0] ? renderLyricsBody(tracks[0]) : ''}
         </div>
-      </li>`;
-  }).join('');
+      </section>
+    </div>`;
+
+  const trackButtons = [...document.querySelectorAll('.lyrics-exhibit__track')];
+  const viewer = $('#lyrics-viewer');
+  const viewerTitle = viewer?.querySelector('.lyrics-exhibit__title');
+  const viewerMeta = viewer?.querySelector('.lyrics-exhibit__meta');
+  const viewerScroll = $('#lyrics-scroll');
+
+  const selectTrack = index => {
+    const track = tracks[index];
+    if (!track || !viewer || !viewerScroll || !viewerTitle || !viewerMeta) return;
+
+    trackButtons.forEach((button, buttonIndex) => {
+      const active = buttonIndex === index;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
+
+    viewer.setAttribute('aria-labelledby', `lyrics-tab-${index}`);
+    viewerMeta.textContent = `${album.title} · TRACK ${String(index + 1).padStart(2, '0')}`;
+    viewerTitle.textContent = track.title;
+    viewerScroll.innerHTML = renderLyricsBody(track);
+    viewerScroll.scrollTop = 0;
+
+    if (!prefersReducedMotion) {
+      viewer.classList.remove('is-changing');
+      void viewer.offsetWidth;
+      viewer.classList.add('is-changing');
+    }
+  };
 
   $('#work-tracks').addEventListener('click', event => {
-    const button = event.target.closest('.track-accordion__toggle');
+    const button = event.target.closest('.lyrics-exhibit__track');
     if (!button) return;
-    const panel = document.getElementById(button.getAttribute('aria-controls'));
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!expanded));
-    button.closest('.track-accordion')?.classList.toggle('is-open', !expanded);
-    if (prefersReducedMotion) {
-      panel.hidden = expanded;
-      return;
-    }
-    if (!expanded) {
-      panel.hidden = false;
-      panel.style.height = '0px';
-      requestAnimationFrame(() => { panel.style.height = `${panel.scrollHeight}px`; });
-      panel.addEventListener('transitionend', () => { panel.style.height = 'auto'; }, { once: true });
-    } else {
-      panel.style.height = `${panel.scrollHeight}px`;
-      requestAnimationFrame(() => { panel.style.height = '0px'; });
-      panel.addEventListener('transitionend', () => {
-        panel.hidden = true;
-        panel.style.height = '';
-      }, { once: true });
-    }
+    selectTrack(Number(button.dataset.trackIndex));
+  });
+
+  $('#work-tracks').addEventListener('keydown', event => {
+    const current = event.target.closest('.lyrics-exhibit__track');
+    if (!current || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const currentIndex = Number(current.dataset.trackIndex);
+    const nextIndex = event.key === 'Home' ? 0
+      : event.key === 'End' ? trackButtons.length - 1
+      : event.key === 'ArrowDown' ? (currentIndex + 1) % trackButtons.length
+      : (currentIndex - 1 + trackButtons.length) % trackButtons.length;
+    trackButtons[nextIndex]?.focus();
+    selectTrack(nextIndex);
   });
 
   const labels = { spotify: 'SPOTIFY', apple: 'APPLE MUSIC', amazon: 'AMAZON MUSIC', youtube: 'YOUTUBE' };
