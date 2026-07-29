@@ -15,7 +15,59 @@ const albums = [
       "深紅の宴が幕を開け、柔らかな支配が夜を包む。",
       "薔薇と毒、祈りと欲望が交差する、女王のための六つの夜想曲。"
     ],
-    tracks: ["Queen of the Velvet Night", "Nocturne Marionette", "Ðesire", "Sanctus Ruina", "Venomous Rose", "Crimson Banquet"],
+    tracks: [
+      {
+        title: "シトラスの気配",
+        lyrics: `まだ名前も持たないまま
+ふと触れた空気の揺らぎ
+気づかないほど微かなのに
+確かに残っている
+透明な輪郭のまま
+距離だけを近づけて
+触れていないはずなのに
+記憶に触れてくる
+
+振り向くほどでもない
+それなのに
+なぜか離れない
+
+気配だけで
+心をなぞる
+触れていないのに
+残っていく
+淡くほどけて
+消えそうで
+——そのまま
+消えない`
+      },
+      {
+        title:"フローラルの鼓動",
+        lyrics:`静かに触れたままで
+離れない残像
+ささやくような気配が
+心を揺らす`
+      },
+      {
+        title:"オリエンタルの残響",
+        lyrics:`甘く沈み込むような
+深い残像`
+      },
+      {
+        title:"ジャスミンの微熱",
+        lyrics:`触れていないのに
+熱が残る`
+      },
+      {
+        title:"ムスクの衝動",
+        lyrics:`触れた瞬間に
+加速していく`
+      },
+      {
+        title:"アンバーの余香",
+        lyrics:`すべてが過ぎたあと
+静けさだけが残る`
+      }
+    ],
     art: "covers/velvet-dominion.png",
     accent: "crimson",
     youtubeId: "",
