@@ -262,3 +262,181 @@
     transform: none;
   }
 }
+
+/* Version 3.1 — lyric archive and full album exhibit */
+.work-story {
+  display: block !important;
+  max-width: 650px;
+  margin: 32px 0 0;
+  color: #cfc3d1;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 2.05;
+}
+
+.work-story p { margin: 0; }
+.work-story p + p { margin-top: .65em; }
+
+.detail-track-list {
+  border-top: 1px solid rgba(224, 203, 223, .16);
+}
+
+.detail-track-list .track-accordion {
+  display: block;
+  padding: 0;
+  border-bottom: 1px solid rgba(224, 203, 223, .12);
+  transition: background .35s ease, border-color .35s ease;
+}
+
+.detail-track-list .track-accordion::before { display: none; }
+.detail-track-list .track-accordion:hover,
+.detail-track-list .track-accordion.is-open {
+  background: linear-gradient(90deg, rgba(102, 55, 113, .075), transparent 72%);
+  border-color: rgba(224, 203, 223, .25);
+}
+
+.track-accordion__toggle {
+  width: 100%;
+  min-height: 82px;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.track-accordion__toggle:focus-visible {
+  outline: 1px solid rgba(230, 206, 230, .56);
+  outline-offset: 6px;
+}
+
+.track-toggle-mark {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  justify-self: end;
+}
+
+.track-toggle-mark::before,
+.track-toggle-mark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1px;
+  background: rgba(220, 198, 221, .72);
+  transform: translate(-50%, -50%);
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+.track-toggle-mark::after { transform: translate(-50%, -50%) rotate(90deg); }
+.track-accordion__toggle[aria-expanded="true"] .track-toggle-mark::after { transform: translate(-50%, -50%) rotate(0); opacity: 0; }
+
+.track-accordion__panel {
+  overflow: hidden;
+  height: 0;
+  transition: height .48s cubic-bezier(.22, .7, .24, 1);
+}
+
+.track-accordion__inner {
+  margin-left: 70px;
+  padding: 4px 46px 54px 20px;
+  border-left: 1px solid rgba(218, 191, 218, .12);
+}
+
+.track-lyrics {
+  max-width: 850px;
+  white-space: pre-wrap;
+  color: #d4c8d5;
+  font-size: clamp(14px, 1.35vw, 17px);
+  line-height: 2.25;
+  letter-spacing: .025em;
+}
+
+.lyrics-unarchived {
+  max-width: 580px;
+  padding: 34px clamp(22px, 4vw, 48px);
+  border: 1px solid rgba(219, 195, 215, .13);
+  background: linear-gradient(135deg, rgba(255,255,255,.018), transparent 38%), rgba(4, 3, 6, .46);
+  text-align: center;
+}
+
+.lyrics-unarchived span {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(199, 166, 204, .62);
+  font: 9px/1.4 Arial, sans-serif;
+  letter-spacing: .36em;
+}
+
+.lyrics-unarchived strong {
+  display: block;
+  color: rgba(229, 215, 228, .78);
+  font: 400 clamp(20px, 3vw, 34px)/1.2 Georgia, serif;
+  letter-spacing: .12em;
+}
+
+.lyrics-unarchived p {
+  margin: 21px 0 0;
+  color: rgba(159, 145, 160, .72);
+  font: 9px/1.9 Arial, sans-serif;
+  letter-spacing: .18em;
+}
+
+.full-album-frame { position: relative; }
+.full-album-placeholder {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  padding: 30px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(105, 58, 121, .15), transparent 34%),
+    linear-gradient(135deg, #0b0710, #020103 68%);
+}
+
+.full-album-placeholder::before {
+  content: "✦";
+  display: block;
+  margin-bottom: 20px;
+  color: rgba(205, 178, 211, .35);
+  font-size: 20px;
+}
+
+.full-album-placeholder span {
+  color: rgba(239, 226, 238, .72);
+  font: 400 clamp(30px, 6vw, 74px)/1 Georgia, serif;
+  letter-spacing: .15em;
+}
+
+.full-album-placeholder p {
+  margin: 24px 0 0;
+  color: rgba(150, 135, 153, .76);
+  font: 9px/1.9 Arial, sans-serif;
+  letter-spacing: .22em;
+}
+
+@media (max-width: 600px) {
+  .track-accordion__toggle {
+    grid-template-columns: 42px minmax(0, 1fr) 26px;
+    gap: 10px;
+    min-height: 72px;
+  }
+  .track-accordion__inner {
+    margin-left: 42px;
+    padding: 0 8px 42px 14px;
+  }
+  .lyrics-unarchived { padding-inline: 16px; }
+  .full-album-placeholder span { letter-spacing: .08em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-accordion__panel,
+  .track-toggle-mark::before,
+  .track-toggle-mark::after { transition: none !important; }
+}

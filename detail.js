@@ -43,17 +43,27 @@
     return `${value}${({ 1: 'st', 2: 'nd', 3: 'rd' })[value % 10] || 'th'}`;
   };
 
+  const normalizeTrack = track => typeof track === 'string'
+    ? { title: track, lyrics: '' }
+    : { title: String(track?.title || 'Untitled'), lyrics: String(track?.lyrics || '') };
+
   const toYoutubeEmbedUrl = value => {
-    if (!value) return '';
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    if (/^[A-Za-z0-9_-]{11}$/.test(raw)) return `https://www.youtube-nocookie.com/embed/${raw}`;
     try {
-      const url = new URL(value);
+      const url = new URL(raw);
       if (url.hostname.includes('youtu.be')) {
-        return `https://www.youtube.com/embed/${url.pathname.slice(1)}`;
+        const videoId = url.pathname.split('/').filter(Boolean)[0];
+        return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : '';
       }
-      if (url.hostname.includes('youtube.com')) {
-        if (url.pathname.startsWith('/embed/')) return value;
+      if (url.hostname.includes('youtube.com') || url.hostname.includes('youtube-nocookie.com')) {
+        if (url.pathname.startsWith('/embed/')) {
+          const videoId = url.pathname.split('/').filter(Boolean)[1];
+          return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : '';
+        }
         const videoId = url.searchParams.get('v');
-        if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+        return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : '';
       }
     } catch (_) {
       return '';
@@ -74,6 +84,7 @@
   }
 
   const album = normalized[index];
+  const tracks = (album.tracks || []).map(normalizeTrack);
   const description = (album.story || []).join(' ') || `${album.title} — ${album.artist}の音楽作品。`;
   const canonicalUrl = `${siteBase}/detail.html?id=${encodeURIComponent(album.id)}`;
   const shareImage = absoluteUrl(album.art);
@@ -99,9 +110,10 @@
     image: shareImage,
     url: canonicalUrl,
     description,
-    track: (album.tracks || []).map((name, position) => ({ '@type': 'MusicRecording', name, position: position + 1 }))
+    track: tracks.map((track, position) => ({ '@type': 'MusicRecording', name: track.title, position: position + 1 }))
   });
   document.head.appendChild(structuredData);
+
   document.body.dataset.accent = album.accent || 'blue';
   $('#detail-main').hidden = false;
   $('#work-cover').src = album.art;
@@ -110,23 +122,56 @@
   $('#work-kicker').textContent = `${album.artist} · ${ordinal(album.artistWorkNumber)} ALBUM`;
   $('#work-title').textContent = album.title;
   $('#work-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
+  $('#work-story').innerHTML = (album.story || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
 
-  $('#work-tracks').innerHTML = (album.tracks || []).map((track, i) => `
-    <li>
-      <span class="track-number">${String(i + 1).padStart(2, '0')}</span>
-      <span class="track-title">${escapeHtml(track)}</span>
-    </li>`).join('');
+  $('#work-tracks').innerHTML = tracks.map((track, i) => {
+    const number = String(i + 1).padStart(2, '0');
+    const lyrics = track.lyrics.trim();
+    const body = lyrics
+      ? `<div class="track-lyrics" aria-label="${escapeHtml(track.title)} lyrics">${escapeHtml(lyrics)}</div>`
+      : `<div class="lyrics-unarchived"><span>LYRICS</span><strong>NOT YET ARCHIVED</strong><p>This manuscript has not yet<br>been added to the archive.</p></div>`;
+    return `
+      <li class="track-accordion">
+        <button class="track-accordion__toggle" type="button" aria-expanded="false" aria-controls="track-panel-${i}" id="track-toggle-${i}">
+          <span class="track-number">${number}</span>
+          <span class="track-title">${escapeHtml(track.title)}</span>
+          <span class="track-toggle-mark" aria-hidden="true"></span>
+        </button>
+        <div class="track-accordion__panel" id="track-panel-${i}" role="region" aria-labelledby="track-toggle-${i}" hidden>
+          <div class="track-accordion__inner">${body}</div>
+        </div>
+      </li>`;
+  }).join('');
 
-  const labels = {
-    spotify: 'SPOTIFY',
-    apple: 'APPLE MUSIC',
-    amazon: 'AMAZON MUSIC'
-  };
-  const allowedServices = ['spotify', 'apple', 'amazon'];
-  const links = allowedServices
-    .map(key => [key, album.links?.[key]])
-    .filter(([, url]) => Boolean(url));
+  $('#work-tracks').addEventListener('click', event => {
+    const button = event.target.closest('.track-accordion__toggle');
+    if (!button) return;
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+    button.closest('.track-accordion')?.classList.toggle('is-open', !expanded);
+    if (prefersReducedMotion) {
+      panel.hidden = expanded;
+      return;
+    }
+    if (!expanded) {
+      panel.hidden = false;
+      panel.style.height = '0px';
+      requestAnimationFrame(() => { panel.style.height = `${panel.scrollHeight}px`; });
+      panel.addEventListener('transitionend', () => { panel.style.height = 'auto'; }, { once: true });
+    } else {
+      panel.style.height = `${panel.scrollHeight}px`;
+      requestAnimationFrame(() => { panel.style.height = '0px'; });
+      panel.addEventListener('transitionend', () => {
+        panel.hidden = true;
+        panel.style.height = '';
+      }, { once: true });
+    }
+  });
 
+  const labels = { spotify: 'SPOTIFY', apple: 'APPLE MUSIC', amazon: 'AMAZON MUSIC', youtube: 'YOUTUBE' };
+  const allowedServices = ['spotify', 'apple', 'amazon', 'youtube'];
+  const links = allowedServices.map(key => [key, album.links?.[key]]).filter(([, url]) => Boolean(url));
   $('#work-links').innerHTML = links.length
     ? links.map(([key, url]) => `
       <a class="listen-service listen-service--${key}" href="${escapeHtml(url)}" target="_blank" rel="noopener">
@@ -134,11 +179,11 @@
       </a>`).join('')
     : '<p class="listen-now__empty">配信リンクは準備中です。</p>';
 
-  const xfdUrl = album.xfd || album.youtubeXfd || '';
-  const embedUrl = toYoutubeEmbedUrl(xfdUrl);
+  const fullAlbumSource = album.youtubeId || album.fullAlbumYoutube || album.youtubeFullAlbum || '';
+  const embedUrl = toYoutubeEmbedUrl(fullAlbumSource);
   $('#work-xfd').innerHTML = embedUrl
-    ? `<iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(album.title)} XFD" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
-    : '<div class="xfd-placeholder"><span>XFD</span><p>クロスフェード動画は準備中です。</p></div>';
+    ? `<iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(album.title)} Full Album" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    : '<div class="full-album-placeholder"><span>COMING SOON</span><p>THE FULL ALBUM FILM<br>HAS NOT YET ENTERED THE ARCHIVE.</p></div>';
 
   const prev = normalized[(index - 1 + normalized.length) % normalized.length];
   const next = normalized[(index + 1) % normalized.length];

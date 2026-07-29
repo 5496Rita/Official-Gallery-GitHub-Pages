@@ -18,6 +18,7 @@ const albums = [
     tracks: ["Queen of the Velvet Night", "Nocturne Marionette", "Ðesire", "Sanctus Ruina", "Venomous Rose", "Crimson Banquet"],
     art: "covers/velvet-dominion.png",
     accent: "crimson",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -33,6 +34,7 @@ const albums = [
     tracks: ["Mirror Elegy", "Alice in the Abyss", "Shadowed Apple", "Noir Élégance", "Noble Masquerade", "Scarlet Nepenthe"],
     art: "covers/lunar-eclat.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -48,6 +50,7 @@ const albums = [
     tracks: ["Ornament of Ruin", "R", "Mechanical Prayer", "Dream Eater", "Veiled Eden", "Nameless Alice"],
     art: "covers/luminous-ruin.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -63,6 +66,7 @@ const albums = [
     tracks: ["幻火", "葬桜", "夜纏", "妖紅", "墨染", "影寄"],
     art: "covers/oboromiyabi.jpg",
     accent: "amber",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -78,6 +82,7 @@ const albums = [
     tracks: ["ファンサ×罠", "ポイズン★アイドル", "†冥土カフェ†", "月灯シンデレラ♪", "依存レッテル◆", "わたしのつくりかた"],
     art: "covers/sugar-deception.jpg",
     accent: "crimson",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -93,6 +98,7 @@ const albums = [
     tracks: ["Broken Awakening", "Abyssal Dance", "Sweet Venom", "Bloodstained Chain", "Black Labyrinth", "The Shape of Collapse"],
     art: "covers/fractured-order.jpg",
     accent: "crimson",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -108,6 +114,7 @@ const albums = [
     tracks: ["The Fallen", "Darkness Diva", "Pride of Night", "Sweet Sin Fairy", "Whisper of Temptation", "Weight of Choice"],
     art: "covers/midnight-sirens.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -123,6 +130,7 @@ const albums = [
     tracks: ["官能堪能", "冷たい楽園。", "都合のいい夢", "甘い拘束", "見えない首輪", "拒絶の距離"],
     art: "covers/enmusubi.jpg",
     accent: "crimson",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -138,6 +146,7 @@ const albums = [
     tracks: ["闇を着る", "骸の祝杯", "夜を選ぶ蝙蝠", "蛇が眠る場所", "棺と王冠", "背徳のロザリオ"],
     art: "covers/nocturnal-rite.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -153,6 +162,7 @@ const albums = [
     tracks: ["ガラスの果実", "深淵に咲く花", "夜に愛された蝶", "青薔薇の花弁", "誘いの縁", "夜の残香"],
     art: "covers/nachtgarten.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -168,6 +178,7 @@ const albums = [
     tracks: ["悪夢未満", "沈黙が続く限り", "境界融解", "意識の海", "在り続ける場所", "果てのない夜へ"],
     art: "covers/aeternitas.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -183,6 +194,7 @@ const albums = [
     tracks: ["Lucifer Pride", "Cold Satan", "Asmodeus Pulse", "Mammon Weight", "Beelzebub Overdose", "Belphegor Stasis"],
     art: "covers/vitia.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -198,6 +210,7 @@ const albums = [
     tracks: ["FIRST SIN", "False Embrace", "Silent Majority", "Cold Brilliance", "Quiet Authority", "Out of the Deck"],
     art: "covers/silent-sovereign.jpg",
     accent: "amber",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -213,6 +226,7 @@ const albums = [
     tracks: ["存在圧", "硝子の聖域", "均衡のひび", "創造の裏側", "神を拒む玉座", "黒の戴冠"],
     art: "covers/black-coronation.jpg",
     accent: "crimson",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -228,6 +242,7 @@ const albums = [
     tracks: ["微笑のヴェール", "恩寵のアリア", "純白のストラテジー", "退廃のセレナーデ", "沈黙のグラヴィティ", "ホロウ・コア"],
     art: "covers/cathedral-of-masks.jpg",
     accent: "amber",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -243,6 +258,7 @@ const albums = [
     tracks: ["Diamond Edge", "Ruby Heart", "Abyss Sapphire", "Emerald Eye", "Amethyst Dream", "Onyx Void"],
     art: "covers/crown-of-jewel.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -258,6 +274,7 @@ const albums = [
     tracks: ["Crescent Desire", "Dual Eclipse", "Lunar Ecstasy", "Azure Temptation", "Crimson Instinct", "Silent Absence"],
     art: "covers/lune-noire.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -270,6 +287,7 @@ const albums = [
     tracks: ["Desire", "Nightfall Authority", "Nocturne Masquerade", "Obsidian Puppet", "Crown of Sin", "Venom Bloom"],
     art: "covers/hollow-salvation.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -282,6 +300,7 @@ const albums = [
     tracks: ["Black Covenant", "Corrupted Wonderland", "Vanity Paradox", "Still Calling", "Scarlet Proof", "Crimson Oblivion"],
     art: "covers/crimson-covenant.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -295,6 +314,7 @@ const albums = [
     tracks: ["シトラスの気配", "フローラルの鼓動", "オリエンタルの残響", "ジャスミンの微熱", "ムスクの衝動", "アンバーの余香"],
     art: "covers/trace-of-perfume.jpg",
     accent: "rose",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -308,6 +328,7 @@ const albums = [
     tracks: ["白に触れた瞬間", "輪郭を侵すもの", "甘美なる依存", "飽和する衝動", "断裂する理性", "残効に溺れる"],
     art: "covers/fatal-allure.jpg",
     accent: "rose",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -320,6 +341,7 @@ const albums = [
     tracks: ["Mechanical Requiem", "Artificial Bloom", "Dissonance Loop", "Pulse of Ruin", "Abyssal Wonderland", "R'"],
     art: "covers/dissonance-cry.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -332,6 +354,7 @@ const albums = [
     tracks: ["影滲ノ灯", "影間", "常闇ノ華", "狐火誘", "朧月残影", "彼岸ノ残華"],
     art: "covers/higan-zankyo.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -344,6 +367,7 @@ const albums = [
     tracks: ["Relic", "Sweet Delusion", "Nocturnal Kiss", "Black Resonance", "Deep Forest", "Edenfall"],
     art: "covers/fallen-sanctuary.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -357,6 +381,7 @@ const albums = [
     tracks: ["消えない残響", "月影に誘われて", "白い祈り", "黒薔薇の静寂", "夜を裂く微熱", "薄明に消える"],
     art: "covers/elegy-of-night.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -370,6 +395,7 @@ const albums = [
     tracks: ["月下の舞踏会", "仮面越しのくちづけ", "白薔薇の円舞曲", "血染めの祝祭", "棺のララバイ", "終焉の輪舞曲"],
     art: "covers/danse-macabre.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -383,6 +409,7 @@ const albums = [
     tracks: ["Rose Riot", "Velvet Voltage", "Glass Eden", "Veil Rosary", "Midnight Doll", "Scarlet Nocturne"],
     art: "covers/rosarium-noir.jpg",
     accent: "rose",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -399,6 +426,7 @@ const albums = [
     tracks: ["Marionette Cry", "Lace Syndrome", "Broken Tiara", "Moonveil Garden", "Puppet Religion", "Last Marionette"],
     art: "covers/marionette-garden.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -415,6 +443,7 @@ const albums = [
     tracks: ["Phantom Parade", "Silent Promise", "Forgotten Name", "Garden of Oblivion", "Eternal Moon", "Beautiful Lie"],
     art: "covers/beautiful-nightmare.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -431,6 +460,7 @@ const albums = [
     tracks: ["Crimson Throne", "Twilight Resonance", "Scarlet Ignition…", "Silent Shadow", "Butterfly Tempest", "黒翼ノ夜明ケ。"],
     art: "covers/persona.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -447,6 +477,7 @@ const albums = [
     tracks: ["夢の抜け殻", "沈黙の森", "枯れた湖", "忘れられた楽園", "黄昏に還るように", "消えゆく星"],
     art: "covers/vanishing-reverie.jpg",
     accent: "blue",
+    youtubeId: "",
     links: commonListenLinks
   },
   {
@@ -462,6 +493,7 @@ const albums = [
     tracks: ["月下毒", "快楽飢餓", "蜜の檻", "宵待ち", "蝶毒", "微睡み"],
     art: "covers/yugatou.jpg",
     accent: "purple",
+    youtubeId: "",
     links: commonListenLinks
   }
 ];
