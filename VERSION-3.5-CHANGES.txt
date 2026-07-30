@@ -1,9 +1,14 @@
-Version 3.5
+Version 3.5 - 歌詞同期結果
 
-- 「歌詞.txt」の内容を Lunar Éclat から Nachtgarten まで同期
-- 9アルバム・全54曲を { title, lyrics } 形式へ統一
-- data/lyrics-master.txt を歌詞マスターとして同梱
-- data/albums-sync.json に同期対象の曲名一覧を保存
-- JavaScript 構文チェック済み
+- Lunar Éclat: 6曲
+- Luminous Ruin: 6曲
+- 朧雅: 6曲
+- $ugar Ðeception: 6曲
+- Fractured Order: 6曲
+- Midnight Sirens: 6曲
+- 艶結ビ: 6曲
+- Nocturnal Rite: 6曲
+- Nachtgarten: 6曲
 
-次回の更新時は、新しい歌詞.txtとこのZIPを渡してください。
+合計: 9アルバム / 54曲
+Lunar Éclat から Nachtgarten まで反映済み
