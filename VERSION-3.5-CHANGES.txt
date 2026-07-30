@@ -1,0 +1,9 @@
+Version 3.5
+
+- 「歌詞.txt」の内容を Lunar Éclat から Nachtgarten まで同期
+- 9アルバム・全54曲を { title, lyrics } 形式へ統一
+- data/lyrics-master.txt を歌詞マスターとして同梱
+- data/albums-sync.json に同期対象の曲名一覧を保存
+- JavaScript 構文チェック済み
+
+次回の更新時は、新しい歌詞.txtとこのZIPを渡してください。
