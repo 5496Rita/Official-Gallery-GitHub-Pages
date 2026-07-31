@@ -1,5 +1,0 @@
-Version 3.2
-- Desktop split layout: track catalog on the left, lyrics viewer on the right
-- Fixed-height lyrics viewer with internal scrolling
-- Mobile horizontal track selector and compact fixed-height lyrics panel
-- Keyboard-accessible track switching

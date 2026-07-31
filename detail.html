@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="bundle.css?v=515" />
+  <link rel="stylesheet" href="bundle.css?v=516" />
 </head>
 
 <body class="detail-page page-enter">
@@ -58,9 +58,9 @@
 
   <main>
   <section id="detail-main" class="work-detail" hidden>
-    <a class="detail-back" href="index.html#archive">
-      ← BACK TO DISCOGRAPHY
-    </a>
+    <button id="quick-back" class="quick-back" type="button" aria-label="前のページに戻る">
+      <span aria-hidden="true">←</span><span class="quick-back__label">一覧へ戻る</span>
+    </button>
 
     <section class="work-hero">
       <div class="work-hero__cover reveal is-visible">
@@ -143,8 +143,8 @@
   </footer>
 
   <script src="site-config.js?v=400"></script>
-  <script src="albums-lite.js?v=515"></script>
-  <script src="detail.js?v=515"></script>
+  <script src="albums-lite.js?v=516"></script>
+  <script src="detail.js?v=516"></script>
   <script src="v2.1.js?v=410"></script>
 </body>
 </html>

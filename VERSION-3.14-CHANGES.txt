@@ -1,7 +1,0 @@
-Version 3.14
-
-Mobile layout update:
-- Gallery images are displayed in a compact four-column grid.
-- Album story is collapsed behind a "物語を読む" button.
-- Lyrics are collapsed per track and expand with a "読む" toggle.
-- Desktop layout and lyric viewer remain unchanged.

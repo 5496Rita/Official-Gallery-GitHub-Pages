@@ -4383,3 +4383,53 @@ body.is-opening-artwork::after {
 @media (max-width: 768px) {
   .artist-section, .exhibition-section, .archive-section, footer { content-visibility: auto; contain-intrinsic-size: 900px; }
 }
+
+
+/* Version 3.16: always-visible return control on album detail pages */
+.quick-back {
+  position: fixed;
+  z-index: 120;
+  top: 92px;
+  left: max(18px, env(safe-area-inset-left));
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(232, 218, 235, .28);
+  border-radius: 999px;
+  background: rgba(8, 4, 11, .88);
+  color: #f1eaf2;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .38);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  font: 10px Arial, sans-serif;
+  letter-spacing: .14em;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.quick-back:hover,
+.quick-back:focus-visible {
+  transform: translateX(-3px);
+  background: rgba(30, 16, 35, .96);
+  border-color: rgba(242, 232, 245, .52);
+  outline: none;
+}
+.quick-back > span:first-child { font-size: 18px; line-height: 1; }
+@media (max-width: 720px) {
+  .quick-back {
+    top: auto;
+    left: max(14px, env(safe-area-inset-left));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    min-width: 52px;
+    min-height: 52px;
+    justify-content: center;
+    padding: 12px 16px;
+    background: rgba(8, 4, 11, .94);
+  }
+  .quick-back__label { font-size: 9px; }
+}
+@media (max-width: 390px) {
+  .quick-back__label { display: none; }
+  .quick-back { width: 52px; padding: 0; border-radius: 50%; }
+}

@@ -32,7 +32,7 @@
   };
   const workLabel = album => `${ordinal(album.artistWorkNumber)} Album`;
   const releaseLabel = album => album.release || 'RELEASE TBA';
-  const detailUrl = album => `detail.html?id=${encodeURIComponent(album.id)}`;
+  const detailUrl = (album, from = 'archive') => `detail.html?id=${encodeURIComponent(album.id)}&from=${encodeURIComponent(from)}`;
   const thumbnailUrl = album => `covers/thumbs/${encodeURIComponent(album.id)}.webp`;
   const newestRelease = normalizedAlbums.reduce((latest, album) => {
     if (!album.release) return latest;
@@ -129,7 +129,7 @@
       const depth = seededValue(index + 90);
       const link = document.createElement('a');
       link.className = 'exhibition-item';
-      link.href = detailUrl(album);
+      link.href = detailUrl(album, 'exhibition');
       link.style.left = `${left}%`;
       link.style.top = `${top}%`;
       link.style.setProperty('--rot', `${(seededValue(index + 40) - .5) * 10}deg`);
@@ -167,7 +167,7 @@
 
   function createArchiveCard(album) {
   const link = document.createElement('a');
-  link.href = detailUrl(album);
+  link.href = detailUrl(album, 'archive');
   link.className = 'archive-card';
 
   const q = state.query.trim().toLocaleLowerCase('ja');

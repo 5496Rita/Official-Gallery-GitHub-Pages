@@ -5,6 +5,17 @@
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
   const index = albums.findIndex(album => album.id === id);
+  const from = params.get('from') === 'exhibition' ? 'exhibition' : 'archive';
+
+  const quickBack = $('#quick-back');
+  quickBack?.addEventListener('click', () => {
+    const sameSiteReferrer = document.referrer && new URL(document.referrer, location.href).origin === location.origin;
+    if (sameSiteReferrer && history.length > 1) {
+      history.back();
+      return;
+    }
+    location.href = `index.html#${from}`;
+  });
 
   const configuredSiteUrl = String(window.SITE_CONFIG?.siteUrl || '').replace(/\/$/, '');
   const siteBase = configuredSiteUrl || `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`.replace(/\/$/, '');
