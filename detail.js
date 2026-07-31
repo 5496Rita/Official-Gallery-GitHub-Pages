@@ -9,11 +9,15 @@
 
   const quickBack = $('#quick-back');
   quickBack?.addEventListener('click', () => {
-    const sameSiteReferrer = document.referrer && new URL(document.referrer, location.href).origin === location.origin;
-    if (sameSiteReferrer && history.length > 1) {
-      history.back();
-      return;
-    }
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('officialGalleryReturnState') || 'null') || {};
+      sessionStorage.setItem('officialGalleryReturnState', JSON.stringify({
+        ...saved,
+        from,
+        returning: true,
+        savedAt: Date.now()
+      }));
+    } catch (_) {}
     location.href = `index.html#${from}`;
   });
 

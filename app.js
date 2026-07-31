@@ -4,6 +4,10 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const state = { view: 'grid', query: '', sort: 'added', artist: 'all' };
+  const RETURN_STATE_KEY = 'officialGalleryReturnState';
+  let returnState = null;
+  try { returnState = JSON.parse(sessionStorage.getItem(RETURN_STATE_KEY) || 'null'); } catch (_) { returnState = null; }
+  const isReturningFromDetail = Boolean(returnState && returnState.returning);
 
   const welcome = $('#welcome');
   const site = $('#site');
@@ -79,7 +83,7 @@
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const welcomeDelay = prefersReducedMotion ? 0 : 2300;
+  const welcomeDelay = isReturningFromDetail ? 0 : (prefersReducedMotion ? 0 : 2300);
   window.setTimeout(enterSite, welcomeDelay);
   welcome?.addEventListener('click', enterSite);
   welcome?.addEventListener('keydown', event => {
@@ -270,8 +274,36 @@
     return String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
   }
 
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href*="detail.html"]');
+    if (!link) return;
+    const url = new URL(link.href, location.href);
+    const from = url.searchParams.get('from') === 'exhibition' ? 'exhibition' : 'archive';
+    try {
+      sessionStorage.setItem(RETURN_STATE_KEY, JSON.stringify({
+        from,
+        scrollY: window.scrollY,
+        returning: false,
+        savedAt: Date.now()
+      }));
+    } catch (_) {}
+  }, true);
+
+  function restoreListPosition() {
+    if (!isReturningFromDetail || !returnState) return;
+    const targetId = returnState.from === 'exhibition' ? 'exhibition' : 'archive';
+    if (location.hash !== `#${targetId}`) history.replaceState(null, '', `#${targetId}`);
+    const restore = () => {
+      window.scrollTo({ top: Number(returnState.scrollY) || 0, left: 0, behavior: 'auto' });
+      try { sessionStorage.removeItem(RETURN_STATE_KEY); } catch (_) {}
+    };
+    requestAnimationFrame(() => requestAnimationFrame(restore));
+    window.setTimeout(restore, 180);
+  }
+
   applySiteUrls();
   enablePageTransitions();
   renderExhibition();
   renderArchive();
+  restoreListPosition();
 })();
