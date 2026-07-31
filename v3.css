@@ -795,3 +795,132 @@
     contain-intrinsic-size: 300px 169px;
   }
 }
+
+/* Version 3.14 — compact mobile gallery and collapsible reading */
+.mobile-lyrics-list { display: none; }
+.mobile-story-toggle > summary { display: none; }
+.mobile-story-toggle__body { display: contents; }
+
+@media (max-width: 760px) {
+  /* Gallery: compact four-column wall instead of a wide horizontal field. */
+  .exhibition-shell {
+    overflow: visible !important;
+    padding: 10px 14px 28px !important;
+  }
+
+  .exhibition-stage {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  .exhibition-item {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1;
+    transform: none !important;
+    animation: none !important;
+    filter: none !important;
+    z-index: auto !important;
+  }
+
+  .exhibition-item:hover,
+  .exhibition-item:focus-visible {
+    transform: none !important;
+  }
+
+  .exhibition-item__spotlight { display: none !important; }
+  .exhibition-item img {
+    box-shadow: 0 8px 18px rgba(0,0,0,.48) !important;
+  }
+
+  /* Album story: hidden until the reader chooses to open it. */
+  .work-story {
+    display: block !important;
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .mobile-story-toggle > summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid rgba(224,203,223,.22);
+    background: rgba(255,255,255,.025);
+    color: #e5dbe5;
+    list-style: none;
+    cursor: pointer;
+    font: 10px/1 Arial, sans-serif;
+    letter-spacing: .16em;
+  }
+
+  .mobile-story-toggle > summary::-webkit-details-marker { display: none; }
+  .mobile-story-toggle__body {
+    display: block;
+    padding: 22px 2px 4px;
+  }
+  .story-label-open { display: none; }
+  .mobile-story-toggle[open] .story-label-closed { display: none; }
+  .mobile-story-toggle[open] .story-label-open { display: inline; }
+
+  /* Lyrics: one compact toggle per track. */
+  .lyrics-exhibit { display: none !important; }
+  .mobile-lyrics-list {
+    display: block;
+    border-top: 1px solid rgba(224,203,223,.14);
+  }
+  .mobile-lyric-toggle {
+    border-bottom: 1px solid rgba(224,203,223,.12);
+  }
+  .mobile-lyric-toggle > summary {
+    min-height: 58px;
+    display: grid;
+    grid-template-columns: 38px minmax(0,1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 4px;
+    list-style: none;
+    cursor: pointer;
+  }
+  .mobile-lyric-toggle > summary::-webkit-details-marker { display: none; }
+  .mobile-lyric-toggle .track-title {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .mobile-lyric-toggle__action {
+    color: #a899aa;
+    font: 9px/1 Arial, sans-serif;
+    letter-spacing: .14em;
+  }
+  .mobile-lyric-toggle[open] .mobile-lyric-toggle__action::before { content: '閉じる'; }
+  .mobile-lyric-toggle[open] .mobile-lyric-toggle__action { font-size: 0; }
+  .mobile-lyric-toggle[open] .mobile-lyric-toggle__action::before { font-size: 9px; }
+  .mobile-lyric-toggle__body {
+    padding: 2px 0 28px 38px;
+  }
+  .mobile-lyric-toggle__body .track-lyrics {
+    margin: 0;
+    padding: 18px 16px;
+    border: 1px solid rgba(224,203,223,.10);
+    background: rgba(8,5,10,.28);
+    color: #d5cad5;
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .exhibition-stage { gap: 7px !important; }
+}

@@ -132,7 +132,12 @@
   $('#work-kicker').textContent = `${album.artist} · ${ordinal(album.artistWorkNumber)} ALBUM`;
   $('#work-title').textContent = album.title;
   $('#work-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
-  $('#work-story').innerHTML = (album.story || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
+  const storyHtml = (album.story || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
+  $('#work-story').innerHTML = `
+    <details class="mobile-story-toggle">
+      <summary><span class="story-label-closed">物語を読む</span><span class="story-label-open">閉じる</span></summary>
+      <div class="mobile-story-toggle__body">${storyHtml}</div>
+    </details>`;
 
   const renderLyricsBody = track => {
     const lyrics = track.lyrics.trim();
@@ -169,6 +174,21 @@
           ${tracks[0] ? renderLyricsBody(tracks[0]) : ''}
         </div>
       </section>
+    </div>
+
+    <div class="mobile-lyrics-list" aria-label="歌詞一覧">
+      ${tracks.map((track, i) => {
+        const number = String(i + 1).padStart(2, '0');
+        return `
+          <details class="mobile-lyric-toggle">
+            <summary>
+              <span class="track-number">${number}</span>
+              <span class="track-title">${escapeHtml(track.title)}</span>
+              <span class="mobile-lyric-toggle__action" aria-hidden="true">読む</span>
+            </summary>
+            <div class="mobile-lyric-toggle__body">${renderLyricsBody(track)}</div>
+          </details>`;
+      }).join('')}
     </div>`;
 
   const trackButtons = [...document.querySelectorAll('.lyrics-exhibit__track')];
