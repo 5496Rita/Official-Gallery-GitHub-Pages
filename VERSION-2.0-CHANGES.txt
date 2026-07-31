@@ -1,0 +1,78 @@
+越黒リタ Official Gallery — Version 2.0
+========================================
+
+コンセプト
+----------
+「美術館 × ゴシック大聖堂 × 公式アーティストサイト」
+既存の構成・データ・操作を維持しながら、展示空間としての奥行き、静かな高級感、レスポンシブ品質、SEOを強化しました。
+
+主な変更
+--------
+1. Gallery
+- 既存のランダム展示と詳細遷移を維持
+- 額縁、個別スポットライト、展示プレート、奥行き、霧、アーチ状の展示室背景を追加
+- 手前・奥の明暗差と軽い浮遊を維持しつつ質感を強化
+- スマートフォンでは負荷と横スクロールを避ける2列展示へ変更
+
+2. Discography
+- 検索、並び替え、アーティストタブ、GRID/LIST切替を維持
+- 所蔵作品らしい額縁と展示プレート型メタ情報へ変更
+- 最新リリースに NEW EXHIBIT 表示
+- ホバー時の静かな光の走査を追加
+
+3. Detail
+- 正方形の額縁、月光、立体感、軽い浮遊を追加
+- トラック行の弱い発光とフォーカス演出を追加
+- 配信リンク、XFD、前後作品ナビゲーションを維持
+- アルバムごとのaccent背景を維持
+
+4. アクセシビリティ・レスポンシブ
+- ジャケット画像を全画面で1:1固定
+- object-fit: containで不要なトリミングを防止
+- 画像alt、width/height、キーボードフォーカスを改善
+- prefers-reduced-motion対応
+- モバイル時は常時アニメーションと重い演出を縮小
+
+5. SEO・共有
+- title、description、OGP、Twitter Card、canonicalを追加
+- detailページはalbums.jsの作品情報から動的に反映
+- MusicAlbum構造化データを追加
+- sitemap.xml、robots.txt、site.webmanifestを追加
+- favicon / Apple Touch Iconを明示
+
+6. パフォーマンス
+- 一覧・展示画像はlazy loading + async decoding
+- Detailの主画像は高優先度読み込み
+- transform / opacity中心のアニメーション
+- 新規スクロールイベントなし
+- ビルドツール・外部フレームワークなし
+
+公開前に必要な設定
+------------------
+1. site-config.js の siteUrl に公開URLを設定
+   例: https://username.github.io/repository-name
+2. sitemap.xml 内の __SITE_URL__ を同じ公開URLへ一括置換
+3. robots.txt のコメント行 Sitemap を実URLへ変更し、先頭の # を外す
+
+変更・追加ファイル
+------------------
+変更:
+- index.html
+- detail.html
+- app.js
+- detail.js
+
+追加:
+- v2.css
+- site-config.js
+- site.webmanifest
+- sitemap.xml
+- robots.txt
+- VERSION-2.0-CHANGES.txt
+
+維持:
+- albums.jsのデータ構造
+- 既存画像ファイル名とパス
+- Gallery詳細遷移
+- Discography検索・並び替え・タブ・GRID/LIST
+- Detail配信導線・XFD・前後ナビゲーション

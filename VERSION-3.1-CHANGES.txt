@@ -1,0 +1,29 @@
+OFFICIAL GALLERY — VERSION 3.1
+
+- Detail page track list is now a lyrics accordion.
+- Existing string tracks still work without migration.
+- New track format is supported:
+  { title: "Song Title", lyrics: `Lyrics here` }
+- Empty lyrics display “LYRICS / NOT YET ARCHIVED”.
+- Added album description to the detail page.
+- Added optional YouTube button in links.
+- Added WATCH FULL ALBUM section.
+- Set youtubeId to an 11-character YouTube video ID or a YouTube URL.
+- Empty youtubeId displays a museum-style COMING SOON panel.
+
+Example:
+
+{
+  id: "lune-noire",
+  youtubeId: "",
+  tracks: [
+    {
+      title: "Crescent Desire",
+      lyrics: `First line
+Second line`
+    },
+    "Dual Eclipse"
+  ]
+}
+
+String entries remain valid and automatically show NOT YET ARCHIVED.

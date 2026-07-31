@@ -1,0 +1,7 @@
+Official Gallery Version 3.1.1
+
+FIXED
+- Loaded v3.css on detail.html.
+- Restored lyric accordion layout and closed-panel behavior.
+- Restored spacing for the NOT YET ARCHIVED placeholder.
+- Updated cache-busting versions for detail page assets.

@@ -33,6 +33,7 @@
   const workLabel = album => `${ordinal(album.artistWorkNumber)} Album`;
   const releaseLabel = album => album.release || 'RELEASE TBA';
   const detailUrl = album => `detail.html?id=${encodeURIComponent(album.id)}`;
+  const thumbnailUrl = album => `covers/thumbs/${encodeURIComponent(album.id)}.webp`;
   const newestRelease = normalizedAlbums.reduce((latest, album) => {
     if (!album.release) return latest;
     return !latest || album.release > latest ? album.release : latest;
@@ -141,7 +142,7 @@
       link.innerHTML = `
         <span class="exhibition-item__spotlight" aria-hidden="true"></span>
         <span class="exhibition-item__frame">
-          <img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="1200" height="1200">
+          <img src="${thumbnailUrl(album)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="420" height="420">
         </span>`;
       exhibitionStage.appendChild(link);
     });
@@ -197,7 +198,7 @@
   const isNewest = Boolean(album.release && album.release === newestRelease);
   link.innerHTML = `
     <span class="archive-card__image">
-      <img src="${escapeHtml(album.art)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="1200" height="1200">
+      <img src="${thumbnailUrl(album)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="420" height="420">
       <span class="archive-card__glint" aria-hidden="true"></span>
       ${isNewest ? '<span class="archive-card__new">NEW EXHIBIT</span>' : ''}
     </span>
