@@ -680,41 +680,52 @@
   .lyrics-exhibit {
     display: block;
     min-height: 0;
+    overflow: visible;
   }
 
+  /* Mobile: show every track at once instead of hiding tracks in a horizontal strip. */
   .lyrics-exhibit__catalog {
     border-right: 0;
     border-bottom: 1px solid rgba(224, 203, 223, .14);
-    overflow-x: auto;
-    scrollbar-width: thin;
+    overflow: visible;
   }
 
   .lyrics-exhibit__list {
-    display: flex;
-    width: max-content;
-    min-width: 100%;
+    display: block;
+    width: 100%;
+    min-width: 0;
   }
 
   .lyrics-exhibit__list li + li {
-    border-top: 0;
-    border-left: 1px solid rgba(224, 203, 223, .09);
+    border-top: 1px solid rgba(224, 203, 223, .09);
+    border-left: 0;
   }
 
   .lyrics-exhibit__track {
-    width: min(72vw, 280px);
-    min-height: 64px;
-    grid-template-columns: 32px minmax(0, 1fr);
-    padding: 13px 15px;
+    width: 100%;
+    min-height: 58px;
+    grid-template-columns: 36px minmax(0, 1fr) 18px;
+    padding: 12px 16px;
   }
 
-  .lyrics-exhibit__arrow { display: none; }
+  .lyrics-exhibit__arrow {
+    display: block;
+    opacity: .35;
+    transform: none;
+  }
 
   .lyrics-exhibit__track.is-active {
-    box-shadow: inset 0 -2px rgba(211, 178, 215, .66);
+    box-shadow: inset 3px 0 rgba(211, 178, 215, .66);
+  }
+
+  .lyrics-exhibit__track.is-active .lyrics-exhibit__arrow {
+    opacity: 1;
+    transform: translateX(2px);
   }
 
   .lyrics-exhibit__viewer {
-    height: 430px;
+    height: auto;
+    min-height: 430px;
   }
 
   .lyrics-exhibit__header {
@@ -722,6 +733,8 @@
   }
 
   .lyrics-exhibit__scroll {
+    max-height: none;
+    overflow-y: visible;
     padding: 22px 20px 34px;
   }
 
@@ -732,8 +745,7 @@
 }
 
 @media (max-width: 420px) {
-  .lyrics-exhibit__viewer { height: 390px; }
-  .lyrics-exhibit__track { width: 76vw; }
+  .lyrics-exhibit__viewer { min-height: 390px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
