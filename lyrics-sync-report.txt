@@ -1,0 +1,192 @@
+Lyrics Sync Report
+============================================================
+albums.js: /mnt/data/lyrics_update_work/albums.js
+lyrics:    /mnt/data/lyrics.txt
+
+[UPDATED] Velvet Dominion <- 【Velvet Dominion】
+  - Queen of the Velvet Night: 29 lines
+  - Nocturne Marionette: 35 lines
+  - Ðesire: 50 lines
+  - Sanctus Ruina: 38 lines
+  - Venomous Rose: 35 lines
+  - Crimson Banquet: 30 lines
+
+[UPDATED] Lunar Éclat <- 【Lunar Éclat】
+  - Mirror Elegy: 35 lines
+  - Alice in the Abyss: 50 lines
+  - Shadowed Apple: 63 lines
+  - Noir Élégance: 48 lines
+  - Noble Masquerade: 46 lines
+  - Scarlet Nepenthe: 48 lines
+
+[UPDATED] Luminous Ruin <- 【Luminous Ruin】
+  - Ornament of Ruin: 35 lines
+  - R: 30 lines
+  - Mechanical Prayer: 37 lines
+  - Dream Eater: 13 lines
+  - Veiled Eden: 51 lines
+  - Nameless Alice: 27 lines
+
+[UPDATED] 朧雅 <- 【朧雅】
+  - 幻火: 46 lines
+  - 葬桜: 41 lines
+  - 夜纏: 41 lines
+  - 妖紅: 44 lines
+  - 墨染: 44 lines
+  - 影寄: 44 lines
+
+[UPDATED] $ugar Ðeception <- 【$ugar Ðeception】
+  - ファンサ×罠: 57 lines
+  - ポイズン★アイドル: 38 lines
+  - †冥土カフェ†: 42 lines
+  - 月灯シンデレラ♪: 53 lines
+  - 依存レッテル◆: 65 lines
+  - わたしのつくりかた: 61 lines
+
+[UPDATED] Fractured Order <- 【Fractured Order】
+  - Broken Awakening: 54 lines
+  - Abyssal Dance: 48 lines
+  - Sweet Venom: 59 lines
+  - Bloodstained Chain: 64 lines
+  - Black Labyrinth: 54 lines
+  - The Shape of Collapse: 39 lines
+
+[UPDATED] Midnight Sirens <- 【Midnight Sirens】
+  - The Fallen: 54 lines
+  - Darkness Diva: 58 lines
+  - Pride of Night: 63 lines
+  - Sweet Sin Fairy: 61 lines
+  - Whisper of Temptation: 59 lines
+  - Weight of Choice: 63 lines
+
+[UPDATED] 艶結ビ <- 【艶結ビ】
+  - 官能堪能: 48 lines
+  - 冷たい楽園。: 54 lines
+  - 都合のいい夢: 58 lines
+  - 甘い拘束: 54 lines
+  - 見えない首輪: 59 lines
+  - 拒絶の距離: 59 lines
+
+[UPDATED] Nocturnal Rite <- 【Nocturnal Rite】
+  - 闇を着る: 59 lines
+  - 骸の祝杯: 53 lines
+  - 夜を選ぶ蝙蝠: 59 lines
+  - 蛇が眠る場所: 59 lines
+  - 棺と王冠: 77 lines
+  - 背徳のロザリオ: 59 lines
+
+[UPDATED] Nachtgarten <- 【Nachtgarten】
+  - ガラスの果実: 59 lines
+  - 深淵に咲く花: 60 lines
+  - 夜に愛された蝶: 56 lines
+  - 青薔薇の花弁: 59 lines
+  - 誘いの縁: 59 lines
+  - 夜の残香: 57 lines
+
+[UPDATED] Aeternitas <- 【Aeternitas】
+  - 悪夢未満: 60 lines
+  - 沈黙が続く限り: 59 lines
+  - 境界融解: 49 lines
+  - 意識の海: 59 lines
+  - 在り続ける場所: 68 lines
+  - 果てのない夜へ: 49 lines
+
+[UPDATED] ViTiA <- 【ViTiA】
+  - Lucifer Pride: 67 lines
+  - Cold Satan: 71 lines
+  - Asmodeus Pulse: 63 lines
+  - Mammon Weight: 63 lines
+  - Beelzebub Overdose: 69 lines
+  - Belphegor Stasis: 72 lines
+
+[UPDATED] Silent Sovereign <- 【Silent Sovereign】
+  - FIRST SIN: 56 lines
+  - False Embrace: 55 lines
+  - Silent Majority: 59 lines
+  - Cold Brilliance: 61 lines
+  - Quiet Authority: 64 lines
+  - Out of the Deck: 61 lines
+
+[UPDATED] Black Coronation <- 【Black Coronation】
+  - 存在圧: 54 lines
+  - 硝子の聖域: 57 lines
+  - 均衡のひび: 54 lines
+  - 創造の裏側: 54 lines
+  - 神を拒む玉座: 59 lines
+  - 黒の戴冠: 59 lines
+
+[UPDATED] Cathedral of Masks <- 【Cathedral of Masks】
+  - 微笑のヴェール: 59 lines
+  - 恩寵のアリア: 62 lines
+  - 純白のストラテジー: 59 lines
+  - 退廃のセレナーデ: 51 lines
+  - 沈黙のグラヴィティ: 48 lines
+  - ホロウ・コア: 60 lines
+
+[UPDATED] Crown of Jewel <- 【Crown of Jewel】
+  - Diamond Edge: 59 lines
+  - Ruby Heart: 61 lines
+  - Abyss Sapphire: 61 lines
+  - Emerald Eye: 65 lines
+  - Amethyst Dream: 61 lines
+  - Onyx Void: 59 lines
+
+[UPDATED] Lune Noire <- 【Lune Noire】
+  - Crescent Desire: 64 lines
+  - Dual Eclipse: 64 lines
+  - Lunar Ecstasy: 69 lines
+  - Azure Temptation: 64 lines
+  - Crimson Instinct: 64 lines
+  - Silent Absence: 63 lines
+
+[UPDATED] Hollow Salvation <- 【Hollow Salvation】
+  - Desire: 50 lines
+  - Nightfall Authority: 46 lines
+  - Nocturne Masquerade: 51 lines
+  - Obsidian Puppet: 39 lines
+  - Crown of Sin: 38 lines
+  - Venom Bloom: 35 lines
+
+[UPDATED] Crimson Covenant <- 【Crimson Covenant】
+  - Black Covenant: 59 lines
+  - Corrupted Wonderland: 50 lines
+  - Vanity Paradox: 35 lines
+  - Still Calling: 49 lines
+  - Scarlet Proof: 63 lines
+  - Crimson Oblivion: 49 lines
+
+[UPDATED] Trace of Perfume <- 【Trace of Perfume】
+  - シトラスの気配: 53 lines
+  - フローラルの鼓動: 52 lines
+  - オリエンタルの残響: 57 lines
+  - ジャスミンの微熱: 54 lines
+  - ムスクの衝動: 54 lines
+  - アンバーの余香: 54 lines
+
+[UPDATED] Fatal Allure <- 【Fatal Allure】
+  - 白に触れた瞬間: 57 lines
+  - 輪郭を侵すもの: 56 lines
+  - 甘美なる依存: 51 lines
+  - 飽和する衝動: 58 lines
+  - 断裂する理性: 72 lines
+  - 残効に溺れる: 67 lines
+
+Summary
+------------------------------------------------------------
+Updated albums: 21
+Updated tracks: 126
+Untouched albums (not in master): 11
+  - Dissonance Cry
+  - 彼岸残響
+  - Fallen Sanctuary
+  - Elegy of Night
+  - Danse Macabre
+  - Rosarium Noir
+  - Marionette Garden
+  - Beautiful Nightmare
+  - PERSONA
+  - Vanishing Reverie
+  - 誘蛾灯
+Warnings: 0
+JavaScript syntax check: PASS
+  OK
