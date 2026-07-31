@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
 
   const $ = selector => document.querySelector(selector);
@@ -84,7 +84,17 @@
   }
 
   const album = normalized[index];
-  const tracks = (album.tracks || []).map(normalizeTrack);
+  let trackSource = album.tracks || [];
+  try {
+    const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json`, { cache: 'force-cache' });
+    if (response.ok) {
+      const payload = await response.json();
+      if (Array.isArray(payload.tracks)) trackSource = payload.tracks;
+    }
+  } catch (_) {
+    // Keep the lightweight title-only track list when lyrics cannot be loaded.
+  }
+  const tracks = trackSource.map(normalizeTrack);
   const description = (album.story || []).join(' ') || `${album.title} — ${album.artist}の音楽作品。`;
   const canonicalUrl = `${siteBase}/detail.html?id=${encodeURIComponent(album.id)}`;
   const shareImage = absoluteUrl(album.art);

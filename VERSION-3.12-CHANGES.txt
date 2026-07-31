@@ -1,0 +1,16 @@
+VERSION 3.12 - VERIFIED GALLERY TEXTS + MOBILE LIGHTWEIGHT
+
+Verified and included the finalized gallery texts for:
+- Fractured Order
+- Midnight Sirens
+- 艶結ビ
+- Nocturnal Rite
+- Nachtgarten
+- Aeternitas
+
+Inherited from Version 3.11:
+- Album-specific lazy loading of lyrics on the detail page
+- Lightweight mobile effects
+- Normal page scrolling for mobile lyrics
+
+Both albums.js and albums-lite.js contain the finalized gallery texts.
