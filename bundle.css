@@ -4441,3 +4441,35 @@ body.is-opening-artwork::after {
   .mobile-story-toggle > summary { display: none !important; }
   .mobile-story-toggle__body { display: block !important; }
 }
+
+/* Version 3.19: reliable story display and return navigation */
+.story-toggle-button {
+  display: none;
+}
+.story-body {
+  display: block;
+}
+.story-body p { margin: 0; }
+.story-body p + p { margin-top: .65em; }
+
+@media (max-width: 760px) {
+  .story-toggle-button {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border: 1px solid rgba(224,203,223,.22);
+    background: rgba(255,255,255,.025);
+    color: #e5dbe5;
+    cursor: pointer;
+    font: 10px/1 Arial, sans-serif;
+    letter-spacing: .16em;
+  }
+  .story-body {
+    display: none;
+    padding: 22px 2px 4px;
+  }
+  .story-body.is-open { display: block; }
+}

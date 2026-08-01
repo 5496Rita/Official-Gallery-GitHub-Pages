@@ -147,12 +147,23 @@
   $('#work-kicker').textContent = `${album.artist} · ${ordinal(album.artistWorkNumber)} ALBUM`;
   $('#work-title').textContent = album.title;
   $('#work-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
-  const storyHtml = (album.story || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
-  $('#work-story').innerHTML = `
-    <details class="mobile-story-toggle">
-      <summary><span class="story-label-closed">物語を読む</span><span class="story-label-open">閉じる</span></summary>
-      <div class="mobile-story-toggle__body">${storyHtml}</div>
-    </details>`;
+  const storyParagraphs = Array.isArray(album.story)
+    ? album.story.filter(Boolean)
+    : (album.story ? [String(album.story)] : []);
+  const storyHtml = storyParagraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
+  const storyContainer = $('#work-story');
+  storyContainer.innerHTML = storyHtml
+    ? `<button class="story-toggle-button" type="button" aria-expanded="false" aria-controls="story-body">物語を読む</button>
+       <div id="story-body" class="story-body">${storyHtml}</div>`
+    : '';
+  const storyButton = storyContainer.querySelector('.story-toggle-button');
+  const storyBody = storyContainer.querySelector('.story-body');
+  storyButton?.addEventListener('click', () => {
+    const expanded = storyButton.getAttribute('aria-expanded') === 'true';
+    storyButton.setAttribute('aria-expanded', String(!expanded));
+    storyButton.textContent = expanded ? '物語を読む' : '閉じる';
+    storyBody?.classList.toggle('is-open', !expanded);
+  });
 
   const renderLyricsBody = track => {
     const lyrics = track.lyrics.trim();

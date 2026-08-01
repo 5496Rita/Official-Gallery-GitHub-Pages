@@ -133,6 +133,7 @@
       const depth = seededValue(index + 90);
       const link = document.createElement('a');
       link.className = 'exhibition-item';
+      link.dataset.albumId = album.id;
       link.href = detailUrl(album, 'exhibition');
       link.style.left = `${left}%`;
       link.style.top = `${top}%`;
@@ -173,6 +174,7 @@
   const link = document.createElement('a');
   link.href = detailUrl(album, 'archive');
   link.className = 'archive-card';
+  link.dataset.albumId = album.id;
 
   const q = state.query.trim().toLocaleLowerCase('ja');
 
@@ -282,6 +284,7 @@
     try {
       sessionStorage.setItem(RETURN_STATE_KEY, JSON.stringify({
         from,
+        albumId: url.searchParams.get('id') || '',
         scrollY: window.scrollY,
         returning: false,
         savedAt: Date.now()
@@ -293,12 +296,23 @@
     if (!isReturningFromDetail || !returnState) return;
     const targetId = returnState.from === 'exhibition' ? 'exhibition' : 'archive';
     if (location.hash !== `#${targetId}`) history.replaceState(null, '', `#${targetId}`);
+    let restored = false;
     const restore = () => {
-      window.scrollTo({ top: Number(returnState.scrollY) || 0, left: 0, behavior: 'auto' });
+      if (restored) return;
+      const target = returnState.albumId
+        ? document.querySelector(`[data-album-id="${CSS.escape(returnState.albumId)}"]`)
+        : null;
+      if (target) {
+        target.scrollIntoView({ block: 'center', inline: 'center', behavior: 'auto' });
+      } else {
+        window.scrollTo({ top: Number(returnState.scrollY) || 0, left: 0, behavior: 'auto' });
+      }
+      restored = true;
       try { sessionStorage.removeItem(RETURN_STATE_KEY); } catch (_) {}
     };
     requestAnimationFrame(() => requestAnimationFrame(restore));
-    window.setTimeout(restore, 180);
+    window.addEventListener('load', restore, { once: true });
+    window.setTimeout(restore, 450);
   }
 
   applySiteUrls();
