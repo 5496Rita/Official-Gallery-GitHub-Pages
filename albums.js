@@ -7126,7 +7126,7 @@ Desire
     ],
     art: "covers/trace-of-perfume.jpg",
     accent: "rose",
-    youtubeId: "",
+    youtubeId: "PAS8hutHTys",
     links: commonListenLinks
   },
   {
