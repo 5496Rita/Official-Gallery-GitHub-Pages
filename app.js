@@ -187,7 +187,10 @@
     let items = normalizedAlbums.filter(album => {
       if (state.artist !== 'all' && album.artist !== state.artist) return false;
       if (!q) return true;
-      return [album.title, album.artist, ...(album.tracks || [])].join(' ').toLocaleLowerCase('ja').includes(q);
+      const trackText = (album.tracks || [])
+        .map(track => typeof track === 'string' ? track : (track?.title || track?.name || ''))
+        .join(' ');
+      return [album.title, album.artist, trackText].join(' ').toLocaleLowerCase('ja').includes(q);
     });
     const sorters = {
       added: (a, b) => a._addedIndex - b._addedIndex,
