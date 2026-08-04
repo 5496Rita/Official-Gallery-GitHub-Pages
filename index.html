@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="preload" as="image" href="images/welcome-bg.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="bundle.css?v=321" />
+  <link rel="stylesheet" href="bundle.css?v=322" />
 </head>
 <body class="page-enter">
   <div class="page-transition" aria-hidden="true"></div>
@@ -106,9 +106,11 @@
           <p class="eyebrow">A RANDOM FRAGMENT FROM THE ARCHIVE</p>
           <h2 id="featured-short-title">FEATURED SHORT</h2>
         </div>
-        <div class="featured-short__frame">
-          <div id="featured-short-player" aria-label="ランダムに選ばれたYouTube Short"></div>
-        </div>
+        <a id="featured-short-card" class="featured-short__frame featured-short__link" href="#" target="_blank" rel="noopener noreferrer">
+          <img id="featured-short-image" loading="lazy" decoding="async" alt="" />
+          <span class="featured-short__play" aria-hidden="true">▶</span>
+          <span class="featured-short__watch">WATCH SHORT</span>
+        </a>
         <p class="featured-short__note">ページを訪れるたび、異なる記憶が目を覚ます。</p>
       </aside>
 
@@ -241,7 +243,7 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=520"></script>
-  <script src="app.js?v=321"></script>
+  <script src="app.js?v=322"></script>
   <script src="v2.1.js?v=410"></script>
   <script src="v2.3.js?v=518"></script>
 </body>

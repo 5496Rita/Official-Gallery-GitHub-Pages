@@ -83,67 +83,30 @@
   }
 
   function initFeaturedShort() {
-    const playerHost = document.getElementById('featured-short-player');
-    if (!playerHost) return;
+    const card = document.getElementById('featured-short-card');
+    const image = document.getElementById('featured-short-image');
+    if (!card || !image) return;
 
-    const playlistId = 'PLiJ4i_JuStGC25t-DOW7QXow7CaN32HHV';
-    let randomized = false;
-    let settling = false;
+    const featuredShorts = [
+      'aA6SpPA7Rbk',
+      'uwaM2mjW0ms',
+      '4YHkCpxjXUY',
+      '20Jk476_mAc',
+      'QvkUl1-x8OY',
+      'UW5MCWAFI_k',
+      'va6LYjOGMBE'
+    ];
 
-    const createPlayer = () => {
-      if (!window.YT?.Player || playerHost.dataset.initialized === 'true') return;
-      playerHost.dataset.initialized = 'true';
+    const videoId = featuredShorts[Math.floor(Math.random() * featuredShorts.length)];
+    const shortUrl = `https://www.youtube.com/shorts/${videoId}`;
 
-      const player = new window.YT.Player(playerHost, {
-        width: '100%',
-        height: '100%',
-        playerVars: {
-          listType: 'playlist',
-          list: playlistId,
-          playsinline: 1,
-          rel: 0,
-          controls: 1,
-          modestbranding: 1,
-          enablejsapi: 1
-        },
-        events: {
-          onReady(event) {
-            event.target.cuePlaylist({ listType: 'playlist', list: playlistId, index: 0 });
-          },
-          onStateChange(event) {
-            if (settling && event.data === window.YT.PlayerState.PLAYING) {
-              event.target.pauseVideo();
-              settling = false;
-              return;
-            }
-            if (!randomized && event.data === window.YT.PlayerState.CUED) {
-              randomized = true;
-              event.target.setShuffle(true);
-              settling = true;
-              event.target.nextVideo();
-            }
-          }
-        }
-      });
-    };
-
-    if (window.YT?.Player) {
-      createPlayer();
-      return;
-    }
-
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      if (typeof previousReady === 'function') previousReady();
-      createPlayer();
-    };
-
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.async = true;
-      document.head.appendChild(script);
-    }
+    card.href = shortUrl;
+    card.setAttribute('aria-label', 'ランダムに選ばれたYouTube Shortを新しいタブで見る');
+    image.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+    image.alt = 'ランダムに選ばれたYouTube Shortのサムネイル';
+    image.addEventListener('error', () => {
+      image.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    }, { once: true });
   }
 
   initFeaturedShort();
