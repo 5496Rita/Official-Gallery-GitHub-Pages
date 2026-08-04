@@ -114,8 +114,12 @@
       iframe.allowFullscreen = true;
       iframe.loading = 'eager';
       iframe.className = 'featured-short__player';
+      iframe.addEventListener('load', () => {
+        section.classList.add('is-ready');
+      }, { once: true });
       playerWrap.replaceChildren(iframe);
       section.hidden = false;
+      window.setTimeout(() => section.classList.add('is-ready'), 1200);
     } catch (error) {
       console.warn('Featured Short could not be loaded.', error);
     }
