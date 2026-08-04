@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="preload" as="image" href="images/welcome-bg.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="bundle.css?v=322" />
+  <link rel="stylesheet" href="bundle.css?v=325" />
 </head>
 <body class="page-enter">
   <div class="page-transition" aria-hidden="true"></div>
@@ -101,12 +101,8 @@
         </div>
       </div>
 
-      <aside id="featured-short" class="featured-short reveal" aria-labelledby="featured-short-title" hidden>
-        <h2 id="featured-short-title" class="featured-short__title">FEATURED SHORT</h2>
-        <button id="featured-short-card" class="featured-short__frame" type="button" aria-label="選ばれたYouTube Shortをこの場で再生">
-          <img id="featured-short-image" loading="lazy" decoding="async" alt="" />
-          <span class="featured-short__play" aria-hidden="true">▶</span>
-        </button>
+      <aside id="featured-short" class="featured-short reveal" aria-label="ランダムに選ばれたYouTube Short" hidden>
+        <div id="featured-short-player" class="featured-short__player-wrap"></div>
       </aside>
 
       <a class="scroll-cue" href="#artist">SCROLL</a>
@@ -238,7 +234,7 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=520"></script>
-  <script src="app.js?v=324"></script>
+  <script src="app.js?v=325"></script>
   <script src="v2.1.js?v=410"></script>
   <script src="v2.3.js?v=518"></script>
 </body>

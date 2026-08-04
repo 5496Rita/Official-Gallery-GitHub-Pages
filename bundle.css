@@ -4560,3 +4560,40 @@ button.featured-short__frame{
   .featured-short__play{width:40px;height:40px;font-size:14px}
 }
 .featured-short__frame::before{display:none}
+
+
+/* v3.25 Entrance Short: large, silent autoplay loop */
+.featured-short{
+  position:relative;
+  z-index:3;
+  width:min(31vw,390px);
+  min-width:300px;
+  margin-left:auto;
+  align-self:center;
+}
+.featured-short[hidden]{display:none!important}
+.featured-short__player-wrap,
+.featured-short__player{
+  display:block;
+  width:100%;
+  aspect-ratio:9/16;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:#050307;
+  overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.58);
+}
+.featured-short__player{height:100%}
+.featured-short__title,
+.featured-short__frame,
+.featured-short__play{display:none!important}
+@media(max-width:1100px){
+  .featured-short{width:min(34vw,350px);min-width:280px}
+}
+@media(max-width:900px){
+  .featured-short{width:min(72vw,360px);min-width:0;margin:38px auto 0;align-self:auto}
+}
+@media(max-width:600px){
+  .featured-short{width:min(84vw,340px);margin-top:34px}
+}

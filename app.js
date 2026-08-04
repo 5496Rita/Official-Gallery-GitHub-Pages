@@ -84,9 +84,8 @@
 
   async function initFeaturedShort() {
     const section = document.getElementById('featured-short');
-    const card = document.getElementById('featured-short-card');
-    const image = document.getElementById('featured-short-image');
-    if (!section || !card || !image) return;
+    const playerWrap = document.getElementById('featured-short-player');
+    if (!section || !playerWrap) return;
 
     try {
       const response = await fetch('data/shorts.json', { cache: 'no-store' });
@@ -99,23 +98,23 @@
       const selected = shorts[Math.floor(Math.random() * shorts.length)];
       if (!selected?.id) return;
 
-      image.src = selected.thumbnail || `https://i.ytimg.com/vi/${selected.id}/hqdefault.jpg`;
-      image.alt = selected.title ? `${selected.title}のサムネイル` : 'ランダムに選ばれたYouTube Shortのサムネイル';
-      image.addEventListener('error', () => {
-        image.src = `https://i.ytimg.com/vi/${selected.id}/hqdefault.jpg`;
-      }, { once: true });
-
-      card.addEventListener('click', () => {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${selected.id}?autoplay=1&playsinline=1&rel=0`;
-        iframe.title = selected.title || 'Featured YouTube Short';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-        iframe.loading = 'eager';
-        iframe.className = 'featured-short__player';
-        card.replaceWith(iframe);
-      }, { once: true });
-
+      const iframe = document.createElement('iframe');
+      const params = new URLSearchParams({
+        autoplay: '1',
+        mute: '1',
+        loop: '1',
+        playlist: selected.id,
+        playsinline: '1',
+        rel: '0',
+        controls: '1'
+      });
+      iframe.src = `https://www.youtube-nocookie.com/embed/${selected.id}?${params.toString()}`;
+      iframe.title = selected.title || 'Random YouTube Short';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'eager';
+      iframe.className = 'featured-short__player';
+      playerWrap.replaceChildren(iframe);
       section.hidden = false;
     } catch (error) {
       console.warn('Featured Short could not be loaded.', error);
