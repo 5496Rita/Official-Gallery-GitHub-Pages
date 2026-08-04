@@ -246,7 +246,7 @@
 
   const matchedTracks = q
     ? (album.tracks || []).filter(track =>
-        String(track).toLocaleLowerCase('ja').includes(q)
+        String(typeof track === 'string' ? track : (track.title || '')).toLocaleLowerCase('ja').includes(q)
       )
     : [];
 
@@ -256,7 +256,7 @@
       ${matchedTracks
         .map(track => `
           <div class="archive-card__matched-title">
-            ♪ ${escapeHtml(track)}
+            ♪ ${escapeHtml(typeof track === 'string' ? track : (track.title || ''))}
           </div>
         `)
         .join('')}
