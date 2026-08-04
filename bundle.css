@@ -4484,3 +4484,79 @@ body.is-opening-artwork::after {
 .featured-short__link:hover img{transform:scale(1.025);filter:brightness(.88)}
 .featured-short__link:hover .featured-short__play{transform:translate(-50%,-50%) scale(1.08);background:rgba(70,22,64,.78)}
 @media(max-width:600px){.featured-short__play{width:52px;height:52px;font-size:18px}.featured-short__watch{bottom:17px;font-size:9px}}
+
+/* v3.24 Featured Short: playlist data, lightweight click-to-play */
+.featured-short{
+  position:relative;
+  z-index:3;
+  width:min(21vw,250px);
+  min-width:190px;
+  margin-left:auto;
+  align-self:center;
+  text-align:center;
+}
+.featured-short[hidden]{display:none!important}
+.featured-short__title{
+  margin:0 0 10px;
+  font:400 12px/1.2 Georgia,serif;
+  letter-spacing:.2em;
+  color:rgba(244,236,246,.78);
+  text-shadow:0 2px 16px #000;
+}
+.featured-short__frame,
+.featured-short__player{
+  display:block;
+  width:min(100%,210px);
+  aspect-ratio:9/16;
+  margin:0 auto;
+  border:1px solid rgba(238,221,238,.22);
+  border-radius:2px;
+  background:#050307;
+  box-shadow:0 18px 42px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+button.featured-short__frame{
+  position:relative;
+  padding:0;
+  color:#fff;
+  cursor:pointer;
+  appearance:none;
+}
+.featured-short__frame img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.82);
+  transition:filter .22s ease,transform .22s ease;
+}
+.featured-short__frame:hover img{filter:brightness(.95);transform:scale(1.01)}
+.featured-short__play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  padding-left:3px;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:50%;
+  background:rgba(3,2,5,.52);
+  color:#fff;
+  font-size:15px;
+  line-height:1;
+  transform:translate(-50%,-50%);
+  box-shadow:0 6px 20px rgba(0,0,0,.45);
+}
+@media(max-width:900px){
+  .featured-short{width:min(54vw,230px);min-width:180px;margin:34px auto 0;align-self:auto}
+  .featured-short__frame,.featured-short__player{width:min(100%,205px)}
+}
+@media(max-width:600px){
+  .featured-short{width:min(58vw,215px);margin-top:32px}
+  .featured-short__title{font-size:10px;margin-bottom:8px}
+  .featured-short__frame,.featured-short__player{width:min(100%,190px)}
+  .featured-short__play{width:40px;height:40px;font-size:14px}
+}
+.featured-short__frame::before{display:none}
