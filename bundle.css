@@ -4645,3 +4645,25 @@ button.featured-short__frame{
     transition:none;
   }
 }
+
+/* v3.27 Entrance Short position refinement */
+@media (min-width: 901px){
+  .featured-short{
+    transform:translate(-120px,-6px);
+  }
+  .featured-short.is-ready{
+    transform:translate(-120px,-20px);
+  }
+  .featured-short__player-wrap{
+    box-shadow:0 28px 76px rgba(0,0,0,.62),0 0 62px rgba(126,76,170,.176);
+  }
+  .featured-short:hover .featured-short__player-wrap{
+    box-shadow:0 32px 86px rgba(0,0,0,.66),0 0 78px rgba(126,76,170,.224);
+  }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 901px){
+  .featured-short,
+  .featured-short.is-ready{
+    transform:translate(-120px,-20px);
+  }
+}
