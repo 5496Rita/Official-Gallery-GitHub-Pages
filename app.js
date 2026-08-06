@@ -3,7 +3,7 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const state = { view: 'grid', query: '', sort: 'added', artist: 'all', lyricsReady: false };
+  const state = { view: 'grid', query: '', sort: 'added', artist: 'all', searchMode: 'songs', lyricsReady: false };
   const lyricsIndex = new Map();
   let lyricsLoadPromise = null;
   let searchTimer = 0;
@@ -22,6 +22,7 @@
   const archiveRitaCount = $('#archive-rita-count');
   const archiveCroveilCount = $('#archive-croveil-count');
   const archiveSearch = $('#archive-search');
+  const archiveSearchLabel = $('#archive-search-label');
   const archiveSort = $('#archive-sort');
   const archiveCount = $('#archive-count');
 
@@ -231,14 +232,18 @@
   }
 
   function albumMatchesQuery(album, q) {
-    const trackText = (album.tracks || []).map(getTrackTitle).join(' ');
-    const storyText = Array.isArray(album.story) ? album.story.join(' ') : (album.story || '');
-    const baseText = normalizeSearchText([album.title, album.artist, trackText, storyText].join(' '));
-    if (baseText.includes(q)) return true;
+    if (state.searchMode === 'lyrics') {
+      return (lyricsIndex.get(album.id) || []).some(track => track.searchLyrics.includes(q));
+    }
 
-    return (lyricsIndex.get(album.id) || []).some(track =>
-      track.searchTitle.includes(q) || track.searchLyrics.includes(q)
-    );
+    const trackText = (album.tracks || []).map(getTrackTitle).join(' ');
+    const tagText = [
+      ...(Array.isArray(album.tags) ? album.tags : []),
+      ...(Array.isArray(album.genres) ? album.genres : []),
+      album.genre || '',
+      album.category || ''
+    ].join(' ');
+    return normalizeSearchText([album.title, trackText, tagText].join(' ')).includes(q);
   }
 
   function getFilteredAlbums() {
@@ -276,13 +281,11 @@
     link.dataset.albumId = album.id;
 
     const q = normalizeSearchText(state.query.trim());
-    const titleMatches = q
+    const titleMatches = q && state.searchMode === 'songs'
       ? (album.tracks || []).filter(track => normalizeSearchText(getTrackTitle(track)).includes(q))
       : [];
-    const lyricMatches = q
-      ? (lyricsIndex.get(album.id) || []).filter(track =>
-          track.searchTitle.includes(q) || track.searchLyrics.includes(q)
-        ).slice(0, 3)
+    const lyricMatches = q && state.searchMode === 'lyrics'
+      ? (lyricsIndex.get(album.id) || []).filter(track => track.searchLyrics.includes(q)).slice(0, 3)
       : [];
 
     const lyricMatchHtml = lyricMatches.map(track => `
@@ -304,7 +307,7 @@
           ${titleOnlyMatches.map(track => `
             <div class="archive-card__matched-title">♪ ${escapeHtml(getTrackTitle(track))}</div>`).join('')}
           ${lyricMatchHtml}
-          <div class="archive-card__matched-label">MATCHED TRACK / LYRICS</div>
+          <div class="archive-card__matched-label">${state.searchMode === 'lyrics' ? 'LYRICS MATCH' : 'SONG MATCH'}</div>
         </div>`
       : '';
 
@@ -356,13 +359,43 @@
   archiveSearch?.addEventListener('input', event => {
     state.query = event.target.value;
     window.clearTimeout(searchTimer);
-    renderArchive();
-    if (!state.query.trim()) return;
+    if (state.searchMode === 'songs') {
+      renderArchive();
+      return;
+    }
+    if (!state.query.trim()) {
+      renderArchive();
+      return;
+    }
     searchTimer = window.setTimeout(async () => {
       await ensureLyricsIndex();
       renderArchive();
-    }, 120);
+    }, 160);
   });
+
+  $$('.search-mode-tabs button').forEach(button => button.addEventListener('click', async () => {
+    state.searchMode = button.dataset.searchMode === 'lyrics' ? 'lyrics' : 'songs';
+    state.query = '';
+    if (archiveSearch) {
+      archiveSearch.value = '';
+      archiveSearch.placeholder = state.searchMode === 'lyrics'
+        ? '歌詞の一節を検索'
+        : '曲名・アルバムを検索';
+    }
+    if (archiveSearchLabel) {
+      archiveSearchLabel.textContent = state.searchMode === 'lyrics'
+        ? '歌詞検索'
+        : '曲名・アルバム検索';
+    }
+    $$('.search-mode-tabs button').forEach(item => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    if (state.searchMode === 'lyrics') await ensureLyricsIndex();
+    renderArchive();
+    archiveSearch?.focus();
+  }));
   archiveSort?.addEventListener('change', event => { state.sort = event.target.value; renderArchive(); });
   $$('.view-toggle button').forEach(button => button.addEventListener('click', () => {
     state.view = button.dataset.view;

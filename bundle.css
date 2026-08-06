@@ -4748,3 +4748,21 @@ button.featured-short__frame{
     line-height: 1.55;
   }
 }
+
+
+/* Separate song / lyrics search */
+.archive-search-panel{display:grid;gap:10px;min-width:min(100%,360px)}
+.search-mode-tabs{display:flex;gap:7px;align-items:center}
+.search-mode-tabs button{
+  appearance:none;border:1px solid rgba(184,145,216,.24);background:rgba(12,9,17,.56);
+  color:rgba(239,229,248,.58);padding:7px 14px;border-radius:999px;cursor:pointer;
+  font:600 10px/1.1 inherit;letter-spacing:.18em;transition:border-color .22s ease,color .22s ease,background .22s ease,box-shadow .22s ease
+}
+.search-mode-tabs button:hover,.search-mode-tabs button:focus-visible{color:#f4eafc;border-color:rgba(197,156,229,.52)}
+.search-mode-tabs button.is-active{color:#fff;border-color:rgba(202,162,232,.68);background:rgba(111,70,139,.28);box-shadow:0 0 22px rgba(126,77,161,.18)}
+.archive-toolbar .archive-search-panel .search-field{width:100%}
+@media(max-width:700px){
+  .archive-search-panel{width:100%;min-width:0}
+  .search-mode-tabs{justify-content:center}
+  .search-mode-tabs button{flex:1;max-width:150px;padding:9px 12px}
+}

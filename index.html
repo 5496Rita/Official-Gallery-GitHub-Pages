@@ -168,10 +168,16 @@
           <button type="button" data-artist="CROVEIL">CROVEIL</button>
         </div>
         <div class="archive-toolbar reveal">
-          <label class="search-field">
-            <span class="sr-only">Search</span>
-            <input id="archive-search" type="search" placeholder="作品名・曲名を検索" autocomplete="off" />
-          </label>
+          <div class="archive-search-panel">
+            <div class="search-mode-tabs" role="tablist" aria-label="Search mode">
+              <button type="button" class="is-active" data-search-mode="songs" role="tab" aria-selected="true">SONGS</button>
+              <button type="button" data-search-mode="lyrics" role="tab" aria-selected="false">LYRICS</button>
+            </div>
+            <label class="search-field">
+              <span id="archive-search-label" class="sr-only">曲名・アルバム検索</span>
+              <input id="archive-search" type="search" placeholder="曲名・アルバムを検索" autocomplete="off" />
+            </label>
+          </div>
           <label>
             <span class="sr-only">Sort</span>
             <select id="archive-sort">
@@ -218,7 +224,7 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=521"></script>
-  <script src="app.js?v=331"></script>
+  <script src="app.js?v=332"></script>
   <script src="v2.1.js?v=410"></script>
   <script src="v2.3.js?v=518"></script>
 </body>
