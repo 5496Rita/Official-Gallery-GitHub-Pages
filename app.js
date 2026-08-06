@@ -126,8 +126,12 @@
       if (!response.ok) throw new Error(`Shorts data request failed: ${response.status}`);
 
       const data = await response.json();
-      const shorts = (Array.isArray(data) ? data : data.items).filter(item => item?.id);
+      const rawShorts = Array.isArray(data) ? data : (Array.isArray(data?.items) ? data.items : []);
+      const shorts = rawShorts.filter(item => item?.id);
       if (shorts.length === 0) return;
+
+      section.hidden = false;
+      requestAnimationFrame(() => section.classList.add('is-ready'));
 
       await loadYouTubePlayerApi();
 
@@ -154,8 +158,6 @@
         if (isMuted) player.mute(); else player.unMute();
         player.playVideo();
       };
-
-      section.hidden = false;
 
       player = new window.YT.Player(playerWrap, {
         videoId: shorts[currentIndex].id,
