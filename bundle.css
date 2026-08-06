@@ -4928,3 +4928,31 @@ button.featured-short__frame{
   .featured-short__control{min-height:48px;font-size:10px}
   #featured-short-sound{font-size:11px}
 }
+
+
+/* v5.0 Mobile-first external YouTube controls */
+@media (max-width:700px){
+  .featured-short{width:min(94vw,420px);margin-top:30px}
+  .featured-short__controls{
+    position:static;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    width:100%;
+    margin-top:10px;
+    pointer-events:auto;
+  }
+  .featured-short__control{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;min-height:56px;padding:0 16px;
+    border-radius:6px;pointer-events:auto;
+    font-size:12px;letter-spacing:.12em;
+    touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+  }
+  #featured-short-sound{
+    order:1;background:rgba(74,27,84,.96);
+    border-color:rgba(244,215,250,.9);
+    box-shadow:0 8px 26px rgba(0,0,0,.44),0 0 24px rgba(145,78,164,.2);
+  }
+  #featured-short-next{order:2;min-height:48px;background:rgba(8,5,12,.88)}
+}
