@@ -4725,3 +4725,26 @@ button.featured-short__frame{
   .artist-portrait{opacity:1;transform:none;animation:none}
   .artist-portrait img{transition:none}
 }
+
+/* Lyrics search results */
+.archive-card__lyric-hit + .archive-card__lyric-hit {
+  margin-top: 12px;
+}
+
+.archive-card__lyric-excerpt {
+  display: block;
+  max-width: 42ch;
+  margin: 2px 0 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(245, 236, 255, .72);
+  text-shadow: 0 0 16px rgba(136, 85, 190, .18);
+}
+
+@media (max-width: 700px) {
+  .archive-card__lyric-excerpt {
+    max-width: none;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}

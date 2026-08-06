@@ -3,7 +3,10 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const state = { view: 'grid', query: '', sort: 'added', artist: 'all' };
+  const state = { view: 'grid', query: '', sort: 'added', artist: 'all', lyricsReady: false };
+  const lyricsIndex = new Map();
+  let lyricsLoadPromise = null;
+  let searchTimer = 0;
   const RETURN_STATE_KEY = 'officialGalleryReturnState';
   let returnState = null;
   try { returnState = JSON.parse(sessionStorage.getItem(RETURN_STATE_KEY) || 'null'); } catch (_) { returnState = null; }
@@ -198,15 +201,52 @@
     });
   }
 
+  function normalizeSearchText(value = '') {
+    return String(value).normalize('NFKC').toLocaleLowerCase('ja');
+  }
+
+  function getTrackTitle(track) {
+    return typeof track === 'string' ? track : (track?.title || track?.name || '');
+  }
+
+  async function ensureLyricsIndex() {
+    if (state.lyricsReady) return;
+    if (lyricsLoadPromise) return lyricsLoadPromise;
+
+    lyricsLoadPromise = Promise.allSettled(normalizedAlbums.map(async album => {
+      const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json`, { cache: 'force-cache' });
+      if (!response.ok) return;
+      const data = await response.json();
+      const tracks = Array.isArray(data?.tracks) ? data.tracks : [];
+      lyricsIndex.set(album.id, tracks.map(track => ({
+        title: String(track?.title || ''),
+        lyrics: String(track?.lyrics || ''),
+        searchTitle: normalizeSearchText(track?.title || ''),
+        searchLyrics: normalizeSearchText(track?.lyrics || '')
+      })));
+    }));
+
+    await lyricsLoadPromise;
+    state.lyricsReady = true;
+  }
+
+  function albumMatchesQuery(album, q) {
+    const trackText = (album.tracks || []).map(getTrackTitle).join(' ');
+    const storyText = Array.isArray(album.story) ? album.story.join(' ') : (album.story || '');
+    const baseText = normalizeSearchText([album.title, album.artist, trackText, storyText].join(' '));
+    if (baseText.includes(q)) return true;
+
+    return (lyricsIndex.get(album.id) || []).some(track =>
+      track.searchTitle.includes(q) || track.searchLyrics.includes(q)
+    );
+  }
+
   function getFilteredAlbums() {
-    const q = state.query.trim().toLocaleLowerCase('ja');
+    const q = normalizeSearchText(state.query.trim());
     let items = normalizedAlbums.filter(album => {
       if (state.artist !== 'all' && album.artist !== state.artist) return false;
       if (!q) return true;
-      const trackText = (album.tracks || [])
-        .map(track => typeof track === 'string' ? track : (track?.title || track?.name || ''))
-        .join(' ');
-      return [album.title, album.artist, trackText].join(' ').toLocaleLowerCase('ja').includes(q);
+      return albumMatchesQuery(album, q);
     });
     const sorters = {
       added: (a, b) => a._addedIndex - b._addedIndex,
@@ -218,60 +258,77 @@
     return items.sort(sorters[state.sort] || sorters.added);
   }
 
+  function excerptAroundMatch(text, query, radius = 42) {
+    const source = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!source) return '';
+    const normalized = normalizeSearchText(source);
+    const index = normalized.indexOf(query);
+    if (index < 0) return source.slice(0, radius * 2);
+    const from = Math.max(0, index - radius);
+    const to = Math.min(source.length, index + query.length + radius);
+    return `${from > 0 ? '…' : ''}${source.slice(from, to)}${to < source.length ? '…' : ''}`;
+  }
+
   function createArchiveCard(album) {
-  const link = document.createElement('a');
-  link.href = detailUrl(album, 'archive');
-  link.className = 'archive-card';
-  link.dataset.albumId = album.id;
+    const link = document.createElement('a');
+    link.href = detailUrl(album, 'archive');
+    link.className = 'archive-card';
+    link.dataset.albumId = album.id;
 
-  const q = state.query.trim().toLocaleLowerCase('ja');
+    const q = normalizeSearchText(state.query.trim());
+    const titleMatches = q
+      ? (album.tracks || []).filter(track => normalizeSearchText(getTrackTitle(track)).includes(q))
+      : [];
+    const lyricMatches = q
+      ? (lyricsIndex.get(album.id) || []).filter(track =>
+          track.searchTitle.includes(q) || track.searchLyrics.includes(q)
+        ).slice(0, 3)
+      : [];
 
-  const matchedTracks = q
-    ? (album.tracks || []).filter(track =>
-        String(typeof track === 'string' ? track : (track.title || '')).toLocaleLowerCase('ja').includes(q)
-      )
-    : [];
+    const lyricMatchHtml = lyricMatches.map(track => `
+      <div class="archive-card__lyric-hit">
+        <div class="archive-card__matched-title">♪ ${escapeHtml(track.title)}</div>
+        ${track.searchLyrics.includes(q)
+          ? `<div class="archive-card__lyric-excerpt">${escapeHtml(excerptAroundMatch(track.lyrics, q))}</div>`
+          : ''}
+      </div>`).join('');
 
- const matchedTracksHtml = matchedTracks.length
-  ? `
-    <div class="archive-card__matched">
-      ${matchedTracks
-        .map(track => `
-          <div class="archive-card__matched-title">
-            ♪ ${escapeHtml(typeof track === 'string' ? track : (track.title || ''))}
-          </div>
-        `)
-        .join('')}
-      <div class="archive-card__matched-label">
-        MATCHED TRACK
-      </div>
-    </div>
-  `
-  : '';
+    const titleOnlyMatches = titleMatches.filter(track => {
+      const title = getTrackTitle(track);
+      return !lyricMatches.some(match => match.title === title);
+    });
 
-  const isNewest = Boolean(album.release && album.release === newestRelease);
-  link.innerHTML = `
-    <span class="archive-card__image">
-      <img src="${thumbnailUrl(album)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="420" height="420">
-      <span class="archive-card__glint" aria-hidden="true"></span>
-      ${isNewest ? '<span class="archive-card__new">NEW EXHIBIT</span>' : ''}
-    </span>
+    const matchedHtml = q && (titleOnlyMatches.length || lyricMatches.length)
+      ? `
+        <div class="archive-card__matched">
+          ${titleOnlyMatches.map(track => `
+            <div class="archive-card__matched-title">♪ ${escapeHtml(getTrackTitle(track))}</div>`).join('')}
+          ${lyricMatchHtml}
+          <div class="archive-card__matched-label">MATCHED TRACK / LYRICS</div>
+        </div>`
+      : '';
 
-    <span class="archive-card__meta">
-      <span class="archive-card__catalog">COLLECTION No. ${String(album.artistWorkNumber).padStart(2, '0')}</span>
-      <h3>${escapeHtml(album.title)}</h3>
-      <p>
-        ${workLabel(album)} ·
-        ${escapeHtml(releaseLabel(album))} ·
-        ${(album.tracks || []).length} TRACKS
-      </p>
+    const isNewest = Boolean(album.release && album.release === newestRelease);
+    link.innerHTML = `
+      <span class="archive-card__image">
+        <img src="${thumbnailUrl(album)}" alt="${escapeHtml(album.title)} ジャケット" loading="lazy" decoding="async" width="420" height="420">
+        <span class="archive-card__glint" aria-hidden="true"></span>
+        ${isNewest ? '<span class="archive-card__new">NEW EXHIBIT</span>' : ''}
+      </span>
 
-      ${matchedTracksHtml}
-    </span>
-  `;
+      <span class="archive-card__meta">
+        <span class="archive-card__catalog">COLLECTION No. ${String(album.artistWorkNumber).padStart(2, '0')}</span>
+        <h3>${escapeHtml(album.title)}</h3>
+        <p>
+          ${workLabel(album)} ·
+          ${escapeHtml(releaseLabel(album))} ·
+          ${(album.tracks || []).length} TRACKS
+        </p>
+        ${matchedHtml}
+      </span>`;
 
-  return link;
-}
+    return link;
+  }
 
   function renderArtistArchive(container, section, countElement, artist, items) {
     const artistItems = items.filter(album => album.artist === artist);
@@ -296,7 +353,16 @@
     }
   }
 
-  archiveSearch?.addEventListener('input', event => { state.query = event.target.value; renderArchive(); });
+  archiveSearch?.addEventListener('input', event => {
+    state.query = event.target.value;
+    window.clearTimeout(searchTimer);
+    renderArchive();
+    if (!state.query.trim()) return;
+    searchTimer = window.setTimeout(async () => {
+      await ensureLyricsIndex();
+      renderArchive();
+    }, 120);
+  });
   archiveSort?.addEventListener('change', event => { state.sort = event.target.value; renderArchive(); });
   $$('.view-toggle button').forEach(button => button.addEventListener('click', () => {
     state.view = button.dataset.view;
