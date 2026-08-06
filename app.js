@@ -191,11 +191,27 @@
       });
 
       soundButton.addEventListener('click', () => {
-        if (!player) return;
-        isMuted = !isMuted;
-        if (isMuted) player.mute(); else player.unMute();
+        if (!player || typeof player.isMuted !== 'function') return;
+
+        const currentlyMuted = player.isMuted();
+        if (currentlyMuted) {
+          player.unMute();
+          player.setVolume?.(100);
+          isMuted = false;
+        } else {
+          player.mute();
+          isMuted = true;
+        }
+
         player.playVideo();
         updateSoundButton();
+
+        // Mobile browsers can apply the audio state a beat after the user gesture.
+        window.setTimeout(() => {
+          if (!player || typeof player.isMuted !== 'function') return;
+          isMuted = player.isMuted();
+          updateSoundButton();
+        }, 120);
       });
 
       nextButton.addEventListener('click', playNext);

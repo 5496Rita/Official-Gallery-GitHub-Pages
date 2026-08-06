@@ -4875,3 +4875,56 @@ button.featured-short__frame{
   .featured-short__controls{gap:8px}
   .featured-short__control{min-height:52px;font-size:10px;letter-spacing:.09em}
 }
+
+
+/* v4.03 Mobile instant sound control */
+@media (max-width: 700px){
+  .featured-short{
+    position:relative;
+    width:min(94vw,420px);
+    margin-top:30px;
+  }
+  .featured-short__player-wrap{
+    position:relative;
+    z-index:1;
+  }
+  .featured-short__controls{
+    position:absolute;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:20;
+    display:grid;
+    grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);
+    gap:8px;
+    width:auto;
+    margin:0;
+    pointer-events:none;
+  }
+  .featured-short__control{
+    pointer-events:auto;
+    min-height:52px;
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:999px;
+    background:rgba(7,3,10,.84);
+    box-shadow:0 8px 26px rgba(0,0,0,.52);
+    color:#fff;
+    font-size:11px;
+    letter-spacing:.11em;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+  #featured-short-sound{
+    background:rgba(69,24,78,.9);
+    border-color:rgba(238,202,245,.86);
+    font-size:12px;
+  }
+  .featured-short__control:disabled{
+    opacity:.62;
+  }
+}
+@media (max-width: 380px){
+  .featured-short__controls{left:8px;right:8px;bottom:8px;gap:6px}
+  .featured-short__control{min-height:48px;font-size:10px}
+  #featured-short-sound{font-size:11px}
+}
