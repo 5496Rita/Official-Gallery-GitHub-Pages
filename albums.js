@@ -5709,7 +5709,7 @@ R for Rose 美しく散れ
     ],
     art: "covers/crown-of-jewel.jpg",
     accent: "purple",
-    youtubeId: "",
+    youtubeId: "Pgr0gN0VOUI",
     links: commonListenLinks
   },
   {
@@ -6132,7 +6132,7 @@ R for Rose 美しく散れ
     ],
     art: "covers/lune-noire.jpg",
     accent: "blue",
-    youtubeId: "",
+    youtubeId: "FBlF8HkpsKI",
     links: commonListenLinks
   },
   {
@@ -6426,7 +6426,7 @@ Desire
     ],
     art: "covers/hollow-salvation.jpg",
     accent: "purple",
-    youtubeId: "",
+    youtubeId: "LFa_UwzIyZ0",
     links: commonListenLinks
   },
   {
