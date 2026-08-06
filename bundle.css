@@ -4839,3 +4839,39 @@ button.featured-short__frame{
   .featured-short__controls{gap:8px;margin-top:10px}
   .featured-short__control{min-height:44px;padding:0 14px;font-size:9px}
 }
+
+
+/* v4.02 Mobile-first Shorts controls */
+@media (max-width: 700px){
+  .featured-short{
+    width:min(92vw,400px);
+    margin-top:32px;
+  }
+  .featured-short__controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    gap:10px;
+    margin-top:12px;
+  }
+  .featured-short__control{
+    width:100%;
+    min-width:0;
+    min-height:54px;
+    padding:0 12px;
+    font-size:11px;
+    letter-spacing:.12em;
+    border-radius:4px;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .featured-short__control:active{
+    transform:scale(.98);
+    background:rgba(82,38,92,.78);
+  }
+}
+@media (max-width: 380px){
+  .featured-short{width:94vw}
+  .featured-short__controls{gap:8px}
+  .featured-short__control{min-height:52px;font-size:10px;letter-spacing:.09em}
+}
