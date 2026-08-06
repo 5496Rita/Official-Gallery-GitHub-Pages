@@ -6,6 +6,8 @@
   const id = params.get('id');
   const index = albums.findIndex(album => album.id === id);
   const from = params.get('from') === 'exhibition' ? 'exhibition' : 'archive';
+  const requestedTrackIndex = Number.parseInt(params.get('track') || '', 10);
+  const lyricQuery = String(params.get('lyric') || '').trim();
 
   const quickBack = $('#quick-back');
   quickBack?.addEventListener('click', () => {
@@ -51,6 +53,17 @@
   const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
   })[char]);
+
+  const escapeRegExp = (value = '') => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  const renderHighlightedLyrics = (lyrics, query) => {
+    const source = String(lyrics || '');
+    if (!query) return escapeHtml(source);
+    const pattern = new RegExp(`(${escapeRegExp(query)})`, 'giu');
+    return source.split(pattern).map((part, index) =>
+      index % 2 ? `<mark class="lyric-search-hit" data-lyric-hit>${escapeHtml(part)}</mark>` : escapeHtml(part)
+    ).join('');
+  };
 
   const ordinal = value => {
     const mod100 = value % 100;
@@ -165,12 +178,16 @@
     storyBody?.classList.toggle('is-open', !expanded);
   });
 
-  const renderLyricsBody = track => {
+  const renderLyricsBody = (track, highlightQuery = '') => {
     const lyrics = track.lyrics.trim();
     return lyrics
-      ? `<div class="track-lyrics" aria-label="${escapeHtml(track.title)} lyrics">${escapeHtml(lyrics)}</div>`
+      ? `<div class="track-lyrics" aria-label="${escapeHtml(track.title)} lyrics">${renderHighlightedLyrics(lyrics, highlightQuery)}</div>`
       : `<div class="lyrics-unarchived"><span>LYRICS</span><strong>NOT YET ARCHIVED</strong><p>This manuscript has not yet<br>been added to the archive.</p></div>`;
   };
+
+  const initialTrackIndex = Number.isInteger(requestedTrackIndex) && requestedTrackIndex >= 0 && requestedTrackIndex < tracks.length
+    ? requestedTrackIndex
+    : 0;
 
   $('#work-tracks').innerHTML = `
     <div class="lyrics-exhibit">
@@ -180,8 +197,8 @@
             const number = String(i + 1).padStart(2, '0');
             return `
               <li>
-                <button class="lyrics-exhibit__track${i === 0 ? ' is-active' : ''}" type="button" role="tab"
-                  id="lyrics-tab-${i}" aria-selected="${i === 0}" aria-controls="lyrics-viewer" data-track-index="${i}">
+                <button class="lyrics-exhibit__track${i === initialTrackIndex ? ' is-active' : ''}" type="button" role="tab"
+                  id="lyrics-tab-${i}" aria-selected="${i === initialTrackIndex}" aria-controls="lyrics-viewer" data-track-index="${i}">
                   <span class="track-number">${number}</span>
                   <span class="track-title">${escapeHtml(track.title)}</span>
                   <span class="lyrics-exhibit__arrow" aria-hidden="true">→</span>
@@ -191,13 +208,13 @@
         </ol>
       </div>
 
-      <section class="lyrics-exhibit__viewer" id="lyrics-viewer" role="tabpanel" aria-labelledby="lyrics-tab-0" tabindex="0">
+      <section class="lyrics-exhibit__viewer" id="lyrics-viewer" role="tabpanel" aria-labelledby="lyrics-tab-${initialTrackIndex}" tabindex="0">
         <header class="lyrics-exhibit__header">
-          <p class="lyrics-exhibit__meta">${escapeHtml(album.title)} · TRACK 01</p>
-          <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[0]?.title || 'Untitled')}</h3>
+          <p class="lyrics-exhibit__meta">${escapeHtml(album.title)} · TRACK ${String(initialTrackIndex + 1).padStart(2, '0')}</p>
+          <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[initialTrackIndex]?.title || 'Untitled')}</h3>
         </header>
         <div class="lyrics-exhibit__scroll" id="lyrics-scroll">
-          ${tracks[0] ? renderLyricsBody(tracks[0]) : ''}
+          ${tracks[initialTrackIndex] ? renderLyricsBody(tracks[initialTrackIndex], lyricQuery) : ''}
         </div>
       </section>
     </div>
@@ -206,13 +223,13 @@
       ${tracks.map((track, i) => {
         const number = String(i + 1).padStart(2, '0');
         return `
-          <details class="mobile-lyric-toggle">
+          <details class="mobile-lyric-toggle"${i === initialTrackIndex && lyricQuery ? ' open' : ''}>
             <summary>
               <span class="track-number">${number}</span>
               <span class="track-title">${escapeHtml(track.title)}</span>
               <span class="mobile-lyric-toggle__action" aria-hidden="true">読む</span>
             </summary>
-            <div class="mobile-lyric-toggle__body">${renderLyricsBody(track)}</div>
+            <div class="mobile-lyric-toggle__body">${renderLyricsBody(track, i === initialTrackIndex ? lyricQuery : '')}</div>
           </details>`;
       }).join('')}
     </div>`;
@@ -223,7 +240,15 @@
   const viewerMeta = viewer?.querySelector('.lyrics-exhibit__meta');
   const viewerScroll = $('#lyrics-scroll');
 
-  const selectTrack = index => {
+  const focusLyricHit = (root, smooth = true) => {
+    const hit = root?.querySelector?.('[data-lyric-hit]');
+    if (!hit) return;
+    hit.classList.add('is-arrival-highlight');
+    hit.scrollIntoView({ behavior: smooth && !prefersReducedMotion ? 'smooth' : 'auto', block: 'center' });
+    window.setTimeout(() => hit.classList.remove('is-arrival-highlight'), 2400);
+  };
+
+  const selectTrack = (index, highlightQuery = '') => {
     const track = tracks[index];
     if (!track || !viewer || !viewerScroll || !viewerTitle || !viewerMeta) return;
 
@@ -237,8 +262,9 @@
     viewer.setAttribute('aria-labelledby', `lyrics-tab-${index}`);
     viewerMeta.textContent = `${album.title} · TRACK ${String(index + 1).padStart(2, '0')}`;
     viewerTitle.textContent = track.title;
-    viewerScroll.innerHTML = renderLyricsBody(track);
+    viewerScroll.innerHTML = renderLyricsBody(track, highlightQuery);
     viewerScroll.scrollTop = 0;
+    if (highlightQuery) requestAnimationFrame(() => focusLyricHit(viewerScroll));
 
     if (!prefersReducedMotion) {
       viewer.classList.remove('is-changing');
@@ -246,6 +272,21 @@
       viewer.classList.add('is-changing');
     }
   };
+
+  if (lyricQuery) {
+    requestAnimationFrame(() => {
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        const mobileDetails = document.querySelectorAll('.mobile-lyric-toggle')[initialTrackIndex];
+        if (mobileDetails) {
+          mobileDetails.open = true;
+          focusLyricHit(mobileDetails);
+        }
+      } else {
+        selectTrack(initialTrackIndex, lyricQuery);
+        viewer?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+      }
+    });
+  }
 
   $('#work-tracks').addEventListener('click', event => {
     const button = event.target.closest('.lyrics-exhibit__track');

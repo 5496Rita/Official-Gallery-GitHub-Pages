@@ -219,7 +219,8 @@
       if (!response.ok) return;
       const data = await response.json();
       const tracks = Array.isArray(data?.tracks) ? data.tracks : [];
-      lyricsIndex.set(album.id, tracks.map(track => ({
+      lyricsIndex.set(album.id, tracks.map((track, trackIndex) => ({
+        trackIndex,
         title: String(track?.title || ''),
         lyrics: String(track?.lyrics || ''),
         searchTitle: normalizeSearchText(track?.title || ''),
@@ -274,9 +275,22 @@
     return `${from > 0 ? '…' : ''}${source.slice(from, to)}${to < source.length ? '…' : ''}`;
   }
 
+  function escapeRegExp(value = '') {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightSearchMatch(text, query) {
+    const source = String(text || '');
+    const rawQuery = String(query || '').trim();
+    if (!rawQuery) return escapeHtml(source);
+    const pattern = new RegExp(`(${escapeRegExp(rawQuery)})`, 'giu');
+    return source.split(pattern).map((part, index) =>
+      index % 2 ? `<mark class="search-hit-mark">${escapeHtml(part)}</mark>` : escapeHtml(part)
+    ).join('');
+  }
+
   function createArchiveCard(album) {
     const link = document.createElement('a');
-    link.href = detailUrl(album, 'archive');
     link.className = 'archive-card';
     link.dataset.albumId = album.id;
 
@@ -288,11 +302,22 @@
       ? (lyricsIndex.get(album.id) || []).filter(track => track.searchLyrics.includes(q)).slice(0, 3)
       : [];
 
+    if (state.searchMode === 'lyrics' && lyricMatches.length) {
+      const target = lyricMatches[0];
+      const url = new URL(detailUrl(album, 'archive'), location.href);
+      url.searchParams.set('track', String(target.trackIndex));
+      url.searchParams.set('lyric', state.query.trim());
+      link.href = `${url.pathname.split('/').pop()}${url.search}${url.hash}`;
+      link.setAttribute('aria-label', `${album.title}「${target.title}」の一致した歌詞を開く`);
+    } else {
+      link.href = detailUrl(album, 'archive');
+    }
+
     const lyricMatchHtml = lyricMatches.map(track => `
       <div class="archive-card__lyric-hit">
         <div class="archive-card__matched-title">♪ ${escapeHtml(track.title)}</div>
         ${track.searchLyrics.includes(q)
-          ? `<div class="archive-card__lyric-excerpt">${escapeHtml(excerptAroundMatch(track.lyrics, q))}</div>`
+          ? `<div class="archive-card__lyric-excerpt">${highlightSearchMatch(excerptAroundMatch(track.lyrics, q), state.query.trim())}</div>`
           : ''}
       </div>`).join('');
 

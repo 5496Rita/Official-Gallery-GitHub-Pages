@@ -4766,3 +4766,36 @@ button.featured-short__frame{
   .search-mode-tabs{justify-content:center}
   .search-mode-tabs button{flex:1;max-width:150px;padding:9px 12px}
 }
+
+
+/* v3.33 lyric search highlighting */
+.search-hit-mark,
+.lyric-search-hit {
+  color: inherit;
+  background: linear-gradient(180deg, transparent 45%, rgba(196, 132, 255, .34) 45%, rgba(196, 132, 255, .34) 92%, transparent 92%);
+  padding: 0 .08em;
+  border-radius: .12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lyric-search-hit {
+  transition: color .35s ease, background-color .35s ease, box-shadow .35s ease, text-shadow .35s ease;
+}
+
+.lyric-search-hit.is-arrival-highlight {
+  color: #fff5ff;
+  background: rgba(180, 96, 255, .28);
+  box-shadow: 0 0 0 .22rem rgba(180, 96, 255, .12), 0 0 1.8rem rgba(180, 96, 255, .48);
+  text-shadow: 0 0 .75rem rgba(232, 198, 255, .95);
+  animation: lyric-arrival-pulse 1.15s ease-in-out 2;
+}
+
+@keyframes lyric-arrival-pulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lyric-search-hit.is-arrival-highlight { animation: none; }
+}
