@@ -86,44 +86,117 @@
     });
   }
 
+  function loadYouTubePlayerApi() {
+    if (window.YT?.Player) return Promise.resolve(window.YT);
+    if (window.__officialGalleryYouTubeApiPromise) return window.__officialGalleryYouTubeApiPromise;
+
+    window.__officialGalleryYouTubeApiPromise = new Promise((resolve, reject) => {
+      const previousReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof previousReady === 'function') previousReady();
+        resolve(window.YT);
+      };
+
+      const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+      if (!existing) {
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        script.async = true;
+        script.addEventListener('error', () => reject(new Error('YouTube Player API failed to load.')), { once: true });
+        document.head.appendChild(script);
+      }
+
+      window.setTimeout(() => {
+        if (window.YT?.Player) resolve(window.YT);
+      }, 3000);
+    });
+
+    return window.__officialGalleryYouTubeApiPromise;
+  }
+
   async function initFeaturedShort() {
     const section = document.getElementById('featured-short');
     const playerWrap = document.getElementById('featured-short-player');
-    if (!section || !playerWrap) return;
+    const soundButton = document.getElementById('featured-short-sound');
+    const nextButton = document.getElementById('featured-short-next');
+    if (!section || !playerWrap || !soundButton || !nextButton) return;
 
     try {
       const response = await fetch('data/shorts.json', { cache: 'no-store' });
       if (!response.ok) throw new Error(`Shorts data request failed: ${response.status}`);
 
       const data = await response.json();
-      const shorts = Array.isArray(data) ? data : data.items;
-      if (!Array.isArray(shorts) || shorts.length === 0) return;
+      const shorts = (Array.isArray(data) ? data : data.items).filter(item => item?.id);
+      if (shorts.length === 0) return;
 
-      const selected = shorts[Math.floor(Math.random() * shorts.length)];
-      if (!selected?.id) return;
+      await loadYouTubePlayerApi();
 
-      const iframe = document.createElement('iframe');
-      const params = new URLSearchParams({
-        autoplay: '1',
-        mute: '1',
-        loop: '1',
-        playlist: selected.id,
-        playsinline: '1',
-        rel: '0',
-        controls: '1'
-      });
-      iframe.src = `https://www.youtube-nocookie.com/embed/${selected.id}?${params.toString()}`;
-      iframe.title = selected.title || 'Random YouTube Short';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'eager';
-      iframe.className = 'featured-short__player';
-      iframe.addEventListener('load', () => {
-        section.classList.add('is-ready');
-      }, { once: true });
-      playerWrap.replaceChildren(iframe);
+      let currentIndex = Math.floor(Math.random() * shorts.length);
+      let isMuted = true;
+      let player;
+
+      const updateSoundButton = () => {
+        soundButton.setAttribute('aria-pressed', String(!isMuted));
+        soundButton.innerHTML = isMuted
+          ? '<span aria-hidden="true">♪</span> SOUND ON'
+          : '<span aria-hidden="true">♪</span> SOUND OFF';
+      };
+
+      const playNext = () => {
+        if (!player || shorts.length < 1) return;
+        let nextIndex = currentIndex;
+        if (shorts.length > 1) {
+          while (nextIndex === currentIndex) nextIndex = Math.floor(Math.random() * shorts.length);
+        }
+        currentIndex = nextIndex;
+        const next = shorts[currentIndex];
+        player.loadVideoById(next.id);
+        if (isMuted) player.mute(); else player.unMute();
+        player.playVideo();
+      };
+
       section.hidden = false;
-      window.setTimeout(() => section.classList.add('is-ready'), 1200);
+
+      player = new window.YT.Player(playerWrap, {
+        videoId: shorts[currentIndex].id,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          playsinline: 1,
+          rel: 0,
+          controls: 1,
+          modestbranding: 1,
+          origin: window.location.origin
+        },
+        events: {
+          onReady: event => {
+            event.target.mute();
+            event.target.playVideo();
+            soundButton.disabled = false;
+            nextButton.disabled = false;
+            updateSoundButton();
+            section.hidden = false;
+            requestAnimationFrame(() => section.classList.add('is-ready'));
+          },
+          onStateChange: event => {
+            if (event.data === window.YT.PlayerState.ENDED) {
+              event.target.seekTo(0, true);
+              event.target.playVideo();
+            }
+          },
+          onError: () => playNext()
+        }
+      });
+
+      soundButton.addEventListener('click', () => {
+        if (!player) return;
+        isMuted = !isMuted;
+        if (isMuted) player.mute(); else player.unMute();
+        player.playVideo();
+        updateSoundButton();
+      });
+
+      nextButton.addEventListener('click', playNext);
     } catch (error) {
       console.warn('Featured Short could not be loaded.', error);
     }

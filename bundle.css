@@ -4799,3 +4799,43 @@ button.featured-short__frame{
 @media (prefers-reduced-motion: reduce) {
   .lyric-search-hit.is-arrival-highlight { animation: none; }
 }
+
+/* v4.0 Official Gallery Shorts controls */
+.featured-short__controls{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:12px;
+}
+.featured-short__control{
+  min-height:42px;
+  padding:0 16px;
+  border:1px solid rgba(231,214,234,.3);
+  background:rgba(9,5,12,.68);
+  color:#eee4f0;
+  font:600 10px/1 Arial,sans-serif;
+  letter-spacing:.15em;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  transition:border-color .22s ease,background .22s ease,transform .22s ease;
+}
+.featured-short__control:hover,
+.featured-short__control:focus-visible{
+  border-color:rgba(239,221,242,.72);
+  background:rgba(70,32,78,.64);
+  transform:translateY(-2px);
+  outline:none;
+}
+.featured-short__control:disabled{
+  opacity:.4;
+  cursor:wait;
+  transform:none;
+}
+.featured-short__control[aria-pressed="true"]{
+  border-color:rgba(208,166,221,.7);
+  background:rgba(73,29,82,.74);
+}
+@media(max-width:600px){
+  .featured-short__controls{gap:8px;margin-top:10px}
+  .featured-short__control{min-height:44px;padding:0 14px;font-size:9px}
+}
