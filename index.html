@@ -25,38 +25,49 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="preload" as="image" href="images/welcome-bg.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="bundle.css?v=500" />
+  <link rel="stylesheet" href="bundle.css?v=520" />
 
   <style>
-    /* v5.0 mobile sound control: intentionally inline to avoid stale mobile CSS caches */
+    /* v5.2: mobile Shorts controls are overlaid on the bottom of the video so they are immediately visible. */
     @media (max-width:700px){
+      #featured-short{position:relative!important;width:min(94vw,420px)!important;}
       #featured-short .featured-short__controls{
-        position:static!important;
+        position:relative!important;
+        z-index:30!important;
         display:grid!important;
-        grid-template-columns:1fr!important;
-        gap:8px!important;
-        width:100%!important;
-        margin:10px 0 0!important;
+        grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr)!important;
+        gap:7px!important;
+        width:calc(100% - 20px)!important;
+        margin:-58px 10px 10px!important;
+        padding:0!important;
         pointer-events:auto!important;
       }
       #featured-short .featured-short__control{
-        display:flex!important;
-        align-items:center!important;
-        justify-content:center!important;
-        width:100%!important;
-        min-height:56px!important;
-        padding:0 16px!important;
-        border-radius:6px!important;
-        pointer-events:auto!important;
-        font-size:12px!important;
-        letter-spacing:.12em!important;
+        display:flex!important;align-items:center!important;justify-content:center!important;
+        width:100%!important;min-width:0!important;min-height:48px!important;padding:0 14px!important;
+        border:1px solid rgba(235,220,240,.42)!important;border-radius:2px!important;
+        background:linear-gradient(180deg,rgba(12,8,16,.82),rgba(7,4,10,.92))!important;
+        color:rgba(250,245,252,.94)!important;
+        box-shadow:0 8px 24px rgba(0,0,0,.42)!important;
+        backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;
+        font-size:10px!important;font-weight:600!important;letter-spacing:.16em!important;
+        pointer-events:auto!important;touch-action:manipulation!important;
+        -webkit-tap-highlight-color:transparent!important;
+        transition:background .2s ease,border-color .2s ease,color .2s ease,transform .15s ease,box-shadow .2s ease!important;
       }
+      #featured-short .featured-short__control:active{transform:translateY(1px) scale(.992)!important;}
       #featured-short-sound{
-        order:1!important;
-        background:rgba(74,27,84,.96)!important;
-        border-color:rgba(244,215,250,.9)!important;
+        background:linear-gradient(180deg,rgba(50,24,58,.88),rgba(23,11,28,.94))!important;
+        border-color:rgba(220,185,228,.58)!important;
+        box-shadow:inset 2px 0 0 rgba(205,150,220,.7),0 8px 24px rgba(0,0,0,.42)!important;
       }
-      #featured-short-next{order:2!important;min-height:48px!important;background:rgba(8,5,12,.88)!important}
+      #featured-short-sound[aria-pressed="true"]{
+        color:#fff!important;
+        border-color:rgba(238,211,244,.78)!important;
+        box-shadow:inset 2px 0 0 rgba(238,202,247,.95),0 0 20px rgba(130,72,148,.18),0 8px 24px rgba(0,0,0,.42)!important;
+      }
+      #featured-short-next::after{content:' →';margin-left:.55em;opacity:.7;}
+      #featured-short .featured-short__control:disabled{opacity:.52!important;}
     }
   </style>
 </head>
@@ -265,7 +276,7 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=521"></script>
-  <script src="app.js?v=500"></script>
+  <script src="app.js?v=520"></script>
   <script src="v2.1.js?v=410"></script>
   <script src="v2.3.js?v=518"></script>
 </body>
