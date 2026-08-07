@@ -7725,6 +7725,84 @@ Desire
     accent: "purple",
     youtubeId: "",
     links: commonListenLinks
+  },
+  {
+    "id": "funeral-bloom",
+    "artist": "CROVEIL",
+    "title": "Funeral Bloom",
+    "albumNumber": 7,
+    "release": "",
+    "order": 33,
+    "story": [],
+    "tracks": [
+      "夜を翔ける",
+      "黒のままで",
+      "蛇は微笑む",
+      "深紅の聖杯",
+      "神なきロザリオ",
+      "棺に眠る君へ"
+    ],
+    "art": "covers/funeral-bloom.jpg",
+    "accent": "purple",
+    "youtubeId": "",
+    "links": {
+      "spotify": "https://open.spotify.com/artist/24ZhFNgFRKfS19yAisfM0Q",
+      "apple": "https://music.apple.com/jp/artist/%E8%B6%8A%E9%BB%92%E3%83%AA%E3%82%BF/1852020293",
+      "amazon": "https://music.amazon.com/artists/B0G48Q368M"
+    },
+    "reading": "フューネラル・ブルーム"
+  },
+  {
+    "id": "celestial-diamond",
+    "artist": "越黒リタ",
+    "title": "Celestial Diamond",
+    "albumNumber": 27,
+    "release": "",
+    "order": 34,
+    "story": [],
+    "tracks": [
+      "白銀のシリウス",
+      "雪原のプロキオン",
+      "双影のミラージュ",
+      "カペラの祈り",
+      "アルデバランの瞳",
+      "冬天のリゲル"
+    ],
+    "art": "covers/celestial-diamond.jpg",
+    "accent": "blue",
+    "youtubeId": "",
+    "links": {
+      "spotify": "https://open.spotify.com/artist/24ZhFNgFRKfS19yAisfM0Q",
+      "apple": "https://music.apple.com/jp/artist/%E8%B6%8A%E9%BB%92%E3%83%AA%E3%82%BF/1852020293",
+      "amazon": "https://music.amazon.com/artists/B0G48Q368M"
+    },
+    "reading": "セレスティアル・ダイヤモンド"
+  },
+  {
+    "id": "devouring-eden",
+    "artist": "越黒リタ",
+    "title": "Devouring Eden",
+    "albumNumber": 28,
+    "release": "",
+    "order": 35,
+    "story": [],
+    "tracks": [
+      "ネペンテスの蜜牢",
+      "セファロタスの湿葬",
+      "サラセニアの聖杯",
+      "ヘリアンフォラの雨宮",
+      "ディオネアの接吻",
+      "ドロセラの涙冠"
+    ],
+    "art": "covers/devouring-eden.jpg",
+    "accent": "crimson",
+    "youtubeId": "",
+    "links": {
+      "spotify": "https://open.spotify.com/artist/24ZhFNgFRKfS19yAisfM0Q",
+      "apple": "https://music.apple.com/jp/artist/%E8%B6%8A%E9%BB%92%E3%83%AA%E3%82%BF/1852020293",
+      "amazon": "https://music.amazon.com/artists/B0G48Q368M"
+    },
+    "reading": "デヴァウリング・エデン"
   }
 ];
 
