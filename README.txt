@@ -19,3 +19,9 @@ Replace the contents of your GitHub Pages repository with all files from this fo
 
 v5.4.2 UI note:
 - Katakana reading labels are intentionally smaller than the main album title (8px desktop / 7px mobile on archive cards).
+
+
+[v5.4.4]
+- 7作品の正式リリース日を反映
+- 7作品のSTORYを正式版へ更新
+- lyrics(2).txtを基準に42曲の歌詞を追加
