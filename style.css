@@ -2529,22 +2529,22 @@ img { height: auto; }
 }
 
 
-/* v5.4 — album Katakana readings; archive cards intentionally omit track counts */
+/* v5.4.2 — smaller Katakana reading labels; archive cards intentionally omit track counts */
 .archive-card__reading{
   display:block;
   margin-top:7px;
   color:rgba(231,219,233,.70);
-  font:500 10px/1.5 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  font:500 8px/1.55 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
   letter-spacing:.12em;
 }
 .archive-card__reading + p{margin-top:7px!important}
 .work-reading{
   margin:0 0 12px;
   color:rgba(225,211,228,.72);
-  font:500 12px/1.7 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  font:500 10px/1.7 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
   letter-spacing:.13em;
 }
 @media(max-width:600px){
-  .archive-card__reading{font-size:9px;letter-spacing:.08em;margin-top:5px}
-  .work-reading{font-size:11px;letter-spacing:.09em;margin-bottom:10px}
+  .archive-card__reading{font-size:7px;letter-spacing:.08em;margin-top:5px}
+  .work-reading{font-size:9px;letter-spacing:.09em;margin-bottom:10px}
 }

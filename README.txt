@@ -15,3 +15,7 @@ Replace the contents of your GitHub Pages repository with all files from this fo
 - The archive displays: English/Japanese title -> Katakana reading -> Album number / release date.
 - Track-count labels (e.g. 6 TRACKS) are intentionally not shown on archive cards.
 - The reading is also searchable in SONGS mode and shown on the detail page.
+
+
+v5.4.2 UI note:
+- Katakana reading labels are intentionally smaller than the main album title (8px desktop / 7px mobile on archive cards).
