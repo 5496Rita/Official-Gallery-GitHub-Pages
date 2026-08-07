@@ -4996,3 +4996,12 @@ button.featured-short__frame{
   box-shadow:inset 2px 0 0 rgba(231,190,242,.9),0 0 18px rgba(138,78,156,.15),0 8px 24px rgba(0,0,0,.32);
 }
 #featured-short-next::after{content:' →';margin-left:.55em;opacity:.65;}
+
+
+/* v5.3 icon-only Shorts controls */
+.featured-short__controls{display:flex;justify-content:flex-end;gap:8px;margin-top:9px}
+.featured-short__control{width:48px;min-width:48px;min-height:42px;padding:0;border-radius:4px;font-size:19px;letter-spacing:0;background:rgba(7,4,10,.74);border:1px solid rgba(235,220,240,.28);box-shadow:0 6px 18px rgba(0,0,0,.28)}
+#featured-short-sound{box-shadow:0 6px 18px rgba(0,0,0,.28)}
+#featured-short-sound[aria-pressed="true"]{background:rgba(43,22,50,.82);border-color:rgba(230,199,239,.58);box-shadow:0 0 14px rgba(138,78,156,.12),0 6px 18px rgba(0,0,0,.3)}
+#featured-short-next::after{content:none}
+@media (max-width:700px){.featured-short__controls{display:flex;justify-content:flex-end;gap:8px;width:100%;margin-top:9px}.featured-short__control,#featured-short-sound{width:52px;min-width:52px;min-height:46px;padding:0;font-size:20px;letter-spacing:0}}

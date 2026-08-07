@@ -141,9 +141,11 @@
 
       const updateSoundButton = () => {
         soundButton.setAttribute('aria-pressed', String(!isMuted));
+        soundButton.setAttribute('aria-label', isMuted ? 'サウンドをオン' : 'サウンドをオフ');
+        soundButton.setAttribute('title', isMuted ? 'サウンドをオン' : 'サウンドをオフ');
         soundButton.innerHTML = isMuted
-          ? '<span aria-hidden="true">♪</span> SOUND ON'
-          : '<span aria-hidden="true">♪</span> SOUND OFF';
+          ? '<span aria-hidden="true">🔇</span>'
+          : '<span aria-hidden="true">🔊</span>';
       };
 
       const playNext = () => {
