@@ -5005,3 +5005,24 @@ button.featured-short__frame{
 #featured-short-sound[aria-pressed="true"]{background:rgba(43,22,50,.82);border-color:rgba(230,199,239,.58);box-shadow:0 0 14px rgba(138,78,156,.12),0 6px 18px rgba(0,0,0,.3)}
 #featured-short-next::after{content:none}
 @media (max-width:700px){.featured-short__controls{display:flex;justify-content:flex-end;gap:8px;width:100%;margin-top:9px}.featured-short__control,#featured-short-sound{width:52px;min-width:52px;min-height:46px;padding:0;font-size:20px;letter-spacing:0}}
+
+
+/* v5.4 — album Katakana readings; archive cards intentionally omit track counts */
+.archive-card__reading{
+  display:block;
+  margin-top:7px;
+  color:rgba(231,219,233,.70);
+  font:500 10px/1.5 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  letter-spacing:.12em;
+}
+.archive-card__reading + p{margin-top:7px!important}
+.work-reading{
+  margin:0 0 12px;
+  color:rgba(225,211,228,.72);
+  font:500 12px/1.7 "Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  letter-spacing:.13em;
+}
+@media(max-width:600px){
+  .archive-card__reading{font-size:9px;letter-spacing:.08em;margin-top:5px}
+  .work-reading{font-size:11px;letter-spacing:.09em;margin-bottom:10px}
+}

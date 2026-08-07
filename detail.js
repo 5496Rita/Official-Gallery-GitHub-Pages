@@ -159,6 +159,11 @@
   $('#work-cover').alt = `${album.title} cover`;
   $('#work-kicker').textContent = `${album.artist} · ${ordinal(album.artistWorkNumber)} ALBUM`;
   $('#work-title').textContent = album.title;
+  const workReading = $('#work-reading');
+  if (workReading) {
+    workReading.textContent = album.reading || '';
+    workReading.hidden = !album.reading;
+  }
   $('#work-release').textContent = album.release ? `RELEASE ${album.release}` : 'RELEASE TBA';
   const storyParagraphs = Array.isArray(album.story)
     ? album.story.filter(Boolean)

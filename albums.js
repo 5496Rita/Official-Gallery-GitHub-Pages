@@ -1,3 +1,6 @@
+// Album card rule: every new album must include a Katakana `reading` field.
+// The archive automatically displays it beneath the title; track counts are intentionally hidden from cards.
+
 const commonListenLinks = {
   spotify: "https://open.spotify.com/artist/24ZhFNgFRKfS19yAisfM0Q",
   apple: "https://music.apple.com/jp/artist/%E8%B6%8A%E9%BB%92%E3%83%AA%E3%82%BF/1852020293",
@@ -9,6 +12,7 @@ const albums = [
     id: "velvet-dominion",
     artist: "越黒リタ",
     title: "Velvet Dominion",
+    reading: "ベルベット・ドミニオン",
     albumNumber: 1,
     release: "2025.12.13",
     story: [
@@ -261,6 +265,7 @@ Desire
     id: "lunar-eclat",
     artist: "越黒リタ",
     title: "Lunar Éclat",
+    reading: "ルナー・エクラ",
     albumNumber: 2,
     release: "2025.12.13",
     story: [
@@ -586,6 +591,7 @@ Desire
     id: "luminous-ruin",
     artist: "越黒リタ",
     title: "Luminous Ruin",
+    reading: "ルミナス・ルイン",
     albumNumber: 3,
     release: "2025.12.13",
     story: [
@@ -814,6 +820,7 @@ R for Rose 美しく散れ
     id: "oboromiyabi",
     artist: "越黒リタ",
     title: "朧雅",
+    reading: "オボロミヤビ",
     albumNumber: 4,
     release: "2026.01.01",
     story: [
@@ -1109,6 +1116,7 @@ R for Rose 美しく散れ
     id: "sugar-deception",
     artist: "越黒リタ",
     title: "$ugar Ðeception",
+    reading: "シュガー・ディセプション",
     albumNumber: 5,
     release: "2026.01.11",
     story: [
@@ -1460,6 +1468,7 @@ R for Rose 美しく散れ
     id: "fractured-order",
     artist: "越黒リタ",
     title: "Fractured Order",
+    reading: "フラクチャード・オーダー",
     albumNumber: 6,
     release: "2026.02.14",
     story: [
@@ -1813,6 +1822,7 @@ R for Rose 美しく散れ
     id: "midnight-sirens",
     artist: "越黒リタ",
     title: "Midnight Sirens",
+    reading: "ミッドナイト・サイレンズ",
     albumNumber: 7,
     release: "2026.02.22",
     story: [
@@ -2206,6 +2216,7 @@ R for Rose 美しく散れ
     id: "enmusubi",
     artist: "越黒リタ",
     title: "艶結ビ",
+    reading: "エンムスビ",
     albumNumber: 8,
     release: "2026.03.14",
     story: [
@@ -2573,6 +2584,7 @@ R for Rose 美しく散れ
     id: "nocturnal-rite",
     artist: "越黒リタ",
     title: "Nocturnal Rite",
+    reading: "ノクターナル・ライト",
     albumNumber: 9,
     release: "2026.03.20",
     story: [
@@ -2974,6 +2986,7 @@ R for Rose 美しく散れ
     id: "nachtgarten",
     artist: "越黒リタ",
     title: "Nachtgarten",
+    reading: "ナハトガルテン",
     albumNumber: 10,
     release: "2026.04.16",
     story: [
@@ -3359,6 +3372,7 @@ R for Rose 美しく散れ
     id: "aeternitas",
     artist: "越黒リタ",
     title: "Aeternitas",
+    reading: "エテルニタス",
     albumNumber: 11,
     release: "2026.04.25",
     story: [
@@ -3738,6 +3752,7 @@ R for Rose 美しく散れ
     id: "vitia",
     artist: "越黒リタ",
     title: "ViTiA",
+    reading: "ヴィティア",
     albumNumber: 12,
     release: "2026.05.16",
     story: [
@@ -4178,6 +4193,7 @@ R for Rose 美しく散れ
     id: "silent-sovereign",
     artist: "越黒リタ",
     title: "Silent Sovereign",
+    reading: "サイレント・ソヴリン",
     albumNumber: 13,
     release: "2026.05.30",
     story: [
@@ -4569,6 +4585,7 @@ R for Rose 美しく散れ
     id: "black-coronation",
     artist: "越黒リタ",
     title: "Black Coronation",
+    reading: "ブラック・コロネーション",
     albumNumber: 14,
     release: "2026.06.06",
     story: [
@@ -4941,6 +4958,7 @@ R for Rose 美しく散れ
     id: "cathedral-of-masks",
     artist: "越黒リタ",
     title: "Cathedral of Masks",
+    reading: "カテドラル・オブ・マスクス",
     albumNumber: 15,
     release: "2026.06.20",
     story: [
@@ -5315,6 +5333,7 @@ R for Rose 美しく散れ
     id: "crown-of-jewel",
     artist: "越黒リタ",
     title: "Crown of Jewel",
+    reading: "クラウン・オブ・ジュエル",
     albumNumber: 16,
     release: "2026.07.03",
     story: [
@@ -5716,6 +5735,7 @@ R for Rose 美しく散れ
     id: "lune-noire",
     artist: "越黒リタ",
     title: "Lune Noire",
+    reading: "リュヌ・ノワール",
     albumNumber: 17,
     release: "2026.07.17",
     story: [
@@ -6139,6 +6159,7 @@ R for Rose 美しく散れ
     id: "hollow-salvation",
     artist: "CROVEIL",
     title: "Hollow Salvation",
+    reading: "ホロウ・サルヴェーション",
     release: "2026.04.16",
     order: 18,
     story: [
@@ -6433,6 +6454,7 @@ Desire
     id: "crimson-covenant",
     artist: "CROVEIL",
     title: "Crimson Covenant",
+    reading: "クリムゾン・カヴェナント",
     release: "2026.05.21",
     order: 19,
     story: [
@@ -6773,6 +6795,7 @@ Desire
     id: "trace-of-perfume",
     artist: "越黒リタ",
     title: "Trace of Perfume",
+    reading: "トレース・オブ・パフューム",
     albumNumber: 18,
     release: "2026.08.08",
     order: 20,
@@ -7133,6 +7156,7 @@ Desire
     id: "fatal-allure",
     artist: "越黒リタ",
     title: "Fatal Allure",
+    reading: "フェイタル・アリュール",
     albumNumber: 19,
     release: "2026.08.27",
     order: 21,
@@ -7530,6 +7554,7 @@ Desire
     id: "dissonance-cry",
     artist: "CROVEIL",
     title: "Dissonance Cry",
+    reading: "ディソナンス・クライ",
     release: "",
     order: 22,
     story: ["機械仕掛けの鎮魂歌が、砕けた時計と人工の花を震わせる。", "不協和の輪を抜け、廃墟の鼓動へ辿り着く六つの残響。"],
@@ -7543,6 +7568,7 @@ Desire
     id: "higan-zankyo",
     artist: "CROVEIL",
     title: "彼岸残響",
+    reading: "ヒガンザンキョウ",
     release: "",
     order: 23,
     story: ["紅い月の彼岸で、影と灯が藤の花へ滲んでゆく。", "常闇、狐火、朧月を渡る和の残響を封じた六景。"],
@@ -7556,6 +7582,7 @@ Desire
     id: "fallen-sanctuary",
     artist: "CROVEIL",
     title: "Fallen Sanctuary",
+    reading: "フォールン・サンクチュアリ",
     release: "",
     order: 24,
     story: ["堕ちた聖域で、遺物と甘い幻が黒い翼を目覚めさせる。", "夜の口づけから楽園の終焉へ連なる六つの黙示。"],
@@ -7569,6 +7596,7 @@ Desire
     id: "elegy-of-night",
     artist: "越黒リタ",
     title: "Elegy of Night",
+    reading: "エレジー・オブ・ナイト",
     albumNumber: 20,
     release: "",
     order: 25,
@@ -7583,6 +7611,7 @@ Desire
     id: "danse-macabre",
     artist: "越黒リタ",
     title: "Danse Macabre",
+    reading: "ダンス・マカブル",
     albumNumber: 21,
     release: "",
     order: 26,
@@ -7597,6 +7626,7 @@ Desire
     id: "rosarium-noir",
     artist: "越黒リタ",
     title: "Rosarium Noir",
+    reading: "ロザリウム・ノワール",
     albumNumber: 22,
     release: "",
     order: 27,
@@ -7611,6 +7641,7 @@ Desire
     id: "marionette-garden",
     artist: "越黒リタ",
     title: "Marionette Garden",
+    reading: "マリオネット・ガーデン",
     albumNumber: 23,
     release: "",
     order: 28,
@@ -7628,6 +7659,7 @@ Desire
     id: "beautiful-nightmare",
     artist: "越黒リタ",
     title: "Beautiful Nightmare",
+    reading: "ビューティフル・ナイトメア",
     albumNumber: 24,
     release: "",
     order: 29,
@@ -7645,6 +7677,7 @@ Desire
     id: "persona",
     artist: "越黒リタ",
     title: "PERSONA",
+    reading: "ペルソナ",
     albumNumber: 25,
     release: "",
     order: 30,
@@ -7662,6 +7695,7 @@ Desire
     id: "vanishing-reverie",
     artist: "越黒リタ",
     title: "Vanishing Reverie",
+    reading: "ヴァニシング・レヴェリー",
     albumNumber: 26,
     release: "",
     order: 31,
@@ -7679,6 +7713,7 @@ Desire
     id: "yugatou",
     artist: "CROVEIL",
     title: "誘蛾灯",
+    reading: "ユウガトウ",
     release: "",
     order: 32,
     story: [

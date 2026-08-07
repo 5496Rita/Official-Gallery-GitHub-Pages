@@ -337,7 +337,7 @@
       album.genre || '',
       album.category || ''
     ].join(' ');
-    return normalizeSearchText([album.title, trackText, tagText].join(' ')).includes(q);
+    return normalizeSearchText([album.title, album.reading || '', trackText, tagText].join(' ')).includes(q);
   }
 
   function getFilteredAlbums() {
@@ -440,11 +440,8 @@
       <span class="archive-card__meta">
         <span class="archive-card__catalog">COLLECTION No. ${String(album.artistWorkNumber).padStart(2, '0')}</span>
         <h3>${escapeHtml(album.title)}</h3>
-        <p>
-          ${workLabel(album)} ·
-          ${escapeHtml(releaseLabel(album))} ·
-          ${(album.tracks || []).length} TRACKS
-        </p>
+        ${album.reading ? `<span class="archive-card__reading">${escapeHtml(album.reading)}</span>` : ''}
+        <p>${workLabel(album)} · ${escapeHtml(releaseLabel(album))}</p>
         ${matchedHtml}
       </span>`;
 
