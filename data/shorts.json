@@ -1,12 +1,20 @@
 {
-<<<<<<< HEAD
-  "generatedAt": "2026-08-06T14:50:58.805Z",
-=======
-  "generatedAt": "2026-08-07T22:04:03.721Z",
->>>>>>> be138782018fc022adfaf86a4a64cbac64f212ca
+  "generatedAt": "2026-08-08T21:04:42.903Z",
   "playlistId": "PLiJ4i_JuStGC25t-DOW7QXow7CaN32HHV",
-  "count": 160,
+  "count": 162,
   "items": [
+    {
+      "id": "9rlOVxdwHpA",
+      "title": "CROVEIL –Still Calling #Shorts",
+      "thumbnail": "https://i.ytimg.com/vi/9rlOVxdwHpA/maxresdefault.jpg",
+      "publishedAt": "2026-08-05T11:59:20Z"
+    },
+    {
+      "id": "aA6SpPA7Rbk",
+      "title": "越黒リタ –ムスクの衝動 #Shorts",
+      "thumbnail": "https://i.ytimg.com/vi/aA6SpPA7Rbk/maxresdefault.jpg",
+      "publishedAt": "2026-07-31T05:26:58Z"
+    },
     {
       "id": "uwaM2mjW0ms",
       "title": "越黒リタ –フローラルの鼓動 #Shorts",
