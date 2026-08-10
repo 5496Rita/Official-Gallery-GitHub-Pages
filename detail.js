@@ -383,7 +383,7 @@
       </a>`).join('')
     : '<p class="listen-now__empty">配信リンクは準備中です。</p>';
 
-  const fullAlbumSource = album.youtubeId || album.fullAlbumYoutube || album.youtubeFullAlbum || '';
+  const fullAlbumSource = album.youtubeId || album.fullAlbumYoutube || album.youtubeFullAlbum || window.ALBUM_FULL_ALBUMS?.[album.id] || '';
   const embedUrl = toYoutubeEmbedUrl(fullAlbumSource);
   let fullAlbumPlayer = null;
   let playerReadyPromise = null;
