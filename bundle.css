@@ -5138,3 +5138,75 @@ button.featured-short__frame{
     white-space:nowrap;
   }
 }
+
+/* v5.5.4 — force-visible mobile play button */
+@media (max-width:760px){
+  .mobile-track-player{
+    display:flex !important;
+    flex-direction:column !important;
+    flex-wrap:nowrap !important;
+    align-items:stretch !important;
+    gap:10px !important;
+    width:100% !important;
+    overflow:visible !important;
+  }
+  .mobile-track-play{
+    display:inline-flex !important;
+    visibility:visible !important;
+    position:relative !important;
+    z-index:2 !important;
+    align-self:flex-start !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:auto !important;
+    min-width:118px !important;
+    height:44px !important;
+    margin:0 !important;
+    padding:0 18px !important;
+    opacity:1 !important;
+    border:1px solid rgba(214,181,218,.46) !important;
+    background:rgba(114,64,126,.18) !important;
+    color:#f3e9f4 !important;
+    font:600 12px/1 Arial,sans-serif !important;
+    letter-spacing:.08em !important;
+    white-space:nowrap !important;
+    -webkit-appearance:none !important;
+    appearance:none !important;
+  }
+  .mobile-track-play:disabled{
+    display:inline-flex !important;
+    visibility:visible !important;
+    opacity:.42 !important;
+  }
+  .mobile-track-seek{
+    display:block !important;
+    width:100% !important;
+    flex:none !important;
+    order:2 !important;
+  }
+  .mobile-track-time{
+    display:block !important;
+    width:100% !important;
+    order:3 !important;
+    margin:0 !important;
+    text-align:right !important;
+  }
+}
+
+
+/* v5.5.5 — mobile play button hard fail-safe */
+@media (max-width:760px){
+  .mobile-track-play{
+    display:flex!important;visibility:visible!important;opacity:1!important;
+    position:relative!important;z-index:10!important;order:1!important;
+    align-items:center!important;justify-content:center!important;
+    width:132px!important;min-width:132px!important;height:46px!important;
+    margin:0 0 6px 0!important;padding:0 18px!important;
+    border:1px solid rgba(214,181,218,.65)!important;border-radius:2px!important;
+    background:rgba(114,64,126,.28)!important;color:#fff!important;
+    font:600 13px/1 Arial,sans-serif!important;letter-spacing:.08em!important;
+  }
+  .mobile-track-play:disabled{display:flex!important;visibility:visible!important;opacity:.5!important;}
+  .mobile-track-seek{order:2!important;}
+  .mobile-track-time{order:3!important;}
+}

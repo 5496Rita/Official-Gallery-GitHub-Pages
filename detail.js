@@ -277,7 +277,7 @@
             </summary>
             <div class="mobile-lyric-toggle__body">
               <div class="mobile-track-player" data-mobile-track-index="${i}">
-                <button class="mobile-track-play" type="button" data-track-index="${i}" aria-label="この曲を再生">▶ 再生</button>
+                <button class="mobile-track-play" type="button" data-track-index="${i}" aria-label="この曲を再生" style="display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:10!important;align-items:center!important;justify-content:center!important;width:132px!important;min-width:132px!important;height:46px!important;margin:0 0 6px 0!important;padding:0 18px!important;border:1px solid rgba(214,181,218,.65)!important;border-radius:2px!important;background:rgba(114,64,126,.28)!important;color:#fff!important;font:600 13px/1 Arial,sans-serif!important;letter-spacing:.08em!important;white-space:nowrap!important;-webkit-appearance:none!important;appearance:none!important;">▶ 再生</button>
                 <input class="mobile-track-seek" type="range" min="0" max="100" value="0" step="0.1" data-track-index="${i}" aria-label="曲の再生位置" />
                 <span class="mobile-track-time" data-track-index="${i}" aria-live="off">0:00 / 0:00</span>
               </div>
