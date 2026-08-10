@@ -5053,3 +5053,88 @@ button.featured-short__frame{
   .mobile-track-seek{width:100%;min-width:0;accent-color:#c9a8ce;touch-action:pan-y}
   .mobile-track-time{min-width:76px;text-align:right;color:rgba(230,216,232,.72);font:500 10px/1.2 Arial,sans-serif;white-space:nowrap}
 }
+
+
+/* v5.5.3 — mobile player UI rebuild */
+@media (max-width:760px){
+  .mobile-track-player{
+    display:flex !important;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px 12px;
+    margin:4px 0 20px;
+    padding:14px 0 16px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .mobile-track-play{
+    flex:0 0 auto;
+    width:auto;
+    min-width:108px;
+    height:42px;
+    padding:0 16px;
+    border:1px solid rgba(214,181,218,.38);
+    border-radius:2px;
+    background:rgba(114,64,126,.14);
+    color:#efe5f0;
+    font:600 12px/1 Arial,sans-serif;
+    letter-spacing:.08em;
+    white-space:nowrap;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  .mobile-track-play:active{background:rgba(140,75,155,.24)}
+  .mobile-track-play:disabled{opacity:.32}
+  .mobile-track-seek{
+    order:2;
+    flex:1 1 100%;
+    width:100%;
+    height:28px;
+    min-width:0;
+    margin:0;
+    padding:0;
+    background:transparent;
+    touch-action:pan-y;
+    -webkit-appearance:none;
+    appearance:none;
+    accent-color:#c9a8ce;
+  }
+  .mobile-track-seek::-webkit-slider-runnable-track{
+    height:4px;
+    border-radius:999px;
+    background:linear-gradient(90deg,rgba(205,166,211,.95),rgba(139,104,149,.45));
+  }
+  .mobile-track-seek::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    appearance:none;
+    width:18px;
+    height:18px;
+    margin-top:-7px;
+    border:1px solid rgba(255,255,255,.68);
+    border-radius:50%;
+    background:#f7f2f8;
+    box-shadow:0 1px 6px rgba(0,0,0,.35);
+  }
+  .mobile-track-seek::-moz-range-track{
+    height:4px;
+    border:0;
+    border-radius:999px;
+    background:rgba(184,145,191,.62);
+  }
+  .mobile-track-seek::-moz-range-thumb{
+    width:18px;
+    height:18px;
+    border:1px solid rgba(255,255,255,.68);
+    border-radius:50%;
+    background:#f7f2f8;
+    box-shadow:0 1px 6px rgba(0,0,0,.35);
+  }
+  .mobile-track-time{
+    order:1;
+    margin-left:auto;
+    min-width:92px;
+    text-align:right;
+    color:rgba(230,216,232,.82);
+    font:500 11px/1.2 Arial,sans-serif;
+    white-space:nowrap;
+  }
+}

@@ -277,7 +277,7 @@
             </summary>
             <div class="mobile-lyric-toggle__body">
               <div class="mobile-track-player" data-mobile-track-index="${i}">
-                <button class="mobile-track-play" type="button" data-track-index="${i}" aria-label="この曲を再生">▶</button>
+                <button class="mobile-track-play" type="button" data-track-index="${i}" aria-label="この曲を再生">▶ 再生</button>
                 <input class="mobile-track-seek" type="range" min="0" max="100" value="0" step="0.1" data-track-index="${i}" aria-label="曲の再生位置" />
                 <span class="mobile-track-time" data-track-index="${i}" aria-live="off">0:00 / 0:00</span>
               </div>
@@ -431,7 +431,7 @@
       const mobileBounds = chapterBounds(index);
       button.disabled = !(mobileBounds && embedUrl);
       if (reset || index !== trackIndex) {
-        button.textContent = '▶';
+        button.textContent = '▶ 再生';
         button.setAttribute('aria-label', 'この曲を再生');
       }
     });
@@ -496,7 +496,7 @@
       mobilePlayButtons.forEach(button => {
         const index = Number(button.dataset.trackIndex);
         const playing = index === activeTrackIndex && state === YT.PlayerState.PLAYING;
-        button.textContent = playing ? '❚❚' : '▶';
+        button.textContent = playing ? '❚❚ 一時停止' : '▶ 再生';
         button.setAttribute('aria-label', playing ? '一時停止' : 'この曲を再生');
       });
     } catch (_) {}
