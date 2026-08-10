@@ -390,9 +390,10 @@
   let activeTrackIndex = initialTrackIndex;
   let playerTimer = 0;
   let isSeeking = false;
+  let playerIsReady = false;
   const playerOrigin = location.origin && location.origin !== 'null' ? `&origin=${encodeURIComponent(location.origin)}` : '';
   $('#work-xfd').innerHTML = embedUrl
-    ? `<iframe id="full-album-player" src="${escapeHtml(embedUrl)}?enablejsapi=1&playsinline=1${playerOrigin}" title="${escapeHtml(album.title)} Full Album" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    ? `<iframe id="full-album-player" src="${escapeHtml(embedUrl)}?enablejsapi=1&playsinline=1${playerOrigin}" title="${escapeHtml(album.title)} Full Album" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     : '<div class="full-album-placeholder"><span>COMING SOON</span><p>THE FULL ALBUM FILM<br>HAS NOT YET ENTERED THE ARCHIVE.</p></div>';
 
   const chapterBounds = trackIndex => {
@@ -512,6 +513,7 @@
           fullAlbumPlayer = new YT.Player('full-album-player', {
             events: {
               onReady: event => {
+                playerIsReady = true;
                 syncTrackProgress();
                 resolve(event.target);
               },
@@ -525,9 +527,37 @@
     return playerReadyPromise;
   };
 
+  const playTrackChapterReady = trackIndex => {
+    const bounds = chapterBounds(trackIndex);
+    if (!bounds || !embedUrl || !fullAlbumPlayer || !playerIsReady) return false;
+    activeTrackIndex = trackIndex;
+    try {
+      const player = fullAlbumPlayer;
+      const state = player.getPlayerState?.();
+      const current = Number(player.getCurrentTime?.());
+      const insideChapter = Number.isFinite(current) && current >= bounds.start && current < bounds.end;
+      if (insideChapter && state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+        return true;
+      }
+      if (!insideChapter) {
+        const mobileSeek = mobileSeekBars.find(seek => Number(seek.dataset.trackIndex) === trackIndex);
+        const relative = window.matchMedia('(max-width: 760px)').matches
+          ? Number(mobileSeek?.value || 0)
+          : Number(trackSeek?.value || 0);
+        player.seekTo(bounds.start + relative, true);
+      }
+      player.playVideo();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
   const playTrackChapter = async trackIndex => {
     const bounds = chapterBounds(trackIndex);
     if (!bounds || !embedUrl) return;
+    if (playTrackChapterReady(trackIndex)) return;
     activeTrackIndex = trackIndex;
     try {
       const player = await ensurePlayer();
@@ -555,7 +585,7 @@
   };
 
   if (trackPlayButton) {
-    trackPlayButton.addEventListener('click', () => playTrackChapter(Number(trackPlayButton.dataset.trackIndex)));
+    trackPlayButton.addEventListener('click', () => { const index = Number(trackPlayButton.dataset.trackIndex); if (!playTrackChapterReady(index)) playTrackChapter(index); });
   }
 
   if (trackSeek) {
@@ -587,7 +617,7 @@
       event.stopPropagation();
       const index = Number(button.dataset.trackIndex);
       activeTrackIndex = index;
-      playTrackChapter(index);
+      if (!playTrackChapterReady(index)) playTrackChapter(index);
     });
   });
 
@@ -621,6 +651,9 @@
   });
 
   updateTrackControls(initialTrackIndex, true);
+  // Pre-initialize the YouTube IFrame API so mobile taps can call playVideo()
+  // synchronously inside the user gesture instead of after awaiting API loading.
+  if (embedUrl) ensurePlayer().catch(() => {});
 
   const prev = normalized[(index - 1 + normalized.length) % normalized.length];
   const next = normalized[(index + 1) % normalized.length];
