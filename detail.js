@@ -99,6 +99,27 @@
     return '';
   };
 
+  const parseChapterTime = value => {
+    if (Number.isFinite(value)) return Math.max(0, Number(value));
+    const raw = String(value ?? '').trim();
+    if (!raw) return null;
+    if (/^\d+(?::\d{1,2}){1,2}$/.test(raw)) {
+      const parts = raw.split(':').map(Number);
+      return parts.reduce((seconds, part) => seconds * 60 + part, 0);
+    }
+    const numeric = Number(raw);
+    return Number.isFinite(numeric) ? Math.max(0, numeric) : null;
+  };
+
+  const getChapterStarts = album => {
+    const source = album.chapterStarts || album.chapters || window.ALBUM_CHAPTERS?.[album.id] || [];
+    if (!Array.isArray(source)) return [];
+    return source.map(item => {
+      if (item && typeof item === 'object') return parseChapterTime(item.start ?? item.time ?? item.seconds);
+      return parseChapterTime(item);
+    });
+  };
+
   const counts = new Map();
   const normalized = albums.map(album => {
     const number = (counts.get(album.artist) || 0) + 1;
@@ -123,6 +144,7 @@
     // Keep the lightweight title-only track list when lyrics cannot be loaded.
   }
   const tracks = trackSource.map(normalizeTrack);
+  const chapterStarts = getChapterStarts(album);
   const description = (album.story || []).join(' ') || `${album.title} — ${album.artist}の音楽作品。`;
   const canonicalUrl = `${siteBase}/detail.html?id=${encodeURIComponent(album.id)}`;
   const shareImage = absoluteUrl(album.art);
@@ -216,7 +238,10 @@
       <section class="lyrics-exhibit__viewer" id="lyrics-viewer" role="tabpanel" aria-labelledby="lyrics-tab-${initialTrackIndex}" tabindex="0">
         <header class="lyrics-exhibit__header">
           <p class="lyrics-exhibit__meta">${escapeHtml(album.title)} · TRACK ${String(initialTrackIndex + 1).padStart(2, '0')}</p>
-          <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[initialTrackIndex]?.title || 'Untitled')}</h3>
+          <div class="lyrics-exhibit__title-row">
+            <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[initialTrackIndex]?.title || 'Untitled')}</h3>
+            <button class="track-play-button" id="track-play-button" type="button" data-track-index="${initialTrackIndex}">▶ 再生</button>
+          </div>
         </header>
         <div class="lyrics-exhibit__scroll" id="lyrics-scroll">
           ${tracks[initialTrackIndex] ? renderLyricsBody(tracks[initialTrackIndex], lyricQuery) : ''}
@@ -244,6 +269,7 @@
   const viewerTitle = viewer?.querySelector('.lyrics-exhibit__title');
   const viewerMeta = viewer?.querySelector('.lyrics-exhibit__meta');
   const viewerScroll = $('#lyrics-scroll');
+  const trackPlayButton = $('#track-play-button');
 
   const focusLyricHit = (root, smooth = true) => {
     const hit = root?.querySelector?.('[data-lyric-hit]');
@@ -267,6 +293,12 @@
     viewer.setAttribute('aria-labelledby', `lyrics-tab-${index}`);
     viewerMeta.textContent = `${album.title} · TRACK ${String(index + 1).padStart(2, '0')}`;
     viewerTitle.textContent = track.title;
+    if (trackPlayButton) {
+      trackPlayButton.dataset.trackIndex = String(index);
+      const hasChapter = Number.isFinite(chapterStarts[index]);
+      trackPlayButton.disabled = !hasChapter || !album.youtubeId;
+      trackPlayButton.title = hasChapter ? 'FULL ALBUMのこの曲から再生' : 'チャプター開始時刻を設定すると再生できます';
+    }
     viewerScroll.innerHTML = renderLyricsBody(track, highlightQuery);
     viewerScroll.scrollTop = 0;
     if (highlightQuery) requestAnimationFrame(() => focusLyricHit(viewerScroll));
@@ -324,9 +356,61 @@
 
   const fullAlbumSource = album.youtubeId || album.fullAlbumYoutube || album.youtubeFullAlbum || '';
   const embedUrl = toYoutubeEmbedUrl(fullAlbumSource);
+  let fullAlbumPlayer = null;
+  const playerOrigin = location.origin && location.origin !== 'null' ? `&origin=${encodeURIComponent(location.origin)}` : '';
   $('#work-xfd').innerHTML = embedUrl
-    ? `<iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(album.title)} Full Album" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    ? `<iframe id="full-album-player" src="${escapeHtml(embedUrl)}?enablejsapi=1&playsinline=1${playerOrigin}" title="${escapeHtml(album.title)} Full Album" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     : '<div class="full-album-placeholder"><span>COMING SOON</span><p>THE FULL ALBUM FILM<br>HAS NOT YET ENTERED THE ARCHIVE.</p></div>';
+
+  const ensureYoutubeApi = () => new Promise(resolve => {
+    if (window.YT?.Player) return resolve();
+    const previous = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      try { if (typeof previous === 'function') previous(); } catch (_) {}
+      resolve();
+    };
+    if (!document.querySelector('script[data-youtube-iframe-api]')) {
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.dataset.youtubeIframeApi = 'true';
+      document.head.appendChild(script);
+    }
+  });
+
+  const playTrackChapter = async trackIndex => {
+    const start = chapterStarts[trackIndex];
+    if (!Number.isFinite(start) || !embedUrl) return;
+    const frame = $('#full-album-player');
+    if (!frame) return;
+    // Keep the TRACK LIST / lyrics viewport in place while jumping the YouTube player to the selected chapter.
+    try {
+      await ensureYoutubeApi();
+      if (!fullAlbumPlayer) {
+        fullAlbumPlayer = new YT.Player('full-album-player', {
+          events: {
+            onReady: event => {
+              event.target.seekTo(start, true);
+              event.target.playVideo();
+            }
+          }
+        });
+      } else {
+        fullAlbumPlayer.seekTo(start, true);
+        fullAlbumPlayer.playVideo();
+      }
+    } catch (_) {
+      const separator = embedUrl.includes('?') ? '&' : '?';
+      frame.src = `${embedUrl}${separator}start=${Math.floor(start)}&autoplay=1&playsinline=1`;
+    }
+  };
+
+  if (trackPlayButton) {
+    const initialHasChapter = Number.isFinite(chapterStarts[initialTrackIndex]);
+    trackPlayButton.disabled = !initialHasChapter || !embedUrl;
+    trackPlayButton.title = initialHasChapter ? 'FULL ALBUMのこの曲から再生' : 'チャプター開始時刻を設定すると再生できます';
+    trackPlayButton.addEventListener('click', () => playTrackChapter(Number(trackPlayButton.dataset.trackIndex)));
+  }
 
   const prev = normalized[(index - 1 + normalized.length) % normalized.length];
   const next = normalized[(index + 1) % normalized.length];

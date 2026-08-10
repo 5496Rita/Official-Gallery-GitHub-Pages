@@ -5026,3 +5026,10 @@ button.featured-short__frame{
   .archive-card__reading{font-size:7px;letter-spacing:.08em;margin-top:5px}
   .work-reading{font-size:9px;letter-spacing:.09em;margin-bottom:10px}
 }
+
+/* v5.4.6 — Track-to-full-album chapter playback */
+.lyrics-exhibit__title-row{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.track-play-button{flex:0 0 auto;min-width:82px;height:36px;padding:0 14px;border:1px solid rgba(214,181,218,.34);background:rgba(114,64,126,.10);color:#e6d8e8;font:600 10px/1 Arial,sans-serif;letter-spacing:.14em;cursor:pointer;transition:.25s ease}
+.track-play-button:hover:not(:disabled),.track-play-button:focus-visible:not(:disabled){border-color:rgba(235,211,238,.72);background:rgba(140,75,155,.20);transform:translateY(-1px);outline:none}
+.track-play-button:disabled{opacity:.32;cursor:not-allowed}
+@media(max-width:600px){.lyrics-exhibit__title-row{align-items:flex-start}.track-play-button{min-width:72px;height:34px;padding:0 10px;font-size:9px}}
