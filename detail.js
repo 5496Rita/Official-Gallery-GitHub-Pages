@@ -275,7 +275,14 @@
               <span class="track-title">${escapeHtml(track.title)}</span>
               <span class="mobile-lyric-toggle__action" aria-hidden="true">読む</span>
             </summary>
-            <div class="mobile-lyric-toggle__body">${renderLyricsBody(track, i === initialTrackIndex ? lyricQuery : '')}</div>
+            <div class="mobile-lyric-toggle__body">
+              <div class="mobile-track-player" data-mobile-track-index="${i}">
+                <button class="mobile-track-play" type="button" data-track-index="${i}" aria-label="この曲を再生">▶</button>
+                <input class="mobile-track-seek" type="range" min="0" max="100" value="0" step="0.1" data-track-index="${i}" aria-label="曲の再生位置" />
+                <span class="mobile-track-time" data-track-index="${i}" aria-live="off">0:00 / 0:00</span>
+              </div>
+              ${renderLyricsBody(track, i === initialTrackIndex ? lyricQuery : '')}
+            </div>
           </details>`;
       }).join('')}
     </div>`;
@@ -288,6 +295,9 @@
   const trackPlayButton = $('#track-play-button');
   const trackSeek = $('#track-seek');
   const trackTime = $('#track-time');
+  const mobilePlayButtons = [...document.querySelectorAll('.mobile-track-play')];
+  const mobileSeekBars = [...document.querySelectorAll('.mobile-track-seek')];
+  const mobileTimeLabels = [...document.querySelectorAll('.mobile-track-time')];
 
   const focusLyricHit = (root, smooth = true) => {
     const hit = root?.querySelector?.('[data-lyric-hit]');
@@ -415,6 +425,30 @@
         trackPlayButton.setAttribute('aria-label', 'この曲を再生');
       }
     }
+    mobilePlayButtons.forEach(button => {
+      const index = Number(button.dataset.trackIndex);
+      const mobileBounds = chapterBounds(index);
+      button.disabled = !(mobileBounds && embedUrl);
+      if (reset || index !== trackIndex) {
+        button.textContent = '▶';
+        button.setAttribute('aria-label', 'この曲を再生');
+      }
+    });
+    mobileSeekBars.forEach(seek => {
+      const index = Number(seek.dataset.trackIndex);
+      const mobileBounds = chapterBounds(index);
+      seek.disabled = !(mobileBounds && embedUrl);
+      seek.min = '0';
+      seek.max = mobileBounds ? String(mobileBounds.duration) : '1';
+      if (reset && index === trackIndex) seek.value = '0';
+    });
+    mobileTimeLabels.forEach(label => {
+      const index = Number(label.dataset.trackIndex);
+      const mobileBounds = chapterBounds(index);
+      const mobileSeek = mobileSeekBars.find(seek => Number(seek.dataset.trackIndex) === index);
+      const current = reset && index === trackIndex ? 0 : Number(mobileSeek?.value || 0);
+      label.textContent = mobileBounds ? `${formatClock(current)} / ${formatClock(mobileBounds.duration)}` : '— / —';
+    });
   };
 
   const ensureYoutubeApi = () => new Promise(resolve => {
@@ -444,6 +478,10 @@
         const relative = Math.max(0, Math.min(bounds.duration, current - bounds.start));
         if (trackSeek) trackSeek.value = String(relative);
         if (trackTime) trackTime.textContent = `${formatClock(relative)} / ${formatClock(bounds.duration)}`;
+        const mobileSeek = mobileSeekBars.find(seek => Number(seek.dataset.trackIndex) === activeTrackIndex);
+        const mobileTime = mobileTimeLabels.find(label => Number(label.dataset.trackIndex) === activeTrackIndex);
+        if (mobileSeek) mobileSeek.value = String(relative);
+        if (mobileTime) mobileTime.textContent = `${formatClock(relative)} / ${formatClock(bounds.duration)}`;
         if (current >= bounds.end - 0.15 && state === YT.PlayerState.PLAYING) {
           fullAlbumPlayer.pauseVideo();
           trackPlayButton && (trackPlayButton.textContent = '▶');
@@ -454,6 +492,12 @@
         trackPlayButton.textContent = playing ? '❚❚' : '▶';
         trackPlayButton.setAttribute('aria-label', playing ? '一時停止' : 'この曲を再生');
       }
+      mobilePlayButtons.forEach(button => {
+        const index = Number(button.dataset.trackIndex);
+        const playing = index === activeTrackIndex && state === YT.PlayerState.PLAYING;
+        button.textContent = playing ? '❚❚' : '▶';
+        button.setAttribute('aria-label', playing ? '一時停止' : 'この曲を再生');
+      });
     } catch (_) {}
     playerTimer = window.setTimeout(syncTrackProgress, 250);
   };
@@ -494,7 +538,13 @@
         player.pauseVideo();
         return;
       }
-      if (!insideChapter) player.seekTo(bounds.start + Number(trackSeek?.value || 0), true);
+      if (!insideChapter) {
+        const mobileSeek = mobileSeekBars.find(seek => Number(seek.dataset.trackIndex) === trackIndex);
+        const relative = window.matchMedia('(max-width: 760px)').matches
+          ? Number(mobileSeek?.value || 0)
+          : Number(trackSeek?.value || 0);
+        player.seekTo(bounds.start + relative, true);
+      }
       player.playVideo();
     } catch (_) {
       const frame = $('#full-album-player');
@@ -530,6 +580,45 @@
     });
     trackSeek.addEventListener('pointerup', () => { isSeeking = false; });
   }
+
+  mobilePlayButtons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const index = Number(button.dataset.trackIndex);
+      activeTrackIndex = index;
+      playTrackChapter(index);
+    });
+  });
+
+  mobileSeekBars.forEach(seek => {
+    const index = Number(seek.dataset.trackIndex);
+    const preview = () => {
+      const bounds = chapterBounds(index);
+      if (!bounds) return;
+      const relative = Number(seek.value || 0);
+      const label = mobileTimeLabels.find(item => Number(item.dataset.trackIndex) === index);
+      if (label) label.textContent = `${formatClock(relative)} / ${formatClock(bounds.duration)}`;
+    };
+    seek.addEventListener('pointerdown', event => { event.stopPropagation(); isSeeking = true; activeTrackIndex = index; });
+    seek.addEventListener('touchstart', event => { event.stopPropagation(); isSeeking = true; activeTrackIndex = index; }, { passive: true });
+    seek.addEventListener('input', event => { event.stopPropagation(); preview(); });
+    seek.addEventListener('change', async event => {
+      event.stopPropagation();
+      const bounds = chapterBounds(index);
+      if (!bounds) return;
+      const relative = Math.max(0, Math.min(bounds.duration, Number(seek.value || 0)));
+      activeTrackIndex = index;
+      try {
+        const player = await ensurePlayer();
+        player.seekTo(bounds.start + relative, true);
+      } catch (_) {}
+      isSeeking = false;
+      preview();
+    });
+    seek.addEventListener('pointerup', event => { event.stopPropagation(); isSeeking = false; });
+    seek.addEventListener('touchend', event => { event.stopPropagation(); isSeeking = false; }, { passive: true });
+  });
 
   updateTrackControls(initialTrackIndex, true);
 

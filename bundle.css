@@ -5042,3 +5042,14 @@ button.featured-short__frame{
 .track-seek:disabled{opacity:.32;cursor:not-allowed}
 .track-time{min-width:84px;color:#a994aa;font:500 10px/1.2 Arial,sans-serif;letter-spacing:.04em;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 @media(max-width:760px){.lyrics-exhibit__title-row{display:block}.track-player{margin-top:14px;width:100%;min-width:0;grid-template-columns:40px minmax(90px,1fr) auto;gap:8px}.track-player .track-play-button{width:40px;min-width:40px;height:38px;font-size:14px}.track-time{min-width:76px;font-size:9px}}
+
+
+/* v5.5.1 — Mobile track playback controls */
+.mobile-track-player{display:none}
+@media(max-width:760px){
+  .mobile-track-player{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:9px;margin:0 0 18px;padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-track-play{width:42px;height:40px;border:1px solid rgba(214,181,218,.34);background:rgba(114,64,126,.12);color:#e6d8e8;font:600 15px/1 Arial,sans-serif;cursor:pointer}
+  .mobile-track-play:disabled{opacity:.32}
+  .mobile-track-seek{width:100%;min-width:0;accent-color:#c9a8ce;touch-action:pan-y}
+  .mobile-track-time{min-width:76px;text-align:right;color:rgba(230,216,232,.72);font:500 10px/1.2 Arial,sans-serif;white-space:nowrap}
+}
