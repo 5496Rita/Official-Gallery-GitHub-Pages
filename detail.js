@@ -120,6 +120,17 @@
     });
   };
 
+  const getAlbumDuration = album => parseChapterTime(
+    album.duration || album.fullAlbumDuration || window.ALBUM_DURATIONS?.[album.id]
+  );
+
+  const formatClock = seconds => {
+    const value = Math.max(0, Math.floor(Number(seconds) || 0));
+    const minutes = Math.floor(value / 60);
+    const secs = String(value % 60).padStart(2, '0');
+    return `${minutes}:${secs}`;
+  };
+
   const counts = new Map();
   const normalized = albums.map(album => {
     const number = (counts.get(album.artist) || 0) + 1;
@@ -145,6 +156,7 @@
   }
   const tracks = trackSource.map(normalizeTrack);
   const chapterStarts = getChapterStarts(album);
+  const albumDuration = getAlbumDuration(album);
   const description = (album.story || []).join(' ') || `${album.title} — ${album.artist}の音楽作品。`;
   const canonicalUrl = `${siteBase}/detail.html?id=${encodeURIComponent(album.id)}`;
   const shareImage = absoluteUrl(album.art);
@@ -240,7 +252,11 @@
           <p class="lyrics-exhibit__meta">${escapeHtml(album.title)} · TRACK ${String(initialTrackIndex + 1).padStart(2, '0')}</p>
           <div class="lyrics-exhibit__title-row">
             <h3 class="lyrics-exhibit__title">${escapeHtml(tracks[initialTrackIndex]?.title || 'Untitled')}</h3>
-            <button class="track-play-button" id="track-play-button" type="button" data-track-index="${initialTrackIndex}">▶ 再生</button>
+            <div class="track-player" id="track-player">
+              <button class="track-play-button" id="track-play-button" type="button" data-track-index="${initialTrackIndex}" aria-label="この曲を再生">▶</button>
+              <input class="track-seek" id="track-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="曲の再生位置" />
+              <span class="track-time" id="track-time" aria-live="off">0:00 / 0:00</span>
+            </div>
           </div>
         </header>
         <div class="lyrics-exhibit__scroll" id="lyrics-scroll">
@@ -270,6 +286,8 @@
   const viewerMeta = viewer?.querySelector('.lyrics-exhibit__meta');
   const viewerScroll = $('#lyrics-scroll');
   const trackPlayButton = $('#track-play-button');
+  const trackSeek = $('#track-seek');
+  const trackTime = $('#track-time');
 
   const focusLyricHit = (root, smooth = true) => {
     const hit = root?.querySelector?.('[data-lyric-hit]');
@@ -296,9 +314,10 @@
     if (trackPlayButton) {
       trackPlayButton.dataset.trackIndex = String(index);
       const hasChapter = Number.isFinite(chapterStarts[index]);
-      trackPlayButton.disabled = !hasChapter || !album.youtubeId;
-      trackPlayButton.title = hasChapter ? 'FULL ALBUMのこの曲から再生' : 'チャプター開始時刻を設定すると再生できます';
+      trackPlayButton.disabled = !hasChapter || !embedUrl;
+      trackPlayButton.title = hasChapter ? 'FULL ALBUMのこの曲を再生 / 一時停止' : 'チャプター開始時刻を設定すると再生できます';
     }
+    updateTrackControls(index, true);
     viewerScroll.innerHTML = renderLyricsBody(track, highlightQuery);
     viewerScroll.scrollTop = 0;
     if (highlightQuery) requestAnimationFrame(() => focusLyricHit(viewerScroll));
@@ -357,10 +376,46 @@
   const fullAlbumSource = album.youtubeId || album.fullAlbumYoutube || album.youtubeFullAlbum || '';
   const embedUrl = toYoutubeEmbedUrl(fullAlbumSource);
   let fullAlbumPlayer = null;
+  let playerReadyPromise = null;
+  let activeTrackIndex = initialTrackIndex;
+  let playerTimer = 0;
+  let isSeeking = false;
   const playerOrigin = location.origin && location.origin !== 'null' ? `&origin=${encodeURIComponent(location.origin)}` : '';
   $('#work-xfd').innerHTML = embedUrl
     ? `<iframe id="full-album-player" src="${escapeHtml(embedUrl)}?enablejsapi=1&playsinline=1${playerOrigin}" title="${escapeHtml(album.title)} Full Album" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     : '<div class="full-album-placeholder"><span>COMING SOON</span><p>THE FULL ALBUM FILM<br>HAS NOT YET ENTERED THE ARCHIVE.</p></div>';
+
+  const chapterBounds = trackIndex => {
+    const start = chapterStarts[trackIndex];
+    if (!Number.isFinite(start)) return null;
+    let end = chapterStarts[trackIndex + 1];
+    if (!Number.isFinite(end)) end = albumDuration;
+    if (!Number.isFinite(end) || end <= start) end = start + 1;
+    return { start, end, duration: end - start };
+  };
+
+  const updateTrackControls = (trackIndex, reset = false) => {
+    activeTrackIndex = trackIndex;
+    const bounds = chapterBounds(trackIndex);
+    const enabled = Boolean(bounds && embedUrl);
+    if (trackSeek) {
+      trackSeek.disabled = !enabled;
+      trackSeek.min = '0';
+      trackSeek.max = bounds ? String(bounds.duration) : '1';
+      if (reset) trackSeek.value = '0';
+    }
+    if (trackTime) {
+      const current = reset ? 0 : Number(trackSeek?.value || 0);
+      trackTime.textContent = bounds ? `${formatClock(current)} / ${formatClock(bounds.duration)}` : '— / —';
+    }
+    if (trackPlayButton) {
+      trackPlayButton.disabled = !enabled;
+      if (reset) {
+        trackPlayButton.textContent = '▶';
+        trackPlayButton.setAttribute('aria-label', 'この曲を再生');
+      }
+    }
+  };
 
   const ensureYoutubeApi = () => new Promise(resolve => {
     if (window.YT?.Player) return resolve();
@@ -378,39 +433,105 @@
     }
   });
 
-  const playTrackChapter = async trackIndex => {
-    const start = chapterStarts[trackIndex];
-    if (!Number.isFinite(start) || !embedUrl) return;
-    const frame = $('#full-album-player');
-    if (!frame) return;
-    // Keep the TRACK LIST / lyrics viewport in place while jumping the YouTube player to the selected chapter.
+  const syncTrackProgress = () => {
+    window.clearTimeout(playerTimer);
+    if (!fullAlbumPlayer || !window.YT?.PlayerState) return;
     try {
-      await ensureYoutubeApi();
-      if (!fullAlbumPlayer) {
-        fullAlbumPlayer = new YT.Player('full-album-player', {
-          events: {
-            onReady: event => {
-              event.target.seekTo(start, true);
-              event.target.playVideo();
-            }
-          }
-        });
-      } else {
-        fullAlbumPlayer.seekTo(start, true);
-        fullAlbumPlayer.playVideo();
+      const state = fullAlbumPlayer.getPlayerState();
+      const current = Number(fullAlbumPlayer.getCurrentTime?.());
+      const bounds = chapterBounds(activeTrackIndex);
+      if (bounds && Number.isFinite(current) && !isSeeking) {
+        const relative = Math.max(0, Math.min(bounds.duration, current - bounds.start));
+        if (trackSeek) trackSeek.value = String(relative);
+        if (trackTime) trackTime.textContent = `${formatClock(relative)} / ${formatClock(bounds.duration)}`;
+        if (current >= bounds.end - 0.15 && state === YT.PlayerState.PLAYING) {
+          fullAlbumPlayer.pauseVideo();
+          trackPlayButton && (trackPlayButton.textContent = '▶');
+        }
       }
+      if (trackPlayButton) {
+        const playing = state === YT.PlayerState.PLAYING;
+        trackPlayButton.textContent = playing ? '❚❚' : '▶';
+        trackPlayButton.setAttribute('aria-label', playing ? '一時停止' : 'この曲を再生');
+      }
+    } catch (_) {}
+    playerTimer = window.setTimeout(syncTrackProgress, 250);
+  };
+
+  const ensurePlayer = async () => {
+    if (fullAlbumPlayer) return fullAlbumPlayer;
+    if (playerReadyPromise) return playerReadyPromise;
+    playerReadyPromise = (async () => {
+      await ensureYoutubeApi();
+      return new Promise((resolve, reject) => {
+        try {
+          fullAlbumPlayer = new YT.Player('full-album-player', {
+            events: {
+              onReady: event => {
+                syncTrackProgress();
+                resolve(event.target);
+              },
+              onStateChange: () => syncTrackProgress(),
+              onError: reject
+            }
+          });
+        } catch (error) { reject(error); }
+      });
+    })();
+    return playerReadyPromise;
+  };
+
+  const playTrackChapter = async trackIndex => {
+    const bounds = chapterBounds(trackIndex);
+    if (!bounds || !embedUrl) return;
+    activeTrackIndex = trackIndex;
+    try {
+      const player = await ensurePlayer();
+      const state = player.getPlayerState?.();
+      const current = Number(player.getCurrentTime?.());
+      const insideChapter = Number.isFinite(current) && current >= bounds.start && current < bounds.end;
+      if (insideChapter && state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+        return;
+      }
+      if (!insideChapter) player.seekTo(bounds.start + Number(trackSeek?.value || 0), true);
+      player.playVideo();
     } catch (_) {
+      const frame = $('#full-album-player');
+      if (!frame) return;
       const separator = embedUrl.includes('?') ? '&' : '?';
-      frame.src = `${embedUrl}${separator}start=${Math.floor(start)}&autoplay=1&playsinline=1`;
+      frame.src = `${embedUrl}${separator}start=${Math.floor(bounds.start)}&autoplay=1&playsinline=1`;
     }
   };
 
   if (trackPlayButton) {
-    const initialHasChapter = Number.isFinite(chapterStarts[initialTrackIndex]);
-    trackPlayButton.disabled = !initialHasChapter || !embedUrl;
-    trackPlayButton.title = initialHasChapter ? 'FULL ALBUMのこの曲から再生' : 'チャプター開始時刻を設定すると再生できます';
     trackPlayButton.addEventListener('click', () => playTrackChapter(Number(trackPlayButton.dataset.trackIndex)));
   }
+
+  if (trackSeek) {
+    const previewSeek = () => {
+      const bounds = chapterBounds(activeTrackIndex);
+      if (!bounds) return;
+      const relative = Number(trackSeek.value || 0);
+      if (trackTime) trackTime.textContent = `${formatClock(relative)} / ${formatClock(bounds.duration)}`;
+    };
+    trackSeek.addEventListener('pointerdown', () => { isSeeking = true; });
+    trackSeek.addEventListener('input', previewSeek);
+    trackSeek.addEventListener('change', async () => {
+      const bounds = chapterBounds(activeTrackIndex);
+      if (!bounds) return;
+      const relative = Math.max(0, Math.min(bounds.duration, Number(trackSeek.value || 0)));
+      try {
+        const player = await ensurePlayer();
+        player.seekTo(bounds.start + relative, true);
+      } catch (_) {}
+      isSeeking = false;
+      previewSeek();
+    });
+    trackSeek.addEventListener('pointerup', () => { isSeeking = false; });
+  }
+
+  updateTrackControls(initialTrackIndex, true);
 
   const prev = normalized[(index - 1 + normalized.length) % normalized.length];
   const next = normalized[(index + 1) % normalized.length];

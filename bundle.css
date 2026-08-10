@@ -5029,7 +5029,16 @@ button.featured-short__frame{
 
 /* v5.4.6 — Track-to-full-album chapter playback */
 .lyrics-exhibit__title-row{display:flex;align-items:center;justify-content:space-between;gap:18px}
-.track-play-button{flex:0 0 auto;min-width:82px;height:36px;padding:0 14px;border:1px solid rgba(214,181,218,.34);background:rgba(114,64,126,.10);color:#e6d8e8;font:600 10px/1 Arial,sans-serif;letter-spacing:.14em;cursor:pointer;transition:.25s ease}
+.track-play-button{flex:0 0 auto;min-width:104px;height:42px;padding:0 18px;border:1px solid rgba(214,181,218,.34);background:rgba(114,64,126,.10);color:#e6d8e8;font:600 13px/1 Arial,sans-serif;letter-spacing:.12em;cursor:pointer;transition:.25s ease}
 .track-play-button:hover:not(:disabled),.track-play-button:focus-visible:not(:disabled){border-color:rgba(235,211,238,.72);background:rgba(140,75,155,.20);transform:translateY(-1px);outline:none}
 .track-play-button:disabled{opacity:.32;cursor:not-allowed}
-@media(max-width:600px){.lyrics-exhibit__title-row{align-items:flex-start}.track-play-button{min-width:72px;height:34px;padding:0 10px;font-size:9px}}
+@media(max-width:600px){.lyrics-exhibit__title-row{align-items:flex-start}.track-play-button{min-width:88px;height:38px;padding:0 12px;font-size:11px}}
+
+
+/* v5.5.0 — chapter seek controls */
+.track-player{flex:0 1 430px;min-width:290px;display:grid;grid-template-columns:42px minmax(120px,1fr) auto;align-items:center;gap:10px}
+.track-player .track-play-button{min-width:42px;width:42px;height:42px;padding:0;font-size:15px;letter-spacing:0;border-radius:2px}
+.track-seek{width:100%;min-width:0;accent-color:#c9a8ce;cursor:pointer}
+.track-seek:disabled{opacity:.32;cursor:not-allowed}
+.track-time{min-width:84px;color:#a994aa;font:500 10px/1.2 Arial,sans-serif;letter-spacing:.04em;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.lyrics-exhibit__title-row{display:block}.track-player{margin-top:14px;width:100%;min-width:0;grid-template-columns:40px minmax(90px,1fr) auto;gap:8px}.track-player .track-play-button{width:40px;min-width:40px;height:38px;font-size:14px}.track-time{min-width:76px;font-size:9px}}
