@@ -156,7 +156,7 @@
   }
   const tracks = trackSource.map(normalizeTrack);
   const chapterStarts = getChapterStarts(album);
-  const albumDuration = getAlbumDuration(album);
+  let albumDuration = getAlbumDuration(album);
   const description = (album.story || []).join(' ') || `${album.title} — ${album.artist}の音楽作品。`;
   const canonicalUrl = `${siteBase}/detail.html?id=${encodeURIComponent(album.id)}`;
   const shareImage = absoluteUrl(album.art);
@@ -514,6 +514,11 @@
             events: {
               onReady: event => {
                 playerIsReady = true;
+                const detectedDuration = Number(event.target.getDuration?.());
+                if ((!Number.isFinite(albumDuration) || albumDuration <= 0) && Number.isFinite(detectedDuration) && detectedDuration > 0) {
+                  albumDuration = detectedDuration;
+                  updateTrackControls(activeTrackIndex, false);
+                }
                 syncTrackProgress();
                 resolve(event.target);
               },

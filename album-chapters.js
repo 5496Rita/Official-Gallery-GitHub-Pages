@@ -13,7 +13,11 @@ window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "silent-sovereign": ["0:00", "4:08", "8:36", "12:22", "16:52", "21:08"],
   "vitia": ["0:00", "3:29", "8:28", "13:00", "17:23", "21:23"],
   "crimson-covenant": ["0:00", "4:14", "7:40", "11:07", "14:37", "18:45"],
-  "dissonance-cry": ["0:00", "3:52", "7:27", "10:55", "14:43", "19:05"]
+  "dissonance-cry": ["0:00", "3:52", "7:27", "10:55", "14:43", "19:05"],
+  "aeternitas": ["0:00", "4:14", "8:44", "12:58", "17:06", "21:26"],
+  "nachtgarten": ["0:00", "4:01", "8:03", "12:12", "16:07", "20:29"],
+  "higan-zankyo": ["0:00", "4:13", "7:50", "12:47", "16:36", "20:59"],
+  "nocturnal-rite": ["0:00", "4:42", "9:07", "13:49", "17:54", "22:31"]
 };
 
 window.ALBUM_DURATIONS = window.ALBUM_DURATIONS || {
@@ -36,5 +40,9 @@ window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {
   "silent-sovereign": "https://youtu.be/gqBQATUx-iY",
   "vitia": "https://youtu.be/v_J0zMSEeO4",
   "crimson-covenant": "https://youtu.be/m1TjLxmg4mQ",
-  "dissonance-cry": "https://youtu.be/ajS5hUj-HPY"
+  "dissonance-cry": "https://youtu.be/ajS5hUj-HPY",
+  "aeternitas": "https://youtu.be/X90rm-yx31I",
+  "nachtgarten": "https://youtu.be/tAq9b5VCsew",
+  "higan-zankyo": "https://youtu.be/U4WcVqEHW-A",
+  "nocturnal-rite": "https://youtu.be/kpRe-uSx2wg"
 };
