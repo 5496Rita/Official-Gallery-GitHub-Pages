@@ -17,7 +17,12 @@ window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "aeternitas": ["0:00", "4:14", "8:44", "12:58", "17:06", "21:26"],
   "nachtgarten": ["0:00", "4:01", "8:03", "12:12", "16:17", "20:29"],
   "higan-zankyo": ["0:00", "4:13", "7:50", "12:47", "16:36", "20:59"],
-  "nocturnal-rite": ["0:00", "4:42", "9:07", "13:49", "17:54", "22:31"]
+  "nocturnal-rite": ["0:00", "4:42", "9:07", "13:49", "17:54", "22:31"],
+  "enmusubi": ["0:00", "3:34", "7:07", "11:03", "15:47", "19:33"],
+  "midnight-sirens": ["0:00", "4:25", "8:37", "13:09", "17:55", "22:23"],
+  "fractured-order": ["0:00", "4:54", "9:10", "13:52", "18:34", "22:48"],
+  "sugar-deception": ["0:00", "4:03", "7:29", "11:07", "15:07", "18:58"],
+  "oboromiyabi": ["0:00", "4:53", "9:08", "13:25", "17:05", "21:44"]
 };
 
 window.ALBUM_DURATIONS = window.ALBUM_DURATIONS || {
@@ -44,5 +49,10 @@ window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {
   "aeternitas": "https://youtu.be/X90rm-yx31I",
   "nachtgarten": "https://youtu.be/tAq9b5VCsew",
   "higan-zankyo": "https://youtu.be/U4WcVqEHW-A",
-  "nocturnal-rite": "https://youtu.be/kpRe-uSx2wg"
+  "nocturnal-rite": "https://youtu.be/kpRe-uSx2wg",
+  "enmusubi": "https://youtu.be/Tzi7G11rF2k",
+  "midnight-sirens": "https://youtu.be/CJOlCME7Y5s",
+  "fractured-order": "https://youtu.be/HsAalLcu4C8",
+  "sugar-deception": "https://youtu.be/oHMstyrRGhA",
+  "oboromiyabi": "https://youtu.be/NCh_z8vKYXk"
 };
