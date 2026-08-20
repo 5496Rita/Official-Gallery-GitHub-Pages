@@ -41,7 +41,7 @@
   const workLabel = album => `${ordinal(album.artistWorkNumber)} Album`;
   const releaseLabel = album => album.release || 'RELEASE TBA';
   const detailUrl = (album, from = 'archive') => `detail.html?id=${encodeURIComponent(album.id)}&from=${encodeURIComponent(from)}`;
-  const thumbnailUrl = album => `covers/thumbs/${encodeURIComponent(album.id)}.webp`;
+  const thumbnailUrl = album => `covers/thumbs/${encodeURIComponent(album.id)}.webp?v=564`;
   const newestRelease = normalizedAlbums.reduce((latest, album) => {
     if (!album.release) return latest;
     return !latest || album.release > latest ? album.release : latest;
