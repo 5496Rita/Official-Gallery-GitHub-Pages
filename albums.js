@@ -7801,6 +7801,37 @@ Desire
     },
     "reading": "デヴァウリング・エデン"
   }
+  ,{
+    id: "schattenblute",
+    artist: "CROVEIL",
+    title: "Schattenblüte",
+    reading: "シャッテンブリューテ",
+    albumNumber: 8,
+    release: "",
+    order: 36,
+    story: [],
+    tracks: ["蒼の証明", "甘い破片", "幻の残香", "鏡の黒蝶", "夜底に咲く", "静寂の底"],
+    art: "covers/schattenblute.jpg",
+    accent: "blue",
+    youtubeId: "",
+    links: commonListenLinks
+  },
+  {
+    id: "tarnished-beauty",
+    artist: "越黒リタ",
+    title: "Tarnished Beauty",
+    reading: "ターニッシュド・ビューティー",
+    albumNumber: 29,
+    release: "",
+    order: 37,
+    story: [],
+    tracks: ["Sacred Sin", "Lost Key", "Eternal Rose", "Cold Blade", "Skull Grace", "Silver Heart"],
+    art: "covers/tarnished-beauty.jpg",
+    accent: "blue",
+    youtubeId: "",
+    links: commonListenLinks
+  }
+
 ];
 
 // 配列に追加した順番をそのまま作品順として使用します。
