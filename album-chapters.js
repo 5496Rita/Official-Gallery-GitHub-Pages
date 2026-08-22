@@ -22,7 +22,10 @@ window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "midnight-sirens": ["0:00", "4:25", "8:37", "13:09", "17:55", "22:23"],
   "fractured-order": ["0:00", "4:54", "9:10", "13:52", "18:34", "22:48"],
   "sugar-deception": ["0:00", "4:03", "7:29", "11:07", "15:07", "18:58"],
-  "oboromiyabi": ["0:00", "4:53", "9:08", "13:25", "17:05", "21:44"]
+  "oboromiyabi": ["0:00", "4:53", "9:08", "13:25", "17:05", "21:44"],
+  "luminous-ruin": ["0:00", "2:57", "6:14", "10:32", "14:10", "18:23"],
+  "lunar-eclat": ["0:00", "3:29", "7:39", "12:00", "16:16", "20:32"],
+  "velvet-dominion": ["0:00", "4:04", "8:14", "12:59", "16:50", "21:24"]
 };
 
 window.ALBUM_DURATIONS = window.ALBUM_DURATIONS || {
@@ -54,5 +57,8 @@ window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {
   "midnight-sirens": "https://youtu.be/CJOlCME7Y5s",
   "fractured-order": "https://youtu.be/HsAalLcu4C8",
   "sugar-deception": "https://youtu.be/oHMstyrRGhA",
-  "oboromiyabi": "https://youtu.be/NCh_z8vKYXk"
+  "oboromiyabi": "https://youtu.be/NCh_z8vKYXk",
+  "luminous-ruin": "https://youtu.be/6S5iLJC-gh4",
+  "lunar-eclat": "https://youtu.be/Fdv95uGeVyc",
+  "velvet-dominion": "https://youtu.be/g4oMChXCCUg"
 };
