@@ -1,0 +1,54 @@
+/*
+  Koshikuro Rita Official Gallery — Version 2.2
+  Gallery is now a pure visual exhibition: artwork only, no visible labels.
+*/
+
+/* Remove museum plaques from the Gallery only. Discography remains informational. */
+.exhibition-item__plaque {
+  display: none !important;
+}
+
+/* Let each artwork breathe now that the label has gone. */
+.exhibition-item {
+  width: clamp(126px, 11.8vw, 194px) !important;
+  gap: 0;
+}
+
+/* Keep the frame quiet so the artwork remains the focal point. */
+.exhibition-item__frame {
+  padding: 4px;
+}
+
+.exhibition-item__frame::before {
+  inset: -6px;
+}
+
+.exhibition-item:hover .exhibition-item__frame,
+.exhibition-item:focus-visible .exhibition-item__frame {
+  transform: translateY(-8px) scale(1.055);
+}
+
+/* Slightly deepen the wall so the floating covers read more clearly. */
+.exhibition-shell {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.012), transparent 16%),
+    radial-gradient(ellipse at 50% 18%, rgba(126,75,142,.075), transparent 42%),
+    linear-gradient(180deg, rgba(4,2,6,.28), rgba(1,1,2,.8));
+}
+
+@media (max-width: 760px) {
+  .exhibition-item {
+    width: 100% !important;
+  }
+
+  .exhibition-item__frame {
+    padding: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exhibition-item:hover .exhibition-item__frame,
+  .exhibition-item:focus-visible .exhibition-item__frame {
+    transform: none;
+  }
+}

@@ -1,0 +1,142 @@
+/*
+  Koshikuro Rita Official Gallery — Version 2.3
+  A quieter, deeper gallery room with larger works and a cinematic hand-off to Detail.
+*/
+
+/* Give the room a little more architecture without competing with the covers. */
+.exhibition-shell {
+  background:
+    linear-gradient(180deg, rgba(3,2,5,.2), rgba(1,1,2,.84)),
+    radial-gradient(ellipse at 50% 4%, rgba(205,186,218,.095), transparent 38%),
+    linear-gradient(90deg, rgba(29,17,34,.42), transparent 17% 83%, rgba(29,17,34,.42));
+}
+
+.gallery-vault {
+  opacity: .58;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,.42));
+}
+
+.gallery-vault span {
+  top: -24%;
+  height: 92%;
+  border-color: rgba(214,194,220,.13);
+  border-width: 1px;
+  box-shadow:
+    inset 0 0 75px rgba(117,71,133,.075),
+    0 0 0 14px rgba(0,0,0,.075);
+}
+
+/* A restrained stained-glass moonlight field at the back of the room. */
+.exhibition-stage::before {
+  content: "";
+  position: absolute;
+  inset: 2% 8% 12%;
+  pointer-events: none;
+  opacity: .28;
+  background:
+    linear-gradient(116deg, transparent 21%, rgba(115,75,140,.07) 33%, transparent 44%),
+    linear-gradient(64deg, transparent 54%, rgba(121,34,65,.055) 64%, transparent 74%),
+    repeating-linear-gradient(90deg, transparent 0 11.8%, rgba(231,217,235,.025) 11.9% 12%);
+  mask-image: linear-gradient(to bottom, #000, transparent 86%);
+  transform: translateZ(-80px);
+}
+
+/* Works are slightly larger and less uniform, like a curated salon wall. */
+.exhibition-item {
+  width: clamp(138px, 12.9vw, 214px) !important;
+  --v23-scale: 1;
+}
+
+.exhibition-item:nth-child(4n + 1) { --v23-scale: 1.04; }
+.exhibition-item:nth-child(5n + 2) { --v23-scale: .94; }
+.exhibition-item:nth-child(7n + 3) { --v23-scale: 1.08; }
+
+.exhibition-item__frame {
+  transform: scale(var(--v23-scale));
+  transform-origin: center;
+}
+
+/* Antique-black frame at rest, softly warming toward aged gold on approach. */
+.exhibition-item__frame::before {
+  border-color: rgba(160,139,118,.18);
+  background:
+    linear-gradient(135deg, rgba(146,115,78,.18), transparent 17% 83%, rgba(130,99,65,.16)),
+    linear-gradient(145deg, #0d0a0e, #030204 58%, #120d12);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.78),
+    inset 0 0 16px rgba(200,163,111,.035),
+    0 18px 42px rgba(0,0,0,.4);
+}
+
+.exhibition-item:hover .exhibition-item__frame::before,
+.exhibition-item:focus-visible .exhibition-item__frame::before {
+  border-color: rgba(231,204,160,.58);
+  background:
+    linear-gradient(135deg, rgba(218,181,127,.5), transparent 18% 82%, rgba(190,145,91,.42)),
+    linear-gradient(145deg, #171017, #060408 56%, #211622);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.7),
+    inset 0 0 22px rgba(235,195,135,.08),
+    0 25px 58px rgba(0,0,0,.68),
+    0 0 34px rgba(177,122,184,.16);
+}
+
+.exhibition-item:hover .exhibition-item__frame,
+.exhibition-item:focus-visible .exhibition-item__frame {
+  transform: translateY(-5px) scale(calc(var(--v23-scale) * 1.045));
+}
+
+/* Transition clone used when an artwork opens. */
+.gallery-transition-clone {
+  position: fixed;
+  z-index: 10000;
+  margin: 0;
+  pointer-events: none;
+  object-fit: contain;
+  background: #050307;
+  box-shadow: 0 30px 90px rgba(0,0,0,.8), 0 0 0 5px rgba(151,119,88,.34);
+  transition:
+    left .52s cubic-bezier(.22,.78,.2,1),
+    top .52s cubic-bezier(.22,.78,.2,1),
+    width .52s cubic-bezier(.22,.78,.2,1),
+    height .52s cubic-bezier(.22,.78,.2,1),
+    transform .52s cubic-bezier(.22,.78,.2,1),
+    box-shadow .52s ease;
+}
+
+body.is-opening-artwork::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(30,18,34,.2), rgba(1,1,2,.92));
+  animation: v23RoomFade .5s ease forwards;
+}
+
+@keyframes v23RoomFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .exhibition-item {
+    width: 100% !important;
+  }
+
+  .exhibition-item__frame,
+  .exhibition-item:hover .exhibition-item__frame,
+  .exhibition-item:focus-visible .exhibition-item__frame {
+    transform: none;
+  }
+
+  .exhibition-stage::before { opacity: .14; }
+  .gallery-vault { opacity: .28; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-transition-clone { transition: none; }
+  body.is-opening-artwork::after { animation: none; opacity: 1; }
+  .exhibition-item:hover .exhibition-item__frame,
+  .exhibition-item:focus-visible .exhibition-item__frame { transform: none; }
+}

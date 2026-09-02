@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08030d" />
+  <meta name="description" content="越黒リタの音楽と物語を巡る公式ギャラリー。美術館とゴシック大聖堂を思わせる展示空間で、作品とディスコグラフィーを紹介します。" />
+  <meta name="author" content="越黒リタ" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="越黒リタ Official Gallery" />
+  <meta property="og:title" content="越黒リタ Official Gallery" />
+  <meta property="og:description" content="美しく儚い闇を描く、音楽と物語の公式ギャラリー。" />
+  <meta property="og:image" content="images/entrance-bg.webp" data-relative-url />
+  <meta property="og:url" content="__SITE_URL__/" data-site-url />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="越黒リタ Official Gallery" />
+  <meta name="twitter:description" content="美しく儚い闇を描く、音楽と物語の公式ギャラリー。" />
+  <meta name="twitter:image" content="images/entrance-bg.webp" data-relative-url />
+  <link rel="canonical" href="__SITE_URL__/" data-site-url />
+  <title>越黒リタ Official Gallery</title>
+  <link rel="icon" href="icons/favicon.ico?v=566" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png?v=566" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/brand-mark.png?v=566" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=566" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" as="image" href="images/welcome-bg.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="bundle.css?v=544" />
+
+  <style>
+    /* v5.2: mobile Shorts controls are overlaid on the bottom of the video so they are immediately visible. */
+    @media (max-width:700px){
+      #featured-short{position:relative!important;width:min(94vw,420px)!important;}
+      #featured-short .featured-short__controls{
+        position:relative!important;
+        z-index:30!important;
+        display:grid!important;
+        grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr)!important;
+        gap:7px!important;
+        width:calc(100% - 20px)!important;
+        margin:-58px 10px 10px!important;
+        padding:0!important;
+        pointer-events:auto!important;
+      }
+      #featured-short .featured-short__control{
+        display:flex!important;align-items:center!important;justify-content:center!important;
+        width:100%!important;min-width:0!important;min-height:48px!important;padding:0 14px!important;
+        border:1px solid rgba(235,220,240,.42)!important;border-radius:2px!important;
+        background:linear-gradient(180deg,rgba(12,8,16,.82),rgba(7,4,10,.92))!important;
+        color:rgba(250,245,252,.94)!important;
+        box-shadow:0 8px 24px rgba(0,0,0,.42)!important;
+        backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;
+        font-size:10px!important;font-weight:600!important;letter-spacing:.16em!important;
+        pointer-events:auto!important;touch-action:manipulation!important;
+        -webkit-tap-highlight-color:transparent!important;
+        transition:background .2s ease,border-color .2s ease,color .2s ease,transform .15s ease,box-shadow .2s ease!important;
+      }
+      #featured-short .featured-short__control:active{transform:translateY(1px) scale(.992)!important;}
+      #featured-short-sound{
+        background:linear-gradient(180deg,rgba(50,24,58,.88),rgba(23,11,28,.94))!important;
+        border-color:rgba(220,185,228,.58)!important;
+        box-shadow:inset 2px 0 0 rgba(205,150,220,.7),0 8px 24px rgba(0,0,0,.42)!important;
+      }
+      #featured-short-sound[aria-pressed="true"]{
+        color:#fff!important;
+        border-color:rgba(238,211,244,.78)!important;
+        box-shadow:inset 2px 0 0 rgba(238,202,247,.95),0 0 20px rgba(130,72,148,.18),0 8px 24px rgba(0,0,0,.42)!important;
+      }
+      #featured-short-next::after{content:' →';margin-left:.55em;opacity:.7;}
+      #featured-short .featured-short__control:disabled{opacity:.52!important;}
+    }
+      /* v5.3 icon-only Shorts controls */
+      #featured-short .featured-short__controls{
+        grid-template-columns:52px 52px!important;
+        justify-content:end!important;
+        gap:8px!important;
+      }
+      #featured-short .featured-short__control{
+        width:52px!important;min-height:46px!important;padding:0!important;
+        border-radius:4px!important;font-size:20px!important;letter-spacing:0!important;
+        background:rgba(7,4,10,.76)!important;
+        border:1px solid rgba(235,220,240,.32)!important;
+        box-shadow:0 6px 20px rgba(0,0,0,.32)!important;
+      }
+      #featured-short-sound{box-shadow:0 6px 20px rgba(0,0,0,.32)!important;}
+      #featured-short-sound[aria-pressed="true"]{
+        background:rgba(43,22,50,.84)!important;
+        border-color:rgba(230,199,239,.62)!important;
+        box-shadow:0 0 16px rgba(138,78,156,.14),0 6px 20px rgba(0,0,0,.32)!important;
+      }
+      #featured-short-next::after{content:none!important;}
+  </style>
+</head>
+<body class="page-enter">
+  <div class="page-transition" aria-hidden="true"></div>
+  <a class="skip-link" href="#home">メインコンテンツへ移動</a>
+  <div class="rose-petals" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+  <div id="welcome" class="welcome" aria-label="Welcome to My World" role="button" tabindex="0" aria-describedby="welcome-hint">
+    <div class="welcome__moon" aria-hidden="true"></div>
+    <div class="welcome__mist welcome__mist--one" aria-hidden="true"></div>
+    <div class="welcome__mist welcome__mist--two" aria-hidden="true"></div>
+    <div class="welcome__ornament welcome__ornament--top" aria-hidden="true"></div>
+    <div class="welcome__ornament welcome__ornament--bottom" aria-hidden="true"></div>
+    <div class="welcome__petals" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="welcome__content">
+      <h1>Welcome to My World</h1>
+      <p id="welcome-hint" class="welcome__hint">クリックまたはキー入力でスキップ</p>
+    </div>
+  </div>
+
+  <div id="site" class="site" hidden>
+    <header class="site-header">
+      <a href="#home" class="brand" aria-label="Home">
+        <img src="icons/brand-mark.png" alt="" width="64" height="64" />
+        <span>越黒リタ<br><small>OFFICIAL GALLERY</small></span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+       <a href="#home">ENTRANCE</a>
+<a href="#artist">ARTIST</a>
+<a href="#exhibition">GALLERY</a>
+<a href="#archive">DISCOGRAPHY</a>
+              </nav>
+    </header>
+
+    <main>
+  <div class="entrance-world">
+
+    <section id="home" class="hero section">
+      <div class="hero__image" aria-hidden="true"></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__content reveal">
+        <p class="eyebrow">KOSHIKURO RITA</p>
+
+        <h1>
+          Where silence blooms<br>
+          into a dark melody.
+        </h1>
+
+        <p>
+          美しく儚い闇を描く、<br>
+          音楽と物語が織りなす世界への入口。
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--solid" href="#exhibition">
+            ENTER GALLERY
+          </a>
+
+          <a class="button" href="#archive">
+            VIEW DISCOGRAPHY
+          </a>
+        </div>
+      </div>
+
+      <aside id="featured-short" class="featured-short reveal" aria-label="ランダムに選ばれたYouTube Short" hidden>
+        <div id="featured-short-player" class="featured-short__player-wrap"></div>
+        <div class="featured-short__controls" aria-label="Short動画の操作">
+          <button id="featured-short-sound" class="featured-short__control" type="button" aria-pressed="false" aria-label="サウンドをオン" title="サウンドをオン" disabled>
+            <span aria-hidden="true">🔇</span>
+          </button>
+          <button id="featured-short-next" class="featured-short__control" type="button" aria-label="次のShort" title="次のShort" disabled>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </aside>
+
+      <a class="scroll-cue" href="#artist">SCROLL</a>
+    </section>
+
+    <section id="artist" class="section artist-section">
+      <div class="artist-container artist-container--portrait reveal">
+        <div class="artist-copy">
+          <p class="eyebrow">THE WORLD BEHIND</p>
+          <h2>ARTIST</h2>
+
+          <h3>越黒リタ</h3>
+
+          <p class="artist-description">
+            美しく儚い闇を描く、音楽と物語の創作者。<br>
+            一曲、一枚、一篇ごとに、<br>
+            静寂と黒の美学を紡ぎ続けている。
+          </p>
+
+          <div class="artist-divider" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <p class="artist-links-title">EXPLORE MORE</p>
+
+          <div class="artist-links">
+            <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
+        </div>
+
+        <figure class="artist-portrait" aria-label="越黒リタ ポートレート">
+          <img src="images/artist-portrait.webp" alt="越黒リタ" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+  </div>
+
+      <section id="exhibition" class="section exhibition-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">A CURATED GALLERY</p>
+          <h2>GALLERY</h2>
+          <p>ひとつの作品と、静かに巡り合うための展示。ジャケットに触れると、その世界がひらきます。</p>
+        </div>
+        <div class="exhibition-shell">
+          <div class="gallery-vault" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="gallery-mist" aria-hidden="true"></div>
+          <div id="exhibition-stage" class="exhibition-stage" aria-label="Album exhibition"></div>
+        </div>
+      </section>
+
+      <section id="archive" class="section archive-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">ARCHIVE HALL</p>
+          <h2>DISCOGRAPHY</h2>
+          <p>黒の収蔵庫に眠る、すべての作品。検索や並び替えで、その軌跡を辿れます。</p>
+        </div>
+        <div class="archive-tabs reveal" role="tablist" aria-label="Artist filter">
+          <button type="button" class="is-active" data-artist="all">ALL</button>
+          <button type="button" data-artist="越黒リタ">越黒リタ</button>
+          <button type="button" data-artist="CROVEIL">CROVEIL</button>
+        </div>
+        <div class="archive-toolbar reveal">
+          <div class="archive-search-panel">
+            <div class="search-mode-tabs" role="tablist" aria-label="Search mode">
+              <button type="button" class="is-active" data-search-mode="songs" role="tab" aria-selected="true">SONGS</button>
+              <button type="button" data-search-mode="lyrics" role="tab" aria-selected="false">LYRICS</button>
+            </div>
+            <label class="search-field">
+              <span id="archive-search-label" class="sr-only">曲名・アルバム検索</span>
+              <input id="archive-search" type="search" placeholder="曲名・アルバムを検索" autocomplete="off" />
+            </label>
+          </div>
+          <label>
+            <span class="sr-only">Sort</span>
+            <select id="archive-sort">
+              <option value="added">追加した順</option>
+              <option value="addedNewest">追加した新しい順</option>
+              <option value="newest">発売日の新しい順</option>
+              <option value="oldest">発売日の古い順</option>
+              <option value="title">タイトル順</option>
+            </select>
+          </label>
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button type="button" data-view="grid" class="is-active">GRID</button>
+            <button type="button" data-view="list">LIST</button>
+          </div>
+          <p id="archive-count" class="archive-count"></p>
+        </div>
+        <div class="archive-collections">
+          <section id="archive-rita-section" class="archive-artist-section reveal" aria-labelledby="archive-rita-title">
+            <div class="archive-artist-heading">
+              <h3 id="archive-rita-title">越黒リタ</h3>
+              <p id="archive-rita-count"></p>
+            </div>
+            <div id="archive-rita-results" class="archive-results archive-results--grid"></div>
+          </section>
+
+          <section id="archive-croveil-section" class="archive-artist-section reveal" aria-labelledby="archive-croveil-title">
+            <div class="archive-artist-heading">
+              <h3 id="archive-croveil-title">CROVEIL</h3>
+              <p id="archive-croveil-count"></p>
+            </div>
+            <div id="archive-croveil-results" class="archive-results archive-results--grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <aside id="persona-portal" class="reveal" style="max-width:980px;margin:18px auto 10px;padding:26px 28px;border-top:1px solid rgba(154,101,180,.28);border-bottom:1px solid rgba(154,101,180,.16);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;">
+        <div>
+          <p class="eyebrow" style="margin-bottom:8px;">EXTRA EXHIBITION</p>
+          <h2 style="font-size:clamp(20px,3vw,30px);margin:0 0 8px;font-weight:400;">INSTRUMENT PERSONA</h2>
+          <p style="margin:0;color:var(--muted,#9d929f);font-size:13px;line-height:1.8;">楽器から生まれた、もうひとつの人格。5人の楽器隊を収蔵する小さな別館。</p>
+        </div>
+        <a class="button" href="characters.html" style="white-space:nowrap;">VIEW PERSONAS →</a>
+      </aside>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>Thank you for visiting my world.</p>
+      <a href="#home">BACK TO TOP</a>
+    </footer>
+  </div>
+
+
+  <script src="site-config.js?v=400"></script>
+  <script src="albums-lite.js?v=565"></script>
+  <script src="app.js?v=564"></script>
+  <script src="v2.1.js?v=410"></script>
+  <script src="v2.3.js?v=518"></script>
+</body>
+</html>
