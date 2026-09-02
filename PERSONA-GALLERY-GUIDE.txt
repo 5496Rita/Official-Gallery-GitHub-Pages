@@ -1,0 +1,28 @@
+INSTRUMENT PERSONA GALLERY — 追加方法
+
+■ ペアイラスト
+画像を persona-media/pairs/ に置き、data/pair-gallery.json の items に追加します。
+例:
+{
+  "image": "persona-media/pairs/fraxia-ruberia-01.jpg",
+  "pair": "FRAXIA × RUBERIA",
+  "categories": ["FRAXIA × RUBERIA"],
+  "title": "冷静な技巧派 × 情熱の感情派",
+  "description": "短い説明文",
+  "alt": "フレクシアとルベリアのイラスト"
+}
+
+■ 四コマ
+画像を persona-media/comics/ に置き、data/comics.json の items に追加します。
+例:
+{
+  "image": "persona-media/comics/episode-001.jpg",
+  "characters": "FRAXIA / LAVINIA",
+  "categories": ["BACKSTAGE", "FRAXIA", "LAVINIA"],
+  "title": "真面目な人をからかう日",
+  "description": "EPISODE 001",
+  "alt": "フレクシアとラヴィニアの四コマ漫画"
+}
+
+※ 今後は画像とJSONだけ更新すれば、HTMLを触らず一覧に反映されます。
+※ この更新ZIPには data/shorts.json を含めていません。
