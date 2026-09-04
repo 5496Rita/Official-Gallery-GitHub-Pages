@@ -1,0 +1,8 @@
+CROVEIL Official Gallery v5.9.3
+
+追加内容:
+- COMICS: EPISODE 28〜36（9本）追加
+- ILLUSTRATIONS: ARCHIVE 25〜27（3枚）追加
+- v5.9.2 の人物表示サイズ統一版も同梱
+
+既存ファイルを上書きし、新規 comic-media / illustration-media ファイルを追加してください。
