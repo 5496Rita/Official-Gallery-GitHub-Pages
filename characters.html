@@ -30,8 +30,12 @@
     .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:start}.art-instrument img{width:100%;height:350px;object-fit:contain;background:#f4f4f4}.art-performance img{width:100%;height:760px;object-fit:contain}
     .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}.spec{padding:18px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)}.spec dt{font-size:10px;letter-spacing:.22em;color:#bcaad1;margin-bottom:8px}.spec dd{margin:0;color:#eee7f7;font-size:14px}
     .page-links{display:flex;justify-content:space-between;gap:16px;margin-top:28px}.page-links a{flex:1;padding:18px;background:rgba(255,255,255,.03);border:1px solid rgba(205,167,255,.18);text-decoration:none;font-size:13px;letter-spacing:.08em}.page-links a span{display:block;font-size:10px;letter-spacing:.22em;color:#bbaad1;margin-bottom:6px}
-    @media(max-width:1024px){.hub-grid{grid-template-columns:1fr}.split-grid,.specs,.hub-links{grid-template-columns:1fr}.hub-card{grid-template-columns:1fr}.hub-thumb{min-height:320px}.hub-thumb img{height:300px}.art-performance img{height:560px}.hero h1{font-size:38px}}
-    @media(max-width:720px){.page{padding:0 16px 56px}.header{padding:18px 16px}.hero{padding:36px 0 18px}.hero h1{font-size:30px}.hub-card{padding:18px}.art-instrument img{height:260px}.art-performance img{height:420px}.page-links{flex-direction:column}}
+    @media(max-width:1024px){.miniature-grid{grid-template-columns:repeat(3,1fr)}.hub-grid{grid-template-columns:1fr}.split-grid,.specs,.hub-links{grid-template-columns:1fr}.hub-card{grid-template-columns:1fr}.hub-thumb{min-height:320px}.hub-thumb img{height:300px}.art-performance img{height:560px}.hero h1{font-size:38px}}
+    @media(max-width:720px){.hub-mini{width:76px;height:76px}.miniature-section{padding:26px 16px}.miniature-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}.miniature-item{min-width:142px;scroll-snap-align:start}.page{padding:0 16px 56px}.header{padding:18px 16px}.hero{padding:36px 0 18px}.hero h1{font-size:30px}.hub-card{padding:18px}.art-instrument img{height:260px}.art-performance img{height:420px}.page-links{flex-direction:column}}
+
+    /* v5.9.4 MINIATURE COLLECTION */
+    .hub-card{position:relative;overflow:hidden}.hub-mini{position:absolute;right:12px;bottom:8px;width:94px;height:94px;object-fit:contain;opacity:.9;transform:translateY(6px);transition:transform .35s ease,opacity .35s ease;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5));pointer-events:none}.hub-card:hover .hub-mini{transform:translateY(0);opacity:1}
+    .miniature-section{margin:54px 0 0;padding:34px 28px 30px;border:1px solid rgba(205,167,255,.2);background:linear-gradient(180deg,rgba(15,9,23,.8),rgba(5,4,10,.94));box-shadow:var(--shadow)}.miniature-head{text-align:center;margin-bottom:26px}.miniature-head h2{margin:0;font-family:Georgia,serif;font-weight:400;font-size:34px;letter-spacing:.1em}.miniature-head p{margin:8px 0 0;color:#a99fb3;font-size:12px;letter-spacing:.12em}.miniature-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}.miniature-item{display:block;text-decoration:none;text-align:center;padding:12px 8px 10px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);transition:.25s}.miniature-item:hover{transform:translateY(-4px);border-color:rgba(205,167,255,.4);background:rgba(130,86,170,.08)}.miniature-item img{width:100%;aspect-ratio:1/1;object-fit:contain}.miniature-item b{display:block;margin-top:6px;font:11px Georgia,serif;letter-spacing:.1em;font-weight:400}.miniature-item span{display:block;margin-top:2px;font-size:9px;letter-spacing:.14em;color:#94869f}
   </style>
 
 </head>
@@ -60,7 +64,7 @@
           <p style="margin-top:14px">冷静で端正な完璧主義者。氷の旋律を研ぎ澄ます、静かな技巧派。</p>
           <b>ENTER THIS ROOM →</b>
         </div>
-        <div class="hub-thumb"><img src="persona-media/fraxia-with-instrument-v591.png" alt="フレクシアがESP FRX Custom Orderを構えたイラスト" loading="lazy"></div>
+        <div class="hub-thumb"><img src="persona-media/fraxia-with-instrument-v591.png" alt="フレクシアがESP FRX Custom Orderを構えたイラスト" loading="lazy"></div><img class="hub-mini" src="miniature-media/fraxia-mini.png" alt="" loading="lazy">
       </a><a class="hub-card" href="persona-ruberia.html">
         <div>
           <p class="eyebrow">EXHIBIT 02</p>
@@ -69,7 +73,7 @@
           <p style="margin-top:14px">情熱的で感情豊か。熱量で音を燃やす、紅のギタリスト。</p>
           <b>ENTER THIS ROOM →</b>
         </div>
-        <div class="hub-thumb"><img src="persona-media/ruberia-with-instrument-v591.png" alt="ルベリアがEdwards Antelopeを構えたイラスト" loading="lazy"></div>
+        <div class="hub-thumb"><img src="persona-media/ruberia-with-instrument-v591.png" alt="ルベリアがEdwards Antelopeを構えたイラスト" loading="lazy"></div><img class="hub-mini" src="miniature-media/ruberia-mini.png" alt="" loading="lazy">
       </a><a class="hub-card" href="persona-noctilys.html">
         <div>
           <p class="eyebrow">EXHIBIT 03</p>
@@ -78,7 +82,7 @@
           <p style="margin-top:14px">静かで優しい守護者。低音のように全体を支える影。</p>
           <b>ENTER THIS ROOM →</b>
         </div>
-        <div class="hub-thumb"><img src="persona-media/noctilys-with-instrument-v591.png" alt="ノクティリスがESP Forest Bassを構えたイラスト" loading="lazy"></div>
+        <div class="hub-thumb"><img src="persona-media/noctilys-with-instrument-v591.png" alt="ノクティリスがESP Forest Bassを構えたイラスト" loading="lazy"></div><img class="hub-mini" src="miniature-media/noctilys-mini.png" alt="" loading="lazy">
       </a><a class="hub-card" href="persona-lavinia.html">
         <div>
           <p class="eyebrow">EXHIBIT 04</p>
@@ -87,7 +91,7 @@
           <p style="margin-top:14px">自由奔放で小悪魔的。退屈を壊してステージを動かす紫蝶。</p>
           <b>ENTER THIS ROOM →</b>
         </div>
-        <div class="hub-thumb"><img src="persona-media/lavinia-with-instrument-v591.png" alt="ラヴィニアのドラマーイラスト" loading="lazy"></div>
+        <div class="hub-thumb"><img src="persona-media/lavinia-with-instrument-v591.png" alt="ラヴィニアのドラマーイラスト" loading="lazy"></div><img class="hub-mini" src="miniature-media/lavinia-mini.png" alt="" loading="lazy">
       </a><a class="hub-card" href="persona-vespera.html">
         <div>
           <p class="eyebrow">EXHIBIT 05</p>
@@ -96,8 +100,20 @@
           <p style="margin-top:14px">ミステリアスで落ち着いた、夜の捕食者。黒と紅の牙を持つサブリーダー。</p>
           <b>ENTER THIS ROOM →</b>
         </div>
-        <div class="hub-thumb"><img src="persona-media/vespera-with-instrument-v591.png" alt="ヴェスペラがB.C.Rich BEAST AVENGEを構えたイラスト" loading="lazy"></div>
+        <div class="hub-thumb"><img src="persona-media/vespera-with-instrument-v591.png" alt="ヴェスペラがB.C.Rich BEAST AVENGEを構えたイラスト" loading="lazy"></div><img class="hub-mini" src="miniature-media/vespera-mini.png" alt="" loading="lazy">
       </a>
+    </section>
+
+    <section class="miniature-section" aria-labelledby="miniature-title">
+      <div class="miniature-head"><p class="eyebrow">MINIATURE EXHIBITS</p><h2 id="miniature-title">MINIATURE COLLECTION</h2><p>大展示室の余白に並ぶ、小さなCROVEIL。キャラクターの輪郭を軽やかに楽しむミニチュア展示。</p></div>
+      <div class="miniature-grid">
+        <a class="miniature-item" href="index.html"><img src="miniature-media/rita-mini.png" alt="越黒リタ デフォルメ"><b>RITA</b><span>VOCAL</span></a>
+        <a class="miniature-item" href="persona-fraxia.html"><img src="miniature-media/fraxia-mini.png" alt="フレクシア デフォルメ"><b>FRAXIA</b><span>LEAD GUITAR</span></a>
+        <a class="miniature-item" href="persona-ruberia.html"><img src="miniature-media/ruberia-mini.png" alt="ルベリア デフォルメ"><b>RUBERIA</b><span>GUITAR</span></a>
+        <a class="miniature-item" href="persona-noctilys.html"><img src="miniature-media/noctilys-mini.png" alt="ノクティリス デフォルメ"><b>NOCTILYS</b><span>BASS</span></a>
+        <a class="miniature-item" href="persona-lavinia.html"><img src="miniature-media/lavinia-mini.png" alt="ラヴィニア デフォルメ"><b>LAVINIA</b><span>DRUMS</span></a>
+        <a class="miniature-item" href="persona-vespera.html"><img src="miniature-media/vespera-mini.png" alt="ヴェスペラ デフォルメ"><b>VESPERA</b><span>GUITAR</span></a>
+      </div>
     </section>
   </div>
 </body>

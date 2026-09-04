@@ -31,7 +31,9 @@
     .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}.spec{padding:18px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)}.spec dt{font-size:10px;letter-spacing:.22em;color:#bcaad1;margin-bottom:8px}.spec dd{margin:0;color:#eee7f7;font-size:14px}
     .page-links{display:flex;justify-content:space-between;gap:16px;margin-top:28px}.page-links a{flex:1;padding:18px;background:rgba(255,255,255,.03);border:1px solid rgba(205,167,255,.18);text-decoration:none;font-size:13px;letter-spacing:.08em}.page-links a span{display:block;font-size:10px;letter-spacing:.22em;color:#bbaad1;margin-bottom:6px}
     @media(max-width:1024px){.hub-grid{grid-template-columns:1fr}.split-grid,.specs,.hub-links{grid-template-columns:1fr}.hub-card{grid-template-columns:1fr}.hub-thumb{min-height:320px}.hub-thumb img{height:300px}.art-performance img{height:560px}.hero h1{font-size:38px}}
-    @media(max-width:720px){.page{padding:0 16px 56px}.header{padding:18px 16px}.hero{padding:36px 0 18px}.hero h1{font-size:30px}.hub-card{padding:18px}.art-instrument img{height:330px}.art-performance img{height:420px}.page-links{flex-direction:column}}
+    @media(max-width:720px){.miniature-exhibit{grid-template-columns:1fr;padding:22px}.miniature-exhibit__art{min-height:280px}.miniature-exhibit__art img{height:280px}.miniature-exhibit__copy h2{font-size:30px}.page{padding:0 16px 56px}.header{padding:18px 16px}.hero{padding:36px 0 18px}.hero h1{font-size:30px}.hub-card{padding:18px}.art-instrument img{height:330px}.art-performance img{height:420px}.page-links{flex-direction:column}}
+
+    .miniature-exhibit{margin-top:28px;padding:30px;display:grid;grid-template-columns:minmax(220px,.62fr) minmax(0,1fr);align-items:center;gap:32px;background:radial-gradient(circle at 22% 35%,rgba(130,75,180,.16),transparent 34%),linear-gradient(180deg,rgba(13,9,21,.94),rgba(5,4,10,.98));border:1px solid rgba(205,167,255,.2);box-shadow:var(--shadow)}.miniature-exhibit__art{min-height:360px;display:flex;align-items:center;justify-content:center}.miniature-exhibit__art img{width:min(380px,100%);height:360px;object-fit:contain;filter:drop-shadow(0 22px 30px rgba(0,0,0,.55))}.miniature-exhibit__copy h2{margin:4px 0 10px;font-family:Georgia,serif;font-size:36px;font-weight:400;letter-spacing:.08em}.miniature-exhibit__copy p{max-width:560px;color:#bdb4c8}.miniature-exhibit__copy .mini-label{font-size:10px;letter-spacing:.24em;color:#b995c4}
   </style>
 
 </head>
@@ -71,6 +73,11 @@
         <a href="characters.html"><span>INDEX</span>CHARACTER ROOMS</a>
         <a href="persona-noctilys.html"><span>NEXT ROOM</span>ノクティリス / Noctilys</a>
       </div>
+    </section>
+
+    <section class="miniature-exhibit" aria-label="ルベリア ミニチュア展示">
+      <div class="miniature-exhibit__art"><img src="miniature-media/ruberia-mini.png" alt="ルベリア デフォルメイラスト" loading="lazy"></div>
+      <div class="miniature-exhibit__copy"><div class="mini-label">MINIATURE FORM</div><h2>RUBERIA</h2><p>紅の熱量は、ミニチュアになっても消えない。</p><p>本展示室の最後に置いた、少しだけ肩の力を抜いた姿。メインの立ち絵とは別の“余白の展示”として楽しめます。</p></div>
     </section>
   </div>
 </body>

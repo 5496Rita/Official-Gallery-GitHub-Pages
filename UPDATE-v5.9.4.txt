@@ -1,0 +1,14 @@
+CROVEIL Official Gallery v5.9.4 — MINIATURE COLLECTION
+
+追加内容
+- characters.html: 各展示カード右下にSDキャラを追加
+- characters.html: MINIATURE COLLECTIONを新設（Rita + 楽器隊5名）
+- comics.html: キャラクターフィルターにSDアイコンを追加
+- comics.html: 各コミックカード右下に登場キャラSDを自動表示
+- persona-*.html: 各キャラページ末尾にMINIATURE FORM展示を追加
+- miniature-media/: SD画像6点を追加
+- スマホ: MINIATURE COLLECTIONを横スワイプ表示
+
+使い方
+現在のサイトへ同名ファイル/フォルダを上書きしてください。
+このZIPはv5.9.3差分セットをベースにした更新パッケージです。
