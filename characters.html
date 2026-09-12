@@ -36,7 +36,12 @@
     /* v5.9.4 MINIATURE COLLECTION */
     .hub-card{position:relative;overflow:hidden}.hub-mini{position:absolute;right:12px;bottom:8px;width:94px;height:94px;object-fit:contain;opacity:.9;transform:translateY(6px);transition:transform .35s ease,opacity .35s ease;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5));pointer-events:none}.hub-card:hover .hub-mini{transform:translateY(0);opacity:1}
     .miniature-section{margin:54px 0 0;padding:34px 28px 30px;border:1px solid rgba(205,167,255,.2);background:linear-gradient(180deg,rgba(15,9,23,.8),rgba(5,4,10,.94));box-shadow:var(--shadow)}.miniature-head{text-align:center;margin-bottom:26px}.miniature-head h2{margin:0;font-family:Georgia,serif;font-weight:400;font-size:34px;letter-spacing:.1em}.miniature-head p{margin:8px 0 0;color:#a99fb3;font-size:12px;letter-spacing:.12em}.miniature-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}.miniature-item{display:block;text-decoration:none;text-align:center;padding:12px 8px 10px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);transition:.25s}.miniature-item:hover{transform:translateY(-4px);border-color:rgba(205,167,255,.4);background:rgba(130,86,170,.08)}.miniature-item img{width:100%;aspect-ratio:1/1;object-fit:contain}.miniature-item b{display:block;margin-top:6px;font:11px Georgia,serif;letter-spacing:.1em;font-weight:400}.miniature-item span{display:block;margin-top:2px;font-size:9px;letter-spacing:.14em;color:#94869f}
-  </style>
+  
+    @media(max-width:720px){
+      /* Keep Vespera's face inside the frame on narrow screens. */
+      .hub-card:nth-child(5) .hub-thumb img{transform:scale(1.28);object-position:center 30%;}
+    }
+</style>
 
 </head>
 <body>

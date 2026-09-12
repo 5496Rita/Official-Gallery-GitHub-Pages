@@ -1,210 +1,208 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COMICS | INSTRUMENT PERSONA</title><meta name="description" content="CROVEIL、越黒リタ、楽器隊メンバーの四コマ・短編漫画を収蔵するストーリーアーカイブ。全56作品を収録。"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png?v=566"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=566"><style>
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>COMICS | INSTRUMENT PERSONA</title><meta content="CROVEIL、越黒リタ、楽器隊メンバーの四コマ・短編漫画を収蔵するストーリーアーカイブ。全56作品を収録。" name="description"/><link href="icons/favicon-48.png?v=566" rel="icon" sizes="48x48" type="image/png"/><link href="icons/apple-touch-icon.png?v=566" rel="apple-touch-icon"/><style>
 :root{--bg:#05040a;--panel:#0d0914;--panel2:#110b19;--line:rgba(205,167,255,.2);--text:#f2edf8;--muted:#aaa0b6;--accent:#c29be7;--accent2:#8b6df3}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#180d20 0,#090610 28%,#040308 68%,#020104 100%);color:var(--text);font-family:"Yu Gothic UI","Yu Gothic",system-ui,sans-serif;line-height:1.7}.header{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(4,3,8,.84);backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#eee8f4;font-size:11px;letter-spacing:.18em}.brand img{width:34px;height:34px}.nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}.nav a{color:#c5b9cf;text-decoration:none;font-size:10px;letter-spacing:.16em}.hero{max-width:1440px;margin:0 auto;padding:72px 32px 38px}.eyebrow{margin:0 0 12px;color:#b88ac9;font-size:11px;letter-spacing:.3em}.hero h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:64px;letter-spacing:.09em}.hero h1 span{display:block;margin-top:6px;font-family:"Yu Gothic UI",sans-serif;font-size:15px;letter-spacing:.14em;color:#c8bdcf}.lead{max-width:880px;margin-top:18px;color:#bdb3c5;font-size:14px}.filters{max-width:1440px;margin:0 auto;padding:0 32px 28px;display:flex;flex-wrap:wrap;gap:10px}.filter{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.025);color:#d9d0e1;padding:10px 14px;font-size:10px;letter-spacing:.12em;cursor:pointer}.filter.active,.filter:hover{border-color:rgba(194,155,231,.64);background:rgba(159,100,210,.14);color:#fff}.archive{max-width:1440px;margin:0 auto;padding:0 32px 90px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}.card{min-width:0;background:linear-gradient(180deg,rgba(17,11,25,.9),rgba(6,5,11,.97));border:1px solid var(--line);box-shadow:0 20px 70px rgba(0,0,0,.3);overflow:hidden}.card.hidden{display:none}.comic-link{display:block;padding:12px 12px 0;text-decoration:none}.comic-link img{display:block;width:100%;height:auto;background:#05040a;border:1px solid rgba(255,255,255,.06);transition:transform .25s,filter .25s}.comic-link:hover img{transform:translateY(-2px);filter:brightness(1.05)}.meta{padding:18px 20px 22px;border-top:1px solid rgba(255,255,255,.04)}.no{font-size:9px;letter-spacing:.24em;color:#9079aa}.meta h2{margin:6px 0 5px;font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400;letter-spacing:.05em}.cast{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px}.tag{padding:5px 8px;border:1px solid rgba(192,150,225,.22);font-size:9px;letter-spacing:.1em;color:#d9c7e7}.comment{margin:0;color:#aaa2b1;font-size:12px}.lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;padding:24px;background:rgba(0,0,0,.94);overflow:auto}.lightbox.open{display:flex}.lightbox img{display:block;max-width:min(1200px,96vw);height:auto;box-shadow:0 0 70px rgba(0,0,0,.75)}.close{position:fixed;right:26px;top:20px;z-index:110;width:44px;height:44px;border:1px solid rgba(255,255,255,.28);background:#08060c;color:#fff;font-size:26px;cursor:pointer}.footer{padding:34px;text-align:center;border-top:1px solid rgba(255,255,255,.06);color:#746b7b;font-size:10px;letter-spacing:.2em}@media(max-width:900px){.archive{grid-template-columns:1fr;gap:26px}.hero h1{font-size:46px}.nav{display:none}}@media(max-width:600px){.filter{padding:7px 9px}.filter img{width:26px;height:26px}.comic-mini{width:68px;height:68px}.meta.has-mini{padding-right:86px}.header{padding:14px 16px}.hero{padding:48px 18px 28px}.hero h1{font-size:36px}.filters,.archive{padding-left:18px;padding-right:18px}.archive{padding-bottom:58px}.meta h2{font-size:21px}.comic-link{padding:7px 7px 0}.lightbox{padding:10px}.close{right:12px;top:12px}}
 
 .filter{display:inline-flex;align-items:center;gap:8px}.filter img{width:30px;height:30px;object-fit:contain;border-radius:50%;background:#08060c}.filter[data-filter="ALL"] img,.filter[data-filter="CROVEIL"] img{display:none}.meta{position:relative;min-height:132px}.comic-mini{position:absolute;right:14px;bottom:10px;width:86px;height:86px;object-fit:contain;opacity:.92;filter:drop-shadow(0 10px 22px rgba(0,0,0,.55));pointer-events:none}.meta.has-mini{padding-right:108px}
 </style></head><body>
-<header class="header"><a class="brand" href="index.html"><img src="icons/brand-mark.png?v=566" alt=""><span>越黒リタ OFFICIAL GALLERY</span></a><nav class="nav"><a href="characters.html">PERSONA</a><a href="illustrations.html">ILLUSTRATIONS</a><a href="comics.html">COMICS</a><a href="index.html">MAIN GALLERY</a></nav></header>
-<section class="hero"><p class="eyebrow">STORY ARCHIVE / 4-KOMA & SHORT COMICS</p><h1>COMICS<span>ステージの外側にある、小さな物語</span></h1><p class="lead">CROVEIL、越黒リタ、楽器隊メンバーたちの日常、距離感、悪戯、静かな会話を収蔵。画像をクリックすると大きく開いて読めます。</p></section>
-<div class="filters"><button class="filter active" data-filter="ALL">ALL</button><button class="filter" data-filter="CROVEIL">CROVEIL</button><button class="filter" data-filter="越黒リタ"><img src="miniature-media/rita-mini.png" alt=""><span>越黒リタ</span></button><button class="filter" data-filter="フレクシア"><img src="miniature-media/fraxia-mini.png" alt=""><span>フレクシア</span></button><button class="filter" data-filter="ルベリア"><img src="miniature-media/ruberia-mini.png" alt=""><span>ルベリア</span></button><button class="filter" data-filter="ノクティリス"><img src="miniature-media/noctilys-mini.png" alt=""><span>ノクティリス</span></button><button class="filter" data-filter="ラヴィニア"><img src="miniature-media/lavinia-mini.png" alt=""><span>ラヴィニア</span></button><button class="filter" data-filter="ヴェスペラ"><img src="miniature-media/vespera-mini.png" alt=""><span>ヴェスペラ</span></button></div><main class="archive"><article class="card" data-cast="CROVEIL|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-01.webp" data-lightbox><img src="comic-media/comic-01.webp" alt="耳が壊れる。" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 01</div><h2>耳が壊れる。</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ラヴィニア</span></div><p class="comment">ラヴィニアの暴走を止めるつもりが、結局いちばん近くで受け止めている。</p></div>
-    </article><article class="card" data-cast="CROVEIL|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-02.webp" data-lightbox><img src="comic-media/comic-02.webp" alt="風に当たってるの？" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 02</div><h2>風に当たってるの？</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ヴェスペラ</span></div><p class="comment">静かな者同士。観察する側と、観察される側の夜。</p></div>
-    </article><article class="card" data-cast="CROVEIL|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-03.webp" data-lightbox><img src="comic-media/comic-03.webp" alt="君のことだから" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 03</div><h2>君のことだから</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ノクティリス</span></div><p class="comment">無理に踏み込まない。でも、崩れる前にはちゃんと手を伸ばす。</p></div>
-    </article><article class="card" data-cast="CROVEIL|フレクシア">
-      <a class="comic-link" href="comic-media/comic-04.webp" data-lightbox><img src="comic-media/comic-04.webp" alt="黙ってそばにいる" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 04</div><h2>黙ってそばにいる</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">フレクシア</span></div><p class="comment">言葉より精度。冷静な二人だからこそ伝わる距離感。</p></div>
-    </article><article class="card" data-cast="CROVEIL|越黒リタ">
-      <a class="comic-link" href="comic-media/comic-05.webp" data-lightbox><img src="comic-media/comic-05.webp" alt="そのままで" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 05</div><h2>そのままで</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">越黒リタ</span></div><p class="comment">美しさを直すのではなく、そのまま見届けるという選択。</p></div>
-    </article><article class="card" data-cast="CROVEIL|ルベリア">
-      <a class="comic-link" href="comic-media/comic-06.webp" data-lightbox><img src="comic-media/comic-06.webp" alt="離れたりしない" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 06</div><h2>離れたりしない</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ルベリア</span></div><p class="comment">燃え尽きるまで走るルベリアを、CROVEILは静かに支える。</p></div>
-    </article><article class="card" data-cast="ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-07.webp" data-lightbox><img src="comic-media/comic-07.webp" alt="紫蝶のルール" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 07</div><h2>紫蝶のルール</h2><div class="cast"><span class="tag">ラヴィニア</span></div><p class="comment">ルールは壊すもの。予測不能なリズムこそ、ラヴィニアの美学。</p></div>
-    </article><article class="card" data-cast="ノクティリス">
-      <a class="comic-link" href="comic-media/comic-08.webp" data-lightbox><img src="comic-media/comic-08.webp" alt="預けられる場所" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 08</div><h2>預けられる場所</h2><div class="cast"><span class="tag">ノクティリス</span></div><p class="comment">前には出なくてもいい。支えることを選ぶ、静かな守護者。</p></div>
-    </article><article class="card" data-cast="ルベリア">
-      <a class="comic-link" href="comic-media/comic-09.webp" data-lightbox><img src="comic-media/comic-09.webp" alt="まだ消えてない赤" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 09</div><h2>まだ消えてない赤</h2><div class="cast"><span class="tag">ルベリア</span></div><p class="comment">出し切っても、まだ足りない。ルベリアの炎は簡単には消えない。</p></div>
-    </article><article class="card" data-cast="ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-10.webp" data-lightbox><img src="comic-media/comic-10.webp" alt="夜翼の余裕" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 10</div><h2>夜翼の余裕</h2><div class="cast"><span class="tag">ヴェスペラ</span></div><p class="comment">終わったあとほどよく見える。夜を眺める捕食者の余裕。</p></div>
-    </article><article class="card" data-cast="越黒リタ">
-      <a class="comic-link" href="comic-media/comic-11.webp" data-lightbox><img src="comic-media/comic-11.webp" alt="主役は私" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 11</div><h2>主役は私</h2><div class="cast"><span class="tag">越黒リタ</span></div><p class="comment">美しい夜なら、最後まで自分のものにする。闇姫らしい余韻。</p></div>
-    </article><article class="card" data-cast="フレクシア">
-      <a class="comic-link" href="comic-media/comic-12.webp" data-lightbox><img src="comic-media/comic-12.webp" alt="一音の誤差" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 12</div><h2>一音の誤差</h2><div class="cast"><span class="tag">フレクシア</span></div><p class="comment">完璧を求め続ける理由。冷たいようで、誰より音に誠実。</p></div>
-    </article><article class="card" data-cast="ルベリア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-13.webp" data-lightbox><img src="comic-media/comic-13.webp" alt="燃える赤、夜の赤" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 13</div><h2>燃える赤、夜の赤</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ヴェスペラ</span></div><p class="comment">同じ赤でも意味は正反対。炎と夜翼が並ぶと、その差が際立つ。</p></div>
-    </article><article class="card" data-cast="ルベリア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-14.webp" data-lightbox><img src="comic-media/comic-14.webp" alt="最高のカオス" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 14</div><h2>最高のカオス</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ラヴィニア</span></div><p class="comment">熱量と混沌。二人が揃うと、ステージの温度が一段上がる。</p></div>
-    </article><article class="card" data-cast="ルベリア|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-15.webp" data-lightbox><img src="comic-media/comic-15.webp" alt="無理に消さなくていい" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 15</div><h2>無理に消さなくていい</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ノクティリス</span></div><p class="comment">燃えすぎた火を消すのではなく、静かに休ませる。</p></div>
-    </article><article class="card" data-cast="フレクシア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-16.webp" data-lightbox><img src="comic-media/comic-16.webp" alt="冷たい夜の取引" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 16</div><h2>冷たい夜の取引</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">精度と駆け引き。静かな二人が交わす、少し危険な取引。</p></div>
-    </article><article class="card" data-cast="フレクシア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-17.webp" data-lightbox><img src="comic-media/comic-17.webp" alt="先まで踊らせる" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 17</div><h2>先まで踊らせる</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">正確さと変拍子。真逆だからこそ、噛み合った時の破壊力は大きい。</p></div>
-    </article><article class="card" data-cast="ノクティリス|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-18.webp" data-lightbox><img src="comic-media/comic-18.webp" alt="戻ってこられる場所" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 18</div><h2>戻ってこられる場所</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">自由に暴れても戻れる場所。守る影と紫蝶の関係。</p></div>
-    </article><article class="card" data-cast="ラヴィニア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-19.webp" data-lightbox><img src="comic-media/comic-19.webp" alt="夜は退屈しない" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 19</div><h2>夜は退屈しない</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ヴェスペラ</span></div><p class="comment">明るい悪戯と静かな捕食。二人が組むと、夜はまず平穏に終わらない。</p></div>
-    </article><article class="card" data-cast="ノクティリス|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-20.webp" data-lightbox><img src="comic-media/comic-20.webp" alt="影があるから" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 20</div><h2>影があるから</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ヴェスペラ</span></div><p class="comment">守る影と誘う影。似ているようで違う二人の静かな信頼。</p></div>
-    </article><article class="card" data-cast="越黒リタ|ルベリア">
-      <a class="comic-link" href="comic-media/comic-21.webp" data-lightbox><img src="comic-media/comic-21.webp" alt="夜は逃げない" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 21</div><h2>夜は逃げない</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ルベリア</span></div><p class="comment">打ち上げへ駆け出すルベリアと、余裕を崩さないリタ。熱量の違いまで心地いい。</p></div>
-    </article><article class="card" data-cast="越黒リタ|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-22.webp" data-lightbox><img src="comic-media/comic-22.webp" alt="優しい影" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 22</div><h2>優しい影</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">言葉にしすぎない優しさ。静かな夜ほど、支える影の存在がよく見える。</p></div>
-    </article><article class="card" data-cast="越黒リタ|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-23.webp" data-lightbox><img src="comic-media/comic-23.webp" alt="特別扱い" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 23</div><h2>特別扱い</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">飾りを崩すのも愛嬌。ラヴィニアの無遠慮さを、リタがどこか楽しんでいる夜。</p></div>
-    </article><article class="card" data-cast="越黒リタ|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-24.webp" data-lightbox><img src="comic-media/comic-24.webp" alt="赤い月の余韻" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 24</div><h2>赤い月の余韻</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ヴェスペラ</span></div><p class="comment">近づく夜翼と、逃げない闇姫。危うい距離感すら二人には余韻になる。</p></div>
-    </article><article class="card" data-cast="フレクシア|ルベリア">
-      <a class="comic-link" href="comic-media/comic-25.webp" data-lightbox><img src="comic-media/comic-25.webp" alt="心は震えていた" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 25</div><h2>心は震えていた</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">精度だけでは測れないものを、情熱が拾い上げる。対照的なギター組らしい会話。</p></div>
-    </article><article class="card" data-cast="フレクシア|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-26.webp" data-lightbox><img src="comic-media/comic-26.webp" alt="夜に届いた音" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 26</div><h2>夜に届いた音</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ノクティリス</span></div><p class="comment">静かな二人が確かめ合う一音。派手さはなくても、深く残る夜がある。</p></div>
-    </article><article class="card" data-cast="越黒リタ|フレクシア">
-      <a class="comic-link" href="comic-media/comic-27.webp" data-lightbox><img src="comic-media/comic-27.webp" alt="月光と拍手" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 27</div><h2>月光と拍手</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">フレクシア</span></div><p class="comment">余計な言葉を重ねず、必要なことだけを交わす。月光の下で似合う静かな組み合わせ。</p></div>
-    </article><article class="card" data-cast="CROVEIL|ルベリア">
-      <a class="comic-link" href="comic-media/comic-28.webp" data-lightbox><img src="comic-media/comic-28.webp" alt="もっと炎にする" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 28</div><h2>もっと炎にする</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ルベリア</span></div><p class="comment">全力で燃えた夜のあとでも、次はもっと熱く。ルベリアの炎を止める役は、やっぱりCROVEIL。</p></div>
-    </article>
+<header class="header"><a class="brand" href="index.html"><img alt="" src="icons/brand-mark.png?v=566"/><span>越黒リタ OFFICIAL GALLERY</span></a><nav class="nav"><a href="characters.html">PERSONA</a><a href="illustrations.html">ILLUSTRATIONS</a><a href="comics.html">COMICS</a><a href="index.html">MAIN GALLERY</a></nav></header>
+<section class="hero"><p class="eyebrow">STORY ARCHIVE / 4-KOMA &amp; SHORT COMICS</p><h1>COMICS<span>ステージの外側にある、小さな物語</span></h1><p class="lead">CROVEIL、越黒リタ、楽器隊メンバーたちの日常、距離感、悪戯、静かな会話を収蔵。画像をクリックすると大きく開いて読めます。</p></section>
+<div class="filters"><button class="filter active" data-filter="ALL">ALL</button><button class="filter" data-filter="CROVEIL">CROVEIL</button><button class="filter" data-filter="越黒リタ"><img alt="" src="miniature-media/rita-mini.png"/><span>越黒リタ</span></button><button class="filter" data-filter="フレクシア"><img alt="" src="miniature-media/fraxia-mini.png"/><span>フレクシア</span></button><button class="filter" data-filter="ルベリア"><img alt="" src="miniature-media/ruberia-mini.png"/><span>ルベリア</span></button><button class="filter" data-filter="ノクティリス"><img alt="" src="miniature-media/noctilys-mini.png"/><span>ノクティリス</span></button><button class="filter" data-filter="ラヴィニア"><img alt="" src="miniature-media/lavinia-mini.png"/><span>ラヴィニア</span></button><button class="filter" data-filter="ヴェスペラ"><img alt="" src="miniature-media/vespera-mini.png"/><span>ヴェスペラ</span></button></div><main class="archive"><article class="card" data-cast="CROVEIL|ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-01.webp"><img alt="耳が壊れる。" loading="lazy" src="comic-media/comic-01.webp"/></a>
+<div class="meta"><div class="no">EPISODE 01</div><h2>耳が壊れる。</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ラヴィニア</span></div><p class="comment">ラヴィニアの暴走を止めるつもりが、結局いちばん近くで受け止めている。</p></div>
+</article><article class="card" data-cast="CROVEIL|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-02.webp"><img alt="風に当たってるの？" loading="lazy" src="comic-media/comic-02.webp"/></a>
+<div class="meta"><div class="no">EPISODE 02</div><h2>風に当たってるの？</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ヴェスペラ</span></div><p class="comment">静かな者同士。観察する側と、観察される側の夜。</p></div>
+</article><article class="card" data-cast="CROVEIL|ノクティリス">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-03.webp"><img alt="君のことだから" loading="lazy" src="comic-media/comic-03.webp"/></a>
+<div class="meta"><div class="no">EPISODE 03</div><h2>君のことだから</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ノクティリス</span></div><p class="comment">無理に踏み込まない。でも、崩れる前にはちゃんと手を伸ばす。</p></div>
+</article><article class="card" data-cast="CROVEIL|フレクシア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-04.webp"><img alt="黙ってそばにいる" loading="lazy" src="comic-media/comic-04.webp"/></a>
+<div class="meta"><div class="no">EPISODE 04</div><h2>黙ってそばにいる</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">フレクシア</span></div><p class="comment">言葉より精度。冷静な二人だからこそ伝わる距離感。</p></div>
+</article><article class="card" data-cast="CROVEIL|越黒リタ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-05.webp"><img alt="そのままで" loading="lazy" src="comic-media/comic-05.webp"/></a>
+<div class="meta"><div class="no">EPISODE 05</div><h2>そのままで</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">越黒リタ</span></div><p class="comment">美しさを直すのではなく、そのまま見届けるという選択。</p></div>
+</article><article class="card" data-cast="CROVEIL|ルベリア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-06.webp"><img alt="離れたりしない" loading="lazy" src="comic-media/comic-06.webp"/></a>
+<div class="meta"><div class="no">EPISODE 06</div><h2>離れたりしない</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ルベリア</span></div><p class="comment">燃え尽きるまで走るルベリアを、CROVEILは静かに支える。</p></div>
+</article><article class="card" data-cast="ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-07.webp"><img alt="紫蝶のルール" loading="lazy" src="comic-media/comic-07.webp"/></a>
+<div class="meta"><div class="no">EPISODE 07</div><h2>紫蝶のルール</h2><div class="cast"><span class="tag">ラヴィニア</span></div><p class="comment">ルールは壊すもの。予測不能なリズムこそ、ラヴィニアの美学。</p></div>
+</article><article class="card" data-cast="ノクティリス">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-08.webp"><img alt="預けられる場所" loading="lazy" src="comic-media/comic-08.webp"/></a>
+<div class="meta"><div class="no">EPISODE 08</div><h2>預けられる場所</h2><div class="cast"><span class="tag">ノクティリス</span></div><p class="comment">前には出なくてもいい。支えることを選ぶ、静かな守護者。</p></div>
+</article><article class="card" data-cast="ルベリア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-09.webp"><img alt="まだ消えてない赤" loading="lazy" src="comic-media/comic-09.webp"/></a>
+<div class="meta"><div class="no">EPISODE 09</div><h2>まだ消えてない赤</h2><div class="cast"><span class="tag">ルベリア</span></div><p class="comment">出し切っても、まだ足りない。ルベリアの炎は簡単には消えない。</p></div>
+</article><article class="card" data-cast="ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-10.webp"><img alt="夜翼の余裕" loading="lazy" src="comic-media/comic-10.webp"/></a>
+<div class="meta"><div class="no">EPISODE 10</div><h2>夜翼の余裕</h2><div class="cast"><span class="tag">ヴェスペラ</span></div><p class="comment">終わったあとほどよく見える。夜を眺める捕食者の余裕。</p></div>
+</article><article class="card" data-cast="越黒リタ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-11.webp"><img alt="主役は私" loading="lazy" src="comic-media/comic-11.webp"/></a>
+<div class="meta"><div class="no">EPISODE 11</div><h2>主役は私</h2><div class="cast"><span class="tag">越黒リタ</span></div><p class="comment">美しい夜なら、最後まで自分のものにする。闇姫らしい余韻。</p></div>
+</article><article class="card" data-cast="フレクシア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-12.webp"><img alt="一音の誤差" loading="lazy" src="comic-media/comic-12.webp"/></a>
+<div class="meta"><div class="no">EPISODE 12</div><h2>一音の誤差</h2><div class="cast"><span class="tag">フレクシア</span></div><p class="comment">完璧を求め続ける理由。冷たいようで、誰より音に誠実。</p></div>
+</article><article class="card" data-cast="ルベリア|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-13.webp"><img alt="燃える赤、夜の赤" loading="lazy" src="comic-media/comic-13.webp"/></a>
+<div class="meta"><div class="no">EPISODE 13</div><h2>燃える赤、夜の赤</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ヴェスペラ</span></div><p class="comment">同じ赤でも意味は正反対。炎と夜翼が並ぶと、その差が際立つ。</p></div>
+</article><article class="card" data-cast="ルベリア|ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-14.webp"><img alt="最高のカオス" loading="lazy" src="comic-media/comic-14.webp"/></a>
+<div class="meta"><div class="no">EPISODE 14</div><h2>最高のカオス</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ラヴィニア</span></div><p class="comment">熱量と混沌。二人が揃うと、ステージの温度が一段上がる。</p></div>
+</article><article class="card" data-cast="ルベリア|ノクティリス">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-15.webp"><img alt="無理に消さなくていい" loading="lazy" src="comic-media/comic-15.webp"/></a>
+<div class="meta"><div class="no">EPISODE 15</div><h2>無理に消さなくていい</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ノクティリス</span></div><p class="comment">燃えすぎた火を消すのではなく、静かに休ませる。</p></div>
+</article><article class="card" data-cast="フレクシア|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-16.webp"><img alt="冷たい夜の取引" loading="lazy" src="comic-media/comic-16.webp"/></a>
+<div class="meta"><div class="no">EPISODE 16</div><h2>冷たい夜の取引</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">精度と駆け引き。静かな二人が交わす、少し危険な取引。</p></div>
+</article><article class="card" data-cast="フレクシア|ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-17.webp"><img alt="先まで踊らせる" loading="lazy" src="comic-media/comic-17.webp"/></a>
+<div class="meta"><div class="no">EPISODE 17</div><h2>先まで踊らせる</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">正確さと変拍子。真逆だからこそ、噛み合った時の破壊力は大きい。</p></div>
+</article><article class="card" data-cast="ノクティリス|ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-18.webp"><img alt="戻ってこられる場所" loading="lazy" src="comic-media/comic-18.webp"/></a>
+<div class="meta"><div class="no">EPISODE 18</div><h2>戻ってこられる場所</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">自由に暴れても戻れる場所。守る影と紫蝶の関係。</p></div>
+</article><article class="card" data-cast="ラヴィニア|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-19.webp"><img alt="夜は退屈しない" loading="lazy" src="comic-media/comic-19.webp"/></a>
+<div class="meta"><div class="no">EPISODE 19</div><h2>夜は退屈しない</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ヴェスペラ</span></div><p class="comment">明るい悪戯と静かな捕食。二人が組むと、夜はまず平穏に終わらない。</p></div>
+</article><article class="card" data-cast="ノクティリス|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-20.webp"><img alt="影があるから" loading="lazy" src="comic-media/comic-20.webp"/></a>
+<div class="meta"><div class="no">EPISODE 20</div><h2>影があるから</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ヴェスペラ</span></div><p class="comment">守る影と誘う影。似ているようで違う二人の静かな信頼。</p></div>
+</article><article class="card" data-cast="越黒リタ|ルベリア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-21.webp"><img alt="夜は逃げない" loading="lazy" src="comic-media/comic-21.webp"/></a>
+<div class="meta"><div class="no">EPISODE 21</div><h2>夜は逃げない</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ルベリア</span></div><p class="comment">打ち上げへ駆け出すルベリアと、余裕を崩さないリタ。熱量の違いまで心地いい。</p></div>
+</article><article class="card" data-cast="越黒リタ|ノクティリス">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-22.webp"><img alt="優しい影" loading="lazy" src="comic-media/comic-22.webp"/></a>
+<div class="meta"><div class="no">EPISODE 22</div><h2>優しい影</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">言葉にしすぎない優しさ。静かな夜ほど、支える影の存在がよく見える。</p></div>
+</article><article class="card" data-cast="越黒リタ|ラヴィニア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-23.webp"><img alt="特別扱い" loading="lazy" src="comic-media/comic-23.webp"/></a>
+<div class="meta"><div class="no">EPISODE 23</div><h2>特別扱い</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">飾りを崩すのも愛嬌。ラヴィニアの無遠慮さを、リタがどこか楽しんでいる夜。</p></div>
+</article><article class="card" data-cast="越黒リタ|ヴェスペラ">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-24.webp"><img alt="赤い月の余韻" loading="lazy" src="comic-media/comic-24.webp"/></a>
+<div class="meta"><div class="no">EPISODE 24</div><h2>赤い月の余韻</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ヴェスペラ</span></div><p class="comment">近づく夜翼と、逃げない闇姫。危うい距離感すら二人には余韻になる。</p></div>
+</article><article class="card" data-cast="フレクシア|ルベリア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-25.webp"><img alt="心は震えていた" loading="lazy" src="comic-media/comic-25.webp"/></a>
+<div class="meta"><div class="no">EPISODE 25</div><h2>心は震えていた</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">精度だけでは測れないものを、情熱が拾い上げる。対照的なギター組らしい会話。</p></div>
+</article><article class="card" data-cast="フレクシア|ノクティリス">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-26.webp"><img alt="夜に届いた音" loading="lazy" src="comic-media/comic-26.webp"/></a>
+<div class="meta"><div class="no">EPISODE 26</div><h2>夜に届いた音</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ノクティリス</span></div><p class="comment">静かな二人が確かめ合う一音。派手さはなくても、深く残る夜がある。</p></div>
+</article><article class="card" data-cast="越黒リタ|フレクシア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-27.webp"><img alt="月光と拍手" loading="lazy" src="comic-media/comic-27.webp"/></a>
+<div class="meta"><div class="no">EPISODE 27</div><h2>月光と拍手</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">フレクシア</span></div><p class="comment">余計な言葉を重ねず、必要なことだけを交わす。月光の下で似合う静かな組み合わせ。</p></div>
+</article><article class="card" data-cast="CROVEIL|ルベリア">
+<a class="comic-link" data-lightbox="" href="comic-media/comic-28.webp"><img alt="もっと炎にする" loading="lazy" src="comic-media/comic-28.webp"/></a>
+<div class="meta"><div class="no">EPISODE 28</div><h2>もっと炎にする</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">ルベリア</span></div><p class="comment">全力で燃えた夜のあとでも、次はもっと熱く。ルベリアの炎を止める役は、やっぱりCROVEIL。</p></div>
+</article>
 <article class="card" data-cast="CROVEIL|フレクシア">
-      <a class="comic-link" href="comic-media/comic-29.webp" data-lightbox><img src="comic-media/comic-29.webp" alt="事実を言っただけ" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 29</div><h2>事実を言っただけ</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">フレクシア</span></div><p class="comment">曖昧さを嫌うフレクシアと、必要なことだけを返すCROVEIL。静かな確認作業にも二人らしさが出る。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-29.webp"><img alt="事実を言っただけ" loading="lazy" src="comic-media/comic-29.webp"/></a>
+<div class="meta"><div class="no">EPISODE 29</div><h2>事実を言っただけ</h2><div class="cast"><span class="tag">CROVEIL</span><span class="tag">フレクシア</span></div><p class="comment">曖昧さを嫌うフレクシアと、必要なことだけを返すCROVEIL。静かな確認作業にも二人らしさが出る。</p></div>
+</article>
 <article class="card" data-cast="ラヴィニア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-30.webp" data-lightbox><img src="comic-media/comic-30.webp" alt="復活の変拍子" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 30</div><h2>復活の変拍子</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ヴェスペラ</span></div><p class="comment">少し休めと言われても、ラヴィニアはすぐ復活。ヴェスペラの冷静さまで次のリズムに巻き込んでいく。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-30.webp"><img alt="復活の変拍子" loading="lazy" src="comic-media/comic-30.webp"/></a>
+<div class="meta"><div class="no">EPISODE 30</div><h2>復活の変拍子</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ヴェスペラ</span></div><p class="comment">少し休めと言われても、ラヴィニアはすぐ復活。ヴェスペラの冷静さまで次のリズムに巻き込んでいく。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-31.webp" data-lightbox><img src="comic-media/comic-31.webp" alt="夜を重ねて、ふたりの音" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 31</div><h2>夜を重ねて、ふたりの音</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">リタの声とノクティリスの低音。派手ではなくても、重なるほど深くなる二人の音。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-31.webp"><img alt="夜を重ねて、ふたりの音" loading="lazy" src="comic-media/comic-31.webp"/></a>
+<div class="meta"><div class="no">EPISODE 31</div><h2>夜を重ねて、ふたりの音</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">リタの声とノクティリスの低音。派手ではなくても、重なるほど深くなる二人の音。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ルベリア">
-      <a class="comic-link" href="comic-media/comic-32.webp" data-lightbox><img src="comic-media/comic-32.webp" alt="情熱は毒じゃない" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 32</div><h2>情熱は毒じゃない</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ルベリア</span></div><p class="comment">真っ赤なケーキも、真っ赤な炎も、ルベリアにとっては愛情表現。リタはそのまっすぐさを受け止める。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-32.webp"><img alt="情熱は毒じゃない" loading="lazy" src="comic-media/comic-32.webp"/></a>
+<div class="meta"><div class="no">EPISODE 32</div><h2>情熱は毒じゃない</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ルベリア</span></div><p class="comment">真っ赤なケーキも、真っ赤な炎も、ルベリアにとっては愛情表現。リタはそのまっすぐさを受け止める。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-33.webp" data-lightbox><img src="comic-media/comic-33.webp" alt="熱と冷たさを混ぜる" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 33</div><h2>熱と冷たさを混ぜる</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">精度を崩さないフレクシアに、ヴェスペラが少しだけ危うさを混ぜる。静かなギター組の実験。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-33.webp"><img alt="熱と冷たさを混ぜる" loading="lazy" src="comic-media/comic-33.webp"/></a>
+<div class="meta"><div class="no">EPISODE 33</div><h2>熱と冷たさを混ぜる</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">精度を崩さないフレクシアに、ヴェスペラが少しだけ危うさを混ぜる。静かなギター組の実験。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-34.webp" data-lightbox><img src="comic-media/comic-34.webp" alt="優雅ビート" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 34</div><h2>優雅ビート</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">静かなティータイムすら、ラヴィニアの手にかかれば変拍子。最後はリタも少しだけそのリズムに乗る。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-34.webp"><img alt="優雅ビート" loading="lazy" src="comic-media/comic-34.webp"/></a>
+<div class="meta"><div class="no">EPISODE 34</div><h2>優雅ビート</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">静かなティータイムすら、ラヴィニアの手にかかれば変拍子。最後はリタも少しだけそのリズムに乗る。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-35.webp" data-lightbox><img src="comic-media/comic-35.webp" alt="静寂ゲーじゃん" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 35</div><h2>静寂ゲーじゃん</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">静かな夜を守りたいリタと、全部リズムに変えたいラヴィニア。いつもの温度差がそのまま楽しい。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-35.webp"><img alt="静寂ゲーじゃん" loading="lazy" src="comic-media/comic-35.webp"/></a>
+<div class="meta"><div class="no">EPISODE 35</div><h2>静寂ゲーじゃん</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ラヴィニア</span></div><p class="comment">静かな夜を守りたいリタと、全部リズムに変えたいラヴィニア。いつもの温度差がそのまま楽しい。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-36.webp" data-lightbox><img src="comic-media/comic-36.webp" alt="次も暴れるで" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 36</div><h2>次も暴れるで</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">終演直後から見直すフレクシアと、次の暴れ方を考えるラヴィニア。正確さと混沌は今日も両立する。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-36.webp"><img alt="次も暴れるで" loading="lazy" src="comic-media/comic-36.webp"/></a>
+<div class="meta"><div class="no">EPISODE 36</div><h2>次も暴れるで</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">終演直後から見直すフレクシアと、次の暴れ方を考えるラヴィニア。正確さと混沌は今日も両立する。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-37.webp" data-lightbox><img src="comic-media/comic-37.webp" alt="静寂と混沌" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 37</div><h2>静寂と混沌</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">正確さを磨くフレクシアと、自由を愛するラヴィニア。正反対だからこそ音が重なる。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-37.webp"><img alt="静寂と混沌" loading="lazy" src="comic-media/comic-37.webp"/></a>
+<div class="meta"><div class="no">EPISODE 37</div><h2>静寂と混沌</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">正確さを磨くフレクシアと、自由を愛するラヴィニア。正反対だからこそ音が重なる。</p></div>
+</article>
 <article class="card" data-cast="ヴェスペラ|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-38.webp" data-lightbox><img src="comic-media/comic-38.webp" alt="観察癖" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 38</div><h2>観察癖</h2><div class="cast"><span class="tag">ヴェスペラ</span><span class="tag">ノクティリス</span></div><p class="comment">見ている側も、見られている側も静か。距離の詰め方まで二人らしい。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-38.webp"><img alt="観察癖" loading="lazy" src="comic-media/comic-38.webp"/></a>
+<div class="meta"><div class="no">EPISODE 38</div><h2>観察癖</h2><div class="cast"><span class="tag">ヴェスペラ</span><span class="tag">ノクティリス</span></div><p class="comment">見ている側も、見られている側も静か。距離の詰め方まで二人らしい。</p></div>
+</article>
 <article class="card" data-cast="ラヴィニア|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-39.webp" data-lightbox><img src="comic-media/comic-39.webp" alt="静かすぎない？" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 39</div><h2>静かすぎない？</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ノクティリス</span></div><p class="comment">騒がしさと静けさ。ラヴィニアの勢いをノクティリスが淡々と受け止める。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-39.webp"><img alt="静かすぎない？" loading="lazy" src="comic-media/comic-39.webp"/></a>
+<div class="meta"><div class="no">EPISODE 39</div><h2>静かすぎない？</h2><div class="cast"><span class="tag">ラヴィニア</span><span class="tag">ノクティリス</span></div><p class="comment">騒がしさと静けさ。ラヴィニアの勢いをノクティリスが淡々と受け止める。</p></div>
+</article>
 <article class="card" data-cast="ルベリア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-40.webp" data-lightbox><img src="comic-media/comic-40.webp" alt="火加減" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 40</div><h2>火加減</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ヴェスペラ</span></div><p class="comment">燃えるルベリアと、それを観察するヴェスペラ。火力の違いが会話になる。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-40.webp"><img alt="火加減" loading="lazy" src="comic-media/comic-40.webp"/></a>
+<div class="meta"><div class="no">EPISODE 40</div><h2>火加減</h2><div class="cast"><span class="tag">ルベリア</span><span class="tag">ヴェスペラ</span></div><p class="comment">燃えるルベリアと、それを観察するヴェスペラ。火力の違いが会話になる。</p></div>
+</article>
 <article class="card" data-cast="ノクティリス|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-41.webp" data-lightbox><img src="comic-media/comic-41.webp" alt="隣にいる理由" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 41</div><h2>隣にいる理由</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">暴れても戻ってこられる場所。ラヴィニアとノクティリスの信頼。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-41.webp"><img alt="隣にいる理由" loading="lazy" src="comic-media/comic-41.webp"/></a>
+<div class="meta"><div class="no">EPISODE 41</div><h2>隣にいる理由</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">暴れても戻ってこられる場所。ラヴィニアとノクティリスの信頼。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-42.webp" data-lightbox><img src="comic-media/comic-42.webp" alt="9センチの景色" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 42</div><h2>9センチの景色</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">身長差は9センチ。見える景色は少し違っても、立つステージは同じ。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-42.webp"><img alt="9センチの景色" loading="lazy" src="comic-media/comic-42.webp"/></a>
+<div class="meta"><div class="no">EPISODE 42</div><h2>9センチの景色</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">身長差は9センチ。見える景色は少し違っても、立つステージは同じ。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-43.webp" data-lightbox><img src="comic-media/comic-43.webp" alt="休憩の時間" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 43</div><h2>休憩の時間</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">頑張りすぎるリタを静かに支えるノクティリス。夜の途中の小休止。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-43.webp"><img alt="休憩の時間" loading="lazy" src="comic-media/comic-43.webp"/></a>
+<div class="meta"><div class="no">EPISODE 43</div><h2>休憩の時間</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">頑張りすぎるリタを静かに支えるノクティリス。夜の途中の小休止。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|ノクティリス">
-      <a class="comic-link" href="comic-media/comic-44.webp" data-lightbox><img src="comic-media/comic-44.webp" alt="紅茶と音" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 44</div><h2>紅茶と音</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">静かな紅茶の時間も、二人にとっては音楽の一部。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-44.webp"><img alt="紅茶と音" loading="lazy" src="comic-media/comic-44.webp"/></a>
+<div class="meta"><div class="no">EPISODE 44</div><h2>紅茶と音</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">ノクティリス</span></div><p class="comment">静かな紅茶の時間も、二人にとっては音楽の一部。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-45.webp" data-lightbox><img src="comic-media/comic-45.webp" alt="もっと自由に" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 45</div><h2>もっと自由に</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">冷たい旋律と混沌の鼓動。互いの違いを面白がれる二人。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-45.webp"><img alt="もっと自由に" loading="lazy" src="comic-media/comic-45.webp"/></a>
+<div class="meta"><div class="no">EPISODE 45</div><h2>もっと自由に</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ラヴィニア</span></div><p class="comment">冷たい旋律と混沌の鼓動。互いの違いを面白がれる二人。</p></div>
+</article>
 <article class="card" data-cast="CROVEIL">
-      <a class="comic-link" href="comic-media/comic-46.webp" data-lightbox><img src="comic-media/comic-46.webp" alt="それぞれの高さ" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 46</div><h2>それぞれの高さ</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">違う高さ、違う色。それでも同じステージを見ている六人。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-46.webp"><img alt="それぞれの高さ" loading="lazy" src="comic-media/comic-46.webp"/></a>
+<div class="meta"><div class="no">EPISODE 46</div><h2>それぞれの高さ</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">違う高さ、違う色。それでも同じステージを見ている六人。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-47.webp" data-lightbox><img src="comic-media/comic-47.webp" alt="冷たさの奥" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 47</div><h2>冷たさの奥</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">完璧を求めるフレクシアに、ヴェスペラが熱を混ぜる。静かなギター組の対話。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-47.webp"><img alt="冷たさの奥" loading="lazy" src="comic-media/comic-47.webp"/></a>
+<div class="meta"><div class="no">EPISODE 47</div><h2>冷たさの奥</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ヴェスペラ</span></div><p class="comment">完璧を求めるフレクシアに、ヴェスペラが熱を混ぜる。静かなギター組の対話。</p></div>
+</article>
 <article class="card" data-cast="ノクティリス|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-48.webp" data-lightbox><img src="comic-media/comic-48.webp" alt="置物じゃない" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 48</div><h2>置物じゃない</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">反応の薄いノクティリスと、反応を引き出したいラヴィニア。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-48.webp"><img alt="置物じゃない" loading="lazy" src="comic-media/comic-48.webp"/></a>
+<div class="meta"><div class="no">EPISODE 48</div><h2>置物じゃない</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">反応の薄いノクティリスと、反応を引き出したいラヴィニア。</p></div>
+</article>
+
 <article class="card" data-cast="ノクティリス|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-49.webp" data-lightbox><img src="comic-media/comic-49.webp" alt="観察してるだけ" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 49</div><h2>観察してるだけ</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">落ち着きのないラヴィニアほど、ノクティリスには分かりやすい。</p></div>
-    </article>
-<article class="card" data-cast="ノクティリス|ラヴィニア">
-      <a class="comic-link" href="comic-media/comic-50.webp" data-lightbox><img src="comic-media/comic-50.webp" alt="好きなだけ暴れて" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 50</div><h2>好きなだけ暴れて</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">混沌を止めるのではなく、戻れる場所を作る。それがノクティリスの役目。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-49.webp"><img alt="好きなだけ暴れて" loading="lazy" src="comic-media/comic-49.webp"/></a>
+<div class="meta"><div class="no">EPISODE 49</div><h2>好きなだけ暴れて</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ラヴィニア</span></div><p class="comment">混沌を止めるのではなく、戻れる場所を作る。それがノクティリスの役目。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ルベリア">
-      <a class="comic-link" href="comic-media/comic-51.webp" data-lightbox><img src="comic-media/comic-51.webp" alt="先生と炎" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 51</div><h2>先生と炎</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">褒めてもらったら全力で喜ぶルベリアと、すぐ次の改善点を見るフレクシア。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-50.webp"><img alt="先生と炎" loading="lazy" src="comic-media/comic-50.webp"/></a>
+<div class="meta"><div class="no">EPISODE 50</div><h2>先生と炎</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">褒めてもらったら全力で喜ぶルベリアと、すぐ次の改善点を見るフレクシア。</p></div>
+</article>
 <article class="card" data-cast="CROVEIL">
-      <a class="comic-link" href="comic-media/comic-52.webp" data-lightbox><img src="comic-media/comic-52.webp" alt="同じ音で、違う夜を" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 52</div><h2>同じ音で、違う夜を</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">六人それぞれの作り方が重なって、ひとつの物語になる。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-51.webp"><img alt="同じ音で、違う夜を" loading="lazy" src="comic-media/comic-51.webp"/></a>
+<div class="meta"><div class="no">EPISODE 51</div><h2>同じ音で、違う夜を</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">六人それぞれの作り方が重なって、ひとつの物語になる。</p></div>
+</article>
 <article class="card" data-cast="越黒リタ|フレクシア">
-      <a class="comic-link" href="comic-media/comic-53.webp" data-lightbox><img src="comic-media/comic-53.webp" alt="舞台の裏側で" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 53</div><h2>舞台の裏側で</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">フレクシア</span></div><p class="comment">華やかなリタと、静かに見守るフレクシア。違う美しさが同じ夜をつくる。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-52.webp"><img alt="舞台の裏側で" loading="lazy" src="comic-media/comic-52.webp"/></a>
+<div class="meta"><div class="no">EPISODE 52</div><h2>舞台の裏側で</h2><div class="cast"><span class="tag">越黒リタ</span><span class="tag">フレクシア</span></div><p class="comment">華やかなリタと、静かに見守るフレクシア。違う美しさが同じ夜をつくる。</p></div>
+</article>
 <article class="card" data-cast="フレクシア|ルベリア">
-      <a class="comic-link" href="comic-media/comic-54.webp" data-lightbox><img src="comic-media/comic-54.webp" alt="美意識の問題" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 54</div><h2>美意識の問題</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">大胆なルベリアと合理的なフレクシア。衣装の感覚まで正反対。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-53.webp"><img alt="美意識の問題" loading="lazy" src="comic-media/comic-53.webp"/></a>
+<div class="meta"><div class="no">EPISODE 53</div><h2>美意識の問題</h2><div class="cast"><span class="tag">フレクシア</span><span class="tag">ルベリア</span></div><p class="comment">大胆なルベリアと合理的なフレクシア。衣装の感覚まで正反対。</p></div>
+</article>
 <article class="card" data-cast="CROVEIL">
-      <a class="comic-link" href="comic-media/comic-55.webp" data-lightbox><img src="comic-media/comic-55.webp" alt="それぞれの美しさ" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 55</div><h2>それぞれの美しさ</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">同じ夜に咲く、違う花。六人の個性そのものがCROVEILの景色。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-54.webp"><img alt="それぞれの美しさ" loading="lazy" src="comic-media/comic-54.webp"/></a>
+<div class="meta"><div class="no">EPISODE 54</div><h2>それぞれの美しさ</h2><div class="cast"><span class="tag">CROVEIL</span></div><p class="comment">同じ夜に咲く、違う花。六人の個性そのものがCROVEILの景色。</p></div>
+</article>
 <article class="card" data-cast="ノクティリス|ヴェスペラ">
-      <a class="comic-link" href="comic-media/comic-56.webp" data-lightbox><img src="comic-media/comic-56.webp" alt="もう一度だけ" loading="lazy"></a>
-      <div class="meta"><div class="no">EPISODE 56</div><h2>もう一度だけ</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ヴェスペラ</span></div><p class="comment">無理をさせたくないノクティリスと、まだ音を終わらせたくないヴェスペラ。</p></div>
-    </article>
+<a class="comic-link" data-lightbox="" href="comic-media/comic-55.webp"><img alt="もう一度だけ" loading="lazy" src="comic-media/comic-55.webp"/></a>
+<div class="meta"><div class="no">EPISODE 55</div><h2>もう一度だけ</h2><div class="cast"><span class="tag">ノクティリス</span><span class="tag">ヴェスペラ</span></div><p class="comment">無理をさせたくないノクティリスと、まだ音を終わらせたくないヴェスペラ。</p></div>
+</article>
 </main>
-<div class="lightbox" id="lightbox" aria-hidden="true"><button class="close" type="button" aria-label="閉じる">×</button><img src="" alt=""></div><footer class="footer">COMICS — INSTRUMENT PERSONA / KUROGOSHI RITA OFFICIAL GALLERY</footer>
+<div aria-hidden="true" class="lightbox" id="lightbox"><button aria-label="閉じる" class="close" type="button">×</button><img alt="" src=""/></div><footer class="footer">COMICS — INSTRUMENT PERSONA / KUROGOSHI RITA OFFICIAL GALLERY</footer>
 <script>
 const buttons=[...document.querySelectorAll('.filter')];const cards=[...document.querySelectorAll('.card')];buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;cards.forEach(c=>{c.classList.toggle('hidden',f!=='ALL'&&!c.dataset.cast.split('|').includes(f));});}));
 const box=document.getElementById('lightbox'),boxImg=box.querySelector('img');document.querySelectorAll('[data-lightbox]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();boxImg.src=a.href;boxImg.alt=a.querySelector('img').alt;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}));function closeBox(){box.classList.remove('open');box.setAttribute('aria-hidden','true');boxImg.src='';document.body.style.overflow='';}box.querySelector('.close').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox();});
