@@ -7831,6 +7831,51 @@ Desire
     youtubeId: "",
     links: commonListenLinks
   }
+  ,{
+    id: "beyond-sense",
+    artist: "越黒リタ",
+    title: "Beyond Sense",
+    reading: "ビヨンド・センス",
+    albumNumber: 30,
+    release: "",
+    order: 38,
+    story: [],
+    tracks: ["Lucid Mirage", "Lost Resonance", "Fragrant Shadow", "Bitter Honey", "Lingering Touch", "Veiled Truth"],
+    art: "covers/beyond-sense.jpg",
+    accent: "purple",
+    youtubeId: "",
+    links: commonListenLinks
+  },
+  {
+    id: "zwischenraum",
+    artist: "CROVEIL",
+    title: "Zwischenraum",
+    reading: "ツヴィッシェンラウム",
+    albumNumber: 9,
+    release: "",
+    order: 39,
+    story: [],
+    tracks: ["記憶迷宮", "静寂領域", "無辺空間", "深層遠景", "天蓋回廊", "果てなき夜"],
+    art: "covers/zwischenraum.jpg",
+    accent: "blue",
+    youtubeId: "",
+    links: commonListenLinks
+  },
+  {
+    id: "twilight-remains",
+    artist: "越黒リタ",
+    title: "Twilight Remains",
+    reading: "トワイライト・リメインズ",
+    albumNumber: 31,
+    release: "",
+    order: 40,
+    story: [],
+    tracks: ["Silent Farewell", "Faded Ink", "Twilight Vow", "Vanishing Memory", "Passing Seasons", "Last Rain"],
+    art: "covers/twilight-remains.jpg",
+    accent: "crimson",
+    youtubeId: "",
+    links: commonListenLinks
+  }
 
 ];
 
