@@ -1,0 +1,18 @@
+KOSHIKURO RITA OFFICIAL GALLERY — VERSION 2.2
+
+Gallery refinement
+- Removed all visible title, artist and release-date plaques from the Gallery.
+- Gallery now presents album artwork only.
+- Preserved click-through navigation to each existing Detail page.
+- Slightly enlarged artwork and reduced frame emphasis.
+- Deepened the gallery wall so the covers remain the visual focus.
+- Retained keyboard focus, alt text, spotlight, floating and depth effects.
+- Discography remains unchanged and continues to provide searchable release information.
+
+Changed files
+- index.html
+- app.js
+
+Added files
+- v2.2.css
+- VERSION-2.2-CHANGES.txt

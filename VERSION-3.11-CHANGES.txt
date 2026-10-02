@@ -1,0 +1,7 @@
+VERSION 3.11 - LIGHTWEIGHT MOBILE LYRICS
+
+- The detail page now loads albums-lite.js instead of the full lyrics database.
+- Lyrics are split into one JSON file per album and loaded only for the album being viewed.
+- Initial album data on the detail page was reduced from about 182 KB to about 29 KB.
+- Heavy blur, shadow, and transition effects are disabled on small screens.
+- Mobile lyrics use normal page scrolling instead of a nested scroll area.

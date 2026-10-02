@@ -1,0 +1,6 @@
+VERSION 3.16
+
+- Added an always-visible back button on album detail pages for desktop and mobile.
+- The button returns to the exact previous gallery/discography position when possible.
+- Direct visits fall back to the appropriate GALLERY or DISCOGRAPHY section.
+- Replaced close-style navigation with a clear back-arrow control.

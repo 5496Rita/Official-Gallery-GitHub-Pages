@@ -1,0 +1,5 @@
+VERSION 3.3
+
+- Added complete lyrics for all 6 tracks of Crown of Jewel.
+- Added complete lyrics for all 6 tracks of Lune Noire.
+- Lyrics use the Version 3.2 split TRACK LIST / LYRICS layout.

@@ -1,0 +1,8 @@
+VERSION 3.15 - Loading speed optimization
+
+- Added 420px WebP thumbnails for gallery/discography cards
+- Index now loads albums-lite.js instead of full lyrics dataset
+- Converted large PNG backgrounds to WebP
+- Combined six CSS files into bundle.css to reduce requests
+- Added mobile content-visibility rendering optimization
+- Preserved full-size cover artwork on album detail pages

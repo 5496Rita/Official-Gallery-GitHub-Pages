@@ -1,0 +1,2 @@
+Version 3.1.4
+Fixed browser cache issue by updating albums.js cache-busting version.

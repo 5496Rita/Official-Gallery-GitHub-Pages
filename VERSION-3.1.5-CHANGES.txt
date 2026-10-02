@@ -1,0 +1,1 @@
+Fixed lyrics/title overlap. Reduced lyrics spacing and padding. Opening a track now closes other tracks to keep the page compact.

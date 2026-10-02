@@ -1,0 +1,5 @@
+Version 3.19
+- Restored album story display on desktop.
+- Added a reliable mobile story toggle using a button and expandable body.
+- Improved return navigation to restore the selected album position in Gallery or Discography.
+- Preserved mobile lightweight lyrics loading.

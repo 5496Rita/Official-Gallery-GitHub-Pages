@@ -1,0 +1,4 @@
+Version 3.18
+- Restored album story text on desktop and mobile.
+- Replaced unreliable browser history return with deterministic return to the exact gallery/discography scroll position.
+- Skips the welcome intro when returning from an album.

@@ -1,0 +1,4 @@
+Version 3.9
+- Mobile lyric track list now displays every track vertically.
+- Selected lyrics remain visible below the full track list.
+- Removed hidden horizontal-only navigation on smartphones.

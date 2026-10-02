@@ -1,0 +1,25 @@
+越黒リタ Official Gallery — Version 2.1
+
+テーマ：静かな展示体験の深化
+
+追加・改善内容
+- Galleryに床面の奥行き、額縁の金属質感、弱い反射、視線に追従するごく薄い月光を追加
+- 展示室全体に控えめな遠近移動を追加（PCのみ、requestAnimationFrameで制御）
+- Discographyの所蔵品カードに展示照明と閲覧導線を追加
+- Detailページで作品アクセント色に応じた背景光・額縁光を追加
+- Track Listをキーボード操作可能にし、クリック／Enter／Spaceで弱い選択発光を表示
+- スクロール表示を、ぼかしを伴う静かな展示出現へ調整
+- スマートフォンでは床反射・追従光などを停止して負荷を抑制
+- prefers-reduced-motionでは追従・遷移・ぼかしを無効化
+
+変更ファイル
+- index.html
+- detail.html
+
+追加ファイル
+- v2.1.css
+- v2.1.js
+- VERSION-2.1-CHANGES.txt
+
+既存のalbums.js、app.js、detail.js、画像名・画像パスは変更していません。
+GitHub Pagesへ追加ビルドなしで配置できます。
