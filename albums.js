@@ -7711,7 +7711,7 @@ Desire
     artist: "CROVEIL",
     title: "誘蛾灯",
     reading: "ユウガトウ",
-    release: "",
+    release: "2026.09.19",
     order: 32,
     story: [
       "月下の灯へ引き寄せられた羽が、甘い毒を纏って夜を舞う。",
@@ -7728,7 +7728,7 @@ Desire
     "artist": "CROVEIL",
     "title": "Funeral Bloom",
     "albumNumber": 7,
-    "release": "",
+    "release": "2026.10.17",
     "order": 33,
     "story": [],
     "tracks": [
