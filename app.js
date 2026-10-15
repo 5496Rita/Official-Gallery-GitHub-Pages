@@ -308,7 +308,7 @@
     if (lyricsLoadPromise) return lyricsLoadPromise;
 
     lyricsLoadPromise = Promise.allSettled(normalizedAlbums.map(async album => {
-      const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json`, { cache: 'force-cache' });
+      const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json?v=568`, { cache: 'force-cache' });
       if (!response.ok) return;
       const data = await response.json();
       const tracks = Array.isArray(data?.tracks) ? data.tracks : [];

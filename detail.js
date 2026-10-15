@@ -146,7 +146,7 @@
   const album = normalized[index];
   let trackSource = album.tracks || [];
   try {
-    const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json`, { cache: 'force-cache' });
+    const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json?v=568`, { cache: 'force-cache' });
     if (response.ok) {
       const payload = await response.json();
       if (Array.isArray(payload.tracks)) trackSource = payload.tracks;
