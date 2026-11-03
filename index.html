@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#08050b" />
-  <meta name="description" content="越黒リタ / CROVEIL Official Gallery。音楽、物語、歌詞、イラストを巡る入口。" />
+  <meta name="description" content="越黒リタ / CROVEIL Official Gallery。作品世界へ入るための入口。" />
   <meta name="author" content="越黒リタ" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta property="og:type" content="website" />
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=700" />
+  <link rel="stylesheet" href="home-one-screen.css?v=720" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -32,10 +32,7 @@
       <span class="home-brand-ja">越黒リタ</span>
       <span class="home-brand-en">KOSHIKURO RITA</span>
     </a>
-    <div class="home-status">
-      <span class="home-status-dot"></span>
-      OFFICIAL GALLERY
-    </div>
+    <div class="home-status"><span class="home-status-dot"></span>OFFICIAL GALLERY</div>
     <div class="home-socials" aria-label="Social links">
       <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener noreferrer">YT</a>
       <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener noreferrer">X</a>
@@ -47,10 +44,16 @@
     <section class="home-visual" aria-label="越黒リタ visual">
       <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
       <div class="home-art-shade" aria-hidden="true"></div>
-      <div class="home-art-caption">
-        <span>EXHIBITION 00</span>
-        <span>WELCOME TO THE WORLD</span>
-      </div>
+      <div class="home-art-caption"><span>EXHIBITION 00</span><span>WELCOME TO THE WORLD</span></div>
+
+      <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
+        <div class="home-short-head"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
+        <div id="featured-short-player" class="home-short-player"></div>
+        <div class="home-short-controls" aria-label="Short動画の操作">
+          <button id="featured-short-sound" type="button" aria-pressed="false" aria-label="サウンドをオン" title="サウンドをオン" disabled><span aria-hidden="true">🔇</span></button>
+          <button id="featured-short-next" type="button" aria-label="次のShort" title="次のShort" disabled><span aria-hidden="true">→</span></button>
+        </div>
+      </aside>
     </section>
 
     <section class="home-copy" aria-labelledby="home-title">
@@ -62,28 +65,26 @@
 
         <div class="home-latest" aria-label="Latest releases">
           <span class="home-latest-label">LATEST</span>
-          <a href="detail.html?id=funeral-bloom&from=archive"><strong>Funeral Bloom</strong><small>2026.10.17</small></a>
+          <a href="detail.html?id=funeral-bloom&from=home"><strong>Funeral Bloom</strong><small>2026.10.17</small></a>
           <span class="home-latest-divider"></span>
-          <a href="detail.html?id=yugatou&from=archive"><strong>誘蛾灯</strong><small>2026.09.19</small></a>
+          <a href="detail.html?id=yugatou&from=home"><strong>誘蛾灯</strong><small>2026.09.19</small></a>
         </div>
       </div>
 
-      <nav class="home-portals" aria-label="Explore the gallery">
-        <a href="archive.html#archive" class="home-portal home-portal-primary"><span>01</span><strong>MUSIC</strong><small>Albums / Lyrics</small></a>
-        <a href="illustrations.html" class="home-portal"><span>02</span><strong>GALLERY</strong><small>Illustrations</small></a>
-        <a href="characters.html" class="home-portal"><span>03</span><strong>PERSONA</strong><small>Characters / World</small></a>
-        <a href="comics.html" class="home-portal"><span>04</span><strong>COMICS</strong><small>Stories</small></a>
-        <a href="archive.html#latest" class="home-portal"><span>05</span><strong>LATEST</strong><small>New Release</small></a>
-        <a href="archive.html#about" class="home-portal"><span>06</span><strong>PROFILE</strong><small>About Rita</small></a>
+      <nav class="home-portals home-portals--four" aria-label="Explore the gallery">
+        <a href="gallery.html" class="home-portal home-portal-primary"><span>01</span><strong>GALLERY</strong><small>Album Jackets</small></a>
+        <a href="detail.html?id=funeral-bloom&from=home" class="home-portal"><span>02</span><strong>LATEST</strong><small>Newest Release</small></a>
+        <a href="archive.html#artist" class="home-portal"><span>03</span><strong>ABOUT</strong><small>Rita / CROVEIL</small></a>
+        <a href="archive-room.html" class="home-portal"><span>04</span><strong>ARCHIVE</strong><small>Persona / Visuals / Comics</small></a>
       </nav>
     </section>
   </main>
 
   <footer class="home-footer">
     <span>© KOSHIKURO RITA</span>
-    <span>ENTER THE ARCHIVE THROUGH THE DOORS ABOVE.</span>
+    <span>CHOOSE A DOOR. THE REST LIVES BEYOND.</span>
   </footer>
 
-  <script src="home-one-screen.js?v=700"></script>
+  <script src="home-one-screen.js?v=720"></script>
 </body>
 </html>
