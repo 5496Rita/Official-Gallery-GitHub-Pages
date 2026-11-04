@@ -266,6 +266,18 @@
   }
 </style>
 
+
+<style id="v26-random-hero">
+  .hero-art{
+    background-image:var(--hero-image,url('assets/hero-main.png'))!important;
+    background-position:var(--hero-pos-desktop,32% 28%)!important;
+    background-size:cover!important;
+  }
+  @media(max-width:1000px){
+    .hero-art{background-position:var(--hero-pos-mobile,42% 22%)!important;}
+  }
+</style>
+
 </head>
 <body>
   <header class="home-header">
@@ -278,8 +290,8 @@
     <section class="hero-copy">
       <p class="hero-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
       <h1>越黒リタ</h1>
-      <p class="hero-tagline">Where silence blooms into a dark melody.</p>
-      <p class="hero-lead">ふたつの名義、ふたつの闇。<br>音楽・物語・装飾が交差する世界へ。</p>
+      <p class="hero-tagline">Where darkness blooms into beauty.</p>
+      <p class="hero-lead">闇が美しさへと花開く場所</p>
     </section>
     <section id="film-zone" class="film-zone" aria-label="Short film">
       <div id="short-ambient" class="short-ambient" aria-hidden="true"></div>
@@ -301,6 +313,37 @@
       <a href="about.html" class="portal-image" aria-label="ABOUT — Artist / Sound / World"><img src="assets/menu-panels/about.webp" alt="ABOUT — Artist / Sound / World"></a>
     </nav>
   </section>
+
+<script>
+(() => {
+  const heroes = [
+    {src:'assets/hero-main.png', desktop:'32% 25%', mobile:'40% 18%'},
+    {src:'assets/hero-random/hero-01.webp', desktop:'50% 28%', mobile:'50% 20%'},
+    {src:'assets/hero-random/hero-02.webp', desktop:'40% 24%', mobile:'37% 18%'},
+    {src:'assets/hero-random/hero-03.webp', desktop:'50% 27%', mobile:'50% 20%'},
+    {src:'assets/hero-random/hero-04.webp', desktop:'36% 24%', mobile:'34% 18%'},
+    {src:'assets/hero-random/hero-05.webp', desktop:'35% 22%', mobile:'32% 16%'},
+    {src:'assets/hero-random/hero-06.webp', desktop:'34% 20%', mobile:'30% 14%'},
+    {src:'assets/hero-random/hero-07.webp', desktop:'34% 23%', mobile:'31% 16%'},
+    {src:'assets/hero-random/hero-08.webp', desktop:'33% 20%', mobile:'30% 14%'},
+    {src:'assets/hero-random/hero-09.webp', desktop:'34% 22%', mobile:'31% 16%'}
+  ];
+  const key='officialGalleryLastHeroV26';
+  let previous=-1;
+  try { previous=Number(sessionStorage.getItem(key)); } catch(_) {}
+  let index=Math.floor(Math.random()*heroes.length);
+  if (heroes.length>1 && index===previous) index=(index+1)%heroes.length;
+  const chosen=heroes[index];
+  const art=document.querySelector('.hero-art');
+  if (art){
+    art.style.setProperty('--hero-image', `url("${chosen.src}")`);
+    art.style.setProperty('--hero-pos-desktop', chosen.desktop);
+    art.style.setProperty('--hero-pos-mobile', chosen.mobile);
+  }
+  try { sessionStorage.setItem(key,String(index)); } catch(_) {}
+})();
+</script>
+
   <script src="home-one-screen.js?v=1800"></script>
 </body>
 </html>
