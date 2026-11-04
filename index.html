@@ -11,7 +11,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=1400" />
+  <link rel="stylesheet" href="home-one-screen.css?v=1500" />
+  <style>
+    /* v15: desktop hero copy + SHORTS fixed side-by-side */
+    @media (min-width: 900px) {
+      .home-copy .home-feature {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr) !important;
+        align-items: center !important;
+        gap: clamp(28px, 3vw, 64px) !important;
+        width: 100% !important;
+      }
+      .home-copy .home-intro {
+        min-width: 0 !important;
+        align-self: center !important;
+      }
+      .home-copy .home-short-inline {
+        display: block !important;
+        width: min(100%, 360px) !important;
+        max-width: 360px !important;
+        margin: 0 auto !important;
+        align-self: center !important;
+      }
+      .home-copy .home-short-frame {
+        width: 100% !important;
+        aspect-ratio: 9 / 16 !important;
+        max-height: 54vh !important;
+        overflow: hidden !important;
+      }
+      .home-copy .home-short-player,
+      .home-copy .home-short-player iframe {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .home-copy .home-short-controls {
+        width: 100% !important;
+      }
+      .home-copy .home-portals {
+        margin-top: clamp(20px, 2.5vh, 34px) !important;
+      }
+    }
+    @media (max-width: 899px) {
+      .home-copy .home-feature {
+        display: block !important;
+      }
+      .home-copy .home-short-inline {
+        margin-top: 24px !important;
+      }
+    }
+  </style>
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -58,6 +106,6 @@
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=1400"></script>
+  <script src="home-one-screen.js?v=1500"></script>
 </body>
 </html>
