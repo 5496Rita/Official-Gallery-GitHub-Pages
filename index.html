@@ -37,20 +37,20 @@
 
   <style>
     /* v20 — four large portal rooms */
-    .portal-band{
+    .menu-band{
       padding:clamp(22px,3vw,42px) clamp(22px,4vw,70px) clamp(34px,4vw,58px)!important;
       background:
         radial-gradient(circle at 50% 0,rgba(119,45,95,.12),transparent 35%),
         linear-gradient(180deg,#09050c 0%,#07040a 100%)!important;
     }
-    .portal-band .home-portals{
+    .menu-band .home-portals{
       width:min(1280px,100%)!important;
       margin:0 auto!important;
       display:grid!important;
       grid-template-columns:repeat(2,minmax(0,1fr))!important;
       gap:14px!important;
     }
-    .portal-band .home-portals a{
+    .menu-band .home-portals a{
       min-height:clamp(170px,17vh,230px)!important;
       padding:clamp(22px,2.5vw,36px)!important;
       justify-content:flex-end!important;
@@ -58,12 +58,12 @@
       background:linear-gradient(145deg,rgba(29,15,35,.78),rgba(10,5,14,.92))!important;
       overflow:hidden!important;
     }
-    .portal-band .home-portals a::before{
+    .menu-band .home-portals a::before{
       background:
         radial-gradient(circle at 18% 5%,rgba(173,75,131,.23),transparent 48%),
         linear-gradient(135deg,rgba(255,255,255,.018),transparent 55%)!important;
     }
-    .portal-band .home-portals a::after{
+    .menu-band .home-portals a::after{
       right:clamp(24px,3vw,54px)!important;
       width:clamp(150px,15vw,230px)!important;
       height:clamp(110px,12vw,180px)!important;
@@ -71,30 +71,30 @@
       filter:drop-shadow(0 0 18px rgba(174,89,141,.22))!important;
       transition:transform .35s ease,opacity .35s ease,filter .35s ease!important;
     }
-    .portal-band .home-portals a:hover::after{
+    .menu-band .home-portals a:hover::after{
       transform:translateY(-50%) scale(1.07) rotate(-2deg)!important;
       opacity:.32!important;
       filter:drop-shadow(0 0 26px rgba(195,102,159,.34))!important;
     }
-    .portal-band .home-portals span{
+    .menu-band .home-portals span{
       position:absolute!important;top:22px!important;left:26px!important;
       font-size:8px!important;letter-spacing:.22em!important;
     }
-    .portal-band .home-portals strong{
+    .menu-band .home-portals strong{
       position:relative;z-index:2;
       font-size:clamp(26px,2.2vw,36px)!important;
       letter-spacing:.14em!important;
     }
-    .portal-band .home-portals small{
+    .menu-band .home-portals small{
       position:relative;z-index:2;
       margin-top:10px!important;font-size:9px!important;letter-spacing:.13em!important;
     }
     @media(max-width:760px){
-      .portal-band{padding:18px 16px 28px!important}
-      .portal-band .home-portals{grid-template-columns:1fr!important;gap:10px!important}
-      .portal-band .home-portals a{min-height:142px!important;padding:22px!important}
-      .portal-band .home-portals a::after{width:150px!important;height:105px!important;right:18px!important}
-      .portal-band .home-portals strong{font-size:28px!important}
+      .menu-band{padding:18px 16px 28px!important}
+      .menu-band .home-portals{grid-template-columns:1fr!important;gap:10px!important}
+      .menu-band .home-portals a{min-height:142px!important;padding:22px!important}
+      .menu-band .home-portals a::after{width:150px!important;height:105px!important;right:18px!important}
+      .menu-band .home-portals strong{font-size:28px!important}
     }
   </style>
 
