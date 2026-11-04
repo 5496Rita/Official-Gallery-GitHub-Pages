@@ -10,3 +10,27 @@
 @media(max-height:760px) and (min-width:1001px){.home-stage{min-height:620px}.home-copy{padding-top:64px;gap:13px}.home-intro h1{font-size:48px}.home-tagline{font-size:23px}.home-lead{margin-top:10px;font-size:9px}.sound-card{padding:10px 5px}.sound-card strong{font-size:13px}.sound-card p{font-size:8px}.home-portals a{min-height:68px}.home-short,.shorts-gallery-mark,.shorts-gallery-caption{width:min(100%,275px)}}
 @media(max-width:1220px) and (min-width:1001px){.home-stage{grid-template-columns:36% 24% 40%}.home-copy{padding-left:24px;padding-right:24px}.home-intro h1{font-size:50px}.home-tagline{font-size:23px}.sound-card strong{font-size:13px}.sound-card p{font-size:8px}.home-short,.shorts-gallery-mark,.shorts-gallery-caption{width:min(100%,270px)}}
 @media(max-width:1000px){html{overflow:auto}body{overflow:auto}.home-header{height:54px}.home-status{display:none}.home-stage{height:auto;min-height:100dvh;padding-top:54px;grid-template-columns:1fr;grid-template-rows:720px auto auto}.home-visual{border-right:0;border-bottom:1px solid var(--line)}.home-art{background-position:34% center}.home-shorts-column{padding:36px 18px;border-right:0;border-bottom:1px solid var(--line)}.home-short,.shorts-gallery-mark,.shorts-gallery-caption{width:min(360px,86vw)}.home-copy{padding:34px 18px 42px;gap:20px}.home-intro h1{font-size:48px}.home-tagline{font-size:25px}.sound-duo{grid-template-columns:1fr}.home-portals{grid-template-columns:1fr 1fr}}
+
+/* v12 — integrate the vertical film into the gallery instead of a standalone widget */
+.home-shorts-column{padding:24px 18px;background:linear-gradient(90deg,rgba(8,4,11,.18),rgba(16,7,17,.32) 48%,rgba(8,4,11,.46));}
+.home-shorts-column:before{background:radial-gradient(ellipse at 50% 45%,rgba(142,61,111,.18),transparent 57%),linear-gradient(180deg,rgba(255,255,255,.012),transparent 38%,rgba(116,35,83,.045));}
+.home-shorts-column:after{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(226,186,215,.12),transparent);}
+.shorts-gallery-mark,.shorts-gallery-caption,.home-short{width:min(100%,340px)}
+.shorts-gallery-mark{margin-bottom:8px;opacity:.82}.shorts-gallery-mark span,.shorts-gallery-mark small{font-size:6px;letter-spacing:.28em}
+.home-short{padding:0}.home-short-frame{filter:drop-shadow(0 22px 38px rgba(0,0,0,.42))}
+.home-short-frame:before{inset:-6px;border-color:rgba(232,188,216,.18)}
+.home-short-frame:after{content:'✦';position:absolute;z-index:5;left:50%;top:-17px;transform:translateX(-50%);color:rgba(224,185,211,.55);font-size:10px;text-shadow:0 0 18px rgba(209,119,176,.55)}
+.home-short-player{background:#030104;box-shadow:0 0 0 1px rgba(255,255,255,.025),0 26px 70px rgba(0,0,0,.38)}
+.home-short-controls{grid-template-columns:38px 1fr;gap:6px;margin-top:10px}.home-short-controls button{height:26px;border-top-color:rgba(215,180,210,.10);font-size:7px;background:rgba(255,255,255,.006)}
+.shorts-gallery-caption{margin-top:8px;opacity:.62}
+
+/* v12 — lightweight illustrated portal cards */
+.home-portals a{isolation:isolate;min-height:88px;background:linear-gradient(145deg,rgba(27,15,33,.58),rgba(9,5,12,.72));}
+.home-portals a:after{content:'';position:absolute;z-index:-1;inset:0;background-repeat:no-repeat;background-position:right center;background-size:auto 112%;opacity:.25;filter:drop-shadow(0 0 10px rgba(151,72,119,.08));transition:opacity .25s,transform .35s}
+.home-portals a:nth-child(1):after{background-image:url('assets/menu/archive.svg')}
+.home-portals a:nth-child(2):after{background-image:url('assets/menu/lyrics.svg')}
+.home-portals a:nth-child(3):after{background-image:url('assets/menu/exhibition.svg')}
+.home-portals a:nth-child(4):after{background-image:url('assets/menu/about.svg')}
+.home-portals a:hover:after{opacity:.48;transform:scale(1.045) translateX(-2px)}
+.home-portals strong,.home-portals small,.home-portals span{position:relative;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.85)}
+.home-portals .portal-hot:after{opacity:.35}

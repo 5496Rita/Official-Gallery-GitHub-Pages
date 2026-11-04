@@ -1,4 +1,15 @@
 (() => {
+  // Album detail pages from EXHIBITION historically returned to index.html#exhibition.
+  // Redirect that legacy return target back into the exhibition room instead.
+  if (location.hash === '#exhibition') {
+    try {
+      const state = JSON.parse(sessionStorage.getItem('officialGalleryReturnState') || 'null');
+      if (state?.from === 'exhibition' && state?.returning) {
+        location.replace('exhibition.html');
+        return;
+      }
+    } catch (_) {}
+  }
   document.documentElement.classList.add('home-ready');
 
   function loadYouTubePlayerApi() {
