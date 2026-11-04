@@ -68,3 +68,26 @@ a{color:inherit}
   .home-copy h1{font-size:64px}.home-tagline{font-size:32px}.home-description{font-size:13px}
   .home-portal{min-height:78px}.home-portal strong{font-size:17px}.home-portal small{font-size:8px}
 }
+
+/* v7.4 — larger featured Shorts */
+@media (min-width:1101px){
+  .home-short{width:270px;right:28px;bottom:58px;padding:11px}
+  .home-short-head{padding:3px 3px 9px}.home-short-head span{font-size:9px}.home-short-head strong{font-size:14px}
+  .home-short-controls{gap:7px;margin-top:7px}.home-short-controls button{height:34px;font-size:14px}
+  .home-art-caption{right:330px}
+}
+@media (min-width:781px) and (max-width:1100px){
+  .home-short{width:205px;right:14px;bottom:46px;padding:9px}
+  .home-short-head span{font-size:8px}.home-short-head strong{font-size:12px}
+  .home-short-controls button{height:30px}
+  .home-art-caption{right:245px}
+}
+@media (max-width:780px){
+  .home-short{width:138px;right:10px;bottom:12px;padding:6px}
+  .home-short-controls button{height:27px;font-size:11px}
+  .home-art-caption{right:166px}
+}
+@media (max-width:420px){
+  .home-short{width:118px}
+  .home-art-caption{right:142px}
+}
