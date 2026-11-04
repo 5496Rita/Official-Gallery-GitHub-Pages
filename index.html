@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=1200" />
+  <link rel="stylesheet" href="home-one-screen.css?v=1300" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -30,18 +30,6 @@
       <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
     </section>
 
-    <section class="home-shorts-column" aria-label="Shorts">
-      <div class="shorts-gallery-mark" aria-hidden="true"><span>SHORT FILM</span><i></i><small>NOW PLAYING</small></div>
-      <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
-        <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
-        <div class="home-short-controls">
-          <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
-          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT FILM →</button>
-        </div>
-      </aside>
-      <div class="shorts-gallery-caption"><span>SCREENING IN THE GALLERY</span><b>✦</b></div>
-    </section>
-
     <section class="home-copy">
       <div class="home-intro">
         <p class="home-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
@@ -50,9 +38,20 @@
         <p class="home-lead">ふたつの名義、ふたつの闇。<br>音楽・物語・装飾が交差する世界へ。</p>
       </div>
 
-      <section class="sound-duo" aria-label="Artist sound profiles">
-        <a href="about.html#rita" class="sound-card"><span>01</span><div><p class="sound-label">KOSHIKURO RITA / SOUND</p><strong>美しさと危うさが、同じ夜に咲く。</strong><p>耽美、ゴシック、誘惑、孤独、祈り。物語性の強い歌詞と重厚な音像。</p><em>ENTER THE WORLD →</em></div></a>
-        <a href="about.html#croveil" class="sound-card"><span>02</span><div><p class="sound-label">CROVEIL / SOUND</p><strong>静かな威圧感が、空気を変える。</strong><p>ゴシック／ダークロック／メタル。孤高、崩壊、信仰、欲望を冷たく荘厳に。</p><em>ENTER THE WORLD →</em></div></a>
+      <section class="home-screening" aria-label="Short film screening">
+        <div class="screening-copy" aria-hidden="true">
+          <span>SHORT FILM / NOW PLAYING</span>
+          <strong>SCREENING<br>IN THE DARK</strong>
+          <i></i>
+          <small>Random visual archive</small>
+        </div>
+        <aside id="featured-short" class="home-short home-short-inline" aria-label="YouTube Short" hidden>
+          <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
+          <div class="home-short-controls">
+            <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
+            <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
+          </div>
+        </aside>
       </section>
 
       <nav class="home-portals" aria-label="Explore the gallery">
@@ -64,6 +63,6 @@
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=1200"></script>
+  <script src="home-one-screen.js?v=1300"></script>
 </body>
 </html>

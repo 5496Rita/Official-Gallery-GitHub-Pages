@@ -5,7 +5,9 @@
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
   const index = albums.findIndex(album => album.id === id);
-  const from = params.get('from') === 'exhibition' ? 'exhibition' : 'archive';
+  const rawFrom = String(params.get('from') || 'archive').toLowerCase();
+  const from = ['archive','exhibition','lyrics','home'].includes(rawFrom) ? rawFrom : 'archive';
+  const returnTargets = { archive:'archive.html', exhibition:'exhibition.html', lyrics:'lyrics.html', home:'index.html' };
   const requestedTrackIndex = Number.parseInt(params.get('track') || '', 10);
   const lyricQuery = String(params.get('lyric') || '').trim();
 
@@ -20,7 +22,7 @@
         savedAt: Date.now()
       }));
     } catch (_) {}
-    location.href = `index.html#${from}`;
+    location.href = returnTargets[from] || 'archive.html';
   });
 
   const configuredSiteUrl = String(window.SITE_CONFIG?.siteUrl || '').replace(/\/$/, '');
@@ -146,7 +148,7 @@
   const album = normalized[index];
   let trackSource = album.tracks || [];
   try {
-    const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json?v=568`, { cache: 'force-cache' });
+    const response = await fetch(`lyrics/${encodeURIComponent(album.id)}.json`, { cache: 'force-cache' });
     if (response.ok) {
       const payload = await response.json();
       if (Array.isArray(payload.tracks)) trackSource = payload.tracks;
