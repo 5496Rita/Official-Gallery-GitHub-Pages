@@ -4,87 +4,79 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#08050b" />
-  <meta name="description" content="越黒リタ / CROVEIL Official Gallery。作品世界へ入るための入口。" />
-  <meta name="author" content="越黒リタ" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:site_name" content="越黒リタ Official Gallery" />
-  <meta property="og:title" content="越黒リタ — Official Gallery" />
-  <meta property="og:description" content="Where silence blooms into a dark melody." />
-  <meta property="og:image" content="assets/hero-main.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="越黒リタ / CROVEIL Official Gallery。音楽、物語、展示を辿る入口。" />
   <title>越黒リタ — Official Gallery</title>
   <link rel="icon" href="icons/favicon.ico?v=566" sizes="any" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=740" />
+  <link rel="stylesheet" href="home-one-screen.css?v=750" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
   <div class="home-vignette" aria-hidden="true"></div>
-  <div class="home-grain" aria-hidden="true"></div>
 
   <header class="home-header">
-    <a class="home-brand" href="index.html" aria-label="越黒リタ Official Gallery home">
-      <span class="home-brand-ja">越黒リタ</span>
-      <span class="home-brand-en">KOSHIKURO RITA</span>
-    </a>
-    <div class="home-status"><span class="home-status-dot"></span>OFFICIAL GALLERY</div>
-    <div class="home-socials" aria-label="Social links">
-      <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener noreferrer">YT</a>
-      <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener noreferrer">TT</a>
-    </div>
+    <a class="home-brand" href="index.html"><span>越黒リタ</span><small>KOSHIKURO RITA</small></a>
+    <div class="home-status">OFFICIAL GALLERY</div>
+    <div class="home-socials"><a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener">YT</a><a href="https://x.com/rita_5496sk" target="_blank" rel="noopener">X</a><a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener">TT</a></div>
   </header>
 
   <main class="home-stage">
     <section class="home-visual" aria-label="越黒リタ visual">
       <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
-      <div class="home-art-shade" aria-hidden="true"></div>
-      <div class="home-art-caption"><span>EXHIBITION 00</span><span>WELCOME TO THE WORLD</span></div>
+      <div class="home-art-shade"></div>
+      <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
 
       <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
         <div class="home-short-head"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
         <div id="featured-short-player" class="home-short-player"></div>
-        <div class="home-short-controls" aria-label="Short動画の操作">
-          <button id="featured-short-sound" type="button" aria-pressed="false" aria-label="サウンドをオン" title="サウンドをオン" disabled><span aria-hidden="true">🔇</span></button>
-          <button id="featured-short-next" type="button" aria-label="次のShort" title="次のShort" disabled><span aria-hidden="true">→</span></button>
+        <div class="home-short-controls">
+          <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
+          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
         </div>
       </aside>
     </section>
 
-    <section class="home-copy" aria-labelledby="home-title">
-      <div class="home-copy-inner">
+    <section class="home-copy">
+      <div class="home-intro">
         <p class="home-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
-        <h1 id="home-title">越黒リタ</h1>
-        <p class="home-tagline">Where silence blooms<br>into a dark melody.</p>
-        <p class="home-description">美しく儚い闇を、音楽・物語・装飾で綴る。<br>ここは作品世界へ入るための、静かな入口。</p>
-
-        <div class="home-latest" aria-label="Latest releases">
-          <span class="home-latest-label">LATEST</span>
-          <a href="detail.html?id=funeral-bloom&from=home"><strong>Funeral Bloom</strong><small>2026.10.17</small></a>
-          <span class="home-latest-divider"></span>
-          <a href="detail.html?id=yugatou&from=home"><strong>誘蛾灯</strong><small>2026.09.19</small></a>
-        </div>
+        <h1>越黒リタ</h1>
+        <p class="home-tagline">Where silence blooms into a dark melody.</p>
       </div>
 
-      <nav class="home-portals home-portals--four" aria-label="Explore the gallery">
-        <a href="archive.html" class="home-portal home-portal-primary"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
-        <a href="lyrics.html" class="home-portal"><span>02</span><strong>LYRICS</strong><small>Song / Lyrics Search</small></a>
-        <a href="exhibition.html" class="home-portal"><span>03</span><strong>EXHIBITION</strong><small>Random Gallery Room</small></a>
-        <a href="about.html" class="home-portal"><span>04</span><strong>ABOUT</strong><small>Rita / CROVEIL</small></a>
+      <section class="latest-duo" aria-label="Latest releases">
+        <a class="latest-card latest-rita" href="detail.html?id=yugato&from=home">
+          <img src="covers/thumbs/yugato.webp" alt="誘蛾灯 ジャケット" onerror="this.onerror=null;this.src='covers/yugato.jpg'">
+          <span class="latest-overlay"></span>
+          <span class="latest-kicker">KOSHIKURO RITA · LATEST</span>
+          <strong>誘蛾灯</strong>
+          <small>2026.09.19 · ENTER RELEASE →</small>
+        </a>
+        <a class="latest-card latest-croveil" href="detail.html?id=funeral-bloom&from=home">
+          <img src="covers/thumbs/funeral-bloom.webp" alt="Funeral Bloom ジャケット" onerror="this.onerror=null;this.src='covers/funeral-bloom.jpg'">
+          <span class="latest-overlay"></span>
+          <span class="latest-kicker">CROVEIL · LATEST</span>
+          <strong>Funeral Bloom</strong>
+          <small>2026.10.17 · ENTER RELEASE →</small>
+        </a>
+      </section>
+
+      <section class="sound-duo" aria-label="Artist sound profiles">
+        <a href="about.html#rita" class="sound-card"><span>01</span><div><strong>越黒リタ — SOUND</strong><p>耽美、ゴシック、誘惑、孤独。闇のなかの美しさを、物語性の強い歌詞と重厚な音像で描く。</p></div></a>
+        <a href="about.html#croveil" class="sound-card"><span>02</span><div><strong>CROVEIL — SOUND</strong><p>漆黒の気品と静かな威圧感。ゴシック／ダークロック／メタルを冷たく荘厳な世界へ束ねる。</p></div></a>
+      </section>
+
+      <nav class="home-portals" aria-label="Explore the gallery">
+        <a href="archive.html"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
+        <a href="lyrics.html"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
+        <a href="exhibition.html" class="portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Enter the Random Room</small></a>
+        <a href="about.html"><span>04</span><strong>ABOUT</strong><small>Artist / World</small></a>
       </nav>
     </section>
   </main>
 
-  <footer class="home-footer">
-    <span>© KOSHIKURO RITA</span>
-    <span>CHOOSE A DOOR. THE REST LIVES BEYOND.</span>
-  </footer>
-
-  <script src="home-one-screen.js?v=740"></script>
+  <script src="home-one-screen.js?v=750"></script>
 </body>
 </html>
