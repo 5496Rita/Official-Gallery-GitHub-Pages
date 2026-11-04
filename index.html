@@ -98,6 +98,18 @@
     }
   </style>
 
+<style id="v22-hard-portal-fix">
+@media (min-width:761px){
+  #portal-grid-v22{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;max-width:1280px!important;width:100%!important;margin:0 auto!important;}
+  #portal-grid-v22>a{min-height:220px!important;padding:30px!important;}
+  #portal-grid-v22>a strong{font-size:34px!important;}
+  #portal-grid-v22>a small{font-size:10px!important;margin-top:10px!important;}
+}
+@media (max-width:760px){
+  #portal-grid-v22{grid-template-columns:1fr!important;}
+  #portal-grid-v22>a{min-height:150px!important;}
+}
+</style>
 </head>
 <body>
   <header class="home-header">
@@ -126,11 +138,11 @@
     </section>
   </main>
   <section class="menu-band" aria-label="Gallery navigation">
-    <nav class="home-portals" aria-label="Explore the gallery">
-      <a href="archive.html" class="archive"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
-      <a href="lyrics.html" class="lyrics"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
-      <a href="exhibition.html" class="exhibition"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
-      <a href="about.html" class="about"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
+    <nav id="portal-grid-v22" class="home-portals" aria-label="Explore the gallery" style="display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;width:min(1280px,100%)!important;margin:0 auto!important;">
+      <a href="archive.html" class="archive" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
+      <a href="lyrics.html" class="lyrics" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
+      <a href="exhibition.html" class="exhibition" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
+      <a href="about.html" class="about" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
     </nav>
   </section>
   <script src="home-one-screen.js?v=1800"></script>
