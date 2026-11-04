@@ -60,7 +60,7 @@
     const soundButton = document.getElementById('featured-short-sound');
     const nextButton = document.getElementById('featured-short-next');
     const ambient = document.getElementById('short-ambient');
-    const sidePanel = document.querySelector('.side-panel');
+    const sidePanel = document.getElementById('film-zone');
     if (!section || !playerWrap || !soundButton || !nextButton) return;
     try {
       const response = await fetch('data/shorts.json', { cache:'no-store' });
