@@ -35,81 +35,76 @@
     @media(max-width:640px){.home-portals{grid-template-columns:1fr}.hero-copy h1{font-size:42px}.hero-tagline{font-size:22px}.hero-copy{top:calc(54px + 68vh - 230px);padding:18px}.film-zone{width:min(88vw,330px)}}
   </style>
 
-  <style>
-    /* v20 — four large portal rooms */
-    .menu-band{
-      padding:clamp(22px,3vw,42px) clamp(22px,4vw,70px) clamp(34px,4vw,58px)!important;
-      background:
-        radial-gradient(circle at 50% 0,rgba(119,45,95,.12),transparent 35%),
-        linear-gradient(180deg,#09050c 0%,#07040a 100%)!important;
-    }
-    .menu-band .home-portals{
-      width:min(1280px,100%)!important;
-      margin:0 auto!important;
-      display:grid!important;
-      grid-template-columns:repeat(2,minmax(0,1fr))!important;
-      gap:14px!important;
-    }
-    .menu-band .home-portals a{
-      min-height:clamp(170px,17vh,230px)!important;
-      padding:clamp(22px,2.5vw,36px)!important;
-      justify-content:flex-end!important;
-      border:1px solid rgba(218,183,209,.20)!important;
-      background:linear-gradient(145deg,rgba(29,15,35,.78),rgba(10,5,14,.92))!important;
-      overflow:hidden!important;
-    }
-    .menu-band .home-portals a::before{
-      background:
-        radial-gradient(circle at 18% 5%,rgba(173,75,131,.23),transparent 48%),
-        linear-gradient(135deg,rgba(255,255,255,.018),transparent 55%)!important;
-    }
-    .menu-band .home-portals a::after{
-      right:clamp(24px,3vw,54px)!important;
-      width:clamp(150px,15vw,230px)!important;
-      height:clamp(110px,12vw,180px)!important;
-      opacity:.19!important;
-      filter:drop-shadow(0 0 18px rgba(174,89,141,.22))!important;
-      transition:transform .35s ease,opacity .35s ease,filter .35s ease!important;
-    }
-    .menu-band .home-portals a:hover::after{
-      transform:translateY(-50%) scale(1.07) rotate(-2deg)!important;
-      opacity:.32!important;
-      filter:drop-shadow(0 0 26px rgba(195,102,159,.34))!important;
-    }
-    .menu-band .home-portals span{
-      position:absolute!important;top:22px!important;left:26px!important;
-      font-size:8px!important;letter-spacing:.22em!important;
-    }
-    .menu-band .home-portals strong{
-      position:relative;z-index:2;
-      font-size:clamp(26px,2.2vw,36px)!important;
-      letter-spacing:.14em!important;
-    }
-    .menu-band .home-portals small{
-      position:relative;z-index:2;
-      margin-top:10px!important;font-size:9px!important;letter-spacing:.13em!important;
-    }
-    @media(max-width:760px){
-      .menu-band{padding:18px 16px 28px!important}
-      .menu-band .home-portals{grid-template-columns:1fr!important;gap:10px!important}
-      .menu-band .home-portals a{min-height:142px!important;padding:22px!important}
-      .menu-band .home-portals a::after{width:150px!important;height:105px!important;right:18px!important}
-      .menu-band .home-portals strong{font-size:28px!important}
-    }
-  </style>
-
-<style id="v22-hard-portal-fix">
-@media (min-width:761px){
-  #portal-grid-v22{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;max-width:1280px!important;width:100%!important;margin:0 auto!important;}
-  #portal-grid-v22>a{min-height:220px!important;padding:30px!important;}
-  #portal-grid-v22>a strong{font-size:34px!important;}
-  #portal-grid-v22>a small{font-size:10px!important;margin-top:10px!important;}
-}
-@media (max-width:760px){
-  #portal-grid-v22{grid-template-columns:1fr!important;}
-  #portal-grid-v22>a{min-height:150px!important;}
-}
+<style id="v23-image-portals">
+  .menu-band{
+    padding:0!important;
+    margin:0!important;
+    background:#07040a!important;
+    border-top:1px solid rgba(225,190,216,.18)!important;
+    border-bottom:1px solid rgba(225,190,216,.10)!important;
+    overflow:hidden!important;
+  }
+  #portal-grid-v23{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:0!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  #portal-grid-v23 .portal-image{
+    position:relative!important;
+    display:block!important;
+    min-height:0!important;
+    aspect-ratio:1.52/1!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-right:1px solid rgba(228,195,218,.16)!important;
+    background:#0b0610!important;
+    overflow:hidden!important;
+    transform:none!important;
+    text-decoration:none!important;
+  }
+  #portal-grid-v23 .portal-image:last-child{border-right:0!important}
+  #portal-grid-v23 .portal-image img{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    transform:scale(1.01)!important;
+    transition:transform .45s ease,filter .45s ease!important;
+    filter:saturate(.94) brightness(.92)!important;
+  }
+  #portal-grid-v23 .portal-image::before{
+    content:'';position:absolute;z-index:2;inset:0;
+    box-shadow:inset 0 0 0 1px rgba(238,207,226,.08),inset 0 -28px 48px rgba(0,0,0,.12);
+    pointer-events:none;
+  }
+  #portal-grid-v23 .portal-image::after{
+    content:'';position:absolute;z-index:3;left:0;right:0;bottom:0;height:2px;
+    background:linear-gradient(90deg,transparent,rgba(201,103,161,.70),transparent);
+    opacity:0;transform:scaleX(.72);transition:opacity .3s ease,transform .35s ease;
+    pointer-events:none;
+  }
+  #portal-grid-v23 .portal-image:hover img{
+    transform:scale(1.045)!important;
+    filter:saturate(1.06) brightness(1.05)!important;
+  }
+  #portal-grid-v23 .portal-image:hover::after{opacity:1;transform:scaleX(1)}
+  @media(max-width:1000px){
+    #portal-grid-v23{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    #portal-grid-v23 .portal-image:nth-child(2){border-right:0!important}
+    #portal-grid-v23 .portal-image:nth-child(-n+2){border-bottom:1px solid rgba(228,195,218,.16)!important}
+  }
+  @media(max-width:600px){
+    #portal-grid-v23{grid-template-columns:1fr!important}
+    #portal-grid-v23 .portal-image{border-right:0!important;border-bottom:1px solid rgba(228,195,218,.16)!important;aspect-ratio:1.6/1!important}
+    #portal-grid-v23 .portal-image:last-child{border-bottom:0!important}
+  }
 </style>
+
 </head>
 <body>
   <header class="home-header">
@@ -138,11 +133,11 @@
     </section>
   </main>
   <section class="menu-band" aria-label="Gallery navigation">
-    <nav id="portal-grid-v22" class="home-portals" aria-label="Explore the gallery" style="display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;width:min(1280px,100%)!important;margin:0 auto!important;">
-      <a href="archive.html" class="archive" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
-      <a href="lyrics.html" class="lyrics" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
-      <a href="exhibition.html" class="exhibition" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
-      <a href="about.html" class="about" style="min-height:220px!important;padding:30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
+    <nav id="portal-grid-v23" aria-label="Explore the gallery">
+      <a href="archive.html" class="portal-image" aria-label="ARCHIVE — Album Jackets"><img src="assets/menu-panels/archive.webp" alt="ARCHIVE — Album Jackets"></a>
+      <a href="lyrics.html" class="portal-image" aria-label="LYRICS — Search the Words"><img src="assets/menu-panels/lyrics.webp" alt="LYRICS — Search the Words"></a>
+      <a href="exhibition.html" class="portal-image" aria-label="EXHIBITION — Discover the Unknown"><img src="assets/menu-panels/exhibition.webp" alt="EXHIBITION — Discover the Unknown"></a>
+      <a href="about.html" class="portal-image" aria-label="ABOUT — Artist / Sound / World"><img src="assets/menu-panels/about.webp" alt="ABOUT — Artist / Sound / World"></a>
     </nav>
   </section>
   <script src="home-one-screen.js?v=1800"></script>
