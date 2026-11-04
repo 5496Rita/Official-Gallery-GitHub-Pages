@@ -64,8 +64,12 @@
     }
     .hero-art{
       position:absolute;inset:0;
-      background:url('assets/hero-main.png') 30% center/cover no-repeat;
+      background-image:url('assets/hero-main.png');
+      background-position:30% center;
+      background-size:cover;
+      background-repeat:no-repeat;
       transform:scale(1.02);
+      transition:opacity .65s ease, transform 8s ease;
     }
     .hero-panel::before{
       content:'';position:absolute;inset:0;
@@ -100,8 +104,12 @@
     .side-panel{
       position:relative;display:flex;flex-direction:column;justify-content:center;
       gap:30px;padding:clamp(32px,5vh,58px) clamp(28px,3vw,46px) 28px;
-      background:linear-gradient(180deg, rgba(8,4,12,.82), rgba(8,4,12,.96));
+      background:linear-gradient(180deg, rgba(8,4,12,.78), rgba(8,4,12,.96));
+      overflow:hidden;
     }
+    .short-ambient{position:absolute;inset:-36px;z-index:0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:blur(34px) saturate(.82) brightness(.35);opacity:0;transform:scale(1.14);transition:opacity .6s ease, background-image .45s ease;}
+    .side-panel.has-short .short-ambient{opacity:.52}
+    .short-ambient-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,4,12,.92) 0%,rgba(8,4,12,.72) 38%,rgba(8,4,12,.48) 70%,rgba(8,4,12,.82) 100%),radial-gradient(circle at 78% 35%,rgba(154,75,127,.18),transparent 30%);pointer-events:none;}
     .side-panel::before{
       content:'';position:absolute;inset:0;
       background:radial-gradient(circle at 50% 24%, rgba(126,46,102,.14), transparent 26%), linear-gradient(180deg, rgba(255,255,255,.015), transparent 28%);
@@ -110,29 +118,29 @@
 
     .home-short{
       position:relative;z-index:2;
-      width:min(100%, 430px);margin:0 auto;opacity:0;transition:opacity .35s ease;
+      width:min(100%, 500px);margin:0 0 0 auto;opacity:0;transition:opacity .35s ease;
       padding:0;
     }
     .home-short.is-ready{opacity:1}
-    .short-label{display:block;margin:0 0 12px 2px;font:500 12px/1 'Cormorant Garamond',serif;letter-spacing:.14em;color:#e8d9e8}
+    .short-label{display:flex;align-items:center;gap:12px;margin:0 0 12px 2px;font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.22em;color:#d9c7d8;text-transform:uppercase}.short-label::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,rgba(221,184,212,.34),transparent)}
     .home-short-frame{
       position:relative;width:100%;aspect-ratio:9/16;border:1px solid rgba(222,186,214,.22);
-      background:#040205;box-shadow:0 24px 60px rgba(0,0,0,.42), 0 0 40px rgba(127,42,96,.12);
+      background:#040205;box-shadow:0 28px 72px rgba(0,0,0,.52), 0 0 54px rgba(127,42,96,.18);
       overflow:hidden;
     }
     .home-short-frame::before{content:'';position:absolute;inset:-9px;border:1px solid rgba(218,180,208,.09);pointer-events:none}
     .home-short-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.035), transparent 18%, transparent 82%, rgba(0,0,0,.18));pointer-events:none}
     .home-short-player{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
     .home-short-player iframe{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important;display:block!important}
-    .home-short-controls{display:grid;grid-template-columns:52px 1fr;gap:10px;margin-top:14px}
+    .home-short-controls{display:grid;grid-template-columns:64px 1fr;gap:10px;margin-top:10px}
     .home-short-controls button{
-      height:42px;border:1px solid rgba(218,180,209,.18);background:linear-gradient(180deg, rgba(21,9,21,.82), rgba(15,8,19,.94));
+      height:38px;border:1px solid rgba(218,180,209,.18);background:linear-gradient(180deg, rgba(21,9,21,.82), rgba(15,8,19,.94));
       color:#d7c6d4;font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.16em;cursor:pointer;
       transition:.22s ease;
     }
     .home-short-controls button:hover{border-color:rgba(236,194,221,.46);background:linear-gradient(180deg, rgba(59,23,49,.52), rgba(19,9,23,.96));color:#fff}
 
-    .home-portals{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .home-portals{position:relative;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .home-portals a{
       position:relative;min-height:102px;padding:14px 16px;border:1px solid var(--line);
       background:linear-gradient(145deg, rgba(25,14,31,.74), rgba(11,6,14,.86));
@@ -215,8 +223,10 @@
     </section>
 
     <section class="side-panel">
+      <div id="short-ambient" class="short-ambient" aria-hidden="true"></div>
+      <div class="short-ambient-shade" aria-hidden="true"></div>
       <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
-        <div class="short-label">SHORT FILM / NOW PLAYING</div>
+        <div class="short-label">MOVING PORTRAIT / NOW PLAYING</div>
         <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
         <div class="home-short-controls">
           <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
@@ -233,6 +243,6 @@
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=1600"></script>
+  <script src="home-one-screen.js?v=1700"></script>
 </body>
 </html>

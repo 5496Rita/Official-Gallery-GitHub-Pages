@@ -1,6 +1,27 @@
 (() => {
-  // Album detail pages from EXHIBITION historically returned to index.html#exhibition.
-  // Redirect that legacy return target back into the exhibition room instead.
+  // Randomized hero: only curated images suitable for the top page.
+  const heroArt = document.querySelector('.hero-art');
+  const heroCandidates = [
+    { src:'assets/hero-main.png', pos:'30% center' },
+    { src:'illustration-media/illustration-17.webp', pos:'50% center' },
+    { src:'illustration-media/illustration-28.webp', pos:'50% center' },
+    { src:'illustration-media/illustration-27.webp', pos:'50% center' }
+  ];
+  if (heroArt) {
+    const chosen = heroCandidates[Math.floor(Math.random() * heroCandidates.length)];
+    const img = new Image();
+    img.onload = () => {
+      heroArt.style.opacity = '0';
+      requestAnimationFrame(() => {
+        heroArt.style.backgroundImage = `url("${chosen.src}")`;
+        heroArt.style.backgroundPosition = chosen.pos;
+        requestAnimationFrame(() => heroArt.style.opacity = '1');
+      });
+    };
+    img.onerror = () => { heroArt.style.backgroundImage = "url('assets/hero-main.png')"; };
+    img.src = chosen.src;
+  }
+
   if (location.hash === '#exhibition') {
     try {
       const state = JSON.parse(sessionStorage.getItem('officialGalleryReturnState') || 'null');
@@ -38,6 +59,8 @@
     const playerWrap = document.getElementById('featured-short-player');
     const soundButton = document.getElementById('featured-short-sound');
     const nextButton = document.getElementById('featured-short-next');
+    const ambient = document.getElementById('short-ambient');
+    const sidePanel = document.querySelector('.side-panel');
     if (!section || !playerWrap || !soundButton || !nextButton) return;
     try {
       const response = await fetch('data/shorts.json', { cache:'no-store' });
@@ -50,25 +73,37 @@
       let currentIndex = Math.floor(Math.random() * shorts.length);
       let isMuted = true;
       let player;
+      const updateAmbient = () => {
+        const id = shorts[currentIndex]?.id;
+        if (!id || !ambient) return;
+        ambient.style.backgroundImage = `url("https://i.ytimg.com/vi/${id}/hqdefault.jpg")`;
+        sidePanel?.classList.add('has-short');
+      };
       const updateSoundButton = () => {
         soundButton.setAttribute('aria-pressed', String(!isMuted));
         soundButton.setAttribute('aria-label', isMuted ? 'サウンドをオン' : 'サウンドをオフ');
-        soundButton.innerHTML = isMuted ? '<span aria-hidden="true">🔇</span>' : '<span aria-hidden="true">🔊</span>';
+        soundButton.innerHTML = isMuted ? '<span aria-hidden="true">SOUND OFF</span>' : '<span aria-hidden="true">SOUND ON</span>';
       };
       const playNext = () => {
         if (!player) return;
         let next = currentIndex;
         if (shorts.length > 1) while (next === currentIndex) next = Math.floor(Math.random() * shorts.length);
         currentIndex = next;
+        updateAmbient();
         player.loadVideoById(shorts[currentIndex].id);
         isMuted ? player.mute() : player.unMute();
         player.playVideo();
       };
+      updateAmbient();
       player = new window.YT.Player(playerWrap, {
         videoId: shorts[currentIndex].id,
         playerVars:{ autoplay:1, mute:1, playsinline:1, rel:0, controls:1, modestbranding:1, origin:window.location.origin },
         events:{
-          onReady:event => { event.target.mute(); event.target.playVideo(); soundButton.disabled=false; nextButton.disabled=false; updateSoundButton(); section.hidden=false; requestAnimationFrame(()=>section.classList.add('is-ready')); },
+          onReady:event => {
+            event.target.mute(); event.target.playVideo();
+            soundButton.disabled=false; nextButton.disabled=false; updateSoundButton();
+            section.hidden=false; requestAnimationFrame(()=>section.classList.add('is-ready'));
+          },
           onStateChange:event => { if (event.data === window.YT.PlayerState.ENDED) { event.target.seekTo(0,true); event.target.playVideo(); } },
           onError:playNext
         }
