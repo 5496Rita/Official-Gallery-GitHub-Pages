@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=760" />
+  <link rel="stylesheet" href="home-one-screen.css?v=770" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -27,15 +27,6 @@
     <section class="home-visual" aria-label="越黒リタ visual and Shorts">
       <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
       <div class="home-art-shade"></div>
-
-      <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
-        <div class="home-short-head"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
-        <div id="featured-short-player" class="home-short-player"></div>
-        <div class="home-short-controls">
-          <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
-          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
-        </div>
-      </aside>
 
       <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
     </section>
@@ -62,6 +53,23 @@
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=760"></script>
+  <section class="shorts-band" aria-label="Shorts">
+    <div class="shorts-band-copy">
+      <p>NOW PLAYING</p>
+      <h2>SHORTS</h2>
+      <span>最新の断片を、縦画面のまま。主役のビジュアルを邪魔せず、ここでゆっくり再生できます。</span>
+    </div>
+    <aside id="featured-short" class="home-short home-short--band" aria-label="YouTube Short" hidden>
+      <div class="home-short-frame">
+        <div id="featured-short-player" class="home-short-player"></div>
+      </div>
+      <div class="home-short-controls">
+        <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
+        <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
+      </div>
+    </aside>
+  </section>
+
+  <script src="home-one-screen.js?v=770"></script>
 </body>
 </html>
