@@ -11,53 +11,184 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=1500" />
   <style>
-    /* v15: desktop hero copy + SHORTS fixed side-by-side */
-    @media (min-width: 900px) {
-      .home-copy .home-feature {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr) !important;
-        align-items: center !important;
-        gap: clamp(28px, 3vw, 64px) !important;
-        width: 100% !important;
-      }
-      .home-copy .home-intro {
-        min-width: 0 !important;
-        align-self: center !important;
-      }
-      .home-copy .home-short-inline {
-        display: block !important;
-        width: min(100%, 360px) !important;
-        max-width: 360px !important;
-        margin: 0 auto !important;
-        align-self: center !important;
-      }
-      .home-copy .home-short-frame {
-        width: 100% !important;
-        aspect-ratio: 9 / 16 !important;
-        max-height: 54vh !important;
-        overflow: hidden !important;
-      }
-      .home-copy .home-short-player,
-      .home-copy .home-short-player iframe {
-        width: 100% !important;
-        height: 100% !important;
-      }
-      .home-copy .home-short-controls {
-        width: 100% !important;
-      }
-      .home-copy .home-portals {
-        margin-top: clamp(20px, 2.5vh, 34px) !important;
-      }
+    :root{
+      --bg:#08050b;
+      --bg2:#0f0814;
+      --ink:#f3ecf3;
+      --muted:#bbaabc;
+      --line:rgba(218,183,209,.18);
+      --line-strong:rgba(232,198,222,.28);
+      --glow:rgba(174,89,141,.22);
+      --panel:rgba(16,8,20,.84);
+      --panel-soft:rgba(18,10,24,.58);
     }
-    @media (max-width: 899px) {
-      .home-copy .home-feature {
-        display: block !important;
-      }
-      .home-copy .home-short-inline {
-        margin-top: 24px !important;
-      }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink)}
+    body{font-family:'Noto Serif JP',serif;overflow-x:hidden;background:#07040b}
+    a{color:inherit}
+
+    .home-bg{position:fixed;inset:0;background:#08050b url('assets/hero-bg.png') center/cover no-repeat;opacity:.16;transform:scale(1.03);filter:saturate(1.03)}
+    .home-vignette{position:fixed;inset:0;background:
+      radial-gradient(circle at 17% 28%, rgba(206,151,255,.18), transparent 18%),
+      radial-gradient(circle at 72% 24%, rgba(118,47,103,.20), transparent 28%),
+      linear-gradient(90deg, rgba(8,4,12,.08) 0%, rgba(8,4,12,.24) 36%, rgba(7,4,10,.90) 63%, rgba(7,4,10,.98) 100%),
+      linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.14) 50%, rgba(0,0,0,.36) 100%);
+      pointer-events:none;
+    }
+
+    .home-header{
+      position:fixed;z-index:30;top:0;left:0;right:0;height:58px;
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+      padding:0 clamp(18px,3vw,44px);
+      border-bottom:1px solid rgba(210,170,201,.12);
+      background:linear-gradient(180deg, rgba(8,4,11,.94), rgba(8,4,11,.55));
+      backdrop-filter:blur(10px);
+    }
+    .home-brand{text-decoration:none;color:inherit;display:flex;flex-direction:column;line-height:1;width:max-content}
+    .home-brand span{font-size:18px;letter-spacing:.12em}
+    .home-brand small{font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.25em;color:#ad9bad;margin-top:6px}
+    .home-status{font:500 9px/1 'Cormorant Garamond',serif;letter-spacing:.28em;color:#9d889b}
+    .home-socials{justify-self:end;display:flex;gap:10px}
+    .home-socials a{color:#b7a6b7;text-decoration:none;font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.1em;padding:6px}
+
+    .home-stage{
+      position:relative;z-index:2;min-height:100dvh;padding-top:58px;
+      display:grid;grid-template-columns:minmax(0,57%) minmax(380px,43%);
+    }
+
+    .hero-panel{
+      position:relative;min-height:calc(100dvh - 58px);overflow:hidden;
+      border-right:1px solid rgba(219,183,211,.10);
+      background:linear-gradient(90deg, rgba(10,5,14,.08), rgba(10,5,14,.06));
+    }
+    .hero-art{
+      position:absolute;inset:0;
+      background:url('assets/hero-main.png') 30% center/cover no-repeat;
+      transform:scale(1.02);
+    }
+    .hero-panel::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(216,187,255,.28), transparent 14%),
+        radial-gradient(circle at 74% 36%, rgba(144,51,117,.16), transparent 24%),
+        linear-gradient(90deg, rgba(7,4,10,.08) 0, rgba(7,4,10,.06) 38%, rgba(7,4,10,.58) 68%, rgba(7,4,10,.92) 100%),
+        linear-gradient(180deg, rgba(7,4,10,.10), transparent 40%, rgba(7,4,10,.46) 100%);
+      pointer-events:none;
+    }
+    .hero-copy{
+      position:absolute;right:clamp(26px,4vw,74px);bottom:clamp(28px,7vh,86px);z-index:3;
+      width:min(520px,52%);padding:24px 26px 22px;
+      border:1px solid rgba(231,196,221,.15);
+      background:linear-gradient(135deg, rgba(18,9,22,.56), rgba(9,4,13,.22));
+      backdrop-filter:blur(10px);
+      box-shadow:0 18px 60px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .hero-copy::before{
+      content:'';position:absolute;inset:-1px;
+      background:linear-gradient(135deg, rgba(187,97,152,.26), transparent 28%, transparent 72%, rgba(198,156,212,.14));
+      mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      padding:1px; -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+    }
+    .hero-eyebrow{margin:0 0 10px;font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.26em;color:#c0a9bd;opacity:.9}
+    .hero-copy h1{margin:0;font:500 clamp(62px,6vw,96px)/.92 'Noto Serif JP',serif;letter-spacing:.08em;text-shadow:0 6px 24px rgba(0,0,0,.26)}
+    .hero-tagline{margin:10px 0 0;font:500 clamp(30px,2.5vw,44px)/1.02 'Cormorant Garamond',serif;letter-spacing:.02em;color:#f0e6f0;text-shadow:0 6px 28px rgba(0,0,0,.34)}
+    .hero-lead{margin:18px 0 0;font-size:13px;line-height:1.95;color:#d5c7d5;text-shadow:0 3px 12px rgba(0,0,0,.32)}
+    .hero-copy .lead-line{display:block;width:94px;height:1px;margin:16px 0 0;background:linear-gradient(90deg, rgba(210,122,176,.88), transparent);box-shadow:0 0 18px rgba(196,109,164,.34)}
+
+    .side-panel{
+      position:relative;display:flex;flex-direction:column;justify-content:center;
+      gap:30px;padding:clamp(32px,5vh,58px) clamp(28px,3vw,46px) 28px;
+      background:linear-gradient(180deg, rgba(8,4,12,.82), rgba(8,4,12,.96));
+    }
+    .side-panel::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 50% 24%, rgba(126,46,102,.14), transparent 26%), linear-gradient(180deg, rgba(255,255,255,.015), transparent 28%);
+      pointer-events:none;
+    }
+
+    .home-short{
+      position:relative;z-index:2;
+      width:min(100%, 430px);margin:0 auto;opacity:0;transition:opacity .35s ease;
+      padding:0;
+    }
+    .home-short.is-ready{opacity:1}
+    .short-label{display:block;margin:0 0 12px 2px;font:500 12px/1 'Cormorant Garamond',serif;letter-spacing:.14em;color:#e8d9e8}
+    .home-short-frame{
+      position:relative;width:100%;aspect-ratio:9/16;border:1px solid rgba(222,186,214,.22);
+      background:#040205;box-shadow:0 24px 60px rgba(0,0,0,.42), 0 0 40px rgba(127,42,96,.12);
+      overflow:hidden;
+    }
+    .home-short-frame::before{content:'';position:absolute;inset:-9px;border:1px solid rgba(218,180,208,.09);pointer-events:none}
+    .home-short-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.035), transparent 18%, transparent 82%, rgba(0,0,0,.18));pointer-events:none}
+    .home-short-player{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+    .home-short-player iframe{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important;display:block!important}
+    .home-short-controls{display:grid;grid-template-columns:52px 1fr;gap:10px;margin-top:14px}
+    .home-short-controls button{
+      height:42px;border:1px solid rgba(218,180,209,.18);background:linear-gradient(180deg, rgba(21,9,21,.82), rgba(15,8,19,.94));
+      color:#d7c6d4;font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.16em;cursor:pointer;
+      transition:.22s ease;
+    }
+    .home-short-controls button:hover{border-color:rgba(236,194,221,.46);background:linear-gradient(180deg, rgba(59,23,49,.52), rgba(19,9,23,.96));color:#fff}
+
+    .home-portals{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .home-portals a{
+      position:relative;min-height:102px;padding:14px 16px;border:1px solid var(--line);
+      background:linear-gradient(145deg, rgba(25,14,31,.74), rgba(11,6,14,.86));
+      text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+    }
+    .home-portals a::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 20% 0, rgba(171,76,128,.18), transparent 55%);
+      opacity:0;transition:.22s ease;
+    }
+    .home-portals a::after{
+      content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);
+      width:108px;height:72px;opacity:.14;background-repeat:no-repeat;background-position:center;background-size:contain;pointer-events:none;
+      filter:drop-shadow(0 0 10px rgba(169,91,139,.18));
+    }
+    .home-portals a:hover{transform:translateY(-3px);border-color:var(--line-strong);background:linear-gradient(145deg, rgba(40,18,42,.82), rgba(12,6,16,.90))}
+    .home-portals a:hover::before,.home-portals .portal-hot::before{opacity:1}
+    .home-portals .archive::after{background-image:url('assets/menu/archive.svg')}
+    .home-portals .lyrics::after{background-image:url('assets/menu/lyrics.svg')}
+    .home-portals .exhibition::after{background-image:url('assets/menu/exhibition.svg')}
+    .home-portals .about::after{background-image:url('assets/menu/about.svg')}
+    .home-portals span{font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.16em;color:#887387;margin-bottom:auto}
+    .home-portals strong{font:500 18px/1 'Cormorant Garamond',serif;letter-spacing:.11em}
+    .home-portals small{font:500 8px/1.2 'Cormorant Garamond',serif;letter-spacing:.09em;color:#9b879a;margin-top:6px}
+
+    @media (max-width: 1240px){
+      .home-stage{grid-template-columns:minmax(0,54%) minmax(350px,46%)}
+      .hero-copy{width:min(500px,58%)}
+      .hero-copy h1{font-size:clamp(52px,5.3vw,82px)}
+      .hero-tagline{font-size:clamp(26px,2.2vw,36px)}
+      .home-short{width:min(100%,390px)}
+    }
+    @media (max-width: 1000px){
+      body{overflow-x:hidden}
+      .home-status{display:none}
+      .home-header{height:54px}
+      .home-stage{padding-top:54px;grid-template-columns:1fr}
+      .hero-panel{min-height:72vh;border-right:0;border-bottom:1px solid rgba(219,183,211,.10)}
+      .hero-art{background-position:34% center}
+      .hero-copy{left:18px;right:18px;bottom:18px;width:auto;max-width:none;padding:18px 18px 16px}
+      .hero-copy h1{font-size:48px}
+      .hero-tagline{font-size:26px}
+      .hero-lead{font-size:12px;line-height:1.9}
+      .side-panel{padding:24px 18px 28px}
+      .home-short{width:min(100%,360px)}
+      .home-portals{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .home-brand span{font-size:16px}
+      .home-socials{gap:4px}
+      .hero-panel{min-height:68vh}
+      .hero-copy h1{font-size:42px}
+      .hero-tagline{font-size:22px}
+      .home-portals{grid-template-columns:1fr}
+      .home-short{width:min(100%,320px)}
     }
   </style>
 </head>
@@ -72,40 +203,36 @@
   </header>
 
   <main class="home-stage">
-    <section class="home-visual" aria-label="越黒リタ メインビジュアル">
-      <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
-      <div class="home-art-shade"></div>
-      <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
+    <section class="hero-panel" aria-label="越黒リタ メインビジュアル">
+      <div class="hero-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
+      <div class="hero-copy">
+        <p class="hero-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
+        <h1>越黒リタ</h1>
+        <p class="hero-tagline">Where silence blooms into a dark melody.</p>
+        <span class="lead-line" aria-hidden="true"></span>
+        <p class="hero-lead">ふたつの名義、ふたつの闇。<br>音楽・物語・装飾が交差する世界へ。</p>
+      </div>
     </section>
 
-    <section class="home-copy">
-      <section class="home-feature" aria-label="越黒リタとショートフィルム">
-        <div class="home-intro">
-          <p class="home-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
-          <h1>越黒リタ</h1>
-          <p class="home-tagline">Where silence blooms into a dark melody.</p>
-          <p class="home-lead">ふたつの名義、ふたつの闇。<br>音楽・物語・装飾が交差する世界へ。</p>
+    <section class="side-panel">
+      <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
+        <div class="short-label">SHORT FILM / NOW PLAYING</div>
+        <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
+        <div class="home-short-controls">
+          <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
+          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
         </div>
-
-        <aside id="featured-short" class="home-short home-short-inline" aria-label="YouTube Short" hidden>
-          <div class="short-label">SHORT FILM / NOW PLAYING</div>
-          <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
-          <div class="home-short-controls">
-            <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
-            <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
-          </div>
-        </aside>
-      </section>
+      </aside>
 
       <nav class="home-portals" aria-label="Explore the gallery">
-        <a href="archive.html"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
-        <a href="lyrics.html"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
-        <a href="exhibition.html" class="portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
-        <a href="about.html"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
+        <a href="archive.html" class="archive"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
+        <a href="lyrics.html" class="lyrics"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
+        <a href="exhibition.html" class="exhibition portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
+        <a href="about.html" class="about"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
       </nav>
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=1500"></script>
+  <script src="home-one-screen.js?v=1600"></script>
 </body>
 </html>
