@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=770" />
+  <link rel="stylesheet" href="home-one-screen.css?v=800" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -24,11 +24,22 @@
   </header>
 
   <main class="home-stage">
-    <section class="home-visual" aria-label="越黒リタ visual and Shorts">
+    <section class="home-visual" aria-label="越黒リタ メインビジュアル">
       <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
       <div class="home-art-shade"></div>
-
       <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
+    </section>
+
+    <section class="home-shorts-column" aria-label="Shorts">
+      <div class="shorts-heading"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
+      <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
+        <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
+        <div class="home-short-controls">
+          <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
+          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
+        </div>
+      </aside>
+      <p class="shorts-note">縦画面のまま、全体を切らずに再生。</p>
     </section>
 
     <section class="home-copy">
@@ -36,40 +47,23 @@
         <p class="home-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
         <h1>越黒リタ</h1>
         <p class="home-tagline">Where silence blooms into a dark melody.</p>
-        <p class="home-lead">音楽、物語、装飾。<br>ふたつの名義が描く、異なる闇の輪郭へ。</p>
+        <p class="home-lead">ふたつの名義、ふたつの闇。<br>音楽・物語・装飾が交差する世界へ。</p>
       </div>
 
-      <section class="sound-duo sound-duo--large" aria-label="Artist sound profiles">
-        <a href="about.html#rita" class="sound-card"><span>01</span><div><p class="sound-label">KOSHIKURO RITA / SOUND</p><strong>美しさと危うさが、同じ夜に咲く。</strong><p>耽美、ゴシック、誘惑、孤独、祈り。物語性の強い歌詞と重厚な音像で、闇のなかに残る感情を描く。</p><em>ENTER THE WORLD →</em></div></a>
-        <a href="about.html#croveil" class="sound-card"><span>02</span><div><p class="sound-label">CROVEIL / SOUND</p><strong>静かな威圧感が、空気そのものを変える。</strong><p>ゴシック／ダークロック／メタル。孤高、崩壊、信仰、欲望を、冷たく荘厳な音像へ束ねる。</p><em>ENTER THE WORLD →</em></div></a>
+      <section class="sound-duo" aria-label="Artist sound profiles">
+        <a href="about.html#rita" class="sound-card"><span>01</span><div><p class="sound-label">KOSHIKURO RITA / SOUND</p><strong>美しさと危うさが、同じ夜に咲く。</strong><p>耽美、ゴシック、誘惑、孤独、祈り。物語性の強い歌詞と重厚な音像。</p><em>ENTER THE WORLD →</em></div></a>
+        <a href="about.html#croveil" class="sound-card"><span>02</span><div><p class="sound-label">CROVEIL / SOUND</p><strong>静かな威圧感が、空気を変える。</strong><p>ゴシック／ダークロック／メタル。孤高、崩壊、信仰、欲望を冷たく荘厳に。</p><em>ENTER THE WORLD →</em></div></a>
       </section>
 
       <nav class="home-portals" aria-label="Explore the gallery">
         <a href="archive.html"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
         <a href="lyrics.html"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
-        <a href="exhibition.html" class="portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Enter the Random Room</small></a>
+        <a href="exhibition.html" class="portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Discover the Unknown</small></a>
         <a href="about.html"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
       </nav>
     </section>
   </main>
 
-  <section class="shorts-band" aria-label="Shorts">
-    <div class="shorts-band-copy">
-      <p>NOW PLAYING</p>
-      <h2>SHORTS</h2>
-      <span>最新の断片を、縦画面のまま。主役のビジュアルを邪魔せず、ここでゆっくり再生できます。</span>
-    </div>
-    <aside id="featured-short" class="home-short home-short--band" aria-label="YouTube Short" hidden>
-      <div class="home-short-frame">
-        <div id="featured-short-player" class="home-short-player"></div>
-      </div>
-      <div class="home-short-controls">
-        <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
-        <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
-      </div>
-    </aside>
-  </section>
-
-  <script src="home-one-screen.js?v=770"></script>
+  <script src="home-one-screen.js?v=800"></script>
 </body>
 </html>

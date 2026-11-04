@@ -3,49 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#060308">
-  <meta name="description" content="越黒リタ / CROVEIL の作品と偶然に出会うスクロール展示室。">
+  <meta name="theme-color" content="#070308">
+  <meta name="description" content="越黒リタ / CROVEIL の作品と偶然に出会う夢幻展示室。">
   <title>EXHIBITION — 越黒リタ</title>
   <link rel="icon" href="icons/favicon.ico?v=566" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="exhibition-room.css?v=770">
+  <link rel="stylesheet" href="exhibition-room.css?v=800">
 </head>
 <body>
   <header class="ex-header">
     <a href="index.html">← HOME</a>
-    <div>EXHIBITION <small>ENCOUNTER THE UNKNOWN</small></div>
+    <div>EXHIBITION <small>DREAMLIKE RANDOM GALLERY</small></div>
     <a href="archive.html">ARCHIVE →</a>
   </header>
 
   <main>
-    <section class="ex-entrance">
-      <div class="ex-veil"></div>
-      <div class="ex-entrance-copy">
+    <section class="ex-hero">
+      <div class="ex-curtain ex-curtain-left"></div>
+      <div class="ex-curtain ex-curtain-right"></div>
+      <div class="ex-glass"></div>
+      <div class="ex-stars"></div>
+      <div class="ex-hero-copy">
         <p>THE ROOM NEVER APPEARS THE SAME TWICE.</p>
         <h1>EXHIBITION</h1>
-        <h2>まだ知らないアルバムに、出会うための回廊。</h2>
-        <span>一覧ではなく、偶然で選ぶ。スクロールするたび、ひとつの作品が闇から姿を現します。</span>
-        <button id="reshuffle" type="button">RESHUFFLE THE EXHIBITION</button>
+        <h2>まだ知らないアルバムに、偶然出会う展示室。</h2>
+        <span>作品は順番に並びません。大小さまざまなジャケットの中から、気になった一枚を選んでください。</span>
+        <button id="reshuffle" type="button">RESHUFFLE THE ROOM</button>
       </div>
-      <div class="scroll-cue"><span>SCROLL TO ENTER</span><i></i></div>
+      <div id="hero-scatter" class="scatter scatter-hero" aria-label="Random album wall"></div>
+      <div class="scroll-cue">SCROLL TO WANDER <i></i></div>
     </section>
 
-    <section id="encounter-corridor" class="encounter-corridor" aria-label="Random album encounters"></section>
-
-    <section class="ex-constellation">
-      <div class="constellation-copy">
-        <p>THE LAST ROOM</p>
-        <h2>CONSTELLATION</h2>
-        <span>ここでは複数の作品が一度に浮かぶ。気になった一枚を選んで、その世界へ。</span>
+    <section class="gallery-chamber chamber-rita">
+      <div class="chamber-copy">
+        <p>ROOM I / KOSHIKURO RITA</p>
+        <h2>THE VELVET NIGHT</h2>
+        <span>耽美、誘惑、孤独、祈り。深紅と紫の夜を漂う作品たち。</span>
       </div>
-      <div id="constellation-wall" class="constellation-wall" aria-label="Random album constellation"></div>
-      <div class="ex-end-links"><a href="archive.html">VIEW ALL ARCHIVE →</a><a href="lyrics.html">SEARCH LYRICS →</a></div>
+      <div id="scatter-rita" class="scatter scatter-room" aria-label="Koshikuro Rita random albums"></div>
+    </section>
+
+    <section class="gallery-chamber chamber-croveil">
+      <div class="chamber-copy chamber-copy-right">
+        <p>ROOM II / CROVEIL</p>
+        <h2>THE BLACK CATHEDRAL</h2>
+        <span>孤高、崩壊、信仰、欲望。冷たい光の中に立つ作品たち。</span>
+      </div>
+      <div id="scatter-croveil" class="scatter scatter-room" aria-label="CROVEIL random albums"></div>
+    </section>
+
+    <section class="gallery-chamber chamber-crossfade">
+      <div class="chamber-copy chamber-copy-center">
+        <p>ROOM III / CROSSFADE</p>
+        <h2>THE LOST COLLECTION</h2>
+        <span>名義も年代も混ざり合う最後の部屋。まだ触れていない一枚へ。</span>
+      </div>
+      <div id="scatter-mixed" class="scatter scatter-room scatter-room-tall" aria-label="Mixed random albums"></div>
+      <div class="ex-end-links">
+        <button id="reshuffle-bottom" type="button">RESHUFFLE AGAIN</button>
+        <a href="archive.html">VIEW ALL ARCHIVE →</a>
+        <a href="lyrics.html">SEARCH LYRICS →</a>
+      </div>
     </section>
   </main>
 
-  <script src="albums.js?v=770"></script>
-  <script src="exhibition-room.js?v=770"></script>
+  <script src="albums.js?v=800"></script>
+  <script src="exhibition-room.js?v=800"></script>
 </body>
 </html>
