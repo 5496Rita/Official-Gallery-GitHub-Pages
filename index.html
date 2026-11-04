@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=750" />
+  <link rel="stylesheet" href="home-one-screen.css?v=760" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -24,10 +24,9 @@
   </header>
 
   <main class="home-stage">
-    <section class="home-visual" aria-label="越黒リタ visual">
+    <section class="home-visual" aria-label="越黒リタ visual and Shorts">
       <div class="home-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
       <div class="home-art-shade"></div>
-      <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
 
       <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
         <div class="home-short-head"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
@@ -37,6 +36,8 @@
           <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
         </div>
       </aside>
+
+      <div class="home-art-title"><span>WELCOME TO</span><strong>THE DARK GALLERY</strong></div>
     </section>
 
     <section class="home-copy">
@@ -44,39 +45,23 @@
         <p class="home-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
         <h1>越黒リタ</h1>
         <p class="home-tagline">Where silence blooms into a dark melody.</p>
+        <p class="home-lead">音楽、物語、装飾。<br>ふたつの名義が描く、異なる闇の輪郭へ。</p>
       </div>
 
-      <section class="latest-duo" aria-label="Latest releases">
-        <a class="latest-card latest-rita" href="detail.html?id=yugato&from=home">
-          <img src="covers/thumbs/yugato.webp" alt="誘蛾灯 ジャケット" onerror="this.onerror=null;this.src='covers/yugato.jpg'">
-          <span class="latest-overlay"></span>
-          <span class="latest-kicker">KOSHIKURO RITA · LATEST</span>
-          <strong>誘蛾灯</strong>
-          <small>2026.09.19 · ENTER RELEASE →</small>
-        </a>
-        <a class="latest-card latest-croveil" href="detail.html?id=funeral-bloom&from=home">
-          <img src="covers/thumbs/funeral-bloom.webp" alt="Funeral Bloom ジャケット" onerror="this.onerror=null;this.src='covers/funeral-bloom.jpg'">
-          <span class="latest-overlay"></span>
-          <span class="latest-kicker">CROVEIL · LATEST</span>
-          <strong>Funeral Bloom</strong>
-          <small>2026.10.17 · ENTER RELEASE →</small>
-        </a>
-      </section>
-
-      <section class="sound-duo" aria-label="Artist sound profiles">
-        <a href="about.html#rita" class="sound-card"><span>01</span><div><strong>越黒リタ — SOUND</strong><p>耽美、ゴシック、誘惑、孤独。闇のなかの美しさを、物語性の強い歌詞と重厚な音像で描く。</p></div></a>
-        <a href="about.html#croveil" class="sound-card"><span>02</span><div><strong>CROVEIL — SOUND</strong><p>漆黒の気品と静かな威圧感。ゴシック／ダークロック／メタルを冷たく荘厳な世界へ束ねる。</p></div></a>
+      <section class="sound-duo sound-duo--large" aria-label="Artist sound profiles">
+        <a href="about.html#rita" class="sound-card"><span>01</span><div><p class="sound-label">KOSHIKURO RITA / SOUND</p><strong>美しさと危うさが、同じ夜に咲く。</strong><p>耽美、ゴシック、誘惑、孤独、祈り。物語性の強い歌詞と重厚な音像で、闇のなかに残る感情を描く。</p><em>ENTER THE WORLD →</em></div></a>
+        <a href="about.html#croveil" class="sound-card"><span>02</span><div><p class="sound-label">CROVEIL / SOUND</p><strong>静かな威圧感が、空気そのものを変える。</strong><p>ゴシック／ダークロック／メタル。孤高、崩壊、信仰、欲望を、冷たく荘厳な音像へ束ねる。</p><em>ENTER THE WORLD →</em></div></a>
       </section>
 
       <nav class="home-portals" aria-label="Explore the gallery">
         <a href="archive.html"><span>01</span><strong>ARCHIVE</strong><small>Album Jackets</small></a>
         <a href="lyrics.html"><span>02</span><strong>LYRICS</strong><small>Search the Words</small></a>
         <a href="exhibition.html" class="portal-hot"><span>03</span><strong>EXHIBITION</strong><small>Enter the Random Room</small></a>
-        <a href="about.html"><span>04</span><strong>ABOUT</strong><small>Artist / World</small></a>
+        <a href="about.html"><span>04</span><strong>ABOUT</strong><small>Artist / Sound / World</small></a>
       </nav>
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=750"></script>
+  <script src="home-one-screen.js?v=760"></script>
 </body>
 </html>
