@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-main.png" fetchpriority="high" />
-  <link rel="stylesheet" href="home-one-screen.css?v=800" />
+  <link rel="stylesheet" href="home-one-screen.css?v=900" />
 </head>
 <body class="one-screen-home">
   <div class="home-bg" aria-hidden="true"></div>
@@ -31,15 +31,15 @@
     </section>
 
     <section class="home-shorts-column" aria-label="Shorts">
-      <div class="shorts-heading"><span>NOW PLAYING</span><strong>SHORTS</strong></div>
+      <div class="shorts-gallery-mark" aria-hidden="true"><span>SHORT FILM</span><i></i><small>NOW PLAYING</small></div>
       <aside id="featured-short" class="home-short" aria-label="YouTube Short" hidden>
         <div class="home-short-frame"><div id="featured-short-player" class="home-short-player"></div></div>
         <div class="home-short-controls">
           <button id="featured-short-sound" type="button" aria-label="サウンドをオン" disabled>🔇</button>
-          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT →</button>
+          <button id="featured-short-next" type="button" aria-label="次のShort" disabled>NEXT FILM →</button>
         </div>
       </aside>
-      <p class="shorts-note">縦画面のまま、全体を切らずに再生。</p>
+      <div class="shorts-gallery-caption"><span>VIDEO ARCHIVE</span><b>01</b></div>
     </section>
 
     <section class="home-copy">
@@ -64,6 +64,6 @@
     </section>
   </main>
 
-  <script src="home-one-screen.js?v=800"></script>
+  <script src="home-one-screen.js?v=900"></script>
 </body>
 </html>
