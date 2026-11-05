@@ -6,15 +6,56 @@
 .reveal{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .8s ease,transform .8s ease}.reveal.is-visible{opacity:1;transform:none}@keyframes floatY{0%{margin-top:-8px}100%{margin-top:10px}}@keyframes pulse{50%{opacity:.24;transform:scaleY(.7)}}@keyframes starDrift{to{background-position:73px 73px,152px 143px}}
 @media(max-width:900px){.ex-header{height:56px;padding:0 12px}.ex-header small{display:none}.ex-header div{font-size:11px}.ex-hero{min-height:1100px;padding-top:56px}.ex-hero-copy{top:86px}.ex-hero-copy h1{font-size:60px}.ex-hero-copy h2{font-size:13px}.gallery-chamber{min-height:1350px;padding-top:90px}.chamber-copy,.chamber-copy-right{margin:0 18px;text-align:left;width:auto}.chamber-copy-center{text-align:center}.chamber-copy h2{font-size:50px}.album-float:hover{transform:rotate(var(--rot)) scale(1.06)}.ex-end-links{bottom:30px;flex-wrap:wrap;justify-content:center;width:92vw;white-space:normal}}
 
-/* v11 — art-first exhibition: remove room/title presentation and let covers fill the space */
-.ex-header-minimal{grid-template-columns:1fr auto 1fr}.header-shuffle{justify-self:center;border:0;background:transparent;color:#9e8797;font:500 9px/1 'Cormorant Garamond',serif;letter-spacing:.25em;cursor:pointer;padding:10px 18px;transition:color .25s,text-shadow .25s}.header-shuffle:hover{color:#f0dce8;text-shadow:0 0 22px rgba(213,108,169,.45)}
-.ex-hero-artonly{min-height:118svh;padding-top:62px}.ex-hero-artonly .scatter-hero{top:0}.gallery-chamber-artonly{min-height:122svh;padding-top:0}.gallery-chamber-artonly .scatter-room{top:0}
-.ex-hero-artonly .album-float,.gallery-chamber-artonly .album-float{opacity:.96}
-.ex-hero-artonly:after,.gallery-chamber-artonly:after{content:'';position:absolute;z-index:3;left:0;right:0;bottom:-1px;height:18vh;background:linear-gradient(transparent,rgba(5,2,7,.78));pointer-events:none}
-.gallery-chamber-artonly:after{height:14vh;background:linear-gradient(transparent,rgba(5,2,7,.62))}
-.album-float .album-label{left:50%;bottom:-14px;max-width:min(260px,90%);transform:translate(-50%,10px);text-align:center;background:rgba(5,2,7,.88);border-color:rgba(230,195,218,.12);padding:9px 12px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.album-float:hover .album-label{transform:translate(-50%,0)}
-.album-float:before{border-color:rgba(233,198,221,.16);box-shadow:0 0 34px rgba(183,73,134,.09)}
-.album-float:hover:before{border-color:rgba(244,211,231,.4);box-shadow:0 0 44px rgba(196,73,142,.28)}
-.scroll-cue{bottom:18px;z-index:50;color:#8f7988}
-@media(max-width:900px){.ex-hero-artonly{min-height:1100px;padding-top:56px}.gallery-chamber-artonly{min-height:1320px}.header-shuffle{font-size:8px;padding:8px 10px}.album-float .album-label{bottom:-10px}}
+/* v28 — MAXIMUM SCATTER / cinematic exhibition */
+body{background:#030105}
+.ex-hero,.gallery-chamber{isolation:isolate}
+.ex-hero{min-height:118svh;background:
+  radial-gradient(circle at 50% 34%,rgba(166,62,128,.34),transparent 20%),
+  radial-gradient(circle at 18% 58%,rgba(75,61,168,.30),transparent 26%),
+  radial-gradient(circle at 83% 63%,rgba(137,27,87,.22),transparent 24%),
+  linear-gradient(180deg,#050107 0,#150617 48%,#060208 100%)}
+.ex-hero:after,.gallery-chamber:after{content:'';position:absolute;z-index:3;inset:-15%;pointer-events:none;opacity:.5;background:
+  linear-gradient(106deg,transparent 14%,rgba(213,173,231,.08) 18%,transparent 23%),
+  linear-gradient(76deg,transparent 58%,rgba(203,121,177,.08) 62%,transparent 68%),
+  radial-gradient(circle at 22% 16%,rgba(255,224,244,.12),transparent 5%),
+  radial-gradient(circle at 78% 28%,rgba(185,126,255,.11),transparent 7%);
+  mix-blend-mode:screen;animation:lightSweep 13s ease-in-out infinite alternate}
+.ex-stars{opacity:.5;background-size:56px 56px,93px 93px;animation:starDrift 17s linear infinite}
+.ex-glass{opacity:.56;filter:drop-shadow(0 0 72px rgba(191,70,148,.28))}
+.ex-curtain{opacity:.68}
+.gallery-chamber{min-height:132svh}
+.chamber-crossfade{min-height:155svh}
+.chamber-rita{background:
+  radial-gradient(circle at 22% 30%,rgba(158,34,92,.32),transparent 27%),
+  radial-gradient(circle at 76% 70%,rgba(83,53,161,.28),transparent 30%),
+  linear-gradient(180deg,#070208,#150616 50%,#060208)}
+.chamber-croveil{background:
+  radial-gradient(circle at 72% 31%,rgba(54,64,170,.34),transparent 28%),
+  radial-gradient(circle at 18% 72%,rgba(109,38,126,.24),transparent 30%),
+  linear-gradient(180deg,#030309,#09091d 50%,#050207)}
+.chamber-crossfade{background:
+  radial-gradient(circle at 50% 30%,rgba(170,46,118,.30),transparent 25%),
+  radial-gradient(circle at 28% 73%,rgba(76,66,176,.27),transparent 27%),
+  radial-gradient(circle at 82% 62%,rgba(111,32,90,.20),transparent 24%),
+  linear-gradient(180deg,#040106,#130715 52%,#030104)}
+.scatter{perspective:1200px}
+.album-float{
+  translate:0 var(--parallax,0px);
+  transform-origin:center;
+  filter:drop-shadow(0 32px 54px rgba(0,0,0,.78)) drop-shadow(0 0 14px rgba(167,63,126,.13));
+  animation:floatY var(--dur,8s) ease-in-out infinite alternate, breatheGlow 5.8s ease-in-out infinite alternate;
+}
+.album-float:before{inset:-7px;border-color:rgba(242,207,230,.30);box-shadow:0 0 30px rgba(203,81,148,.16),inset 0 0 18px rgba(124,54,103,.06)}
+.album-float:after{content:'';position:absolute;z-index:-1;inset:8%;background:radial-gradient(circle,rgba(215,112,171,.26),transparent 68%);filter:blur(28px);opacity:.55;pointer-events:none}
+.album-float img{border-color:rgba(255,233,246,.36);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+.album-float.featured{filter:drop-shadow(0 38px 60px rgba(0,0,0,.82)) drop-shadow(0 0 28px rgba(206,77,150,.30))}
+.album-float.featured:before{inset:-12px;border-color:rgba(252,218,239,.52);box-shadow:0 0 46px rgba(217,83,155,.33),0 0 90px rgba(101,66,174,.16)}
+.album-float:hover{transform:rotate(0deg) scale(1.16) translateZ(38px);filter:drop-shadow(0 40px 70px rgba(0,0,0,.86)) drop-shadow(0 0 40px rgba(224,93,166,.44))}
+.gallery-chamber:before{opacity:.18;background-size:64px 64px}
+.scroll-cue{bottom:16px}
+@keyframes breatheGlow{0%{opacity:.86}100%{opacity:1}}
+@keyframes lightSweep{0%{transform:translate3d(-2%,-1%,0) rotate(-1deg)}100%{transform:translate3d(2%,2%,0) rotate(1deg)}}
+@media(max-width:900px){
+  .ex-hero{min-height:1250px}.gallery-chamber{min-height:1500px}.chamber-crossfade{min-height:1680px}
+  .album-float{filter:drop-shadow(0 22px 36px rgba(0,0,0,.74)) drop-shadow(0 0 10px rgba(167,63,126,.12))}
+}
