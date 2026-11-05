@@ -12,31 +12,31 @@
   const rita = albums.filter(a => artistOf(a) !== 'CROVEIL');
   const croveil = albums.filter(a => artistOf(a) === 'CROVEIL');
 
-  // Dense curated slots: lots of simultaneous artwork, but still avoids total chaos.
+  // Wall-like layouts: one strong centerpiece plus many surrounding frames.
   const heroSlots = [
-    [2,20,12,-8,1],[14,26,18,6,2],[31,18,10,-5,1],[43,29,22,5,3],[67,17,13,-6,2],[81,28,16,7,2],[92,18,8,-4,1],
-    [5,49,17,5,2],[25,46,11,-7,1],[37,55,14,5,2],[55,48,10,-5,1],[67,53,19,6,3],[86,50,11,-4,1],
-    [10,76,12,-5,1],[27,73,18,6,2],[49,78,11,-4,1],[63,72,15,5,2],[82,77,13,-6,2],[94,72,7,4,1]
+    [4,25,12,-3,1],[15,18,16,2,2],[31,29,10,-2,1],[42,24,25,0,3],[70,18,15,3,2],[86,28,10,-2,1],
+    [7,55,10,2,1],[22,58,13,-2,1],[36,60,16,2,2],[59,58,11,-2,1],[73,55,17,2,2],[90,59,8,-2,1],
+    [14,80,13,-2,1],[31,78,9,2,1],[46,82,14,-2,2],[64,79,12,2,1],[80,81,11,-2,1]
   ];
   const roomSlotsA = [
-    [2,12,12,-7,1],[13,19,20,5,3],[34,10,10,-5,1],[46,22,15,6,2],[65,12,21,-5,3],[87,18,10,6,1],
-    [4,39,18,5,2],[25,44,11,-6,1],[38,37,16,5,2],[58,45,12,-5,1],[72,36,18,6,3],[90,43,8,-4,1],
-    [2,68,13,-4,1],[16,73,17,6,2],[35,66,11,-5,1],[47,75,21,5,3],[71,69,12,-6,1],[83,76,15,4,2],[94,65,7,-3,1]
+    [3,15,12,-2,1],[14,22,19,2,2],[35,13,10,-2,1],[45,23,24,0,3],[72,14,14,2,2],[88,20,9,-2,1],
+    [6,46,16,2,2],[27,49,10,-2,1],[41,52,14,2,2],[59,48,10,-2,1],[72,47,18,2,2],[91,50,7,-2,1],
+    [4,74,11,-2,1],[18,78,15,2,2],[38,73,10,-2,1],[50,79,20,0,3],[74,74,12,2,1],[87,79,10,-2,1]
   ];
   const roomSlotsB = [
-    [3,14,10,6,1],[15,10,17,-6,2],[32,22,13,5,1],[46,12,21,-5,3],[70,20,11,6,1],[82,11,16,-6,2],[94,23,7,4,1],
-    [5,42,20,-4,3],[28,39,10,6,1],[40,49,15,-5,2],[59,38,13,5,1],[72,48,19,-6,3],[92,43,8,5,1],
-    [3,70,12,-5,1],[18,76,18,5,2],[39,67,10,-4,1],[50,77,20,6,3],[73,68,13,-5,1],[86,76,12,5,2]
+    [4,17,10,2,1],[16,13,17,-2,2],[34,22,12,2,1],[46,14,23,0,3],[72,22,12,-2,1],[84,14,15,2,2],
+    [5,47,19,-2,2],[29,44,10,2,1],[41,51,14,-2,2],[59,45,11,2,1],[72,52,18,-2,2],[91,47,7,2,1],
+    [8,75,11,2,1],[21,79,16,-2,2],[40,72,10,2,1],[51,80,20,0,3],[75,73,11,-2,1],[87,79,10,2,1]
   ];
   const roomSlotsC = [
-    [2,10,11,-6,1],[13,18,18,6,2],[31,9,9,-5,1],[42,21,21,5,3],[65,11,13,-6,1],[78,18,17,5,2],[94,12,7,-4,1],
-    [4,37,17,5,2],[24,43,11,-5,1],[36,34,15,6,2],[54,46,20,-6,3],[77,37,11,5,1],[88,46,10,-4,1],
-    [2,63,12,-4,1],[15,72,18,6,2],[35,62,10,-5,1],[47,74,22,5,3],[72,63,12,-6,1],[84,72,15,4,2],[95,61,7,-3,1],
-    [8,87,10,5,1],[27,88,16,-5,2],[52,89,12,4,1],[74,88,18,-6,2]
+    [3,12,11,-2,1],[15,18,17,2,2],[33,10,9,-2,1],[43,20,24,0,3],[70,12,13,2,1],[82,18,16,-2,2],[94,12,6,2,1],
+    [4,39,16,2,2],[24,44,10,-2,1],[38,36,14,2,2],[55,46,20,0,3],[78,38,11,-2,1],[89,46,9,2,1],
+    [3,65,11,-2,1],[17,72,17,2,2],[36,64,9,-2,1],[47,75,21,0,3],[72,65,12,2,1],[84,73,14,-2,2],
+    [9,91,10,2,1],[27,90,15,-2,2],[52,92,11,2,1],[74,90,17,-2,2]
   ];
   const mobileSlots = [
-    [4,10,38,-5,3],[55,12,31,5,2],[12,28,27,4,1],[56,31,38,-4,3],
-    [4,49,32,5,2],[48,51,29,-5,1],[15,68,38,-4,3],[60,70,26,5,1],[8,87,29,-5,2],[54,88,34,4,2]
+    [5,10,38,-2,3],[56,12,31,2,2],[12,28,27,2,1],[55,31,38,-2,3],
+    [5,50,32,2,2],[48,52,29,-2,1],[13,69,38,-2,3],[60,71,26,2,1],[8,88,29,-2,2],[55,89,34,2,2]
   ];
 
   function artFor(album){ return album.art || `covers/${album.id}.jpg`; }
@@ -48,15 +48,15 @@
     a.style.left=x+'%'; a.style.top=y+'%';
     a.style.setProperty('--size',size+'vw');
     a.style.setProperty('--rot',rot+'deg');
-    a.style.setProperty('--dur',(5.8+(index%7)*.72)+'s');
-    a.style.setProperty('--delay',(-index*.51)+'s');
-    a.dataset.depth=String(.25 + (weight*.18) + ((index%4)*.05));
-    a.style.zIndex=String(10+weight*4+(index%5));
+    a.style.setProperty('--dur',(6.3+(index%6)*.72)+'s');
+    a.style.setProperty('--delay',(-index*.49)+'s');
+    a.dataset.depth=String(.22 + (weight*.18) + ((index%3)*.05));
+    a.style.zIndex=String(10+weight*4+(index%4));
     const art=artFor(album);
     a.innerHTML=`<img src="covers/thumbs/${encodeURIComponent(album.id)}.webp" alt="${album.title}" loading="lazy" onerror="this.onerror=null;this.src='${art}'"><span class="album-label"><strong>${album.title}</strong><small>${artistOf(album)} / ENTER →</small></span>`;
     return a;
   }
-  function renderInto(id, pool, desktopSlots){
+  function renderInto(id,pool,desktopSlots){
     const root=$(id); if(!root) return;
     root.innerHTML='';
     const slots=matchMedia('(max-width:900px)').matches ? mobileSlots : desktopSlots;
@@ -75,21 +75,19 @@
     renderInto('scatter-rita',rita,roomSlotsA);
     renderInto('scatter-croveil',croveil,roomSlotsB);
     renderInto('scatter-mixed',albums,roomSlotsC);
-    observe();
-    updateParallax();
+    observe(); updateParallax();
   }
   function reshuffle(){
-    document.body.animate([{opacity:.68,filter:'blur(2px)'},{opacity:1,filter:'blur(0)'}],{duration:520,easing:'ease-out'});
+    document.body.animate([{opacity:.70,filter:'blur(1.5px)'},{opacity:1,filter:'blur(0)'}],{duration:500,easing:'ease-out'});
     renderAll();
   }
   let ticking=false;
   function updateParallax(){
-    const sy=scrollY;
     document.querySelectorAll('.album-float').forEach(el=>{
       const d=parseFloat(el.dataset.depth||'.35');
       const r=el.getBoundingClientRect();
-      const center=r.top + r.height/2 - innerHeight/2;
-      const offset=Math.max(-28,Math.min(28,-center*d*.045));
+      const center=r.top+r.height/2-innerHeight/2;
+      const offset=Math.max(-24,Math.min(24,-center*d*.038));
       el.style.setProperty('--parallax',offset.toFixed(1)+'px');
     });
     ticking=false;
@@ -97,6 +95,6 @@
   addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateParallax)}},{passive:true});
   $('reshuffle')?.addEventListener('click',reshuffle);
   $('reshuffle-bottom')?.addEventListener('click',()=>{reshuffle();scrollTo({top:0,behavior:'smooth'});});
-  addEventListener('resize',()=>{clearTimeout(window.__ex28);window.__ex28=setTimeout(renderAll,180)});
+  addEventListener('resize',()=>{clearTimeout(window.__ex29);window.__ex29=setTimeout(renderAll,180)});
   renderAll();
 })();
