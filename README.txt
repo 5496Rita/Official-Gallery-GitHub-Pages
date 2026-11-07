@@ -1,17 +1,17 @@
-Official Gallery 歌詞反映修正版 v33
+Official Gallery v34 - lyrics + album stories
 
-【上書きするもの】
-- lyrics/ フォルダ一式
-- lyrics.html
+上書き対象:
 - detail.html
-- lyrics-cache-fix.js
+- lyrics.html
 - albums-extra.js
+- lyrics-cache-fix.js
+- lyrics/ フォルダ一式
 
-【今回の修正】
-1. 追加歌詞JSONを同梱
-2. 作品詳細ページで古い歌詞/404がキャッシュされないよう修正
-3. 歌詞検索ページもキャッシュ更新
-4. Twilight Remains の「Passing Seasons」をHP側の曲名と一致させた
-5. Daemonia を認識する albums-extra.js を同梱
+更新内容:
+- v33の歌詞反映を継承
+- 24th Beautiful Nightmare以降の物語を長文化
+- Vanishing Reverie / Celestial Diamond / Devouring Eden / Schattenblüte / Tarnished Beauty / Beyond Sense / Twilight Remains / Zwischenraum / Daemonia の物語追加
+- storyが空だった Glass Abyss / NOCTURNE ROYALE / Märchen Labyrinth の物語追加
+- 歌詞JSONキャッシュバージョンを v3400 に更新
 
-GitHub Pagesのリポジトリ直下へ、フォルダ構成を維持して上書きしてください。
+GitHub Pagesのリポジトリ直下へ、フォルダ構成を保ったまま上書きしてください。
