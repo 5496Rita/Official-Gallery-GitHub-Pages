@@ -1,17 +1,11 @@
-Official Gallery v34 - lyrics + album stories
+Official Gallery v35 - ALL ALBUM STORIES
 
-上書き対象:
-- detail.html
-- lyrics.html
-- albums-extra.js
-- lyrics-cache-fix.js
-- lyrics/ フォルダ一式
+更新内容
+- 全43作品の ALBUM STORY を同一体裁に統一
+- 各作品 4段落構成
+- 各作品の6曲を一本の短編としてつなぐ構成
+- v34の歌詞追加・キャッシュ修正を継承
+- 越黒リタ / CROVEIL ともに表示体裁を統一
 
-更新内容:
-- v33の歌詞反映を継承
-- 24th Beautiful Nightmare以降の物語を長文化
-- Vanishing Reverie / Celestial Diamond / Devouring Eden / Schattenblüte / Tarnished Beauty / Beyond Sense / Twilight Remains / Zwischenraum / Daemonia の物語追加
-- storyが空だった Glass Abyss / NOCTURNE ROYALE / Märchen Labyrinth の物語追加
-- 歌詞JSONキャッシュバージョンを v3400 に更新
-
-GitHub Pagesのリポジトリ直下へ、フォルダ構成を保ったまま上書きしてください。
+使い方
+ZIP内のファイルをGitHub Pagesリポジトリ直下へ、フォルダ構成を保ったまま上書きしてください。
