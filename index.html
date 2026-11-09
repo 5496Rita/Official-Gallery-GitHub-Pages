@@ -595,47 +595,80 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
 </style>
 
 
-<style id="v44-mobile-sound-front">
-/* v44: keep the sound toggle above the Short player on mobile. */
+<style id="v45-mobile-short-controls-right">
+/* v45: keep the Short on the right and expose large sound / next controls. */
 @media(max-width:820px){
-  .film-zone,.home-short,.home-short-frame{position:relative!important;}
+  /* v44 accidentally made film-zone relative; restore the v43 right overlay. */
+  .film-zone{
+    position:absolute!important;
+    z-index:8!important;
+    top:68px!important;
+    right:8px!important;
+    left:auto!important;
+    width:min(44vw,190px)!important;
+  }
+  .home-short,.home-short-frame{position:relative!important;}
+
   .home-short-controls{
-    display:block!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:7px!important;
     position:absolute!important;
     z-index:99999!important;
-    top:7px!important;
-    left:7px!important;
-    right:auto!important;
+    top:8px!important;
+    right:8px!important;
+    left:auto!important;
     bottom:auto!important;
-    width:auto!important;
+    width:52px!important;
     height:auto!important;
+    margin:0!important;
     pointer-events:auto!important;
   }
-  #featured-short-sound{
+  #featured-short-sound,
+  #featured-short-next{
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
     position:relative!important;
     z-index:100000!important;
-    width:40px!important;
-    height:40px!important;
-    min-width:40px!important;
-    min-height:40px!important;
+    width:52px!important;
+    min-width:52px!important;
+    height:46px!important;
+    min-height:46px!important;
     padding:0!important;
     margin:0!important;
-    border:1px solid rgba(255,255,255,.48)!important;
-    border-radius:50%!important;
-    background:rgba(5,2,8,.82)!important;
+    border:1px solid rgba(255,255,255,.55)!important;
+    background:rgba(5,2,8,.86)!important;
     color:#fff!important;
-    font-size:20px!important;
-    line-height:1!important;
-    box-shadow:0 4px 18px rgba(0,0,0,.55)!important;
-    backdrop-filter:blur(8px)!important;
+    box-shadow:0 4px 18px rgba(0,0,0,.58)!important;
+    backdrop-filter:blur(9px)!important;
     pointer-events:auto!important;
     opacity:1!important;
+    cursor:pointer!important;
   }
-  #featured-short-sound:disabled{opacity:.72!important;}
-  #featured-short-next{display:none!important;}
+  #featured-short-sound{
+    border-radius:50%!important;
+    width:46px!important;
+    min-width:46px!important;
+    align-self:flex-end!important;
+    font-size:21px!important;
+    line-height:1!important;
+  }
+  #featured-short-next{
+    border-radius:9px!important;
+    font:600 9px/1 'Cormorant Garamond',serif!important;
+    letter-spacing:.08em!important;
+    white-space:nowrap!important;
+  }
+  #featured-short-sound:disabled,
+  #featured-short-next:disabled{opacity:.72!important;}
+}
+@media(max-width:430px){
+  .film-zone{top:64px!important;right:6px!important;width:45vw!important;}
+  .home-short-controls{top:7px!important;right:7px!important;width:50px!important;gap:6px!important;}
+  #featured-short-sound{width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;font-size:20px!important;}
+  #featured-short-next{width:50px!important;min-width:50px!important;height:44px!important;min-height:44px!important;font-size:8px!important;}
 }
 </style>
 </head>
@@ -676,6 +709,6 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=44"></script>
+<script src="monthly-hero.js?v=45"></script>
 </body>
 </html>
