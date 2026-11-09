@@ -82,8 +82,8 @@ const MONTHLY_HERO_IMAGES = {
   let activeLayer = 0;
   const setImage = (layer, src) => {
     layer.style.setProperty('--hero-image', `url("${src}")`);
-    layer.style.setProperty('--hero-pos-desktop', 'center center');
-    layer.style.setProperty('--hero-pos-mobile', 'center center');
+    layer.style.setProperty('--hero-pos-desktop', 'center top');
+    layer.style.setProperty('--hero-pos-mobile', 'center top');
   };
   setImage(layers[0], candidates[currentIndex]);
   layers[0].style.opacity = '1';
