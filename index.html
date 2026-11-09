@@ -510,6 +510,90 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
 }
 </style>
 
+
+<style id="v43-mobile-half-short-no-gap">
+/* v43: compact mobile hero. Illustration, title and Short share one fixed-height stage. */
+@media(max-width:820px){
+  .hero-stage{
+    position:relative!important;
+    display:block!important;
+    height:360px!important;
+    min-height:0!important;
+    padding:54px 0 0!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+  }
+  .hero-art,.hero-art-layer{
+    position:absolute!important;
+    z-index:0!important;
+    top:54px!important;right:0!important;bottom:0!important;left:0!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    inset:54px 0 0!important;
+  }
+  .hero-stage:before{
+    position:absolute!important;
+    z-index:1!important;
+    top:54px!important;right:0!important;bottom:0!important;left:0!important;
+    height:auto!important;min-height:0!important;inset:54px 0 0!important;
+  }
+  .film-zone{
+    position:absolute!important;
+    z-index:8!important;
+    top:68px!important;
+    right:8px!important;
+    width:min(44vw,190px)!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:4px!important;
+    border:1px solid rgba(235,201,224,.26)!important;
+    background:rgba(7,3,10,.42)!important;
+    backdrop-filter:blur(4px)!important;
+    box-shadow:0 10px 30px rgba(0,0,0,.34)!important;
+  }
+  .film-zone:before,.film-zone:after,.short-ambient{display:none!important}
+  .home-short{padding:0!important}
+  .short-label,.home-short-controls{display:none!important}
+  .home-short-frame{
+    width:100%!important;
+    aspect-ratio:9/16!important;
+    border:1px solid rgba(233,196,223,.24)!important;
+    box-shadow:none!important;
+  }
+  .home-short-frame:before,.home-short-frame:after{display:none!important}
+
+  .hero-copy{
+    position:absolute!important;
+    z-index:7!important;
+    left:8px!important;
+    right:auto!important;
+    bottom:8px!important;
+    top:auto!important;
+    width:calc(56vw - 18px)!important;
+    max-width:none!important;
+    padding:8px 9px 7px!important;
+    margin:0!important;
+    backdrop-filter:blur(6px)!important;
+  }
+  .hero-eyebrow{font-size:5.5px!important;margin:0 0 3px!important;letter-spacing:.14em!important}
+  .hero-copy h1{font-size:25px!important;line-height:1!important;white-space:nowrap!important}
+  .hero-tagline{font-size:11px!important;line-height:1.06!important;margin-top:4px!important;white-space:normal!important}
+  .hero-lead{display:none!important}
+
+  .menu-band{margin:0!important;padding:4px 8px 10px!important}
+  #portal-grid-v23{margin:0!important;gap:0!important}
+}
+@media(max-width:430px){
+  .hero-stage{height:338px!important}
+  .film-zone{top:64px!important;right:6px!important;width:45vw!important;padding:3px!important}
+  .hero-copy{left:6px!important;bottom:6px!important;width:calc(55vw - 12px)!important;padding:7px 8px 6px!important}
+  .hero-copy h1{font-size:23px!important}
+  .hero-tagline{font-size:10px!important}
+}
+</style>
+
 </head>
 <body>
   <header class="home-header">
@@ -548,6 +632,6 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=42"></script>
+<script src="monthly-hero.js?v=43"></script>
 </body>
 </html>

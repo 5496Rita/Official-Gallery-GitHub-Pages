@@ -1,4 +1,4 @@
-// Monthly hero — Official Gallery v42
+// Monthly hero — Official Gallery v43
 // 70% current-month illustrations / 30% uncategorized illustrations.
 const MONTHLY_HERO_INTERVAL_MS = 7000;
 const MONTHLY_HERO_FADE_MS = 700;
@@ -23,7 +23,7 @@ const UNCATEGORIZED_HERO_IMAGES = Array.from({length: 15}, (_, i) =>
 
 (() => {
   const month = String(new Date().getMonth() + 1);
-  const isCompactMobile = window.matchMedia('(max-width: 640px)').matches;
+  const isCompactMobile = window.matchMedia('(max-width: 820px)').matches;
   const monthly = MONTHLY_HERO_IMAGES[month] || [];
   const uncategorized = UNCATEGORIZED_HERO_IMAGES;
   const layers = [
