@@ -1,4 +1,4 @@
-// Monthly hero slideshow — Official Gallery v36
+// Monthly hero slideshow — Official Gallery v39
 const MONTHLY_HERO_INTERVAL_MS = 7000;
 const MONTHLY_HERO_FADE_MS = 700;
 const MONTHLY_HERO_IMAGES = {
@@ -84,6 +84,7 @@ const MONTHLY_HERO_IMAGES = {
     layer.style.setProperty('--hero-image', `url("${src}")`);
     layer.style.setProperty('--hero-pos-desktop', 'center top');
     layer.style.setProperty('--hero-pos-mobile', 'center top');
+    layer.style.setProperty('background-position', 'center top', 'important');
   };
   setImage(layers[0], candidates[currentIndex]);
   layers[0].style.opacity = '1';

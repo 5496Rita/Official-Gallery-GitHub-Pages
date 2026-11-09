@@ -298,6 +298,19 @@
   .hero-art-layer[data-monthly-hero-layer="a"]{opacity:1}
   @media (prefers-reduced-motion: reduce){.hero-art-layer{transition:none!important}}
 </style>
+
+<style id="v39-force-hero-top">
+/* v39: force monthly hero artwork to anchor to the top edge. */
+.hero-art, .hero-art-layer {
+  background-position: center top !important;
+}
+@media (max-width: 1000px) {
+  .hero-art, .hero-art-layer {
+    background-position: center top !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <header class="home-header">
@@ -336,6 +349,6 @@
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=38"></script>
+<script src="monthly-hero.js?v=39"></script>
 </body>
 </html>
