@@ -311,6 +311,37 @@
 }
 </style>
 
+
+<style id="v40-hero-full-frame">
+/* v40: show the full monthly illustration instead of cropping it with cover. */
+.hero-art-layer{
+  background:none!important;
+  transform:none!important;
+  overflow:hidden!important;
+}
+.hero-art-layer::before,
+.hero-art-layer::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.hero-art-layer::before{
+  inset:-28px;
+  background-image:var(--hero-image)!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  filter:blur(22px) brightness(.48) saturate(.85);
+  transform:scale(1.06);
+}
+.hero-art-layer::after{
+  inset:0;
+  background-image:var(--hero-image)!important;
+  background-position:center top!important;
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+}
+</style>
 </head>
 <body>
   <header class="home-header">
@@ -349,6 +380,6 @@
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=39"></script>
+<script src="monthly-hero.js?v=40"></script>
 </body>
 </html>
