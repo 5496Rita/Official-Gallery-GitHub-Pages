@@ -421,6 +421,95 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
 }
 </style>
 
+
+<style id="v42-mobile-overlay-compact">
+/* v42: no seasonal decoration; desktop keeps slideshow, mobile becomes a compact static hero. */
+.seasonal-decor{display:none!important}
+
+@media(max-width:640px){
+  /* Keep the entire top area compact. */
+  .hero-stage{
+    position:relative!important;
+    display:block!important;
+    height:auto!important;
+    min-height:0!important;
+    padding-top:54px!important;
+    padding-bottom:0!important;
+    overflow:hidden!important;
+  }
+  .hero-art,
+  .hero-art-layer,
+  .hero-stage:before{
+    height:244px!important;
+    min-height:0!important;
+  }
+  .hero-art,
+  .hero-art-layer{
+    position:relative!important;
+    inset:auto!important;
+  }
+  .hero-stage:before{
+    inset:54px 0 auto!important;
+  }
+
+  /* Copy stays small and leaves the right side free for the Short. */
+  .hero-copy{
+    position:absolute!important;
+    z-index:6!important;
+    left:8px!important;
+    right:auto!important;
+    bottom:8px!important;
+    width:calc(100% - 118px)!important;
+    padding:8px 9px 8px!important;
+    backdrop-filter:blur(6px)!important;
+  }
+  .hero-eyebrow{font-size:6px!important;margin-bottom:3px!important;letter-spacing:.16em!important}
+  .hero-copy h1{font-size:27px!important;line-height:1!important;white-space:nowrap!important}
+  .hero-tagline{font-size:13px!important;line-height:1.05!important;margin-top:4px!important;white-space:normal!important}
+  .hero-lead{font-size:7px!important;line-height:1.35!important;margin-top:5px!important}
+  .hero-lead:before{width:34px!important;margin-bottom:4px!important}
+
+  /* Overlay the Short directly on the illustration; it no longer adds page height. */
+  .film-zone{
+    position:absolute!important;
+    z-index:7!important;
+    top:62px!important;
+    right:8px!important;
+    width:96px!important;
+    margin:0!important;
+    padding:3px!important;
+    border:1px solid rgba(235,201,224,.20)!important;
+    background:rgba(7,3,10,.38)!important;
+    backdrop-filter:blur(4px)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.28)!important;
+  }
+  .film-zone:before,.film-zone:after,.short-ambient{display:none!important}
+  .home-short{padding:0!important}
+  .short-label,.home-short-controls{display:none!important}
+  .home-short-frame{
+    width:100%!important;
+    aspect-ratio:9/16!important;
+    border:1px solid rgba(233,196,223,.20)!important;
+    box-shadow:none!important;
+  }
+  .home-short-frame:before,.home-short-frame:after{display:none!important}
+
+  /* Pull navigation up immediately after the Hero. */
+  .menu-band{padding:6px 8px 12px!important}
+  #portal-grid-v23{gap:0!important}
+}
+
+@media(max-width:420px){
+  .hero-art,.hero-art-layer,.hero-stage:before{height:224px!important}
+  .film-zone{top:60px!important;right:6px!important;width:86px!important}
+  .hero-copy{left:6px!important;bottom:6px!important;width:calc(100% - 102px)!important;padding:7px 8px!important}
+  .hero-copy h1{font-size:24px!important}
+  .hero-tagline{font-size:12px!important}
+  .hero-lead{display:none!important}
+  .menu-band{padding-top:4px!important}
+}
+</style>
+
 </head>
 <body>
   <header class="home-header">
@@ -431,7 +520,6 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
   <main class="hero-stage">
     <div class="hero-art hero-art-layer" data-monthly-hero-layer="a" role="img" aria-label="越黒リタ 月替わりメインビジュアル"></div>
     <div class="hero-art hero-art-layer" data-monthly-hero-layer="b" aria-hidden="true"></div>
-    <div class="seasonal-decor" aria-hidden="true"></div>
     <section class="hero-copy">
       <p class="hero-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
       <h1>越黒リタ</h1>
@@ -460,6 +548,6 @@ html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=41"></script>
+<script src="monthly-hero.js?v=42"></script>
 </body>
 </html>

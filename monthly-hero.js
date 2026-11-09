@@ -1,4 +1,4 @@
-// Monthly hero slideshow — Official Gallery v41
+// Monthly hero — Official Gallery v42
 // 70% current-month illustrations / 30% uncategorized illustrations.
 const MONTHLY_HERO_INTERVAL_MS = 7000;
 const MONTHLY_HERO_FADE_MS = 700;
@@ -23,6 +23,7 @@ const UNCATEGORIZED_HERO_IMAGES = Array.from({length: 15}, (_, i) =>
 
 (() => {
   const month = String(new Date().getMonth() + 1);
+  const isCompactMobile = window.matchMedia('(max-width: 640px)').matches;
   const monthly = MONTHLY_HERO_IMAGES[month] || [];
   const uncategorized = UNCATEGORIZED_HERO_IMAGES;
   const layers = [
@@ -66,18 +67,21 @@ const UNCATEGORIZED_HERO_IMAGES = Array.from({length: 15}, (_, i) =>
   layers[0].style.opacity = '1';
   layers[1].style.opacity = '0';
 
-  window.setInterval(() => {
-    const nextSrc = pickNext();
-    if (!nextSrc || nextSrc === currentSrc) return;
-    const nextLayer = activeLayer === 0 ? 1 : 0;
-    setImage(layers[nextLayer], nextSrc);
-    requestAnimationFrame(() => {
-      layers[nextLayer].style.opacity = '1';
-      layers[activeLayer].style.opacity = '0';
-    });
-    window.setTimeout(() => {
-      currentSrc = nextSrc;
-      activeLayer = nextLayer;
-    }, MONTHLY_HERO_FADE_MS);
-  }, MONTHLY_HERO_INTERVAL_MS);
+  // Mobile stays on the first selected illustration to reduce motion and keep the top compact.
+  if (!isCompactMobile) {
+    window.setInterval(() => {
+      const nextSrc = pickNext();
+      if (!nextSrc || nextSrc === currentSrc) return;
+      const nextLayer = activeLayer === 0 ? 1 : 0;
+      setImage(layers[nextLayer], nextSrc);
+      requestAnimationFrame(() => {
+        layers[nextLayer].style.opacity = '1';
+        layers[activeLayer].style.opacity = '0';
+      });
+      window.setTimeout(() => {
+        currentSrc = nextSrc;
+        activeLayer = nextLayer;
+      }, MONTHLY_HERO_FADE_MS);
+    }, MONTHLY_HERO_INTERVAL_MS);
+  }
 })();
