@@ -292,6 +292,12 @@
     .hero-tagline{font-size:clamp(14px,4.2vw,21px)!important;letter-spacing:-.01em!important}
   }
 </style>
+
+<style id="v36-monthly-hero-slideshow">
+  .hero-art-layer{opacity:0;transition:opacity .7s ease,transform 8s ease!important;will-change:opacity}
+  .hero-art-layer[data-monthly-hero-layer="a"]{opacity:1}
+  @media (prefers-reduced-motion: reduce){.hero-art-layer{transition:none!important}}
+</style>
 </head>
 <body>
   <header class="home-header">
@@ -300,7 +306,8 @@
     <div class="home-socials"><a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener">YT</a><a href="https://x.com/rita_5496sk" target="_blank" rel="noopener">X</a><a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener">TT</a></div>
   </header>
   <main class="hero-stage">
-    <div class="hero-art" role="img" aria-label="越黒リタ メインビジュアル"></div>
+    <div class="hero-art hero-art-layer" data-monthly-hero-layer="a" role="img" aria-label="越黒リタ 月替わりメインビジュアル"></div>
+    <div class="hero-art hero-art-layer" data-monthly-hero-layer="b" aria-hidden="true"></div>
     <section class="hero-copy">
       <p class="hero-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
       <h1>越黒リタ</h1>
@@ -328,39 +335,7 @@
     </nav>
   </section>
 
-<script>
-(() => {
-  const heroes = [
-    {src:'assets/hero-main.png', desktop:'32% 25%', mobile:'40% 18%'},
-    {src:'assets/hero-random/hero-01.webp', desktop:'50% 16%', mobile:'50% 10%'},
-    {src:'assets/hero-random/hero-02.webp', desktop:'40% 14%', mobile:'37% 9%'},
-    {src:'assets/hero-random/hero-03.webp', desktop:'50% 15%', mobile:'50% 10%'},
-    {src:'assets/hero-random/hero-04.webp', desktop:'36% 14%', mobile:'34% 9%'},
-    {src:'assets/hero-random/hero-05.webp', desktop:'35% 13%', mobile:'32% 8%'},
-    {src:'assets/hero-random/hero-06.webp', desktop:'34% 12%', mobile:'30% 8%'},
-    {src:'assets/hero-random/hero-07.webp', desktop:'34% 14%', mobile:'31% 9%'},
-    {src:'assets/hero-random/hero-08.webp', desktop:'33% 12%', mobile:'30% 8%'},
-    {src:'assets/hero-random/hero-09.webp', desktop:'34% 13%', mobile:'31% 8%'},
-    {src:'assets/hero-random/hero-10.webp', desktop:'50% 10%', mobile:'50% 6%'},
-    {src:'assets/hero-random/hero-11.webp', desktop:'34% 10%', mobile:'31% 6%'},
-    {src:'assets/hero-random/hero-12.webp', desktop:'32% 9%', mobile:'29% 5%'}
-  ];
-  const key='officialGalleryLastHeroV26';
-  let previous=-1;
-  try { previous=Number(sessionStorage.getItem(key)); } catch(_) {}
-  let index=Math.floor(Math.random()*heroes.length);
-  if (heroes.length>1 && index===previous) index=(index+1)%heroes.length;
-  const chosen=heroes[index];
-  const art=document.querySelector('.hero-art');
-  if (art){
-    art.style.setProperty('--hero-image', `url("${chosen.src}")`);
-    art.style.setProperty('--hero-pos-desktop', chosen.desktop);
-    art.style.setProperty('--hero-pos-mobile', chosen.mobile);
-  }
-  try { sessionStorage.setItem(key,String(index)); } catch(_) {}
-})();
-</script>
-
-  <script src="home-one-screen.js?v=1800"></script>
+<script src="monthly-hero.js?v=36"></script>
+<script src="home-one-screen.js?v=1800"></script>
 </body>
 </html>
