@@ -342,6 +342,85 @@
   background-repeat:no-repeat!important;
 }
 </style>
+
+<style id="v41-seasonal-decor-mobile-compact">
+/* v41: desktop seasonal decoration in the blurred left margin. */
+.seasonal-decor{
+  position:absolute;
+  z-index:2;
+  left:0;
+  top:54px;
+  bottom:0;
+  width:min(39vw,620px);
+  pointer-events:none;
+  opacity:.44;
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:100% 100%;
+  filter:drop-shadow(0 0 18px rgba(170,93,135,.16));
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 62%,rgba(0,0,0,.72) 76%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 62%,rgba(0,0,0,.72) 76%,transparent 100%);
+}
+html[data-hero-month="1"] .seasonal-decor{background-image:url('assets/seasonal-decor/01_january.svg')}
+html[data-hero-month="2"] .seasonal-decor{background-image:url('assets/seasonal-decor/02_february.svg')}
+html[data-hero-month="3"] .seasonal-decor{background-image:url('assets/seasonal-decor/03_march.svg')}
+html[data-hero-month="4"] .seasonal-decor{background-image:url('assets/seasonal-decor/04_april.svg')}
+html[data-hero-month="5"] .seasonal-decor{background-image:url('assets/seasonal-decor/05_may.svg')}
+html[data-hero-month="6"] .seasonal-decor{background-image:url('assets/seasonal-decor/06_june.svg')}
+html[data-hero-month="7"] .seasonal-decor{background-image:url('assets/seasonal-decor/07_july.svg')}
+html[data-hero-month="8"] .seasonal-decor{background-image:url('assets/seasonal-decor/08_august.svg')}
+html[data-hero-month="9"] .seasonal-decor{background-image:url('assets/seasonal-decor/09_september.svg')}
+html[data-hero-month="10"] .seasonal-decor{background-image:url('assets/seasonal-decor/10_october.svg')}
+html[data-hero-month="11"] .seasonal-decor{background-image:url('assets/seasonal-decor/11_november.svg')}
+html[data-hero-month="12"] .seasonal-decor{background-image:url('assets/seasonal-decor/12_december.svg')}
+
+/* Mobile: deliberately simpler and much shorter. */
+@media(max-width:640px){
+  .seasonal-decor{display:none!important}
+  .hero-stage{padding-top:54px!important;padding-bottom:4px!important;min-height:auto!important}
+  .hero-art,
+  .hero-art-layer{
+    height:min(56.25vw,250px)!important;
+    min-height:0!important;
+  }
+  .hero-stage:before{
+    height:min(56.25vw,250px)!important;
+    min-height:0!important;
+  }
+  .hero-copy{
+    left:10px!important;
+    right:10px!important;
+    bottom:8px!important;
+    padding:10px 11px 10px!important;
+  }
+  .hero-eyebrow{font-size:7px!important;margin-bottom:4px!important}
+  .hero-copy h1{font-size:30px!important;line-height:1!important}
+  .hero-tagline{font-size:16px!important;margin-top:5px!important;line-height:1.05!important}
+  .hero-lead{font-size:8px!important;line-height:1.5!important;margin-top:7px!important}
+  .hero-lead:before{width:48px!important;margin-bottom:6px!important}
+  .film-zone{
+    width:min(52vw,200px)!important;
+    padding:7px!important;
+    margin:8px auto 4px!important;
+    border-color:rgba(235,201,224,.10)!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.20)!important;
+  }
+  .film-zone:after{inset:4px!important}
+  .short-label{font-size:7px!important;margin-bottom:5px!important;letter-spacing:.15em!important}
+  .home-short-frame:before{inset:5px!important}
+  .home-short-controls{grid-template-columns:38px 1fr!important;gap:5px!important;margin-top:5px!important}
+  .home-short-controls button{height:28px!important;font-size:7px!important;letter-spacing:.08em!important}
+  #portal-grid-v23{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #portal-grid-v23 .portal-image{aspect-ratio:1.65/1!important;border-right:1px solid rgba(228,195,218,.16)!important}
+  #portal-grid-v23 .portal-image:nth-child(2n){border-right:0!important}
+  #portal-grid-v23 .portal-image:nth-child(-n+2){border-bottom:1px solid rgba(228,195,218,.16)!important}
+}
+@media(max-width:420px){
+  .hero-art,.hero-art-layer,.hero-stage:before{height:min(56.25vw,220px)!important;min-height:0!important}
+  .film-zone{width:min(50vw,180px)!important}
+}
+</style>
+
 </head>
 <body>
   <header class="home-header">
@@ -352,6 +431,7 @@
   <main class="hero-stage">
     <div class="hero-art hero-art-layer" data-monthly-hero-layer="a" role="img" aria-label="越黒リタ 月替わりメインビジュアル"></div>
     <div class="hero-art hero-art-layer" data-monthly-hero-layer="b" aria-hidden="true"></div>
+    <div class="seasonal-decor" aria-hidden="true"></div>
     <section class="hero-copy">
       <p class="hero-eyebrow">KOSHIKURO RITA — OFFICIAL GALLERY</p>
       <h1>越黒リタ</h1>
@@ -380,6 +460,6 @@
   </section>
 
 <script src="home-one-screen.js?v=1801"></script>
-<script src="monthly-hero.js?v=40"></script>
+<script src="monthly-hero.js?v=41"></script>
 </body>
 </html>
