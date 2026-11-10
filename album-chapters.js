@@ -1,7 +1,7 @@
 /*
  * Full-album chapter start times.
  * Each array follows TRACK LIST order.
- * Album durations are used for the final track seek range.
+ * Album durations are used for the final track seek range when known.
  */
 window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "crown-of-jewel": ["0:00", "4:12", "8:41", "12:35", "17:23", "22:06"],
@@ -25,7 +25,14 @@ window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "oboromiyabi": ["0:00", "4:53", "9:08", "13:25", "17:05", "21:44"],
   "luminous-ruin": ["0:00", "2:57", "6:14", "10:32", "14:10", "18:23"],
   "lunar-eclat": ["0:00", "3:29", "7:39", "12:00", "16:16", "20:32"],
-  "velvet-dominion": ["0:00", "4:04", "8:14", "12:59", "16:50", "21:24"]
+  "velvet-dominion": ["0:00", "4:04", "8:14", "12:59", "16:50", "21:24"],
+
+  /* Added from the creator's YouTube chapter timestamps (2026-11-10). */
+  "fatal-allure": ["0:00", "3:36", "7:20", "10:53", "14:26", "18:21"],
+  "fallen-sanctuary": ["0:00", "4:34", "8:58", "13:35", "18:20", "22:49"],
+  "elegy-of-night": ["0:00", "4:53", "10:08", "15:12", "19:55", "24:44"],
+  "rosarium-noir": ["0:00", "4:34", "8:38", "13:15", "18:13", "22:50"],
+  "danse-macabre": ["0:00", "4:13", "8:26", "13:05", "17:48", "22:27"]
 };
 
 window.ALBUM_DURATIONS = window.ALBUM_DURATIONS || {
@@ -60,5 +67,11 @@ window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {
   "oboromiyabi": "https://youtu.be/NCh_z8vKYXk",
   "luminous-ruin": "https://youtu.be/6S5iLJC-gh4",
   "lunar-eclat": "https://youtu.be/Fdv95uGeVyc",
-  "velvet-dominion": "https://youtu.be/g4oMChXCCUg"
+  "velvet-dominion": "https://youtu.be/g4oMChXCCUg",
+
+  "fatal-allure": "https://youtu.be/WXQhsg0ZzsY",
+  "fallen-sanctuary": "https://youtu.be/VsparNg5suU",
+  "elegy-of-night": "https://youtu.be/sSXTfap_nE0",
+  "rosarium-noir": "https://youtu.be/Km-5FPuUxjc",
+  "danse-macabre": "https://youtu.be/mPxaMqABNOM"
 };
