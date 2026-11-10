@@ -347,5 +347,21 @@
     if (story) album.story = story.slice();
   }
 
+  // Full album / viewing films added in v46.
+  const viewingFilms = {
+    "fatal-allure": "https://youtu.be/WXQhsg0ZzsY",
+    "fallen-sanctuary": "https://youtu.be/VsparNg5suU",
+    "elegy-of-night": "https://youtu.be/sSXTfap_nE0",
+    "rosarium-noir": "https://youtu.be/Km-5FPuUxjc",
+    "danse-macabre": "https://youtu.be/mPxaMqABNOM"
+  };
+
+  for (const album of albums) {
+    const youtubeUrl = viewingFilms[album?.id];
+    if (!youtubeUrl) continue;
+    album.youtubeId = youtubeUrl;
+    album.links = { ...(album.links || {}), youtube: youtubeUrl };
+  }
+
   window.GALLERY_ALBUMS = albums;
 })();
