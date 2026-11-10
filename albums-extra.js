@@ -353,7 +353,11 @@
     "fallen-sanctuary": "https://youtu.be/VsparNg5suU",
     "elegy-of-night": "https://youtu.be/sSXTfap_nE0",
     "rosarium-noir": "https://youtu.be/Km-5FPuUxjc",
-    "danse-macabre": "https://youtu.be/mPxaMqABNOM"
+    "danse-macabre": "https://youtu.be/mPxaMqABNOM",
+    "beautiful-nightmare": "https://youtu.be/QBcNhWTu6ho",
+    "marionette-garden": "https://youtu.be/TZA6sicsvQ0",
+    "yugatou": "https://youtu.be/tw0BuHjMtYs",
+    "funeral-bloom": "https://youtu.be/63lPXjJbDSY"
   };
 
   for (const album of albums) {

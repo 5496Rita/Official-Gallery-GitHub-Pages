@@ -32,7 +32,13 @@ window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {
   "fallen-sanctuary": ["0:00", "4:34", "8:58", "13:35", "18:20", "22:49"],
   "elegy-of-night": ["0:00", "4:53", "10:08", "15:12", "19:55", "24:44"],
   "rosarium-noir": ["0:00", "4:34", "8:38", "13:15", "18:13", "22:50"],
-  "danse-macabre": ["0:00", "4:13", "8:26", "13:05", "17:48", "22:27"]
+  "danse-macabre": ["0:00", "4:13", "8:26", "13:05", "17:48", "22:27"],
+  
+  /* Added from the creator's YouTube chapter timestamps (2026-11-10, additional set). */
+  "beautiful-nightmare": ["0:00", "4:48", "9:08", "13:17", "18:14", "22:55"],
+  "marionette-garden": ["0:00", "4:42", "9:16", "14:06", "19:08", "23:45"],
+  "yugatou": ["0:00", "4:15", "7:52", "11:39", "16:02", "20:29"],
+  "funeral-bloom": ["0:00", "4:38", "8:52", "13:31", "17:58", "22:10"]
 };
 
 window.ALBUM_DURATIONS = window.ALBUM_DURATIONS || {
@@ -73,5 +79,10 @@ window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {
   "fallen-sanctuary": "https://youtu.be/VsparNg5suU",
   "elegy-of-night": "https://youtu.be/sSXTfap_nE0",
   "rosarium-noir": "https://youtu.be/Km-5FPuUxjc",
-  "danse-macabre": "https://youtu.be/mPxaMqABNOM"
+  "danse-macabre": "https://youtu.be/mPxaMqABNOM",
+
+  "beautiful-nightmare": "https://youtu.be/QBcNhWTu6ho",
+  "marionette-garden": "https://youtu.be/TZA6sicsvQ0",
+  "yugatou": "https://youtu.be/tw0BuHjMtYs",
+  "funeral-bloom": "https://youtu.be/63lPXjJbDSY"
 };
