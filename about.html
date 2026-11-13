@@ -97,8 +97,8 @@
   .portraits{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;align-items:stretch!important;max-width:none!important}
   .portrait{transform:none!important;aspect-ratio:4/5;min-height:0;background:linear-gradient(180deg,#16111a,#08060a);border:1px solid rgba(230,200,222,.2);overflow:hidden;position:relative}
   .portrait img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(.82) contrast(1.07) brightness(.92)!important;transition:transform .45s ease}
-  .portrait.croveil img{object-position:50% 18%!important;transform:scale(1.08)}
-  .portrait.rita img{object-position:50% 10%!important;transform:scale(1.24)}
+  .portrait.croveil img{object-position:50% 0%!important;transform:scale(1.02);transform-origin:center top}
+  .portrait.rita img{object-position:50% 0%!important;transform:scale(1.10);transform-origin:center top}
   .portrait:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,6,12,.03) 48%,rgba(7,4,10,.88) 100%),linear-gradient(90deg,rgba(80,42,79,.12),transparent 38%,rgba(65,59,128,.10));mix-blend-mode:normal}
   .portrait figcaption{z-index:2;padding:24px 18px 16px!important;display:flex;flex-direction:column;gap:6px;background:none!important}
   .portrait figcaption b{font:500 15px/1 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:.14em;color:#f0e6ef}
@@ -127,10 +127,49 @@
     .portrait figcaption{padding:16px 10px 10px!important;gap:4px}
     .portrait figcaption b{font-size:11px;letter-spacing:.08em}
     .portrait figcaption span{font-size:5.5px;letter-spacing:.16em}
-    .portrait.croveil img{transform:scale(1.12)}
-    .portrait.rita img{transform:scale(1.28)}
+    .portrait.croveil img{transform:scale(1.02);transform-origin:center top}
+    .portrait.rita img{transform:scale(1.10);transform-origin:center top}
     .why-two{padding:42px 0 46px;margin-top:8px;margin-bottom:64px}
     .why-two .why-copy{font-size:12px;line-height:2}
+  }
+</style>
+
+
+<style id="v55-duo-hero">
+  .intro{padding-top:96px!important;padding-bottom:54px!important}
+  .intro-showcase{width:min(1480px,96vw)!important;grid-template-columns:minmax(340px,.82fr) minmax(560px,1.38fr)!important;gap:clamp(24px,3vw,52px)!important;align-items:center!important}
+  .duo-hero-art{margin:0;position:relative;border:1px solid rgba(230,200,222,.20);background:#0b0810;overflow:hidden;aspect-ratio:16/9;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+  .duo-hero-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.9) contrast(1.04) brightness(.96)}
+  .duo-hero-art:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,4,10,.18),transparent 34%,rgba(7,4,10,.04)),linear-gradient(180deg,transparent 67%,rgba(7,4,10,.62) 100%)}
+  .duo-hero-art figcaption{position:absolute;z-index:2;left:22px;bottom:18px;display:flex;flex-direction:column;gap:5px;text-shadow:0 1px 10px #000}
+  .duo-hero-art figcaption b{font:500 13px/1 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:.18em;color:#f4eaf2}
+  .duo-hero-art figcaption span{font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.25em;color:#b9a6b6}
+
+  .project-faces{width:min(1000px,90vw);margin:0 auto 120px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .project-face{margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(230,200,222,.18);background:#0b0810}
+  .project-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.82) contrast(1.05) brightness(.9)}
+  .project-face.croveil-face img{transform:scale(1.02);transform-origin:center top}
+  .project-face.rita-face img{transform:scale(1.10);transform-origin:center top}
+  .project-face:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,4,10,.9) 100%);pointer-events:none}
+  .project-face figcaption{position:absolute;z-index:2;left:20px;bottom:18px;display:flex;flex-direction:column;gap:5px}
+  .project-face figcaption small{font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.25em;color:#9d899a}
+  .project-face figcaption b{font:500 20px/1 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:.12em;color:#f2e7ef}
+  .project-face figcaption span{font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.22em;color:#b29fb0}
+
+  @media(max-width:980px){
+    .intro-showcase{grid-template-columns:1fr!important;width:min(980px,94vw)!important}
+    .intro-copy{max-width:760px}
+    .duo-hero-art{width:100%;margin-top:8px}
+  }
+  @media(max-width:620px){
+    .intro{padding-top:86px!important}
+    .duo-hero-art{aspect-ratio:16/10}
+    .duo-hero-art figcaption{left:14px;bottom:12px}
+    .duo-hero-art figcaption b{font-size:10px}
+    .project-faces{width:92vw;gap:8px;margin-bottom:74px}
+    .project-face figcaption{left:10px;bottom:10px}
+    .project-face figcaption b{font-size:13px;letter-spacing:.07em}
+    .project-face figcaption small,.project-face figcaption span{font-size:5.5px}
   }
 </style>
 
@@ -155,10 +194,10 @@
         <div><small>04 / DYNAMICS</small><strong>囁きから激情まで</strong></div>
       </div>
     </div>
-    <div class="portraits" aria-label="CROVEIL / 越黒リタ ビジュアル">
-      <figure class="portrait croveil"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><b>CROVEIL</b><span>VISUAL / PROJECT 01</span></figcaption></figure>
-      <figure class="portrait rita"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><b>越黒リタ</b><span>KOSHIKURO RITA / PROJECT 02</span></figcaption></figure>
-    </div>
+    <figure class="duo-hero-art" aria-label="越黒リタ × CROVEIL visual">
+      <img src="assets/about/duo-hero.png" alt="越黒リタ × CROVEIL visual">
+      <figcaption><b>KOSHIKURO RITA × CROVEIL</b><span>TWO PROJECTS / ONE SHADOW</span></figcaption>
+    </figure>
   </div>
   <div class="intro-nav fade">
     <a href="#rita"><div><small>01 / KOSHIKURO RITA</small><strong>越黒リタ</strong></div><span>闇の奥にある美しさを掬い上げる。</span></a>
@@ -180,6 +219,11 @@
     <p>それぞれの名前で、それぞれの夜を鳴らしている。</p>
     <div class="why-close">TWO FACES. ONE SHADOW.</div>
   </div>
+</section>
+
+<section class="project-faces fade" aria-label="PROJECT VISUALS">
+  <figure class="project-face croveil-face"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><small>PROJECT 01</small><b>CROVEIL</b></figcaption></figure>
+  <figure class="project-face rita-face"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><small>PROJECT 02</small><b>越黒リタ</b><span>KOSHIKURO RITA</span></figcaption></figure>
 </section>
 
 <section id="rita" class="world rita">
