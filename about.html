@@ -90,6 +90,50 @@
 .fit-card ul{list-style:none;padding:0;margin:0}.fit-card li{position:relative;padding:11px 0 11px 21px;border-top:1px solid rgba(255,255,255,.055);font-size:13px;line-height:1.8;color:#b9aaba}.fit-card li:before{content:'—';position:absolute;left:0;top:11px;color:#826f80}.fit-card.like h3{color:#ead9e6}.fit-card.maybe h3{color:#b9a9b8}.fit-note{grid-column:1/-1;border-top:1px solid var(--line);padding:18px 34px;color:#8f7f8e;font-size:11px;line-height:1.8;text-align:center}
 @media(max-width:760px){.fit-check{grid-template-columns:1fr;margin-top:24px;margin-bottom:70px}.fit-card{padding:26px 24px}.fit-card+.fit-card{border-left:0;border-top:1px solid var(--line)}.fit-card li{font-size:12px;padding-top:9px;padding-bottom:9px}.fit-note{padding:16px 20px;font-size:10px}}
 </style>
+
+<style id="v53-dual-project">
+  .intro-showcase{grid-template-columns:minmax(0,.92fr) minmax(520px,1.08fr)!important;align-items:center!important}
+  .intro-copy .ey{letter-spacing:.32em}
+  .portraits{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;align-items:stretch!important;max-width:none!important}
+  .portrait{transform:none!important;aspect-ratio:4/5;min-height:0;background:linear-gradient(180deg,#16111a,#08060a);border:1px solid rgba(230,200,222,.2);overflow:hidden;position:relative}
+  .portrait img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(.82) contrast(1.07) brightness(.92)!important;transition:transform .45s ease}
+  .portrait.croveil img{object-position:50% 18%!important;transform:scale(1.08)}
+  .portrait.rita img{object-position:50% 10%!important;transform:scale(1.24)}
+  .portrait:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,6,12,.03) 48%,rgba(7,4,10,.88) 100%),linear-gradient(90deg,rgba(80,42,79,.12),transparent 38%,rgba(65,59,128,.10));mix-blend-mode:normal}
+  .portrait figcaption{z-index:2;padding:24px 18px 16px!important;display:flex;flex-direction:column;gap:6px;background:none!important}
+  .portrait figcaption b{font:500 15px/1 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:.14em;color:#f0e6ef}
+  .portrait figcaption span{font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.24em;color:#a892a4}
+  .intro-nav{margin-top:28px!important}
+
+  .why-two{width:min(1120px,92vw);margin:30px auto 118px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:58px 0 62px;display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;position:relative}
+  .why-two .why-label small{display:block;font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.3em;color:#8f7c8d;margin-bottom:14px}
+  .why-two .why-label h2{margin:0;font:500 clamp(48px,7vw,92px)/.86 'Cormorant Garamond',serif;letter-spacing:.04em}
+  .why-two .why-label p{margin:20px 0 0;font:500 10px/1.7 'Cormorant Garamond',serif;letter-spacing:.2em;color:#a993a7}
+  .why-two .why-copy{font-size:14px;line-height:2.15;color:#b9aabb}
+  .why-two .why-copy p{margin:0 0 24px}
+  .why-two .why-copy strong{color:#eee3ec;font-weight:500}
+  .why-two .why-close{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);font:500 clamp(24px,3.5vw,42px)/1.2 'Cormorant Garamond',serif;letter-spacing:.08em;color:#e8dbe5}
+
+  .closing .line{letter-spacing:.28em}
+
+  @media(max-width:900px){
+    .intro-showcase{grid-template-columns:1fr!important}
+    .portraits{width:min(760px,100%);margin:0 auto}
+    .why-two{grid-template-columns:1fr;gap:34px;margin-bottom:84px}
+  }
+  @media(max-width:560px){
+    .intro{padding-top:92px!important}
+    .portraits{gap:7px!important}
+    .portrait figcaption{padding:16px 10px 10px!important;gap:4px}
+    .portrait figcaption b{font-size:11px;letter-spacing:.08em}
+    .portrait figcaption span{font-size:5.5px;letter-spacing:.16em}
+    .portrait.croveil img{transform:scale(1.12)}
+    .portrait.rita img{transform:scale(1.28)}
+    .why-two{padding:42px 0 46px;margin-top:8px;margin-bottom:64px}
+    .why-two .why-copy{font-size:12px;line-height:2}
+  }
+</style>
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -97,7 +141,7 @@
 <section class="intro">
   <div class="intro-showcase fade">
     <div class="intro-copy">
-      <p class="ey">KOSHIKURO RITA / SOUND & WORLD</p>
+      <p class="ey">KOSHIKURO RITA × CROVEIL / SOUND & WORLD</p>
       <h1>ABOUT</h1>
       <p class="sound-kicker"><b>GOTHIC ROCK</b> × DARK ROCK × SYMPHONIC METAL × VISUAL KEI</p>
       <p class="lead">耽美、退廃、幻想、激情。<br>物語ごとに音像を変えながら、闇の中にある美しさを描く音楽プロジェクト。</p>
@@ -111,14 +155,30 @@
         <div><small>04 / DYNAMICS</small><strong>囁きから激情まで</strong></div>
       </div>
     </div>
-    <div class="portraits" aria-label="越黒リタ ビジュアルポートレート">
-      <figure class="portrait"><img src="assets/about/portrait-main.jpeg" alt="越黒リタ ビジュアルポートレート 1"><figcaption>KOSHIKURO RITA / VISUAL PORTRAIT 01</figcaption></figure>
-      <figure class="portrait"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ ビジュアルポートレート 2"><figcaption>KOSHIKURO RITA / VISUAL PORTRAIT 02</figcaption></figure>
+    <div class="portraits" aria-label="CROVEIL / 越黒リタ ビジュアル">
+      <figure class="portrait croveil"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><b>CROVEIL</b><span>VISUAL / PROJECT 01</span></figcaption></figure>
+      <figure class="portrait rita"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><b>越黒リタ</b><span>KOSHIKURO RITA / PROJECT 02</span></figcaption></figure>
     </div>
   </div>
   <div class="intro-nav fade">
     <a href="#rita"><div><small>01 / KOSHIKURO RITA</small><strong>越黒リタ</strong></div><span>闇の奥にある美しさを掬い上げる。</span></a>
     <a href="#croveil"><div><small>02 / CROVEIL</small><strong>CROVEIL</strong></div><span>美しく、危うく、そして気高く。</span></a>
+  </div>
+</section>
+
+<section class="why-two fade" aria-label="どうしてふたつに分かれたのか">
+  <div class="why-label">
+    <small>WHY TWO?</small>
+    <h2>どうして、<br>ふたつに分かれたのか。</h2>
+    <p>TWO FACES. ONE SHADOW.</p>
+  </div>
+  <div class="why-copy">
+    <p>同じ闇を見ていても、そこから生まれる音は、ひとつではなかった。</p>
+    <p><strong>越黒リタ</strong>が描くのは、耽美、幻想、退廃、祈り。静かに沈みながら、感情の奥に触れていく世界。</p>
+    <p><strong>CROVEIL</strong>が描くのは、意志、支配、孤高、激情。鋭く、美しく、前へ進んでいく世界。</p>
+    <p>似ているようで、違う。離れているようで、どこかでつながっている。だから、ひとつにまとめることはしなかった。</p>
+    <p>それぞれの名前で、それぞれの夜を鳴らしている。</p>
+    <div class="why-close">TWO FACES. ONE SHADOW.</div>
   </div>
 </section>
 
@@ -218,7 +278,7 @@
   </div>
   <p class="fit-note">好みを線引きするためではなく、この世界が自分に合うかを最初に知るための目安です。</p>
 </section>
-<section class="closing"><p class="line">TWO NAMES / ONE CONTINUING WORLD</p><h2>音と絵と言葉で、<br>闇の輪郭を描き続ける。</h2><p>越黒リタとCROVEIL。異なる輪郭を持つふたつの名義を通して、作品ごとに姿を変える世界を記録していく。</p><div class="doors"><a href="characters.html"><small>01</small><strong>PERSONA</strong><span>人物と設定</span></a><a href="illustrations.html"><small>02</small><strong>ILLUSTRATIONS</strong><span>作品世界の断片</span></a><a href="comics.html"><small>03</small><strong>COMICS</strong><span>物語と日常</span></a><a href="archive.html"><small>04</small><strong>ARCHIVE</strong><span>音楽作品の記録</span></a></div></section>
+<section class="closing"><p class="line">TWO NAMES / TWO WORLDS</p><h2>音と絵と言葉で、<br>闇の輪郭を描き続ける。</h2><p>越黒リタとCROVEIL。異なる輪郭を持つふたつのPROJECTが、それぞれの夜と物語を鳴らしていく。</p><div class="doors"><a href="characters.html"><small>01</small><strong>PERSONA</strong><span>人物と設定</span></a><a href="illustrations.html"><small>02</small><strong>ILLUSTRATIONS</strong><span>作品世界の断片</span></a><a href="comics.html"><small>03</small><strong>COMICS</strong><span>物語と日常</span></a><a href="archive.html"><small>04</small><strong>ARCHIVE</strong><span>音楽作品の記録</span></a></div></section>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
 const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/h*100)+'%'},{passive:true});
