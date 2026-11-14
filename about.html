@@ -103,7 +103,12 @@
     .intro-nav{margin-top:26px;grid-template-columns:1fr}.intro-nav a+a{border-left:0;border-top:1px solid var(--line)}.intro-nav a{padding:15px 17px}.intro-nav span{font-size:9px}
   }
 </style>
-
+<style id="v59-world-separation">
+.about-exits{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
+.about-exits a{min-height:150px}
+.about-exits strong{font-size:24px}
+@media(max-width:560px){.about-exits{grid-template-columns:1fr}}
+</style>
 
 <style id="about-fit-v52">
 .fit-check{width:min(1100px,92vw);margin:40px auto 110px;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:rgba(255,255,255,.012)}
@@ -367,7 +372,7 @@
   </div>
   <p class="fit-note">好みを線引きするためではなく、この世界が自分に合うかを最初に知るための目安です。</p>
 </section>
-<section class="closing"><p class="line">TWO NAMES / TWO WORLDS</p><h2>音と絵と言葉で、<br>闇の輪郭を描き続ける。</h2><p>越黒リタとCROVEIL。異なる輪郭を持つふたつのPROJECTが、それぞれの夜と物語を鳴らしていく。</p><div class="doors"><a href="characters.html"><small>01</small><strong>PERSONA</strong><span>人物と設定</span></a><a href="illustrations.html"><small>02</small><strong>ILLUSTRATIONS</strong><span>作品世界の断片</span></a><a href="comics.html"><small>03</small><strong>COMICS</strong><span>物語と日常</span></a><a href="archive.html"><small>04</small><strong>ARCHIVE</strong><span>音楽作品の記録</span></a></div></section>
+<section class="closing"><p class="line">TWO NAMES / TWO WORLDS</p><h2>音と絵と言葉で、<br>闇の輪郭を描き続ける。</h2><p>越黒リタとCROVEIL。異なる輪郭を持つふたつのPROJECTが、それぞれの夜と物語を鳴らしていく。</p><div class="doors about-exits"><a href="world.html"><small>01</small><strong>WORLD</strong><span>人物・イラスト・コミックへ</span></a><a href="archive.html"><small>02</small><strong>ARCHIVE</strong><span>音楽作品の記録へ</span></a></div></section>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
 const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/h*100)+'%'},{passive:true});
