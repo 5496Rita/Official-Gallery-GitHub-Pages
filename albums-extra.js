@@ -73,6 +73,30 @@
     if (!existing.has(album.id)) albums.push(album);
   }
 
+  // Release schedule (v60)
+  const releaseOverrides = {
+    "beautiful-nightmare": "2026.11.11",
+    "schattenblute": "2026.11.20",
+    "persona": "2026.11.27",
+    "vanishing-reverie": "2026.12.11",
+    "zwischenraum": "2026.12.18",
+    "celestial-diamond": "2026.12.25",
+    "devouring-eden": "2027.01.08",
+    "daemonia": "2027.01.15",
+    "tarnished-beauty": "2027.01.22",
+    "beyond-sense": "2027.02.12",
+    "nocturne-royale": "2027.02.19",
+    "twilight-remains": "2027.02.26",
+    "glass-abyss": "2027.03.12",
+    "marchen-labyrinth": "2027.03.26"
+  };
+
+  for (const album of albums) {
+    if (album && releaseOverrides[album.id]) {
+      album.release = releaseOverrides[album.id];
+    }
+  }
+
   const storyOverrides = {
     "beautiful-nightmare": [
       "夜の街で、見慣れた景色がほんの少しだけ歪み始める。灯りの消えた窓、名前のない影、追いつけない足音。『Phantom Parade』で始まるのは、失った誰かを探しているのか、自分自身の残像を追っているのかさえ分からない夜の行進だ。朝が来れば消えてしまうと知りながら、それでも主人公は歩みを止めない。",
