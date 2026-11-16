@@ -73,10 +73,10 @@
     if (!existing.has(album.id)) albums.push(album);
   }
 
-  // Release schedule (v60)
+  // Release schedule (v61)
   const releaseOverrides = {
     "beautiful-nightmare": "2026.11.11",
-    "schattenblute": "2026.11.20",
+    "schattenblute": "2026.11.21",
     "persona": "2026.11.27",
     "vanishing-reverie": "2026.12.11",
     "zwischenraum": "2026.12.18",
@@ -97,6 +97,32 @@
     }
   }
 
+  // PERSONA: each track is a character song for a different instrument-personified character.
+  const personaAlbum = albums.find(album => album && album.id === "persona");
+  if (personaAlbum) {
+    personaAlbum.trackCharacters = [
+      "越黒リタ",
+      "フレクシア",
+      "ルベリア",
+      "ノクティリス",
+      "ラヴィニア",
+      "CROVEIL"
+    ];
+    personaAlbum.concept = "楽器擬人化キャラクター6人によるキャラクターソング集";
+  }
+
+
+  // Registration state override.
+  // Add an album id here only when the work has NOT been registered with the distributor yet.
+  // Example: "future-album-id": "unregistered"
+  const registrationStatusOverrides = {
+  };
+
+  for (const album of albums) {
+    if (!album) continue;
+    album.registrationStatus = registrationStatusOverrides[album.id] || "registered";
+  }
+
   const storyOverrides = {
     "beautiful-nightmare": [
       "夜の街で、見慣れた景色がほんの少しだけ歪み始める。灯りの消えた窓、名前のない影、追いつけない足音。『Phantom Parade』で始まるのは、失った誰かを探しているのか、自分自身の残像を追っているのかさえ分からない夜の行進だ。朝が来れば消えてしまうと知りながら、それでも主人公は歩みを止めない。",
@@ -105,10 +131,10 @@
       "最後の『Beautiful Lie』で主人公は気づく。夢だったのか、嘘だったのか、それはもう重要ではない。永遠より儚いものを本気で信じたこと、その温もりが確かに胸に残っていること。それこそがこの悪夢を美しくしていた。目覚めることを拒んだのではない。忘れられない夜に、静かに『おやすみ』を告げるための物語。"
     ],
     "persona": [
-      "朽ちた聖堂に、六つの声が集まる。最初に現れるのは『Crimson Throne』。紅い王座に咲く薔薇は、痛みも孤独も隠さず、気高さへ変えて立っている。けれど次の『Twilight Resonance』では、その強さとは正反対の、誰にも触れさせない蒼い静寂が響き始める。ひとつの顔だけでは語れない心が、別々の姿を持ちはじめる。",
-      "『Scarlet Ignition…』は抑え込んだ衝動を炎に変え、『Silent Shadow』は言葉にすれば壊れてしまう祈りを銀の影へ沈める。激しさと静けさ、見せる自分と隠す自分。どちらかが偽物なのではない。矛盾して見えるそれらすべてが、同じ存在の中で確かに息をしている。",
-      "やがて『Butterfly Tempest』で、閉じ込めていた感情は嵐となって解き放たれる。涙も傷も混沌も、すべて音へ変えて飛べばいい。ここで“PERSONA”は仮面という意味を失う。隠すための顔ではなく、生き延びるたびに生まれた複数の輪郭。それぞれが本物で、それぞれが欠けている。",
-      "最後の『黒翼ノ夜明ケ。』で、六つの輪郭はひとつの影へ重なる。黒い翼は光を拒むためではなく、闇を越えて新しい光へ向かうために広がる。紅も蒼も、炎も影も、嵐も静寂も抱いたまま。誰かに定義された姿ではなく、すべてを引き受けたその瞬間に、ようやく“わたし”が完成する。"
+      "六つの楽器、六つの人格、六つの歌。『PERSONA』は、楽器を擬人化したキャラクターたちが、それぞれ自分自身の感情と美学を歌うキャラクターソング集。幕を開ける『Crimson Throne』は越黒リタの歌。紅い王座に咲く薔薇のように、痛みも孤独も隠さず、それさえ気高さへ変えて立つ。続く『Twilight Resonance』はフレクシア。リタとは異なる音色と輪郭を持つ存在として、静けさの奥にある感情を響かせる。",
+      "三曲目『Scarlet Ignition…』を担うのはルベリア。燃え上がる衝動を自らの色として放ち、六人の中でも鮮烈な熱を残していく。四曲目『Silent Shadow』はノクティリス。言葉にすれば壊れてしまいそうな思いを影の中へ沈めながら、沈黙そのものをひとつの声へ変える。同じ世界に生きていても、二人が抱える感情も、その表し方もまったく同じではない。",
+      "五曲目『Butterfly Tempest』はラヴィニア。閉じ込められていた感情は蝶の群れのように舞い上がり、やがて嵐となって解き放たれる。繊細さと激しさを行き来しながら、自分だけの音色で物語を塗り替えていく。そして最後の『黒翼ノ夜明ケ。』を歌うのはCROVEIL。黒い翼を広げ、誰かに与えられた運命ではなく、自ら選んだ夜明けへ進んでいく。",
+      "越黒リタ、フレクシア、ルベリア、ノクティリス、ラヴィニア、CROVEIL。『PERSONA』というタイトルが指すのは、ひとりの中に隠された複数の顔ではない。それぞれ異なる楽器から生まれ、異なる性格と感情を持った六人の“顔”そのもの。六つの音色が六つの人格となり、六つのキャラクターソングとして並ぶことで、ひとつの世界を形づくっている。"
     ],
     "vanishing-reverie": [
       "夢が終わったあとにも、夢の形だけが残ることがある。『夢の抜け殻』で主人公が抱いているのは、もう戻らない夜と、まだ指先を離れない記憶。消えてしまったからこそ、その儚さは永遠よりも愛しく見える。忘れることも、取り戻すこともできないまま、失われた世界を辿る旅が始まる。",
