@@ -145,13 +145,8 @@
     </nav>
   </section>
 
-  <section id="detail-not-found" class="detail-not-found" hidden>
-    <p class="eyebrow">NOT FOUND</p>
-    <h1>作品が見つかりません。</h1>
-    <a class="button" href="index.html#archive">
-      BACK TO DISCOGRAPHY
-    </a>
-  </section>
+  <!-- Kept as an inert hook for legacy detail.js; never shown in the UI. -->
+  <section id="detail-not-found" hidden aria-hidden="true" style="display:none !important;"></section>
   </main>
 
   <footer class="site-footer detail-footer">
@@ -161,8 +156,8 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=565"></script>
-  <script src="albums-extra.js?v=6400"></script>
-  <script src="release-gate.js?v=6500"></script>
+  <script src="albums-extra.js?v=6600"></script>
+  
   <script>
     // v65: repair legacy/variant album slugs before detail.js resolves the work.
     // The live albums-lite.js may expose `albums` as a global lexical binding,
