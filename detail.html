@@ -206,5 +206,80 @@
   <script src="detail-seo.js?v=5000"></script>
   <script src="detail.js?v=568"></script>
   <script src="v2.1.js?v=410"></script>
+
+  <style>
+    /* v68: discreet full-album video status marker. */
+    .full-album-frame { position: relative; }
+    .video-status-marker {
+      position: absolute;
+      right: 14px;
+      bottom: 10px;
+      z-index: 5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: none;
+      color: rgba(230, 215, 232, .38);
+      pointer-events: none;
+      user-select: none;
+    }
+    .full-album-frame.video-not-uploaded {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .full-album-frame.video-not-uploaded > :not(.video-status-marker) {
+      display: none !important;
+    }
+    .full-album-frame.video-not-uploaded .video-status-marker {
+      position: static;
+      color: rgba(230, 215, 232, .34);
+      font-size: 10px;
+    }
+  </style>
+  <script>
+    // v68: show a subtle internal-style video status in the WATCH FULL ALBUM frame.
+    // Status is inferred from the actual full-album URL, so it updates automatically
+    // when a YouTube source is added to album data / ALBUM_FULL_ALBUMS.
+    (function(){
+      function getAlbumList(){
+        if (typeof albums !== "undefined" && Array.isArray(albums)) return albums;
+        if (Array.isArray(window.albums)) return window.albums;
+        return [];
+      }
+      function hasFullAlbumVideo(id, album){
+        var mapped = window.ALBUM_FULL_ALBUMS && window.ALBUM_FULL_ALBUMS[id];
+        var direct = album && album.youtubeId;
+        var linked = album && album.links && album.links.youtube;
+        return !!String(mapped || direct || linked || "").trim();
+      }
+      function applyVideoStatus(){
+        var frame = document.getElementById("work-xfd");
+        if (!frame) return;
+
+        var id = new URLSearchParams(location.search).get("id") || "";
+        var list = getAlbumList();
+        var album = list.find(function(a){ return a && a.id === id; }) || null;
+        var uploaded = hasFullAlbumVideo(id, album);
+
+        frame.querySelectorAll(".video-status-marker").forEach(function(n){ n.remove(); });
+        frame.classList.toggle("video-not-uploaded", !uploaded);
+
+        var marker = document.createElement("span");
+        marker.className = "video-status-marker";
+        marker.textContent = 'videoStatus: "' + (uploaded ? 'uploaded' : 'not-uploaded') + '"';
+        marker.setAttribute("aria-hidden", "true");
+        frame.appendChild(marker);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function(){ requestAnimationFrame(applyVideoStatus); }, {once:true});
+      } else {
+        requestAnimationFrame(applyVideoStatus);
+      }
+    })();
+  </script>
 </body>
 </html>
