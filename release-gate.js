@@ -16,14 +16,8 @@
   function getStatus(album) {
     if (!album) return "released";
     const releaseAt = parseRelease(album.release);
-
-    // Past releases are public regardless of the registration flag.
     if (!releaseAt || Date.now() >= releaseAt.getTime()) return "released";
-
-    // Future releases become COMING SOON only after explicit distributor registration.
-    // If no registration state has been set yet, treat the work as UNREGISTERED.
-    if (album.registrationStatus === "registered") return "coming-soon";
-    return "unregistered";
+    return album.registrationStatus === "registered" ? "coming-soon" : "unregistered";
   }
 
   function labelFor(status, album) {
@@ -40,7 +34,6 @@
     STATUS[album.id] = status;
     album.releaseStatus = status;
 
-    // Keep the files preloaded in the repository, but do not expose playback links before release.
     if (status !== "released") {
       album.__releaseGateOriginalLinks = album.links;
       album.__releaseGateOriginalYoutubeId = album.youtubeId;
@@ -52,7 +45,6 @@
   window.ALBUM_RELEASE_STATUS = STATUS;
   window.getAlbumReleaseStatus = id => STATUS[id] || "released";
 
-  // Block direct lyric JSON requests made by the site before release.
   const nativeFetch = window.fetch ? window.fetch.bind(window) : null;
   if (nativeFetch) {
     window.fetch = function(input, init) {
@@ -92,8 +84,27 @@
       .release-gate-hidden{display:none!important}
       .release-gate-card-badge{position:absolute;z-index:4;top:.65rem;left:.65rem;padding:.32rem .5rem;background:rgba(7,4,9,.88);border:1px solid rgba(210,171,221,.42);color:#f0e4f3;font:600 .62rem/1 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
       a[data-release-gate-card]{position:relative}
+      .release-gate-film{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;border:1px solid rgba(190,142,205,.24);background:linear-gradient(180deg,rgba(10,5,14,.72),rgba(4,2,7,.9))}
+      .release-gate-film__eyebrow{font-size:.68rem;letter-spacing:.28em;color:#9f809f;margin:0 0 1rem}
+      .release-gate-film__title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:.12em;color:#ded2df;margin:0}
+      .release-gate-film__copy{max-width:42rem;margin:.8rem auto 0;color:#9f8d9f;font-size:.78rem;line-height:1.8;letter-spacing:.08em}
     `;
     document.head.appendChild(style);
+  }
+
+  function renderFilmState(id, album, status) {
+    const xfd = document.querySelector("#work-xfd");
+    const section = document.querySelector(".work-xfd");
+    if (!xfd || !section || status === "released") return;
+
+    section.classList.remove("release-gate-hidden");
+    const title = status === "unregistered" ? "UNREGISTERED" : "COMING SOON";
+    const eyebrow = status === "unregistered" ? "FULL ALBUM FILM / NOT REGISTERED" : "FULL ALBUM FILM / SCHEDULED";
+    const copy = status === "unregistered"
+      ? "配信登録前のため、フルアルバム映像はまだ公開予定に入りません。"
+      : `${album && album.release ? album.release + " に公開予定。" : "公開予定。"} リリース日になると自動で解禁されます。`;
+
+    xfd.innerHTML = `<div class="release-gate-film" data-release-film-state="${status}"><p class="release-gate-film__eyebrow">${eyebrow}</p><h3 class="release-gate-film__title">${title}</h3><p class="release-gate-film__copy">${copy}</p></div>`;
   }
 
   function decorateDetail() {
@@ -103,20 +114,24 @@
     const album = window.albums.find(a => a && a.id === id);
     const status = STATUS[id];
     const copy = document.querySelector(".work-hero__copy");
-    if (!copy || document.querySelector(".release-gate-panel")) return;
+    if (!copy) return;
 
     document.querySelector(".listen-now")?.classList.add("release-gate-hidden");
-    document.querySelector(".work-xfd")?.classList.add("release-gate-hidden");
     document.querySelector("#work-story")?.classList.add("release-gate-hidden");
 
-    const panel = document.createElement("div");
-    panel.className = "release-gate-panel";
+    let panel = document.querySelector(".release-gate-panel");
+    if (!panel) {
+      panel = document.createElement("div");
+      panel.className = "release-gate-panel";
+      copy.appendChild(panel);
+    }
     const heading = status === "unregistered" ? "UNREGISTERED" : "COMING SOON";
     const body = status === "unregistered"
-      ? "この作品はまだ配信登録前です。公開日が決まり次第、ここでお知らせします。"
+      ? "この作品はまだ配信登録前です。登録後はCOMING SOONへ切り替わり、リリース日に自動解禁されます。"
       : `${album && album.release ? album.release + " に公開予定。" : "公開予定。"} リリース日になると自動でコンテンツが解禁されます。`;
     panel.innerHTML = `<strong>${heading}</strong><p>${body}</p><div class="release-gate-locks"><span>🔒 LYRICS</span><span>🔒 LISTEN</span><span>🔒 STORY</span></div>`;
-    copy.appendChild(panel);
+
+    renderFilmState(id, album, status);
   }
 
   function decorateCards() {
@@ -150,5 +165,5 @@
 
   const observer = new MutationObserver(() => runDecorators());
   observer.observe(document.documentElement, { childList: true, subtree: true });
-  setTimeout(() => observer.disconnect(), 8000);
+  setTimeout(() => observer.disconnect(), 12000);
 })();
