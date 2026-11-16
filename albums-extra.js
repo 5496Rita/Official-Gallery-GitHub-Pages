@@ -112,15 +112,16 @@
   }
 
 
-  // Registration state override.
-  // Add an album id here only when the work has NOT been registered with the distributor yet.
-  // Example: "future-album-id": "unregistered"
+  // Distributor registration state for FUTURE releases.
+  // Future works are UNREGISTERED by default.
+  // Add an album id here only AFTER it has actually been registered with the distributor.
+  // Example: "persona": "registered"
   const registrationStatusOverrides = {
   };
 
   for (const album of albums) {
     if (!album) continue;
-    album.registrationStatus = registrationStatusOverrides[album.id] || "registered";
+    album.registrationStatus = registrationStatusOverrides[album.id] || "unregistered";
   }
 
   const storyOverrides = {

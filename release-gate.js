@@ -15,10 +15,15 @@
 
   function getStatus(album) {
     if (!album) return "released";
-    if (album.registrationStatus === "unregistered") return "unregistered";
     const releaseAt = parseRelease(album.release);
-    if (releaseAt && Date.now() < releaseAt.getTime()) return "coming-soon";
-    return "released";
+
+    // Past releases are public regardless of the registration flag.
+    if (!releaseAt || Date.now() >= releaseAt.getTime()) return "released";
+
+    // Future releases become COMING SOON only after explicit distributor registration.
+    // If no registration state has been set yet, treat the work as UNREGISTERED.
+    if (album.registrationStatus === "registered") return "coming-soon";
+    return "unregistered";
   }
 
   function labelFor(status, album) {
