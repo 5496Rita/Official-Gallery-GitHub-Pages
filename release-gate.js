@@ -26,9 +26,17 @@
     return "RELEASED";
   }
 
-  if (!Array.isArray(window.albums)) return;
+  const albumList = (typeof albums !== "undefined" && Array.isArray(albums))
+    ? albums
+    : (Array.isArray(window.albums) ? window.albums : null);
+  if (!albumList) return;
 
-  for (const album of window.albums) {
+  // albums-lite.js exposes `albums` as a global lexical binding on the live site,
+  // not necessarily as window.albums. Mirror it onto window so every helper uses
+  // the same source of truth.
+  window.albums = albumList;
+
+  for (const album of albumList) {
     if (!album || !album.id) continue;
     const status = getStatus(album);
     STATUS[album.id] = status;
@@ -111,7 +119,7 @@
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
     if (!id || !STATUS[id] || STATUS[id] === "released") return;
-    const album = window.albums.find(a => a && a.id === id);
+    const album = albumList.find(a => a && a.id === id);
     const status = STATUS[id];
     const copy = document.querySelector(".work-hero__copy");
     if (!copy) return;
@@ -142,7 +150,7 @@
       try { id = new URL(link.href, location.href).searchParams.get("id") || ""; } catch (_) {}
       const status = STATUS[id];
       if (!status || status === "released") continue;
-      const album = window.albums.find(a => a && a.id === id);
+      const album = albumList.find(a => a && a.id === id);
       link.dataset.releaseGateCard = "1";
       const badge = document.createElement("span");
       badge.className = "release-gate-card-badge";

@@ -162,31 +162,46 @@
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=565"></script>
   <script src="albums-extra.js?v=6400"></script>
-  <script src="release-gate.js?v=6400"></script>
+  <script src="release-gate.js?v=6500"></script>
   <script>
-    // v64: repair legacy/variant album slugs before detail.js resolves the work.
+    // v65: repair legacy/variant album slugs before detail.js resolves the work.
+    // The live albums-lite.js may expose `albums` as a global lexical binding,
+    // so do not rely only on window.albums.
     (function(){
-      if (!Array.isArray(window.albums)) return;
+      var list = (typeof albums !== "undefined" && Array.isArray(albums))
+        ? albums
+        : (Array.isArray(window.albums) ? window.albums : null);
+      if (!list) return;
+      window.albums = list;
+
       var params = new URLSearchParams(location.search);
       var raw = (params.get("id") || "").trim();
       if (!raw) return;
+
       var aliases = {
         "cathedral-masks": "cathedral-of-masks",
         "cathedral-mask": "cathedral-of-masks",
         "cathedral_of_masks": "cathedral-of-masks",
         "cathedralofmasks": "cathedral-of-masks"
       };
-      function norm(v){ return String(v || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
-      var exact = window.albums.some(function(a){ return a && a.id === raw; });
+      function norm(v){ return String(v || "").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]/g, ""); }
+
+      var exact = list.find(function(a){ return a && a.id === raw; });
       if (exact) return;
-      var target = aliases[raw] || "";
-      if (!target) {
-        var n = norm(raw);
-        var hit = window.albums.find(function(a){ return a && norm(a.id) === n; });
-        if (hit) target = hit.id;
+
+      var wanted = aliases[raw] || raw;
+      var n = norm(wanted);
+      var hit = list.find(function(a){
+        return a && (norm(a.id) === n || norm(a.title) === n || norm(a.reading) === n);
+      });
+
+      // Extra recovery for old Cathedral of Masks links whose slug changed.
+      if (!hit && n === "cathedralofmasks") {
+        hit = list.find(function(a){ return a && norm(a.title) === "cathedralofmasks"; });
       }
-      if (target && window.albums.some(function(a){ return a && a.id === target; })) {
-        params.set("id", target);
+
+      if (hit && hit.id) {
+        params.set("id", hit.id);
         history.replaceState(null, "", location.pathname + "?" + params.toString() + location.hash);
       }
     })();
