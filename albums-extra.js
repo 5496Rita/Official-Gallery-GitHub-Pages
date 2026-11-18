@@ -124,6 +124,60 @@
     album.registrationStatus = registrationStatusOverrides[album.id] || "unregistered";
   }
 
+
+  // Album themes (v70): concise one-line concepts shown before STORY on detail pages.
+  const themeOverrides = {
+    "beautiful-nightmare": "美しい悪夢／忘れられない記憶と永遠",
+    "persona": "楽器擬人化6キャラクター／それぞれのキャラクターソング",
+    "vanishing-reverie": "消えゆく夢と記憶／喪失のあとに残る余韻",
+    "celestial-diamond": "冬のダイヤモンド／六つの星が結ぶ冬空",
+    "devouring-eden": "食虫植物の楽園／美しさに捕食される誘惑",
+    "schattenblute": "影に咲く花／他人の色を捨て、自分の色で咲く",
+    "tarnished-beauty": "燻された銀／傷と時間が残す美しさ",
+    "beyond-sense": "五感の彼方／感覚を失ってなお残る記憶",
+    "twilight-remains": "黄昏の余韻／別れのあとに残るもの",
+    "zwischenraum": "狭間の世界／記憶と忘却、終わりと始まりの境界",
+    "daemonia": "六つの欲望と悪魔／罪を自分の力として見つめる",
+    "glass-abyss": "硝子の水槽／閉じた深淵に生きる六つの美しい魂",
+    "nocturne-royale": "退廃のカジノ／運命と心を賭ける真夜中のゲーム",
+    "marchen-labyrinth": "童話の迷宮／美しい結末の影に隠された痛み",
+    "velvet-dominion": "夜の女王／支配される夜から、自ら統べる夜へ",
+    "lunar-eclat": "鏡と月光／虚像を壊し、自分の美しさを取り戻す",
+    "luminous-ruin": "滅びの装飾／欠落から自分の輪郭を再構築する",
+    "oboromiyabi": "朧・妖・影／曖昧さそのものを美として抱く和幻想",
+    "sugar-deception": "アイドルと虚像／甘いファンサと依存の罠",
+    "fractured-order": "崩壊した秩序／混沌から新しい輪郭を得る",
+    "midnight-sirens": "夜の誘惑／堕ちるのではなく、自分で闇を選ぶ",
+    "enmusubi": "欲望と依存／切れない縁の艶やかさ",
+    "nocturnal-rite": "夜の儀式／罪と死を纏い、自分の美学を選ぶ",
+    "nachtgarten": "夜の庭／叶わない願いと壊れやすい美しさ",
+    "aeternitas": "永遠／個の輪郭を手放し、夜へ溶けていく",
+    "vitia": "罪の感情／六つの欲望を自分の一部として見つめる",
+    "silent-sovereign": "静かな主権／支配されず、自分のルールで立つ",
+    "black-coronation": "黒の戴冠／自らを自らの王として承認する",
+    "cathedral-of-masks": "仮面の大聖堂／偽りと本音のあいだに自分の核を作る",
+    "crown-of-jewel": "六つの宝石／異なる感情を冠として身につける",
+    "lune-noire": "月相と欲望／満ち欠ける感情と夜の引力",
+    "hollow-salvation": "空洞の救済／救われない夜を自分の王国に変える",
+    "crimson-covenant": "深紅の契約／終わりを知ったうえで交わす誓い",
+    "trace-of-perfume": "香りの記憶／六つの香調で辿る出会いと別れ",
+    "fatal-allure": "致命的な誘惑／理性を越えて欲望を選ぶ",
+    "dissonance-cry": "不協和と人工生命／壊れた音を新しい響きに変える",
+    "higan-zankyo": "彼岸と残響／届かないものを抱く和の夜",
+    "fallen-sanctuary": "堕ちた聖域／崩れた楽園の外で自分を選ぶ",
+    "elegy-of-night": "夜の哀歌／悲しみの残響を抱えて薄明へ",
+    "danse-macabre": "死の舞踏／終わりを知る者たちが今を踊る",
+    "rosarium-noir": "黒薔薇の聖堂／飾られる美から、自ら動く美へ",
+    "marionette-garden": "操り人形の庭／糸を切り、自分で歩く自由",
+    "yugatou": "誘蛾灯／危険な光へ近づく欲望と毒",
+    "funeral-bloom": "葬送と花／死の夜に咲く祈りと残響",
+  };
+
+  for (const album of albums) {
+    if (!album) continue;
+    if (themeOverrides[album.id]) album.theme = themeOverrides[album.id];
+  }
+
   const storyOverrides = {
     "beautiful-nightmare": [
       "夜の街で、見慣れた景色がほんの少しだけ歪み始める。灯りの消えた窓、名前のない影、追いつけない足音。『Phantom Parade』で始まるのは、失った誰かを探しているのか、自分自身の残像を追っているのかさえ分からない夜の行進だ。朝が来れば消えてしまうと知りながら、それでも主人公は歩みを止めない。",

@@ -94,6 +94,7 @@
         <h1 id="work-title"></h1>
         <p id="work-reading" class="work-reading" hidden></p>
         <p id="work-release" class="work-release"></p>
+        <div id="work-theme" class="work-theme" hidden></div>
         <div id="work-story" class="work-story" aria-label="Album description"></div>
 
         <div class="listen-now" aria-labelledby="listen-now-title">
@@ -156,7 +157,7 @@
 
   <script src="site-config.js?v=400"></script>
   <script src="albums-lite.js?v=565"></script>
-  <script src="albums-extra.js?v=6600"></script>
+  <script src="albums-extra.js?v=7000"></script>
   
   <script>
     // v65: repair legacy/variant album slugs before detail.js resolves the work.
@@ -205,6 +206,28 @@
   <script src="lyrics-cache-fix.js?v=3500"></script>
   <script src="detail-seo.js?v=5000"></script>
   <script src="detail.js?v=568"></script>
+  <script>
+    // v70: render a concise album theme before the story.
+    (function(){
+      function renderTheme(){
+        var el = document.getElementById("work-theme");
+        if (!el) return;
+        var list = (typeof albums !== "undefined" && Array.isArray(albums))
+          ? albums
+          : (Array.isArray(window.albums) ? window.albums : []);
+        var id = new URLSearchParams(location.search).get("id");
+        var album = list.find(function(a){ return a && a.id === id; });
+        if (!album || !album.theme) { el.hidden = true; return; }
+        el.textContent = album.theme;
+        el.hidden = false;
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", renderTheme, { once: true });
+      } else {
+        renderTheme();
+      }
+    })();
+  </script>
   <script src="v2.1.js?v=410"></script>
 
   <style>
@@ -237,6 +260,25 @@
       position: static;
       color: rgba(230, 215, 232, .34);
       font-size: 10px;
+    }
+    .work-theme {
+      margin: 22px 0 26px;
+      padding: 14px 0 14px 18px;
+      border-left: 1px solid rgba(198, 156, 190, .42);
+      color: rgba(239, 226, 239, .9);
+      font-size: clamp(14px, 1.15vw, 17px);
+      line-height: 1.8;
+      letter-spacing: .04em;
+    }
+    .work-theme::before {
+      content: "THEME";
+      display: block;
+      margin-bottom: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: .26em;
+      color: rgba(201, 150, 190, .62);
     }
   </style>
   <script>
