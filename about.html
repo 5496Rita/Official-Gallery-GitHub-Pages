@@ -201,6 +201,35 @@
   }
 </style>
 
+
+<style id="v74-voice-film">
+  .voice-section{position:relative;width:min(1180px,92vw);margin:30px auto 118px;padding:82px 0 0;border-top:1px solid var(--line)}
+  .voice-section:before{content:'';position:absolute;inset:0 -12vw auto;height:680px;pointer-events:none;background:radial-gradient(circle at 35% 20%,rgba(145,55,111,.16),transparent 34%),radial-gradient(circle at 72% 34%,rgba(74,68,159,.15),transparent 36%);filter:blur(2px)}
+  .voice-head{position:relative;display:grid;grid-template-columns:.78fr 1.22fr;gap:70px;align-items:start}
+  .voice-title small{display:block;font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.3em;color:#937f90;margin-bottom:16px}
+  .voice-title h2{margin:0;font:500 clamp(54px,8vw,108px)/.82 'Cormorant Garamond',serif;letter-spacing:.03em}
+  .voice-title p{margin:22px 0 0;font:500 10px/1.7 'Cormorant Garamond',serif;letter-spacing:.2em;color:#988497}
+  .voice-copy{position:relative;font-size:14px;line-height:2.15;color:#b9aabb}
+  .voice-copy>p{margin:0 0 30px}
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+  .voice-card{border:1px solid var(--line);padding:25px 24px 27px;background:rgba(255,255,255,.014)}
+  .voice-card small{display:block;font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.24em;color:#8d7a8b}
+  .voice-card h3{margin:11px 0 14px;font:500 25px/1 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:.06em;color:#eee4ed}
+  .voice-card p{margin:0;font-size:11px;line-height:1.95;color:#a998aa}
+  .voice-card b{color:#e7ccdd;font-weight:500}
+  .voice-film{position:relative;width:min(760px,82vw);margin:74px auto 0;padding:14px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008));border:1px solid rgba(230,200,222,.17);box-shadow:0 38px 100px rgba(0,0,0,.34)}
+  .voice-film:before{content:'';position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,rgba(166,64,121,.15),transparent 38%,rgba(100,95,192,.12));mix-blend-mode:screen}
+  .voice-film video{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#050307;filter:saturate(.9) contrast(1.03) brightness(.92)}
+  .voice-film figcaption{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:15px 4px 2px;color:#8f7d8e}
+  .voice-film figcaption strong{font:500 10px/1 'Cormorant Garamond',serif;letter-spacing:.25em;color:#cdbdca}
+  .voice-film figcaption span{font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-align:right}
+  .voice-closing{position:relative;margin:54px auto 0;text-align:center;max-width:820px}
+  .voice-closing p{margin:0;font-size:clamp(23px,3.4vw,42px);line-height:1.65;color:#e4d9e3}
+  .voice-closing small{display:block;margin-top:18px;font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.3em;color:#897688}
+  @media(max-width:850px){.voice-head{grid-template-columns:1fr;gap:32px}.voice-grid{grid-template-columns:1fr 1fr}.voice-section{padding-top:58px;margin-bottom:86px}.voice-film{width:min(620px,88vw);margin-top:52px}}
+  @media(max-width:560px){.voice-grid{grid-template-columns:1fr}.voice-section{width:90vw}.voice-title h2{font-size:64px}.voice-copy{font-size:12px}.voice-film{width:88vw;padding:8px}.voice-film figcaption{padding:11px 2px 2px;display:block}.voice-film figcaption span{display:block;text-align:left;margin-top:7px}.voice-closing{margin-top:38px}.voice-closing p{font-size:23px}}
+</style>
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -250,6 +279,49 @@
 </section>
 
 
+<section class="voice-section fade" aria-label="Voice model and project voice">
+  <div class="voice-head">
+    <div class="voice-title">
+      <small>THE VOICE / ORIGIN</small>
+      <h2>THE<br>VOICE</h2>
+      <p>THE HUMAN VOICE<br>BEHIND THE PROJECTS</p>
+    </div>
+    <div class="voice-copy">
+      <p>越黒リタとCROVEILの歌声は、プロジェクトの<strong>中の人の肉声を学習した音声モデル</strong>を軸に制作しています。人の声を起点にしながら、それぞれの世界観に合わせて歌声の輪郭をつくり直しています。</p>
+      <div class="voice-grid">
+        <article class="voice-card">
+          <small>01 / KOSHIKURO RITA</small>
+          <h3>越黒リタ</h3>
+          <p><b>27th ALBUM『Celestial Diamond』以降</b>、中の人の肉声を学習した音声モデルへ移行。それまでに築いてきた越黒リタの表現を引き継ぎながら、声そのものにもプロジェクトの実在感を重ねています。</p>
+        </article>
+        <article class="voice-card">
+          <small>02 / CROVEIL</small>
+          <h3>CROVEIL</h3>
+          <p><b>プロジェクト始動時から</b>、中の人の肉声を学習した音声モデルを使用。CROVEILの男性ボーカルとして再構築し、孤高・激情・支配といった世界を別の輪郭で描いています。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+  <figure class="voice-film">
+    <video id="aboutVoiceFilm" muted loop playsinline preload="metadata" poster="assets/about/voice-film-poster.jpg" aria-label="KOSHIKURO RITA and CROVEIL visual film">
+      <source src="assets/about/voice-film.mp4" type="video/mp4">
+    </video>
+    <figcaption><strong>TWO FACES. ONE SHADOW.</strong><span>VISUAL FILM / KOSHIKURO RITA × CROVEIL</span></figcaption>
+  </figure>
+  <div class="voice-closing">
+    <p>声の起点が現実にあっても、<br>そこから生まれる世界はひとつではない。</p>
+    <small>TWO PROJECTS / TWO VOICES / TWO WORLDS</small>
+  </div>
+</section>
+
+
+
+
+<section class="project-faces fade" aria-label="PROJECT VISUALS">
+  <figure class="project-face croveil-face"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><small>PROJECT 01</small><b>CROVEIL</b></figcaption></figure>
+  <figure class="project-face rita-face"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><small>PROJECT 02</small><b>越黒リタ</b><span>KOSHIKURO RITA</span></figcaption></figure>
+</section>
+
 <section class="social-follow fade" aria-label="Social media">
   <div class="social-follow-head">
     <div><small>SOCIAL / FOLLOW</small><h2>その先の夜へ。</h2></div>
@@ -269,11 +341,6 @@
       <span><strong>TikTok</strong><small>@RITA_KOSHIKURO</small></span><span class="arrow">↗</span>
     </a>
   </div>
-</section>
-
-<section class="project-faces fade" aria-label="PROJECT VISUALS">
-  <figure class="project-face croveil-face"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><small>PROJECT 01</small><b>CROVEIL</b></figcaption></figure>
-  <figure class="project-face rita-face"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><small>PROJECT 02</small><b>越黒リタ</b><span>KOSHIKURO RITA</span></figcaption></figure>
 </section>
 
 <section id="rita" class="world rita">
@@ -378,5 +445,25 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targe
 const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/h*100)+'%'},{passive:true});
 document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{const s=d.querySelector('summary span:last-child');s.textContent=d.open?'− CLOSE':'＋ READ'}));
 </script>
+
+<script id="v74-voice-film-script">
+(() => {
+  const video = document.getElementById('aboutVoiceFilm');
+  if (!video) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  const play = () => video.play().catch(() => {});
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) play();
+        else video.pause();
+      });
+    }, { rootMargin: '160px 0px', threshold: 0.08 });
+    io.observe(video);
+  } else play();
+})();
+</script>
+
 </body>
 </html>
