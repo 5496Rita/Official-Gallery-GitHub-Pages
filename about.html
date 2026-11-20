@@ -230,216 +230,154 @@
   @media(max-width:560px){.voice-grid{grid-template-columns:1fr}.voice-section{width:90vw}.voice-title h2{font-size:64px}.voice-copy{font-size:12px}.voice-film{width:88vw;padding:8px}.voice-film figcaption{padding:11px 2px 2px;display:block}.voice-film figcaption span{display:block;text-align:left;margin-top:7px}.voice-closing{margin-top:38px}.voice-closing p{font-size:23px}}
 </style>
 
+
+<style id="v75-about-clean">
+  /* v75: one idea per section, more whitespace, less repetition */
+  body{background:#08070a}
+  .v75-hero{min-height:auto;padding-bottom:88px}
+  .v75-hero .intro-showcase{min-height:calc(100svh - 92px);align-items:center}
+  .v75-hero .intro-copy{padding-top:38px}
+  .v75-hero .lead{max-width:540px}
+  .v75-core-genres{margin-top:30px}
+  .v75-core-genres span{opacity:.82}
+
+  .v75-about,.v75-links{width:min(1180px,88vw);margin:0 auto;padding:110px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .v75-about{display:grid;grid-template-columns:.75fr 1.25fr;gap:9vw;align-items:start}
+  .v75-section-label small,.v75-film-head small,.v75-links-head small{font:600 10px/1 'Cormorant Garamond',serif;letter-spacing:.28em;color:#9b8194}
+  .v75-section-label h2,.v75-film-head h2,.v75-links-head h2{margin:18px 0 0;font:500 clamp(38px,5vw,72px)/1.03 'Cormorant Garamond',serif;color:#eee6ed;letter-spacing:-.025em}
+  .v75-project-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .v75-project-pair article{padding:30px 28px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.018)}
+  .v75-project-pair small{font-size:9px;letter-spacing:.2em;color:#8f788a}
+  .v75-project-pair h3{margin:12px 0 14px;font:500 30px/1.05 'Cormorant Garamond',serif;color:#f0e8ef}
+  .v75-project-pair p{margin:0;color:#a99da7;line-height:1.9;font-size:13px}
+
+  .v75-why{padding-top:112px;padding-bottom:112px}
+  .v75-why .why-copy{max-width:610px}
+  .v75-why .why-copy p{font-size:14px;line-height:2.05;color:#b4a8b2}
+  .v75-why .why-close{margin-top:34px}
+
+  .v75-voice{padding:112px 0;margin-bottom:0;border-top:1px solid rgba(255,255,255,.08)}
+  .v75-voice .voice-title h2{font-size:clamp(58px,8vw,108px);line-height:.78}
+  .v75-voice-lead{max-width:620px;margin:0 0 34px!important;font-size:14px!important;line-height:2!important}
+  .v75-voice .voice-card{min-height:0;padding:27px 26px}
+  .v75-voice .voice-card p{font-size:12px;line-height:1.8}
+
+  .v75-film{width:min(1180px,88vw);margin:0 auto;padding:112px 0 124px;border-top:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:start}
+  .v75-film .voice-film{width:min(640px,100%);margin:0;justify-self:end}
+  .v75-film-head{position:sticky;top:120px}
+
+  .v75-links{padding-bottom:130px}
+  .v75-links-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:42px}
+  .v75-main-links{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .v75-main-links a{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;align-items:end;padding:28px 30px;min-height:150px;border:1px solid rgba(255,255,255,.1);text-decoration:none;background:rgba(255,255,255,.018);transition:.25s ease}
+  .v75-main-links a:hover{background:rgba(255,255,255,.045);transform:translateY(-2px)}
+  .v75-main-links small{grid-row:1/3;font-size:10px;color:#8b7686;align-self:start}
+  .v75-main-links strong{font:500 clamp(30px,4vw,52px)/1 'Cormorant Garamond',serif;color:#eee7ed}
+  .v75-main-links span{font-size:11px;color:#8e828c}
+  .v75-social-links{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px;border-top:1px solid rgba(255,255,255,.08);border-left:1px solid rgba(255,255,255,.08)}
+  .v75-social-links a{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none;color:#b9adb6;transition:.2s ease}
+  .v75-social-links a:hover{color:#fff;background:rgba(255,255,255,.035)}
+  .v75-social-links strong{font-size:11px;letter-spacing:.04em}.v75-social-links span{font-size:12px;color:#765f72}
+
+  @media(max-width:850px){
+    .v75-hero{padding-bottom:58px}.v75-about,.v75-film{grid-template-columns:1fr;gap:44px;padding:82px 0}.v75-about,.v75-links{width:90vw}.v75-project-pair{grid-template-columns:1fr 1fr}.v75-film{width:90vw}.v75-film-head{position:static}.v75-film .voice-film{justify-self:center;width:min(620px,100%)}.v75-main-links{grid-template-columns:1fr 1fr}.v75-social-links{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .v75-hero .intro-showcase{min-height:auto;padding-top:70px}.v75-hero .intro-copy{padding-top:0}.v75-core-genres{gap:7px}.v75-about,.v75-links,.v75-film{width:90vw;padding:70px 0}.v75-project-pair{grid-template-columns:1fr}.v75-why{padding:76px 0}.v75-voice{padding:76px 0}.v75-main-links{grid-template-columns:1fr}.v75-main-links a{min-height:120px}.v75-social-links{grid-template-columns:1fr}.v75-links-head{display:block}.v75-film{padding-bottom:84px}
+  }
+</style>
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <header class="top"><a href="index.html">← HOME</a><a href="archive.html">ARCHIVE →</a></header>
-<section class="intro">
+<section class="intro v75-hero">
   <div class="intro-showcase fade">
     <div class="intro-copy">
-      <p class="ey">KOSHIKURO RITA × CROVEIL / SOUND & WORLD</p>
+      <p class="ey">KOSHIKURO RITA × CROVEIL</p>
       <h1>ABOUT</h1>
       <p class="sound-kicker"><b>GOTHIC ROCK</b> × DARK ROCK × SYMPHONIC METAL × VISUAL KEI</p>
-      <p class="lead">耽美、退廃、幻想、激情。<br>物語ごとに音像を変えながら、闇の中にある美しさを描く音楽プロジェクト。</p>
-      <div class="genre-rail" aria-label="主な音楽ジャンル">
-        <span>GOTHIC ROCK</span><span>DARK ROCK</span><span>SYMPHONIC METAL</span><span>VISUAL KEI</span><span>DARK BALLAD</span><span>SHOEGAZE</span><span>INDUSTRIAL</span><span>DARK CABARET</span>
-      </div>
-      <div class="sound-summary">
-        <div><small>01 / CORE</small><strong>重厚なギターと低いベース</strong></div>
-        <div><small>02 / COLOR</small><strong>ピアノ・弦・チェンバロ</strong></div>
-        <div><small>03 / MOOD</small><strong>耽美・退廃・幻想・背徳</strong></div>
-        <div><small>04 / DYNAMICS</small><strong>囁きから激情まで</strong></div>
+      <p class="lead">耽美、退廃、幻想、激情。<br>ふたつの名前で、それぞれの夜を鳴らす。</p>
+      <div class="genre-rail v75-core-genres" aria-label="主な音楽ジャンル">
+        <span>GOTHIC ROCK</span><span>DARK ROCK</span><span>SYMPHONIC METAL</span><span>VISUAL KEI</span>
       </div>
     </div>
     <figure class="duo-hero-art" aria-label="越黒リタ × CROVEIL visual">
       <img src="assets/about/duo-hero.png" alt="越黒リタ × CROVEIL visual">
-      <figcaption><b>KOSHIKURO RITA × CROVEIL</b><span>TWO PROJECTS / ONE SHADOW</span></figcaption>
+      <figcaption><b>KOSHIKURO RITA × CROVEIL</b><span>TWO FACES. ONE SHADOW.</span></figcaption>
     </figure>
-  </div>
-  <div class="intro-nav fade">
-    <a href="#rita"><div><small>01 / KOSHIKURO RITA</small><strong>越黒リタ</strong></div><span>闇の奥にある美しさを掬い上げる。</span></a>
-    <a href="#croveil"><div><small>02 / CROVEIL</small><strong>CROVEIL</strong></div><span>美しく、危うく、そして気高く。</span></a>
   </div>
 </section>
 
-<section class="why-two fade" aria-label="どうしてふたつに分かれたのか">
+<section class="v75-about fade" aria-label="About the two projects">
+  <div class="v75-section-label"><small>ABOUT / TWO PROJECTS</small><h2>ふたつの名前。<br>ふたつの夜。</h2></div>
+  <div class="v75-project-pair">
+    <article><small>01 / KOSHIKURO RITA</small><h3>越黒リタ</h3><p>耽美、幻想、退廃、祈り。静かに沈みながら、感情の奥に触れていく世界。</p></article>
+    <article><small>02 / CROVEIL</small><h3>CROVEIL</h3><p>意志、支配、孤高、激情。鋭く、美しく、前へ進んでいく世界。</p></article>
+  </div>
+</section>
+
+<section class="why-two v75-why fade" aria-label="どうしてふたつに分かれたのか">
   <div class="why-label">
     <small>WHY TWO?</small>
     <h2>どうして、<br>ふたつに分かれたのか。</h2>
-    <p>TWO FACES. ONE SHADOW.</p>
   </div>
   <div class="why-copy">
-    <p>同じ闇を見ていても、そこから生まれる音は、ひとつではなかった。</p>
-    <p><strong>越黒リタ</strong>が描くのは、耽美、幻想、退廃、祈り。静かに沈みながら、感情の奥に触れていく世界。</p>
-    <p><strong>CROVEIL</strong>が描くのは、意志、支配、孤高、激情。鋭く、美しく、前へ進んでいく世界。</p>
-    <p>似ているようで、違う。離れているようで、どこかでつながっている。だから、ひとつにまとめることはしなかった。</p>
-    <p>それぞれの名前で、それぞれの夜を鳴らしている。</p>
+    <p>同じ闇を見ていても、そこから生まれる音はひとつではなかった。</p>
+    <p>似ているようで違うふたつの世界を、無理にひとつへまとめず、それぞれの名前で鳴らしている。</p>
     <div class="why-close">TWO FACES. ONE SHADOW.</div>
   </div>
 </section>
 
 
-<section class="voice-section fade" aria-label="Voice model and project voice">
+<section class="voice-section v75-voice fade" aria-label="Voice model and project voice">
   <div class="voice-head">
     <div class="voice-title">
-      <small>THE VOICE / ORIGIN</small>
-      <h2>THE<br>VOICE</h2>
+      <small>THE VOICE</small>
+      <h2>VOICE</h2>
       <p>THE HUMAN VOICE<br>BEHIND THE PROJECTS</p>
     </div>
     <div class="voice-copy">
-      <p>越黒リタとCROVEILの歌声は、プロジェクトの<strong>中の人の肉声を学習した音声モデル</strong>を軸に制作しています。人の声を起点にしながら、それぞれの世界観に合わせて歌声の輪郭をつくり直しています。</p>
+      <p class="v75-voice-lead">両PROJECTの歌声には、<strong>制作者自身の肉声を学習した音声モデル</strong>を使用しています。</p>
       <div class="voice-grid">
         <article class="voice-card">
           <small>01 / KOSHIKURO RITA</small>
           <h3>越黒リタ</h3>
-          <p><b>27th ALBUM『Celestial Diamond』以降</b>、中の人の肉声を学習した音声モデルへ移行。それまでに築いてきた越黒リタの表現を引き継ぎながら、声そのものにもプロジェクトの実在感を重ねています。</p>
+          <p><b>27th ALBUM『Celestial Diamond』以降</b>、肉声学習モデルへ移行。</p>
         </article>
         <article class="voice-card">
           <small>02 / CROVEIL</small>
           <h3>CROVEIL</h3>
-          <p><b>プロジェクト始動時から</b>、中の人の肉声を学習した音声モデルを使用。CROVEILの男性ボーカルとして再構築し、孤高・激情・支配といった世界を別の輪郭で描いています。</p>
+          <p><b>プロジェクト始動時から</b>、肉声学習モデルを使用。</p>
         </article>
       </div>
     </div>
   </div>
+</section>
+
+<section class="v75-film fade" aria-label="Visual film">
+  <div class="v75-film-head"><small>VISUAL FILM</small><h2>TWO FACES.<br>ONE SHADOW.</h2></div>
   <figure class="voice-film">
     <video id="aboutVoiceFilm" muted loop playsinline preload="metadata" poster="assets/about/voice-film-poster.jpg" aria-label="KOSHIKURO RITA and CROVEIL visual film">
       <source src="assets/about/voice-film.mp4" type="video/mp4">
     </video>
-    <figcaption><strong>TWO FACES. ONE SHADOW.</strong><span>VISUAL FILM / KOSHIKURO RITA × CROVEIL</span></figcaption>
+    <figcaption><strong>KOSHIKURO RITA × CROVEIL</strong><span>ABOUT VISUAL</span></figcaption>
   </figure>
-  <div class="voice-closing">
-    <p>声の起点が現実にあっても、<br>そこから生まれる世界はひとつではない。</p>
-    <small>TWO PROJECTS / TWO VOICES / TWO WORLDS</small>
-  </div>
 </section>
 
-
-
-
-<section class="project-faces fade" aria-label="PROJECT VISUALS">
-  <figure class="project-face croveil-face"><img src="assets/about/portrait-main.jpeg" alt="CROVEIL visual"><figcaption><small>PROJECT 01</small><b>CROVEIL</b></figcaption></figure>
-  <figure class="project-face rita-face"><img src="assets/about/portrait-alt.jpeg" alt="越黒リタ visual"><figcaption><small>PROJECT 02</small><b>越黒リタ</b><span>KOSHIKURO RITA</span></figcaption></figure>
-</section>
-
-<section class="social-follow fade" aria-label="Social media">
-  <div class="social-follow-head">
-    <div><small>SOCIAL / FOLLOW</small><h2>その先の夜へ。</h2></div>
-    <p>新曲、映像、制作の断片。作品の外側で続いていくふたつのPROJECTを、それぞれの場所で。</p>
+<section class="v75-links fade" aria-label="Links">
+  <div class="v75-links-head"><small>LINKS</small><h2>その先の夜へ。</h2></div>
+  <div class="v75-main-links">
+    <a href="world.html"><small>01</small><strong>WORLD</strong><span>人物・イラスト・コミック →</span></a>
+    <a href="archive.html"><small>02</small><strong>ARCHIVE</strong><span>音楽作品の記録 →</span></a>
   </div>
-  <div class="social-links">
-    <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener" aria-label="YouTube">
-      <span><strong>YouTube</strong><small>RITA021K</small></span><span class="arrow">↗</span>
-    </a>
-    <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener" aria-label="X / Twitter">
-      <span><strong>X / Twitter</strong><small>@RITA_5496SK</small></span><span class="arrow">↗</span>
-    </a>
-    <a href="https://instagram.com/rita_kskr" target="_blank" rel="noopener" aria-label="Instagram">
-      <span><strong>Instagram</strong><small>@RITA_KSKR</small></span><span class="arrow">↗</span>
-    </a>
-    <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener" aria-label="TikTok">
-      <span><strong>TikTok</strong><small>@RITA_KOSHIKURO</small></span><span class="arrow">↗</span>
-    </a>
+  <div class="v75-social-links">
+    <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener"><strong>YouTube</strong><span>↗</span></a>
+    <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener"><strong>X / Twitter</strong><span>↗</span></a>
+    <a href="https://instagram.com/rita_kskr" target="_blank" rel="noopener"><strong>Instagram</strong><span>↗</span></a>
+    <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener"><strong>TikTok</strong><span>↗</span></a>
   </div>
 </section>
-
-<section id="rita" class="world rita">
-<div class="world-inner">
-  <div class="world-head fade">
-    <div><p class="world-index">01 / KOSHIKURO RITA</p><h2>越黒リタ</h2><p class="alias">Beauty blooming in the dark.</p></div>
-    <p class="statement">目指すのは、ただ暗い音楽でも、ただ美しい音楽でもない。<br><b>闇にしか咲かない感情を、ひとつの音楽として昇華すること。</b></p>
-  </div>
-  <div class="soundline fade"><span class="pill">GOTHIC ROCK</span><span class="pill">DARK ROCK</span><span class="pill">SYMPHONIC METAL</span><span class="pill">VISUAL KEI</span><span class="pill">DARK BALLAD</span><span class="pill">SHOEGAZE</span><span class="pill">DARK CABARET</span><span class="pill">INDUSTRIAL</span></div>
-  <div class="chapter fade">
-    <div class="chapter-label"><small>THE SOUND</small><h3>物語に、<br>ふさわしい音を。</h3></div>
-    <div class="chapter-copy"><p>ゴシックロック、ダークロック、シンフォニックメタル、ヴィジュアル系を基盤としながら、特定のジャンルにとらわれることなく、耽美で幻想的な世界を描き出す。</p><p>荘厳なオーケストレーションと重厚なギター。闇の底から響くベース、感情のうねりを刻むドラム。チェンバロ、ピアノ、ヴァイオリン、シンセサイザーが重なり、優雅さと激しさ、静寂と激情が交錯する。</p><p><strong>一曲ごとに異なる物語があり、その物語にふさわしい音がある。</strong> 音楽は物語の背景ではなく、そこに息づく感情そのものとして存在する。</p></div>
-  </div>
-  <div class="duality fade"><div class="pair"><span>LOVE</span><i>愛 / 呪い</i><span>CURSE</span></div><div class="pair"><span>SOLITUDE</span><i>孤独 / 誇り</i><span>PRIDE</span></div><div class="pair"><span>PRAYER</span><i>祈り / 背徳</i><span>TABOO</span></div><div class="pair"><span>SALVATION</span><i>救済 / 破滅</i><span>RUIN</span></div></div>
-  <div class="quote fade"><p>闇を恐れるのではなく、<br>その奥にある美しさを掬い上げる。</p><small>KOSHIKURO RITA / PHILOSOPHY</small></div>
-  <div class="manifesto-wrap fade"><details><summary><span>FULL MANIFESTO — 越黒リタ</span><span>＋ READ</span></summary><div class="fulltext">
-<p>越黒リタの音楽は、ゴシックロック、ダークロック、シンフォニックメタル、ヴィジュアル系を基盤としながら、特定のジャンルにとらわれることなく、耽美で幻想的な世界を描き出す。</p>
-<p>荘厳なオーケストレーションと重厚なギターサウンド、闇の底から響くようなベース、感情のうねりを刻むドラム。そこに、チェンバロやピアノの繊細な旋律、ヴァイオリンの哀切な響き、シンセサイザーが織りなす幻想的な音色が重なり、優雅さと激しさ、静寂と激情が交錯する。</p>
-<p>楽曲によっては、クラシカルな気品をまとったシンフォニックロック、退廃的な美しさを湛えたダークバラード、歪んだギターと残響が感情を包み込むシューゲイザー、妖しく戯れるダークキャバレー、冷たい電子音が不穏な情景を描くインダストリアルなど、多彩な音楽的要素を取り入れる。</p>
-<p>しかし、それらは単なるジャンルの融合ではない。</p><p><strong>一曲ごとに異なる物語があり、その物語にふさわしい音がある。</strong></p>
-<p>ある時は、月光に照らされた古城を思わせる荘厳な旋律。ある時は、硝子細工のように脆く美しいピアノ。ある時は、抑えきれない感情を解き放つ激しいツインギター。またある時は、深い孤独を映し出す、静かで長い残響。</p>
-<p>音楽は物語の背景ではなく、そこに息づく感情そのものとして存在する。</p>
-<p>越黒リタが描くのは、愛と呪い、孤独と誇り、祈りと背徳、救済と破滅が隣り合う世界。</p>
-<p>そこでは、美しいものが必ずしも善であるとは限らず、闇が必ずしも絶望を意味するわけでもない。甘美な旋律の奥には痛みが潜み、激しい轟音の中には儚い祈りが息づいている。</p>
-<p>囁くような静けさから、すべてを飲み込むような激情へ。そして、嵐が過ぎ去った後に残る、深い余韻へ。</p>
-<p>その感情の移ろいを、旋律、音色、リズム、そして言葉によって描き出していく。</p>
-<p>古典的なゴシックの荘厳さと、現代的なロックの衝動。シンフォニックな壮麗さと、オルタナティブな自由さ。幻想的な物語性と、剥き出しの感情。</p>
-<p>それらすべてが、越黒リタの音楽を形づくる。</p>
-<p>目指すのは、ただ暗い音楽でも、ただ美しい音楽でもない。</p>
-<p><strong>美しさの中に潜む毒を、絶望の中に残された誇りを、そして闇にしか咲かない感情を、ひとつの音楽として昇華すること。</strong></p>
-<p>闇を恐れるのではなく、その奥にある美しさを掬い上げる。</p><p>それが、越黒リタの音楽である。</p>
-</div></details></div>
-</div>
-</section>
-
-<section id="croveil" class="world croveil">
-<div class="world-inner">
-  <div class="world-head fade">
-    <div><p class="world-index">02 / CROVEIL</p><h2>CROVEIL</h2><p class="alias">The Veiled Crow — 黒紫の帳</p></div>
-    <p class="statement">美しさの奥に潜む狂気と、静寂の中に秘められた激情。<br><b>美しく、危うく、そして気高く。</b></p>
-  </div>
-  <div class="soundline fade"><span class="pill">VISUAL KEI ROCK</span><span class="pill">GOTHIC METAL</span><span class="pill">SYMPHONIC METAL</span><span class="pill">BAROQUE</span><span class="pill">DARK ELEGANCE</span></div>
-  <div class="chapter fade">
-    <div class="chapter-label"><small>THE PHILOSOPHY</small><h3>運命ではなく、<br>意志を選ぶ。</h3></div>
-    <div class="chapter-copy"><p>CROVEILが紡ぐのは、美しさの奥に潜む狂気と、静寂の中に秘められた激情を描く、耽美なるゴシック・サウンド。</p><p>重厚なサウンドの中にも耳に残る旋律美を大切にし、繊細な囁きから感情を解き放つ力強い歌声まで、陰影に富んだ表現で聴く者を物語の深淵へと誘う。</p><p><strong>その中心にあるのは、誰かに与えられた運命ではなく、自らの意志によって生き方を選び取る存在の美学。</strong></p></div>
-  </div>
-  <div class="duality fade"><div class="pair"><span>BEAUTY</span><i>美 / 残酷</i><span>CRUELTY</span></div><div class="pair"><span>ELEGANCE</span><i>気品 / 狂気</i><span>MADNESS</span></div><div class="pair"><span>LOVE</span><i>愛情 / 執着</i><span>OBSESSION</span></div><div class="pair"><span>FREEDOM</span><i>自由 / 支配</i><span>DOMINATION</span></div></div>
-  <div class="quote fade"><p>闇は、恐れるためのものではない。</p><small>CROVEIL / THE VEILED CROW</small></div>
-  <div class="manifesto-wrap fade"><details><summary><span>FULL MANIFESTO — CROVEIL</span><span>＋ READ</span></summary><div class="fulltext">
-<p><strong>CROVEIL — The Veiled Crow / 黒紫の帳</strong></p><p>CROVEILが紡ぐのは、美しさの奥に潜む狂気と、静寂の中に秘められた激情を描く、耽美なるゴシック・サウンド。</p>
-<p>ヴィジュアル系ロックの妖艶な表現力を礎に、ゴシックメタルの重厚さ、シンフォニックメタルの壮麗さ、バロック音楽の気品を融合。鋭く切り込むギターリフ、深くうねるベース、劇的な展開を生み出すドラム、荘厳な鍵盤やオーケストレーションが幾重にも重なり、ひとつの楽曲を壮大な舞台劇へと昇華させる。</p>
-<p>その音楽は、ただ暗く、激しいだけではない。</p><p>闇の中でこそ鮮やかに浮かび上がる旋律。冷たい静寂を切り裂く情熱。優雅な微笑みの裏に隠された危うい衝動。</p>
-<p>重厚なサウンドの中にも耳に残る旋律美を大切にし、繊細な囁きから感情を解き放つ力強い歌声まで、陰影に富んだ表現によって聴く者を物語の深淵へと誘う。</p>
-<p>CROVEILの世界において、<strong>美しさと残酷さ、気品と狂気、愛情と執着、自由と支配は、決して相反するものではない。</strong></p>
-<p>それらは互いを映し出す鏡であり、ひとつの感情が持つ異なる表情にすぎない。</p><p>愛するがゆえに傷つけること。自由を望みながら、何かに囚われること。永遠を求めながら、終わりの美しさに魅せられること。</p>
-<p>人が胸の奥に隠している矛盾や欲望を、CROVEILは否定しない。善悪という単純な境界で裁くこともなく、その感情が最も美しく、最も危うく輝く瞬間を描き出す。</p>
-<p>物語の舞台は、月光に沈むゴシック宮殿、深紅のベルベットに彩られた夜の社交場、運命が交錯する幻想の世界、あるいは神々の権威さえ揺らぐ静謐な玉座へと移り変わる。</p>
-<p>しかし、どのような世界においても、その中心にあるのは<strong>誰かに与えられた運命ではなく、自らの意志によって生き方を選び取る存在の美学</strong>である。</p>
-<p>CROVEILが描く支配とは、必ずしも力によって他者を屈服させることではない。</p><p>言葉を尽くさずとも空気を変える存在感。触れることなく心を揺さぶる誘惑。誰にも理解されずとも、自らの価値を疑わない孤高の精神。</p>
-<p>時には冷酷な観察者として運命を見つめ、時には妖艶な誘惑者として感情を翻弄し、時には神の祝福さえ退ける傲慢な貴公子として、その姿を変えてゆく。</p>
-<p>それは単なる強さへの憧れではなく、<strong>他者の価値観によって自分自身の輪郭を失わないための、静かで揺るぎない誇り</strong>でもある。</p>
-<p>一方で、その気高さは決して完全無欠ではない。優雅な振る舞いの奥には孤独があり、冷静な眼差しの裏には激情が眠り、すべてを見透かすような微笑みにさえ、誰にも明かされない傷や渇望が潜んでいる。</p>
-<p>完全ではないからこそ美しい。矛盾を抱えているからこそ魅力的である。</p><p>CROVEILは、そんな人間の不完全さを、闇に咲く一輪の黒薔薇のように描き続ける。</p>
-<p>楽曲ごとに異なる物語を纏いながらも、そこには一貫して、退廃の中に宿る気品、危うさの中に潜む美、そして何ものにも屈しない意志が流れている。</p>
-<p>激しさだけに頼らず、静けさだけに閉じこもらず、優雅さと破壊衝動が交差する瞬間を音楽へと変えてゆく。</p>
-<p><strong>闇は、恐れるためのものではない。</strong></p><p>それは欲望を映す鏡であり、孤独を包む衣であり、まだ名も持たない美しさが生まれる場所。</p>
-<p>CROVEILはその闇を纏い、微笑みながら物語の幕を開く。</p><p>誰かの救済を待つことなく。誰かの正義に跪くことなく。誰かの描いた結末に従うことなく。</p>
-<p><strong>美しく、危うく、そして気高く。</strong></p><p>黒紫の帳が下りるとき、そこにはまだ誰も知らない、新たな夜の物語が始まる。</p>
-</div></details></div>
-</div>
-</section>
-
-
-<section class="fit-check fade" aria-label="音楽の相性チェック">
-  <div class="fit-card maybe">
-    <small>MAY NOT BE FOR YOU IF…</small>
-    <h3>こんな聴き方を求めるなら、<br>少し違うかもしれない。</h3>
-    <ul>
-      <li>明るく爽やかなポップだけを聴きたい</li>
-      <li>できるだけシンプルでストレートなロックが好き</li>
-      <li>歌詞には日常的で現実的な題材を求める</li>
-      <li>シンフォニックな音やゴシックな世界観は少し重く感じる</li>
-      <li>物語性より、気軽さや耳馴染みのよさを最優先したい</li>
-    </ul>
-  </div>
-  <div class="fit-card like">
-    <small>BUT IF YOU LIKE…</small>
-    <h3>これらに惹かれるなら、<br>きっと相性はいい。</h3>
-    <ul>
-      <li>ゴシック、ダークファンタジー、ヴィジュアル系</li>
-      <li>シンフォニックメタルや重厚なロックサウンド</li>
-      <li>耽美、退廃、幻想、背徳を感じる世界観</li>
-      <li>一曲ごとに景色や物語が変わるアルバム</li>
-      <li>美しさと危うさが同居する音楽やビジュアル</li>
-    </ul>
-  </div>
-  <p class="fit-note">好みを線引きするためではなく、この世界が自分に合うかを最初に知るための目安です。</p>
-</section>
-<section class="closing"><p class="line">TWO NAMES / TWO WORLDS</p><h2>音と絵と言葉で、<br>闇の輪郭を描き続ける。</h2><p>越黒リタとCROVEIL。異なる輪郭を持つふたつのPROJECTが、それぞれの夜と物語を鳴らしていく。</p><div class="doors about-exits"><a href="world.html"><small>01</small><strong>WORLD</strong><span>人物・イラスト・コミックへ</span></a><a href="archive.html"><small>02</small><strong>ARCHIVE</strong><span>音楽作品の記録へ</span></a></div></section>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
 const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/h*100)+'%'},{passive:true});
