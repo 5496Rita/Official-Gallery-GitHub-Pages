@@ -204,8 +204,8 @@
   </script>
   <script src="album-chapters.js?v=4900"></script>
   <script>
-    // v77: register chapter times now, but expose the full-album URL only after release.
-    // This keeps pre-release pages readable while preventing playback before 00:00 JST.
+    // v78: register chapter times now, but expose the full-album URL only after release.
+    // Add ?preview=1 to a detail URL for manual pre-release playback checks.
     (function(){
       window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {};
       Object.assign(window.ALBUM_CHAPTERS, {
@@ -228,8 +228,10 @@
       window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {};
 
       var now = Date.now();
+      var previewMode = new URLSearchParams(location.search).get("preview") === "1";
+      window.GALLERY_PREVIEW_MODE = previewMode;
       Object.keys(scheduled).forEach(function(id){
-        if (now >= new Date(scheduled[id].release).getTime()) {
+        if (previewMode || now >= new Date(scheduled[id].release).getTime()) {
           window.ALBUM_FULL_ALBUMS[id] = scheduled[id].url;
         } else {
           // Remove only this v77 scheduled mapping if an older patch exposed it early.
@@ -305,6 +307,19 @@
       line-height: 1.8;
       letter-spacing: .04em;
     }
+    .preview-mode-marker {
+      position: absolute;
+      left: 14px;
+      top: 10px;
+      z-index: 5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: .08em;
+      color: rgba(230, 215, 232, .38);
+      pointer-events: none;
+      user-select: none;
+    }
     .release-lock-marker {
       position: absolute;
       left: 14px;
@@ -356,6 +371,7 @@
         return !!String(mapped || scheduled || direct || linked || "").trim();
       }
       function releaseLocked(id){
+        if (window.GALLERY_PREVIEW_MODE) return false;
         var item = window.ALBUM_SCHEDULED_VIDEOS && window.ALBUM_SCHEDULED_VIDEOS[id];
         return !!(item && Date.now() < new Date(item.release).getTime());
       }
@@ -369,7 +385,7 @@
         var uploaded = hasFullAlbumVideo(id, album);
         var locked = releaseLocked(id);
 
-        frame.querySelectorAll(".video-status-marker, .release-lock-marker").forEach(function(n){ n.remove(); });
+        frame.querySelectorAll(".video-status-marker, .release-lock-marker, .preview-mode-marker").forEach(function(n){ n.remove(); });
         frame.classList.toggle("video-not-uploaded", !uploaded);
         frame.classList.toggle("release-locked", locked);
 
@@ -378,6 +394,14 @@
         marker.textContent = 'videoStatus: "' + (uploaded ? 'uploaded' : 'not-uploaded') + '"';
         marker.setAttribute("aria-hidden", "true");
         frame.appendChild(marker);
+
+        if (window.GALLERY_PREVIEW_MODE) {
+          var preview = document.createElement("span");
+          preview.className = "preview-mode-marker";
+          preview.textContent = "previewMode: true";
+          preview.setAttribute("aria-hidden", "true");
+          frame.appendChild(preview);
+        }
 
         if (locked) {
           var item = window.ALBUM_SCHEDULED_VIDEOS[id];
