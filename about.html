@@ -287,121 +287,106 @@
   }
 </style>
 
+
+<style id="v80-brand-about">
+:root{--v80bg:#070609;--v80ink:#f4eef3;--v80muted:#9b8f99;--v80line:rgba(255,255,255,.10);--v80rita:#b04b82;--v80cro:#7771c8}
+body{background:var(--v80bg);color:var(--v80ink)}
+.v80{overflow:hidden}.v80 .fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}.v80 .fade.show{opacity:1;transform:none}
+.v80-hero{min-height:100svh;width:min(1460px,94vw);margin:0 auto;padding:110px 0 54px;display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(28px,5vw,78px);align-items:center}
+.v80-kicker,.v80-project>span,.v80-voice header>span,.v80-film-copy>span,.v80-enter>span{font:600 9px/1 'Cormorant Garamond',serif;letter-spacing:.34em;color:#9a8495}
+.v80-hero h1{margin:24px 0 0;font:500 clamp(68px,9.8vw,150px)/.77 'Cormorant Garamond',serif;letter-spacing:-.025em}.v80-hero h1 em{font-style:italic;color:#b7aab5;font-weight:400}
+.v80-ja{margin:38px 0 0;font-size:clamp(15px,1.4vw,20px);line-height:2;color:#c5b9c3}.v80-genres{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:32px;color:#8f838d;font:500 8px/1 'Cormorant Garamond',serif;letter-spacing:.22em}.v80-genres span+span:before{content:'×';margin-right:16px;color:#584d57}
+.v80-hero-art{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--v80line);background:#0a080c}.v80-hero-art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.84) contrast(1.05) brightness(.91)}.v80-hero-art:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(7,6,9,.55)),linear-gradient(90deg,rgba(7,6,9,.16),transparent 35%);pointer-events:none}
+.v80-origin{width:min(1180px,88vw);margin:0 auto;padding:145px 0 155px;border-top:1px solid var(--v80line);border-bottom:1px solid var(--v80line);text-align:center}.v80-origin p{margin:0;font-size:clamp(25px,3.2vw,48px);line-height:1.9;letter-spacing:.03em;color:#ded4dc}
+.v80-projects{width:min(1180px,88vw);margin:0 auto;padding:125px 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(38px,6vw,90px);align-items:center}.v80-project-divider{width:1px;height:250px;background:var(--v80line)}.v80-project h2{margin:20px 0 10px;font:500 clamp(52px,7vw,96px)/.9 'Cormorant Garamond','Noto Serif JP',serif;letter-spacing:-.02em}.v80-project.rita h2{color:#e9dce5}.v80-project.croveil h2{color:#e7e5f7}.v80-en{margin:18px 0 0;font:italic 500 clamp(18px,2vw,28px)/1.4 'Cormorant Garamond',serif;letter-spacing:.03em}.v80-project.rita .v80-en{color:#d48aae}.v80-project.croveil .v80-en{color:#a9a6e9}.v80-desc{margin:28px 0 0;color:#9f949d;font-size:13px;line-height:2.1}
+.v80-voice{width:min(1180px,88vw);margin:0 auto;padding:130px 0;border-top:1px solid var(--v80line)}.v80-voice header{display:grid;grid-template-columns:.72fr 1.28fr;column-gap:7vw;align-items:end}.v80-voice header>span{grid-column:1}.v80-voice h2{grid-column:1;margin:20px 0 0;font:500 clamp(42px,5.5vw,76px)/1.05 'Cormorant Garamond','Noto Serif JP',serif}.v80-voice header p{grid-column:2;grid-row:1/3;margin:0;color:#aaa0a8;font-size:13px;line-height:2.1;max-width:570px}.v80-voice-lines{margin-top:65px;border-top:1px solid var(--v80line)}.v80-voice-lines>div{display:grid;grid-template-columns:1fr .9fr 1.1fr;gap:20px;align-items:center;min-height:92px;border-bottom:1px solid var(--v80line)}.v80-voice-lines span{font:500 12px/1 'Cormorant Garamond',serif;letter-spacing:.18em;color:#d6cad3}.v80-voice-lines strong{font:500 9px/1.5 'Cormorant Garamond',serif;letter-spacing:.18em;color:#887c86}.v80-voice-lines b{font-weight:400;font-size:13px;color:#b8adb6;text-align:right}
+.v80-film{width:min(1180px,88vw);margin:0 auto;padding:125px 0 145px;border-top:1px solid var(--v80line);display:grid;grid-template-columns:.7fr 1.3fr;gap:7vw;align-items:start}.v80-film-copy{position:sticky;top:105px}.v80-film-copy h2{margin:20px 0 0;font:500 clamp(48px,6vw,86px)/.92 'Cormorant Garamond',serif;letter-spacing:-.015em}.v80-film figure{margin:0;justify-self:end;width:min(680px,100%);padding:10px;border:1px solid var(--v80line);background:#09070b}.v80-film video{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;filter:saturate(.86) contrast(1.04) brightness(.9)}.v80-film figcaption{padding:14px 3px 4px;font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.25em;color:#796e77;text-align:right}
+.v80-enter{padding:145px 6vw 92px;border-top:1px solid var(--v80line);background:radial-gradient(circle at 50% 15%,rgba(105,61,110,.11),transparent 34%);text-align:center}.v80-enter h2{margin:24px 0 0;font:500 clamp(48px,7vw,96px)/1 'Cormorant Garamond','Noto Serif JP',serif}.v80-primary-links{width:min(1000px,88vw);margin:74px auto 0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--v80line);border-bottom:1px solid var(--v80line)}.v80-primary-links a{min-height:160px;padding:28px 30px;text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;align-items:end;text-align:left;transition:.25s;background:rgba(255,255,255,.008)}.v80-primary-links a+a{border-left:1px solid var(--v80line)}.v80-primary-links a:hover{background:rgba(255,255,255,.03)}.v80-primary-links small{grid-column:1/3;align-self:start;font:500 7px/1 'Cormorant Garamond',serif;letter-spacing:.22em;color:#7f737c}.v80-primary-links strong{font:500 clamp(32px,4vw,52px)/1 'Cormorant Garamond',serif;letter-spacing:.03em}.v80-primary-links i{font-style:normal;font-size:30px;color:#8a7e87}.v80-socials{width:min(720px,84vw);margin:36px auto 0;display:flex;justify-content:center;gap:14px 28px;flex-wrap:wrap}.v80-socials a{text-decoration:none;color:#897d86;font:500 9px/1 'Cormorant Garamond',serif;letter-spacing:.16em}.v80-socials a:hover{color:#d7cad4}
+@media(max-width:900px){.v80-hero{grid-template-columns:1fr;padding-top:105px}.v80-hero-copy{padding:25px 2vw 0}.v80-hero-art{order:-1;aspect-ratio:16/10}.v80-origin{padding:105px 0}.v80-projects{gap:32px}.v80-voice header,.v80-film{grid-template-columns:1fr}.v80-voice header p{grid-column:1;grid-row:auto;margin-top:32px}.v80-film{gap:44px}.v80-film-copy{position:static}.v80-film figure{justify-self:center;width:min(620px,100%)}}
+@media(max-width:600px){.top{height:58px}.progress{top:58px}.v80-hero{width:92vw;padding:82px 0 48px}.v80-hero h1{font-size:62px;line-height:.82}.v80-ja{margin-top:25px}.v80-genres{gap:9px}.v80-genres span+span:before{margin-right:9px}.v80-origin{width:90vw;padding:76px 0 82px}.v80-origin p{font-size:22px;line-height:1.8}.v80-projects{width:90vw;padding:78px 0;grid-template-columns:1fr}.v80-project-divider{width:100%;height:1px}.v80-project{padding:6px 0 12px}.v80-project h2{font-size:58px}.v80-voice{width:90vw;padding:80px 0}.v80-voice-lines{margin-top:42px}.v80-voice-lines>div{grid-template-columns:1fr;gap:8px;padding:22px 0}.v80-voice-lines b{text-align:left}.v80-film{width:90vw;padding:78px 0 90px}.v80-film-copy h2{font-size:52px}.v80-film figure{padding:7px}.v80-enter{padding:92px 0 68px}.v80-primary-links{grid-template-columns:1fr;width:90vw;margin-top:52px}.v80-primary-links a+a{border-left:0;border-top:1px solid var(--v80line)}.v80-primary-links a{min-height:130px}.v80-socials{gap:18px 22px}}
+</style>
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <header class="top"><a href="index.html">← HOME</a><a href="archive.html">ARCHIVE →</a></header>
-<section class="intro v75-hero">
-  <div class="intro-showcase fade">
-    <div class="intro-copy">
-      <p class="ey">KOSHIKURO RITA × CROVEIL</p>
-      <h1>ABOUT</h1>
-      <p class="sound-kicker"><b>GOTHIC ROCK</b> × DARK ROCK × SYMPHONIC METAL × VISUAL KEI</p>
-      <p class="lead">耽美、退廃、幻想、激情。<br>ふたつの名前で、それぞれの夜を鳴らす。</p>
-      <div class="genre-rail v75-core-genres" aria-label="主な音楽ジャンル">
-        <span>GOTHIC ROCK</span><span>DARK ROCK</span><span>SYMPHONIC METAL</span><span>VISUAL KEI</span>
-      </div>
+
+<main class="v80">
+  <section class="v80-hero fade" aria-label="KOSHIKURO RITA and CROVEIL">
+    <div class="v80-hero-copy">
+      <p class="v80-kicker">KOSHIKURO RITA × CROVEIL</p>
+      <h1>TWO FACES.<br><em>ONE SHADOW.</em></h1>
+      <p class="v80-ja">ふたつの名前で、<br>それぞれの夜を鳴らす。</p>
+      <div class="v80-genres" aria-label="Music genres"><span>GOTHIC ROCK</span><span>DARK ROCK</span><span>SYMPHONIC METAL</span><span>VISUAL KEI</span></div>
     </div>
-    <figure class="duo-hero-art" aria-label="越黒リタ × CROVEIL visual">
+    <figure class="v80-hero-art">
       <img src="assets/about/duo-hero.png" alt="越黒リタ × CROVEIL visual">
-      <figcaption><b>KOSHIKURO RITA × CROVEIL</b><span>TWO FACES. ONE SHADOW.</span></figcaption>
     </figure>
-  </div>
-</section>
+  </section>
 
-<section class="v75-about fade" aria-label="About the two projects">
-  <div class="v75-section-label"><small>ABOUT / TWO PROJECTS</small><h2>ふたつの名前。<br>ふたつの夜。</h2></div>
-  <div class="v75-project-pair">
-    <article><small>01 / KOSHIKURO RITA</small><h3>越黒リタ</h3><p>耽美、幻想、退廃、祈り。静かに沈みながら、感情の奥に触れていく世界。</p></article>
-    <article><small>02 / CROVEIL</small><h3>CROVEIL</h3><p>意志、支配、孤高、激情。鋭く、美しく、前へ進んでいく世界。</p></article>
-  </div>
-</section>
+  <section class="v80-origin fade" aria-label="Why two projects">
+    <p>同じ闇を見ていても、<br>そこから生まれる音は、ひとつではなかった。</p>
+  </section>
 
-<section class="why-two v75-why fade" aria-label="どうしてふたつに分かれたのか">
-  <div class="why-label">
-    <small>WHY TWO?</small>
-    <h2>どうして、<br>ふたつに分かれたのか。</h2>
-  </div>
-  <div class="why-copy">
-    <p>同じ闇を見ていても、そこから生まれる音はひとつではなかった。</p>
-    <p>似ているようで違うふたつの世界を、無理にひとつへまとめず、それぞれの名前で鳴らしている。</p>
-    <div class="why-close">TWO FACES. ONE SHADOW.</div>
-  </div>
-</section>
+  <section class="v80-projects fade" aria-label="Two projects">
+    <article class="v80-project rita">
+      <span>01 / KOSHIKURO RITA</span>
+      <h2>越黒リタ</h2>
+      <p class="v80-en">Beauty sinks into darkness.</p>
+      <p class="v80-desc">幻想・耽美・祈り・退廃。<br>静かに沈みながら、感情の奥へ。</p>
+    </article>
+    <div class="v80-project-divider" aria-hidden="true"></div>
+    <article class="v80-project croveil">
+      <span>02 / CROVEIL</span>
+      <h2>CROVEIL</h2>
+      <p class="v80-en">Pride rises from darkness.</p>
+      <p class="v80-desc">意志・支配・孤高・激情。<br>鋭く、美しく、前へ。</p>
+    </article>
+  </section>
 
-
-<section class="voice-section v75-voice fade" aria-label="Voice model and project voice">
-  <div class="voice-head">
-    <div class="voice-title">
-      <small>THE VOICE</small>
-      <h2>VOICE</h2>
-      <p>THE HUMAN VOICE<br>BEHIND THE PROJECTS</p>
+  <section class="v80-voice fade" aria-label="The voice">
+    <header>
+      <span>THE VOICE</span>
+      <h2>声の、その奥に。</h2>
+      <p>両PROJECTの歌声には、制作者自身の肉声を学習した音声モデルを使用しています。</p>
+    </header>
+    <div class="v80-voice-lines">
+      <div><span>KOSHIKURO RITA</span><strong>FROM 27th ALBUM</strong><b>Celestial Diamond</b></div>
+      <div><span>CROVEIL</span><strong>SINCE DEBUT</strong><b>Voice model from the beginning</b></div>
     </div>
-    <div class="voice-copy">
-      <p class="v75-voice-lead">両PROJECTの歌声には、<strong>制作者自身の肉声を学習した音声モデル</strong>を使用しています。</p>
-      <div class="voice-grid">
-        <article class="voice-card">
-          <small>01 / KOSHIKURO RITA</small>
-          <h3>越黒リタ</h3>
-          <p><b>27th ALBUM『Celestial Diamond』以降</b>、肉声学習モデルへ移行。</p>
-        </article>
-        <article class="voice-card">
-          <small>02 / CROVEIL</small>
-          <h3>CROVEIL</h3>
-          <p><b>プロジェクト始動時から</b>、肉声学習モデルを使用。</p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="v75-film fade" aria-label="Visual film">
-  <div class="v75-film-head"><small>VISUAL FILM</small><h2>TWO FACES.<br>ONE SHADOW.</h2></div>
-  <figure class="voice-film">
-    <video id="aboutVoiceFilm" muted loop playsinline preload="metadata" poster="assets/about/voice-film-poster.jpg" aria-label="KOSHIKURO RITA and CROVEIL visual film">
-      <source src="assets/about/voice-film.mp4" type="video/mp4">
-    </video>
-    <figcaption><strong>KOSHIKURO RITA × CROVEIL</strong><span>ABOUT VISUAL</span></figcaption>
-  </figure>
-</section>
+  <section class="v80-film fade" aria-label="Visual fragment">
+    <div class="v80-film-copy"><span>VISUAL FRAGMENT</span><h2>THE SHADOW<br>BETWEEN.</h2></div>
+    <figure>
+      <video id="aboutVoiceFilm" muted loop playsinline preload="metadata" poster="assets/about/voice-film-poster.jpg" aria-label="KOSHIKURO RITA and CROVEIL visual film">
+        <source src="assets/about/voice-film.mp4" type="video/mp4">
+      </video>
+      <figcaption>KOSHIKURO RITA × CROVEIL</figcaption>
+    </figure>
+  </section>
 
-<section class="v75-links fade" aria-label="Links">
-  <div class="v75-links-head"><small>LINKS</small><h2>その先の夜へ。</h2></div>
-  <div class="v75-main-links">
-    <a href="world.html"><small>01</small><strong>WORLD</strong><span>人物・イラスト・コミック →</span></a>
-    <a href="archive.html"><small>02</small><strong>ARCHIVE</strong><span>音楽作品の記録 →</span></a>
-  </div>
-  <div class="v75-social-links">
-    <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener"><strong>YouTube</strong><span>↗</span></a>
-    <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener"><strong>X / Twitter</strong><span>↗</span></a>
-    <a href="https://instagram.com/rita_kskr" target="_blank" rel="noopener"><strong>Instagram</strong><span>↗</span></a>
-    <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener"><strong>TikTok</strong><span>↗</span></a>
-  </div>
-</section>
+  <section class="v80-enter fade" aria-label="Enter the world">
+    <span>ENTER THE WORLD</span>
+    <h2>その先の夜へ。</h2>
+    <nav class="v80-primary-links">
+      <a href="archive.html"><small>DISCOGRAPHY</small><strong>ARCHIVE</strong><i>→</i></a>
+      <a href="world.html"><small>PERSONA / ART / COMICS</small><strong>WORLD</strong><i>→</i></a>
+    </nav>
+    <nav class="v80-socials" aria-label="Social links">
+      <a href="https://youtube.com/user/Rita021K" target="_blank" rel="noopener">YouTube ↗</a>
+      <a href="https://x.com/rita_5496sk" target="_blank" rel="noopener">X ↗</a>
+      <a href="https://instagram.com/rita_kskr" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="https://www.tiktok.com/@rita_koshikuro" target="_blank" rel="noopener">TikTok ↗</a>
+    </nav>
+  </section>
+</main>
+
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
-const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/h*100)+'%'},{passive:true});
-document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{const s=d.querySelector('summary span:last-child');s.textContent=d.open?'− CLOSE':'＋ READ'}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.10});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
+const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
+(() => {const video=document.getElementById('aboutVoiceFilm');if(!video)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const play=()=>video.play().catch(()=>{});if('IntersectionObserver'in window){const vio=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?play():video.pause()),{rootMargin:'160px 0px',threshold:.08});vio.observe(video)}else play()})();
 </script>
-
-<script id="v74-voice-film-script">
-(() => {
-  const video = document.getElementById('aboutVoiceFilm');
-  if (!video) return;
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
-  const play = () => video.play().catch(() => {});
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) play();
-        else video.pause();
-      });
-    }, { rootMargin: '160px 0px', threshold: 0.08 });
-    io.observe(video);
-  } else play();
-})();
-</script>
-
 </body>
+
 </html>
