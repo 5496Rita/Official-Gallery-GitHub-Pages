@@ -204,15 +204,39 @@
   </script>
   <script src="album-chapters.js?v=4900"></script>
   <script>
-    // v76: add full-album viewing URLs without replacing existing mappings.
-    window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {};
-    Object.assign(window.ALBUM_FULL_ALBUMS, {
-      "vanishing-reverie": "https://youtu.be/q_C02-MrSjw",
-      "schattenblute": "https://youtu.be/RDjMWx9Pask",
-      "celestial-diamond": "https://youtu.be/8OXg2MfkUyY",
-      "persona": "https://youtu.be/1q9yVY_K9Ns",
-      "zwischenraum": "https://youtu.be/bE89h0dafXE"
-    });
+    // v77: register chapter times now, but expose the full-album URL only after release.
+    // This keeps pre-release pages readable while preventing playback before 00:00 JST.
+    (function(){
+      window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {};
+      Object.assign(window.ALBUM_CHAPTERS, {
+        "vanishing-reverie": ["0:00","4:32","9:00","13:53","18:02","22:51"],
+        "schattenblute": ["0:00","4:26","8:54","13:26","18:14","23:03"],
+        "celestial-diamond": ["0:00","4:34","9:02","14:11","18:28","22:59"],
+        "persona": ["0:00","4:47","9:49","14:37","18:58","22:17"],
+        "zwischenraum": ["0:00","4:51","9:25","13:48","18:17","22:50"]
+      });
+
+      var scheduled = {
+        "vanishing-reverie": { release: "2026-12-11T00:00:00+09:00", url: "https://youtu.be/q_C02-MrSjw" },
+        "schattenblute": { release: "2026-11-21T00:00:00+09:00", url: "https://youtu.be/RDjMWx9Pask" },
+        "celestial-diamond": { release: "2026-12-25T00:00:00+09:00", url: "https://youtu.be/8OXg2MfkUyY" },
+        "persona": { release: "2026-11-27T00:00:00+09:00", url: "https://youtu.be/1q9yVY_K9Ns" },
+        "zwischenraum": { release: "2026-12-18T00:00:00+09:00", url: "https://youtu.be/bE89h0dafXE" }
+      };
+
+      window.ALBUM_SCHEDULED_VIDEOS = Object.assign(window.ALBUM_SCHEDULED_VIDEOS || {}, scheduled);
+      window.ALBUM_FULL_ALBUMS = window.ALBUM_FULL_ALBUMS || {};
+
+      var now = Date.now();
+      Object.keys(scheduled).forEach(function(id){
+        if (now >= new Date(scheduled[id].release).getTime()) {
+          window.ALBUM_FULL_ALBUMS[id] = scheduled[id].url;
+        } else {
+          // Remove only this v77 scheduled mapping if an older patch exposed it early.
+          if (window.ALBUM_FULL_ALBUMS[id] === scheduled[id].url) delete window.ALBUM_FULL_ALBUMS[id];
+        }
+      });
+    })();
   </script>
   <script src="lyrics-cache-fix.js?v=3500"></script>
   <script src="detail-seo.js?v=5000"></script>
@@ -281,6 +305,28 @@
       line-height: 1.8;
       letter-spacing: .04em;
     }
+    .release-lock-marker {
+      position: absolute;
+      left: 14px;
+      bottom: 10px;
+      z-index: 5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: .08em;
+      color: rgba(230, 215, 232, .38);
+      pointer-events: none;
+      user-select: none;
+    }
+    .full-album-frame.release-locked {
+      min-height: 150px;
+    }
+    .full-album-frame.release-locked > iframe,
+    .full-album-frame.release-locked > video,
+    .full-album-frame.release-locked > a,
+    .full-album-frame.release-locked > button {
+      display: none !important;
+    }
     .work-theme::before {
       content: "THEME";
       display: block;
@@ -304,9 +350,14 @@
       }
       function hasFullAlbumVideo(id, album){
         var mapped = window.ALBUM_FULL_ALBUMS && window.ALBUM_FULL_ALBUMS[id];
+        var scheduled = window.ALBUM_SCHEDULED_VIDEOS && window.ALBUM_SCHEDULED_VIDEOS[id] && window.ALBUM_SCHEDULED_VIDEOS[id].url;
         var direct = album && album.youtubeId;
         var linked = album && album.links && album.links.youtube;
-        return !!String(mapped || direct || linked || "").trim();
+        return !!String(mapped || scheduled || direct || linked || "").trim();
+      }
+      function releaseLocked(id){
+        var item = window.ALBUM_SCHEDULED_VIDEOS && window.ALBUM_SCHEDULED_VIDEOS[id];
+        return !!(item && Date.now() < new Date(item.release).getTime());
       }
       function applyVideoStatus(){
         var frame = document.getElementById("work-xfd");
@@ -316,15 +367,27 @@
         var list = getAlbumList();
         var album = list.find(function(a){ return a && a.id === id; }) || null;
         var uploaded = hasFullAlbumVideo(id, album);
+        var locked = releaseLocked(id);
 
-        frame.querySelectorAll(".video-status-marker").forEach(function(n){ n.remove(); });
+        frame.querySelectorAll(".video-status-marker, .release-lock-marker").forEach(function(n){ n.remove(); });
         frame.classList.toggle("video-not-uploaded", !uploaded);
+        frame.classList.toggle("release-locked", locked);
 
         var marker = document.createElement("span");
         marker.className = "video-status-marker";
         marker.textContent = 'videoStatus: "' + (uploaded ? 'uploaded' : 'not-uploaded') + '"';
         marker.setAttribute("aria-hidden", "true");
         frame.appendChild(marker);
+
+        if (locked) {
+          var item = window.ALBUM_SCHEDULED_VIDEOS[id];
+          var date = item.release.slice(0,10).replace(/-/g,'.');
+          var lock = document.createElement("span");
+          lock.className = "release-lock-marker";
+          lock.textContent = 'releaseLocked: true · ' + date;
+          lock.setAttribute("aria-hidden", "true");
+          frame.appendChild(lock);
+        }
       }
 
       if (document.readyState === "loading") {
