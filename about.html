@@ -374,6 +374,24 @@ body{background:var(--v80bg);color:var(--v80ink)}
 }
 </style>
 
+<style id="v85-about-gateway">
+.v84-hero{min-height:72svh!important;display:flex!important;align-items:center;padding:125px 0 85px!important}
+.v80-origin{padding:90px 0 100px}.v80-projects{padding:100px 0}.v81-story-gateway{margin-bottom:0;padding:65px 0}.v83-world-core{border-top:0;padding:100px 0}.v80-voice{padding:95px 0}
+.v85-gateway{width:min(1180px,88vw);margin:0 auto;padding:72px 0 90px;border-top:1px solid var(--v80line)}
+.v85-teaser{display:block;position:relative;isolation:isolate;overflow:hidden;min-height:320px;aspect-ratio:2.15/1;background:#0b080e;border:1px solid var(--v80line);color:var(--v80ink);text-decoration:none}
+.v85-teaser img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;filter:saturate(.84) brightness(.88);transition:transform .5s ease}
+.v85-teaser:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,9,.93) 0%,rgba(7,6,9,.72) 22%,rgba(7,6,9,.22) 49%,transparent 74%);pointer-events:none}
+.v85-teaser-copy{position:absolute;z-index:1;left:6%;top:50%;transform:translateY(-50%);max-width:48%}
+.v85-teaser-copy>span{font:600 10px/1.4 'Cormorant Garamond',serif;letter-spacing:.23em;color:#c7aabd}
+.v85-teaser h2{margin:18px 0 14px;font:500 clamp(43px,6.1vw,86px)/.88 'Cormorant Garamond',serif;letter-spacing:.01em}
+.v85-teaser p{margin:24px 0;color:#d0c3cc;font-size:13px;line-height:1.8}
+.v85-teaser .v85-teaser-link{display:inline-flex;align-items:center;gap:14px;border-bottom:1px solid #a58a9e;padding-bottom:9px;color:#e7dce5;letter-spacing:.16em}
+.v85-teaser-link b{font-weight:400;font-size:18px}.v85-teaser:hover img{transform:scale(1.025)}.v85-teaser:focus-visible{outline:2px solid #c8a4ba;outline-offset:4px}
+.v80-enter{padding:95px 6vw 72px}.v80-primary-links{margin-top:50px}
+@media(max-width:900px){.v84-hero{min-height:0!important;padding:115px 0 75px!important}.v80-origin{padding:76px 0}.v80-projects{padding:75px 0}.v83-world-core,.v80-voice{padding:80px 0}.v85-gateway{padding:60px 0 72px}.v85-teaser{min-height:280px;aspect-ratio:1.9/1}}
+@media(max-width:600px){.v84-hero h1{font-size:clamp(41px,12vw,68px)!important;line-height:.86}.v84-hero{padding:105px 0 60px!important}.v80-origin{padding:62px 0}.v80-projects{padding:62px 0}.v81-story-gateway{padding:54px 0}.v83-world-core,.v80-voice{padding:64px 0}.v83-world-words{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:36px}.v83-world-words div{padding:16px 12px;min-height:120px}.v83-world-words strong{font-size:28px}.v83-world-note{margin-top:35px}.v85-gateway{width:90vw;padding:55px 0 65px}.v85-teaser{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column}.v85-teaser img{position:static;aspect-ratio:16/10;object-position:center;filter:saturate(.84) brightness(.9)}.v85-teaser:after{display:none}.v85-teaser-copy{position:static;transform:none;max-width:none;padding:24px 22px 30px}.v85-teaser h2{font-size:48px;margin:12px 0}.v85-teaser h2 br{display:none}.v85-teaser p{margin:15px 0 20px}.v80-enter{padding:75px 5vw 60px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.v80 .fade,.v85-teaser img{transition:none;transform:none}.v80 .fade{opacity:1}}
+</style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -393,12 +411,7 @@ body{background:var(--v80bg);color:var(--v80ink)}
     <p>同じ闇を見ていても、<br>そこから生まれる音は、ひとつではなかった。</p>
   </section>
 
-  <section class="v81-story-gateway fade" aria-label="The divided soul story">
-    <div><span class="eyebrow">THE DIVIDED SOUL / STORY</span><h2>One origin.<br>Two souls.</h2><div class="rose" aria-hidden="true">❦</div></div>
-    <div><p>かつて「闇姫」と呼ばれた、ひとりの音楽家。<br>その名が意志を宿し、異なる声を持つ二つの魂が生まれた。<br>自由を愛する姫と、誇りを抱く貴公子。<br>一輪の黒薔薇に秘められた、彼らの起源を辿る。</p><a href="story.html">READ THE STORY <span aria-hidden="true">→</span></a></div>
-  </section>
-
-  <section class="v80-projects fade" aria-label="Two projects">
+<section class="v80-projects fade" aria-label="Two projects">
     <article class="v80-project rita">
       <span>01 / KOSHIKURO RITA</span>
       <h2>越黒リタ</h2>
@@ -414,6 +427,11 @@ body{background:var(--v80bg);color:var(--v80ink)}
     </article>
   </section>
 
+
+  <section class="v81-story-gateway fade" aria-label="The divided soul story">
+    <div><span class="eyebrow">THE DIVIDED SOUL / STORY</span><h2>One origin.<br>Two souls.</h2><div class="rose" aria-hidden="true">❦</div></div>
+    <div><p>かつて「闇姫」と呼ばれた、ひとりの音楽家。<br>その名が意志を宿し、異なる声を持つ二つの魂が生まれた。<br>自由を愛する姫と、誇りを抱く貴公子。<br>一輪の黒薔薇に秘められた、彼らの起源を辿る。</p><a href="story.html">READ THE STORY <span aria-hidden="true">→</span></a></div>
+  </section>
 
   <section class="v83-world-core fade" aria-label="Shared world">
     <div class="v83-world-head">
@@ -445,24 +463,16 @@ body{background:var(--v80bg);color:var(--v80ink)}
     </div>
   </section>
 
-  <section class="v84-other-side fade" aria-label="The other side behind the projects">
-    <header class="v84-other-head">
-      <span>THE OTHER SIDE / BEHIND THE VOICE</span>
-      <h2>物語の外側にある、<br>声の起点。</h2>
-      <p>PROJECTの世界観とは少し離れた場所にある、現実側の断片。<br>ここでは、越黒リタとCROVEILを形づくる「声」と「存在」の気配だけを残す。</p>
-    </header>
-    <div class="v84-real-grid">
-      <figure class="v84-real-photo">
-        <img src="assets/about/duo-hero.png" alt="KOSHIKURO RITA and CROVEIL real-side visual">
-        <figcaption>REAL-SIDE VISUAL / KOSHIKURO RITA × CROVEIL</figcaption>
-      </figure>
-      <figure class="v84-real-film">
-        <video id="aboutVoiceFilm" muted loop playsinline preload="metadata" poster="assets/about/voice-film-poster.jpg" aria-label="KOSHIKURO RITA and CROVEIL real-side visual film">
-          <source src="assets/about/voice-film.mp4" type="video/mp4">
-        </video>
-        <figcaption>VISUAL FRAGMENT / THE OTHER SIDE</figcaption>
-      </figure>
-    </div>
+  <section class="v85-gateway fade" aria-label="The Other Side">
+    <a class="v85-teaser" href="other-side.html">
+      <img src="assets/about/duo-hero.png" alt="" loading="lazy" decoding="async">
+      <div class="v85-teaser-copy">
+        <span>BEHIND THE VOICE</span>
+        <h2>THE OTHER<br>SIDE.</h2>
+        <p>物語の外側へ。</p>
+        <span class="v85-teaser-link">BEYOND THE FICTION <b aria-hidden="true">→</b></span>
+      </div>
+    </a>
   </section>
 
   <section class="v80-enter fade" aria-label="Enter the world">
@@ -483,9 +493,9 @@ body{background:var(--v80bg);color:var(--v80ink)}
 </main>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.10});document.querySelectorAll('.fade').forEach(x=>io.observe(x));
+const sections=document.querySelectorAll('.fade');
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.05});sections.forEach(x=>io.observe(x));}else sections.forEach(x=>x.classList.add('show'));
 const p=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
-(() => {const video=document.getElementById('aboutVoiceFilm');if(!video)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const play=()=>video.play().catch(()=>{});if('IntersectionObserver'in window){const vio=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?play():video.pause()),{rootMargin:'160px 0px',threshold:.08});vio.observe(video)}else play()})();
 </script>
 </body>
 
