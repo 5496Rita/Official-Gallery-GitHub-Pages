@@ -41,7 +41,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=566" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="bundle.css?v=555" />
-</head>
+<link rel="stylesheet" href="worldview.css?v=88"></head>
 
 <body class="detail-page page-enter">
   <div class="page-transition" aria-hidden="true"></div>
@@ -95,6 +95,7 @@
         <p id="work-reading" class="work-reading" hidden></p>
         <p id="work-release" class="work-release"></p>
         <div id="work-theme" class="work-theme" hidden></div>
+        <div id="worldview-detail" class="worldview-detail" hidden></div>
         <div id="work-story" class="work-story" aria-label="Album description"></div>
 
         <div class="listen-now" aria-labelledby="listen-now-title">
@@ -209,6 +210,10 @@
     (function(){
       window.ALBUM_CHAPTERS = window.ALBUM_CHAPTERS || {};
       Object.assign(window.ALBUM_CHAPTERS, {
+        "unholy-ascension": ["0:00","5:02","9:27","13:46","18:12","22:56"],
+        "proverbia-noctis": ["0:00","4:43","9:05","13:28","18:13","22:38"],
+        "phantom-masquerade": ["0:00","4:22","8:47","13:37","18:27","23:00"],
+        "arcana-amoris": ["0:00","3:57","8:01","11:58","15:40","23:52"],
         "vanishing-reverie": ["0:00","4:32","9:00","13:53","18:02","22:51"],
         "schattenblute": ["0:00","4:26","8:54","13:26","18:14","23:03"],
         "celestial-diamond": ["0:00","4:34","9:02","14:11","18:28","22:59"],
@@ -225,13 +230,17 @@
       });
 
       var scheduled = {
+        "unholy-ascension": { release: "2027-03-19T00:00:00+09:00", url: "https://youtu.be/Pe2dFNqwNeU" },
+        "proverbia-noctis": { release: "2027-04-09T00:00:00+09:00", url: "https://youtu.be/c-_1eZ2CaYw" },
+        "phantom-masquerade": { release: "2027-04-16T00:00:00+09:00", url: "https://youtu.be/UUkqzqnEolc" },
+        "arcana-amoris": { release: "2027-04-23T00:00:00+09:00", url: "https://youtu.be/AgRNlBYZ79U" },
         "vanishing-reverie": { release: "2026-12-11T00:00:00+09:00", url: "https://youtu.be/q_C02-MrSjw" },
         "schattenblute": { release: "2026-11-21T00:00:00+09:00", url: "https://youtu.be/RDjMWx9Pask" },
         "celestial-diamond": { release: "2026-12-25T00:00:00+09:00", url: "https://youtu.be/8OXg2MfkUyY" },
         "persona": { release: "2026-11-27T00:00:00+09:00", url: "https://youtu.be/1q9yVY_K9Ns" },
         "zwischenraum": { release: "2026-12-18T00:00:00+09:00", url: "https://youtu.be/bE89h0dafXE" },
         "daemonia": { release: "2027-01-15T00:00:00+09:00", url: "https://youtu.be/F0RWS9es4Ko" },
-        "tarnished-beauty": { release: "2027-01-22T00:00:00+09:00", url: "https://youtu.be/SEUG00krsvo" },
+        "tarnished-beauty": { release: "2027-01-29T00:00:00+09:00", url: "https://youtu.be/SEUG00krsvo" },
         "devouring-eden": { release: "2027-01-08T00:00:00+09:00", url: "https://youtu.be/QY5KsuYpdlw" },
         "nocturne-royale": { release: "2027-02-19T00:00:00+09:00", url: "https://youtu.be/0QUi5a8GRwY" },
         "beyond-sense": { release: "2027-02-12T00:00:00+09:00", url: "https://youtu.be/vl1uGuvfhJs" },
@@ -437,5 +446,7 @@
       }
     })();
   </script>
+<script src="album-worldview.js?v=88"></script>
+<script src="worldview.js?v=88"></script>
 </body>
 </html>
